@@ -15,11 +15,11 @@ function StatusBadge() {
 function HeroHeading() {
   return (
     <div className="animate-hero-fade-up-delay-1 flex flex-col items-center gap-4 sm:gap-6">
-      <h1 className="text-balance text-center text-4xl font-bold leading-[1.1] tracking-tight text-neutral-900 sm:text-6xl lg:text-7xl">
+      <h1 className="text-balance text-center text-5xl font-bold leading-[0.9] tracking-tight text-neutral-900 sm:text-6xl lg:text-7xl">
         Sistemas web <br className="hidden sm:block" /> que escalan negocios.
       </h1>
 
-      <p className="w-full max-w-[18rem] text-pretty text-center text-base leading-relaxed text-neutral-600 sm:max-w-md sm:text-lg lg:max-w-xl lg:text-xl">
+      <p className="w-full max-w-[20rem] text-pretty text-center text-base leading-tight text-neutral-500 sm:max-w-md sm:text-lg lg:max-w-xl lg:text-xl">
         Diseño y desarrollo pensados para operar, medir y crecer con claridad.
       </p>
     </div>
@@ -39,7 +39,7 @@ function HeroActions() {
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[90svh] w-full flex-col items-center justify-center overflow-hidden bg-[#F6F8FB] px-6 py-20 selection:bg-lime-400">
+    <section className="relative flex min-h-[99svh] w-full flex-col items-center justify-center overflow-hidden bg-[#F6F8FB] px-6 py-20 selection:bg-lime-400">
       <div className="relative z-10 flex w-full max-w-4xl flex-col items-center gap-8 sm:gap-12">
         <StatusBadge />
         <HeroHeading />
