@@ -30,7 +30,7 @@ function HeroActions() {
   return (
     <a
       href="#contacto"
-      className="inline-flex h-12 items-center justify-center font-sans rounded-full bg-neutral-900 px-8 text-sm font-bold text-white transition-all hover:scale-[1.02] active:scale-95"
+      className="inline-flex h-12 items-center justify-center font-sans rounded-full bg-neutral-900 px-8 text-base text-white transition-all hover:scale-[1.02] active:scale-95"
     >
       Empezar proyecto
     </a>
