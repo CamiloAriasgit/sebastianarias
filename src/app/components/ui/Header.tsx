@@ -4,8 +4,8 @@ export default function Navbar() {
       <nav className="flex w-full max-w-2xl items-center justify-between rounded-full bg-neutral-200/60 pl-6 pr-3 py-2.5 backdrop-blur-md ">
         
         <div className="flex items-center gap-2">
-          <span className="text-sm font-sans font-bold tracking-tight text-neutral-900">
-            SCAB
+          <span className="text-sm font-mono tracking-tight text-neutral-900">
+            Scab
           </span>
         </div>
 

@@ -49,7 +49,32 @@ function HeroActions() {
   );
 }
 
+function MetricPill({
+  value,
+  label,
+}: {
+  value: string;
+  label: string;
+}) {
+  return (
+    <div className="flex items-center gap-2 text-xs sm:text-sm">
+      <span className="font-semibold tabular-nums text-neutral-800">{value}</span>
+      <span className="text-neutral-500">{label}</span>
+    </div>
+  );
+}
 
+function HeroMetrics() {
+  return (
+    <div className="animate-hero-fade-up-delay-3 flex items-center gap-4 sm:gap-6">
+      <MetricPill value="+40" label="proyectos" />
+      <span className="h-3 w-px bg-foreground/10" />
+      <MetricPill value="99%" label="uptime" />
+      <span className="h-3 w-px bg-foreground/10" />
+      <MetricPill value="4.9" label="rating" />
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
@@ -58,6 +83,7 @@ export default function Hero() {
         <StatusBadge />
         <HeroHeading />
         <HeroActions />
+        <HeroMetrics />
       </div>
     </section>
   );
