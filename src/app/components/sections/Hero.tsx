@@ -79,7 +79,7 @@ function HeroMetrics() {
 export default function Hero() {
   return (
     <section className="relative flex min-h-[99svh] w-full flex-col items-center justify-center overflow-hidden bg-[#F6F8FB] px-6 py-20 selection:bg-lime-400">
-      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center gap-8 sm:gap-12">
+      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center gap-8 sm:gap-10">
         <StatusBadge />
         <HeroHeading />
         <HeroActions />
