@@ -15,7 +15,7 @@ function StatusBadge() {
 function HeroHeading() {
   return (
     <div className="animate-hero-fade-up-delay-1 flex flex-col items-center gap-4 sm:gap-6">
-      <h1 className="text-balance text-center text-5xl font-bold leading-[0.9] tracking-tight text-neutral-900 sm:text-6xl lg:text-7xl">
+      <h1 className="text-balance text-center text-5xl  font-sans font-semibold leading-[0.9] tracking-tight text-neutral-900 sm:text-6xl lg:text-7xl">
         Sistemas web <br className="hidden sm:block" /> que escalan negocios.
       </h1>
 
