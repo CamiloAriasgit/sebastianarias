@@ -1,13 +1,25 @@
 function StatusBadge() {
   return (
-    <div className="animate-hero-fade-up flex items-center gap-2 rounded-full border border-neutral-200 bg-background/80 px-3 py-1 backdrop-blur-sm">
-      <span className="relative flex h-2 w-2">
-        <span className="animate-hero-pulse absolute h-full w-full rounded-full bg-emerald-500 opacity-75" />
-        <span className="relative h-2 w-2 rounded-full bg-emerald-500" />
-      </span>
-      <span className="text-[10px] font-semibold uppercase tracking-wider text-neutral-900 font-sans sm:text-xs">
-        Disponible para proyectos
-      </span>
+    <div className="animate-hero-fade-up flex items-center gap-2.5 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
+      <span className="relative flex h-2 w-2 items-center justify-center">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-r from-indigo-500/0 via-indigo-500 to-indigo-500/0 opacity-75" />
+                <span
+                    style={{ animationDelay: '0.2s' }}
+                    className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-b from-indigo-500/0 via-violet-500 to-indigo-500/0 opacity-75"
+                />
+                <span
+                    style={{ animationDelay: '0.4s' }}
+                    className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-br from-indigo-500/0 via-purple-500 to-indigo-500/0 opacity-75"
+                />
+                <span
+                    style={{ animationDelay: '0.6s' }}
+                    className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-bl from-indigo-500/0 via-cyan-500 to-indigo-500/0 opacity-75"
+                />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-indigo-500/0" />
+            </span>
+            <span className="text-xs font-medium tracking-wide text-[#5E6472]">
+                Disponible para proyectos
+            </span>
     </div>
   );
 }
@@ -36,6 +48,8 @@ function HeroActions() {
     </a>
   );
 }
+
+
 
 export default function Hero() {
   return (
