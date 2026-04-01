@@ -67,7 +67,7 @@ function MetricPill({
 function HeroMetrics() {
   return (
     <div className="animate-hero-fade-up-delay-3 flex items-center gap-4 sm:gap-6">
-      <MetricPill value="+40" label="proyectos" />
+      <MetricPill value="+2" label="years" />
       <span className="h-3 w-px bg-foreground/10" />
       <MetricPill value="99%" label="uptime" />
       <span className="h-3 w-px bg-foreground/10" />
