@@ -5,7 +5,7 @@ function StatusBadge() {
         <span className="animate-hero-pulse absolute h-full w-full rounded-full bg-emerald-500 opacity-75" />
         <span className="relative h-2 w-2 rounded-full bg-emerald-500" />
       </span>
-      <span className="text-[10px] font-semibold uppercase tracking-wider text-neutral-900 sm:text-xs">
+      <span className="text-[10px] font-semibold uppercase tracking-wider text-neutral-900 font-sans sm:text-xs">
         Disponible para proyectos
       </span>
     </div>
@@ -19,7 +19,7 @@ function HeroHeading() {
         Sistemas web <br className="hidden sm:block" /> que escalan negocios.
       </h1>
 
-      <p className="w-full max-w-[20rem] text-pretty text-center text-base leading-tight text-neutral-500 sm:max-w-md sm:text-lg lg:max-w-xl lg:text-xl">
+      <p className="w-full max-w-[20rem] text-pretty text-center text-base font-sans leading-tight text-neutral-500 sm:max-w-md sm:text-lg lg:max-w-xl lg:text-xl">
         Diseño y desarrollo pensados para operar, medir y crecer con claridad.
       </p>
     </div>
@@ -30,7 +30,7 @@ function HeroActions() {
   return (
     <a
       href="#contacto"
-      className="inline-flex h-12 items-center justify-center rounded-full bg-neutral-900 px-8 text-sm font-bold text-white transition-all hover:scale-[1.02] active:scale-95"
+      className="inline-flex h-12 items-center justify-center font-sans rounded-full bg-neutral-900 px-8 text-sm font-bold text-white transition-all hover:scale-[1.02] active:scale-95"
     >
       Empezar proyecto
     </a>
