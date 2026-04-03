@@ -86,7 +86,7 @@ const ControlCard = () => {
             <AppleCard visible={visible} delay={0.1} className="bg-[#F5F5F7]">
                 <div className="flex flex-col pt-7 md:pt-14 lg:flex-row lg:items-center justify-between max-w-full">
                     <div className="max-w-3xl px-7 md:px-14">
-                        <h1 className="text-[2.5rem] md:text-[3.5rem] font-bold leading-[1.05] tracking-tight text-neutral-900 mb-6">
+                        <h1 className="text-4xl md:text-[3.5rem] font-semibold leading-[0.9] tracking-tight text-neutral-900 mb-6">
                             Control real sobre tu operación
                         </h1>
                         <p className="text-sm lg:text-lg md:text-lg font-medium text-foreground/60">
@@ -106,7 +106,7 @@ const FrictionCard = () => {
         <div ref={ref}>
             <AppleCard visible={visible} delay={0.1} className="bg-white overflow-hidden">
                 <div className="flex items-center gap-3 mb-4 pt-12 px-10 md:px-14">
-                    <h1 className="text-[2.5rem] md:text-[3.5rem] font-bold leading-[1.05] tracking-tight text-neutral-900">
+                    <h1 className="text-4xl md:text-[3.5rem] font-semibold leading-[0.9] tracking-tight text-neutral-900">
                         Velocidad que retiene
                     </h1>
                 </div>
@@ -154,7 +154,7 @@ const GrowthCard = () => {
         <div ref={ref}>
             <AppleCard visible={visible} delay={0.1} className="bg-white">
                 <div className="flex items-center mb-6 pt-7 md:pt-14 px-10 md:px-14">
-                    <h1 className="text-[2.5rem] md:text-[3.5rem] font-bold leading-[1.05] tracking-tight text-neutral-900">
+                    <h1 className="text-4xl font-semibold md:text-[3.5rem] leading-[0.9] tracking-tight text-neutral-900">
                         Presencia que convierte
                     </h1>
                 </div>
