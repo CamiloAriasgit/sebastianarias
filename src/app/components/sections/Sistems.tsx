@@ -44,7 +44,7 @@ function AppleCard({
 }) {
   return (
     <div
-      className={`group relative flex flex-col overflow-hidden rounded-4xl bg-white shadow-lg transition-all duration-1000 ${className}`}
+      className={`group relative flex flex-col overflow-hidden rounded-4xl bg-white transition-all duration-1000 ${className}`}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(40px)",
