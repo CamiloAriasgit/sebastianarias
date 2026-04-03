@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import React, { useEffect, useRef, ReactNode, useState } from "react";
 // Importamos solo lo necesario para mantener el código limpio
 import Elements from '../../../../public/images/Dashboard.png';
-import Panel from '../../../../public/images/Dashboard.png';
+import Panel from '../../../../public/images/UIinterface.png';
 
 // --- Hook de Visibilidad ---
 function useReveal(threshold = 0.1) {
