@@ -87,10 +87,10 @@ const ControlCard = () => {
                 <div className="flex flex-col pt-7 md:pt-14 lg:flex-row lg:items-center justify-between max-w-full">
                     <div className="max-w-3xl px-7 md:px-14">
                         <h1 className="text-[2.5rem] md:text-[3.5rem] font-bold leading-[1.05] tracking-tight text-foreground/80 mb-6">
-                            Control operativo
+                            Control real sobre tu operación
                         </h1>
                         <p className="text-sm lg:text-lg md:text-lg font-medium text-foreground/60">
-                            Digitalización de procesos críticos mediante dashboards robustos y flujos libres de error.
+                            Centraliza información y procesos en un solo lugar, sin errores ni fricción.
                         </p>
                     </div>
                     <Card1 />
@@ -111,7 +111,7 @@ const FrictionCard = () => {
                     </h1>
                 </div>
                 <p className="text-sm lg:text-lg md:text-lg font-medium text-foreground/60 px-10 md:px-14">
-                    Interfaces de carga instantánea diseñadas para eliminar la fricción y evitar el abandono.
+                    Experiencias rápidas que mantienen al usuario dentro, no esperando.
                 </p>
                 <div className="relative h-48 w-full flex justify-center pt-15">
                     <div className="relative w-64 h-64">
@@ -155,11 +155,11 @@ const GrowthCard = () => {
             <AppleCard visible={visible} delay={0.1} className="bg-white">
                 <div className="flex items-center mb-6 pt-7 md:pt-14 px-10 md:px-14">
                     <h1 className="text-[2.5rem] md:text-[3.5rem] font-bold leading-[1.05] tracking-tight text-foreground/80">
-                        Landings de alto impacto
+                        Presencia que convierte
                     </h1>
                 </div>
                 <p className="text-sm lg:text-lg md:text-lg font-medium text-foreground/60 px-10 md:px-14">
-                    Sitios de alta fidelidad que proyectan autoridad y transforman visitas en clientes.
+                    Desde landings hasta plataformas, cada interfaz está diseñada para generar resultados.
                 </p>
                 <Card2 />
             </AppleCard>
