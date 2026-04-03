@@ -32,7 +32,7 @@ function HeroHeading() {
       </h1>
 
       <p className="w-full max-w-[20rem] text-pretty text-center text-base font-sans leading-tight text-neutral-500 sm:max-w-md sm:text-lg lg:max-w-xl lg:text-xl">
-        Diseño y desarrollo pensados para operar, medir y crecer con claridad.
+        Desde una landing de alto impacto hasta sistemas que te permiten operar y crecer.
       </p>
     </div>
   );
@@ -78,7 +78,7 @@ function HeroMetrics() {
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[99svh] w-full flex-col items-center justify-center overflow-hidden bg-[#F6F8FB] px-6 py-20 selection:bg-lime-400">
+    <section className="relative flex min-h-[99svh] w-full flex-col items-center justify-center overflow-hidden bg-[#F6F8FB] px-6 py-20 selection:bg-lime-400 selection:text-neutral-900">
       <div className="relative z-10 flex w-full max-w-4xl flex-col items-center gap-8 sm:gap-10">
         <StatusBadge />
         <HeroHeading />
