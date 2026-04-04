@@ -52,7 +52,7 @@ export default function ProcessSection() {
                 {/* VERSION MÓVIL: Menú de Iconos + Contenido Activo */}
                 <div className="flex flex-col items-center gap-8 sm:hidden">
                     {/* Selector de Iconos */}
-                    <div className="relative flex justify-center gap-4 rounded-full bg-gray-200/60 p-2">
+                    <div className="relative flex justify-center gap-4 rounded-full bg-gray-200/60 p-2 shadow-inner shadow-neutral-400">
                         {features.map((feature, index) => {
                             const isActive = activeIndex === index;
                             return (
