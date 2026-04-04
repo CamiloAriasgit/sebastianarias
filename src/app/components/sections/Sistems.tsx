@@ -46,7 +46,7 @@ export default function ProcessSection() {
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <section className="w-full bg-[#F6F8FB] px-6 ">
+        <section className="w-full bg-[#F6F8FB] px-6 pb-24 sm:pb-32">
             <div className="mx-auto max-w-5xl">
 
                 {/* VERSION MÓVIL: Menú de Iconos + Contenido Activo */}
