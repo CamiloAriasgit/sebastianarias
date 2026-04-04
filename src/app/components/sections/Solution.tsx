@@ -20,11 +20,11 @@ function SolutionCard({
         </div>
       </div>
 
-      <div className="flex flex-col gap-3">
-        <h3 className="font-sans text-2xl font-semibold tracking-tight text-neutral-900">
+      <div className="flex flex-col gap-2">
+        <h3 className="font-sans text-2xl font-bold tracking-tight leading-[0.9] text-neutral-900">
           {title}
         </h3>
-        <p className="font-sans text-[15px] leading-relaxed text-neutral-500">
+        <p className="font-sans text-[15px] leading-[0.9] text-neutral-500">
           {description}
         </p>
       </div>
