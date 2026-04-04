@@ -72,7 +72,7 @@ export default function ProcessSection() {
                                     {isActive && (
                                         <motion.div
                                             layoutId="activeTabBackground"
-                                            className="absolute inset-0 z-[-1] rounded-full bg-[#F6F8FB] shadow-xl"
+                                            className="absolute inset-0 z-[-1] rounded-full bg-[#F6F8FB] shadow-lg shadow-neutral-400/70 "
                                             transition={{
                                                 type: "spring",
                                                 stiffness: 400,
