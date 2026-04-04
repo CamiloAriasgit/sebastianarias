@@ -34,11 +34,12 @@ function SolutionCard({
 
 export default function Solutions() {
   return (
-    <section className="relative w-full bg-gray-200/60 px-6 py-24 sm:py-32">
+    <section className="relative w-full bg-[#F6F8FB] px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl">
         
         {/* Header de la Sección */}
         <div className="mb-16 flex flex-col items-center text-center sm:mb-24">
+            <span className='bg-gray-200/60 rounded-full px-4 py-1 mb-5 font-sans font-semibold text-neutral-900'>Para Negocios</span>
           <h2 className="text-balance font-sans text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl leading-[0.9]">
             Lo que construyes depende de lo que necesitas
           </h2>
