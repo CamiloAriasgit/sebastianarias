@@ -95,10 +95,10 @@ export default function ProcessSection() {
                             transition={{ duration: 0.3 }}
                             className="text-center"
                         >
-                            <h3 className="font-sans text-2xl font-bold tracking-tight text-neutral-900 leading-[0.9]">
+                            <h3 className="font-sans text-4xl font-bold tracking-tight text-neutral-900 leading-[0.9]">
                                 {features[activeIndex].title}
                             </h3>
-                            <p className="mt-0 font-sans text-2xl font-bold text-neutral-500 leading-[0.9]">
+                            <p className="mt-3 font-sans text-4xl font-bold text-neutral-500 leading-[0.9]">
                                 {features[activeIndex].description}
                             </p>
                         </motion.div>
