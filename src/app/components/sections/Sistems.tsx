@@ -95,7 +95,7 @@ export default function ProcessSection() {
                             transition={{ duration: 0.3 }}
                             className="text-center"
                         >
-                            <h3 className="font-sans text-2xl font-bold tracking-tight text-neutral-900 leading-tight">
+                            <h3 className="font-sans text-3xl font-bold tracking-tight text-neutral-900 leading-tight">
                                 {features[activeIndex].title}
                             </h3>
                             <p className="mt-1 font-sans text-xl font-medium text-neutral-500 leading-tight">
