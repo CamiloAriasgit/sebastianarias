@@ -9,19 +9,19 @@ const features = [
         title: "Control real sobre tu operación",
         description: "Centraliza información y procesos en un solo lugar, sin errores ni fricción.",
         icon: Activity,
-        color: "text-blue-600",
+        color: "text-neutral-600",
     },
     {
         title: "Velocidad que retiene",
         description: "Experiencias rápidas que mantienen al usuario dentro, no esperando.",
         icon: Zap,
-        color: "text-emerald-600",
+        color: "text-neutral-600",
     },
     {
         title: "Presencia que convierte",
         description: "Desde landings hasta plataformas, cada interfaz está diseñada para generar resultados.",
         icon: Target,
-        color: "text-indigo-600",
+        color: "text-neutral-600",
     },
 ];
 
