@@ -31,7 +31,7 @@ function HeroHeading() {
         Sistemas web <br className="hidden sm:block" /> que escalan negocios.
       </h1>
 
-      <p className="w-full max-w-[20rem] text-pretty text-center text-base font-sans leading-tight text-neutral-500 sm:max-w-md sm:text-lg lg:max-w-xl lg:text-xl">
+      <p className="w-full max-w-[20rem] text-pretty text-center text-base font-sans leading-tight text-neutral-500 sm:max-w-md sm:text-lg lg:max-w-xl lg:text-xl px-6 md:px-0">
         Desde una landing de alto impacto hasta sistemas que te permiten operar y crecer.
       </p>
     </div>
@@ -78,7 +78,7 @@ function HeroMetrics() {
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[99svh] md:min-h-[90svh] md:pt-36 w-full flex-col items-center justify-center overflow-hidden bg-[#F6F8FB] px-6 py-20 selection:bg-lime-400 selection:text-neutral-900">
+    <section className="relative flex min-h-[99svh] md:min-h-[90svh] md:pt-36 w-full flex-col items-center justify-center overflow-hidden bg-[#F6F8FB] px-0 py-20 selection:bg-lime-400 selection:text-neutral-900">
       <div className="relative z-10 flex w-full max-w-4xl flex-col items-center gap-8 sm:gap-10">
         <StatusBadge />
         <HeroHeading />
