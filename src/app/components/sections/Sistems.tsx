@@ -1,186 +1,92 @@
 "use client";
 
-import { motion } from "framer-motion";
-import React, { useEffect, useRef, ReactNode, useState } from "react";
-// Importamos solo lo necesario para mantener el código limpio
-import Elements from '../../../../public/images/Dashboard.png';
-import Panel from '../../../../public/images/UIinterface.png';
+import React from "react";
+import { motion, Variants } from "framer-motion";
+import { Activity, Zap, Target } from "lucide-react";
 
-// --- Hook de Visibilidad ---
-function useReveal(threshold = 0.1) {
-    const ref = useRef<HTMLDivElement>(null);
-    const [visible, setVisible] = useState(false);
+const features = [
+    {
+        title: "Control real sobre tu operación",
+        description: "Centraliza información y procesos en un solo lugar, sin errores ni fricción.",
+        icon: Activity,
+        color: "text-blue-500",
+    },
+    {
+        title: "Velocidad que retiene",
+        description: "Experiencias rápidas que mantienen al usuario dentro, no esperando.",
+        icon: Zap,
+        color: "text-emerald-500",
+    },
+    {
+        title: "Presencia que convierte",
+        description: "Desde landings hasta plataformas, cada interfaz está diseñada para generar resultados.",
+        icon: Target,
+        color: "text-indigo-500",
+    },
+];
 
-    useEffect(() => {
-        const el = ref.current;
-        if (!el) return;
-        const obs = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setVisible(true);
-                    obs.disconnect(); // Deja de observar una vez que es visible
-                }
-            },
-            { threshold }
-        );
-        obs.observe(el);
-        return () => obs.disconnect();
-    }, [threshold]);
-
-    return { ref, visible };
-}
-
-// --- Componentes de Apoyo ---
-function AppleCard({
-    children,
-    className = "",
-    visible,
-    delay
-}: {
-    children: ReactNode;
-    className?: string;
-    visible: boolean;
-    delay: number;
-}) {
-    return (
-        <div
-            className={`group relative flex flex-col overflow-hidden rounded-4xl bg-white transition-all duration-1000 ${className}`}
-            style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? "translateY(0)" : "translateY(40px)",
-                transitionDelay: `${delay}s`,
-                transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
-            }}
-        >
-            {children}
-        </div>
-    );
-}
-
-function Card1() {
-    return (
-        <div className="relative w-full max-w-4xl">
-            <div className="relative mx-auto transition-transform duration-700 hover:scale-[1.02]">
-                <img src={Elements.src} alt="Dashboard" className="h-auto w-full object-cover" />
-            </div>
-        </div>
-    );
-}
-
-function Card2() {
-    return (
-        <div className="relative w-full max-w-4xl">
-            <div className="relative mx-auto transition-transform duration-700 hover:scale-[1.02]">
-                <img src={Panel.src} alt="Panel" className="h-auto w-full object-cover" />
-            </div>
-        </div>
-    );
-}
-
-// --- Cards Individuales con su propio sensor ---
-
-const ControlCard = () => {
-    const { ref, visible } = useReveal(0.1);
-    return (
-        <div ref={ref} className="lg:col-span-2">
-            <AppleCard visible={visible} delay={0.1} className="bg-[#F5F5F7]">
-                <div className="flex flex-col pt-7 md:pt-14 lg:flex-row lg:items-center justify-between max-w-full">
-                    <div className="max-w-3xl px-7 md:px-14">
-                        <h1 className="text-4xl md:text-[3.5rem] font-semibold leading-[0.9] tracking-tight text-neutral-900 mb-6">
-                            Control real sobre tu operación
-                        </h1>
-                        <p className="text-sm lg:text-lg md:text-lg font-medium text-foreground/60">
-                            Centraliza información y procesos en un solo lugar, sin errores ni fricción.
-                        </p>
-                    </div>
-                    <Card1 />
-                </div>
-            </AppleCard>
-        </div>
-    );
+// Tipamos las variantes para evitar errores de TS
+const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.2 },
+    },
 };
 
-const FrictionCard = () => {
-    const { ref, visible } = useReveal(0.2);
+const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
+};
+
+export default function ProcessSection() {
     return (
-        <div ref={ref}>
-            <AppleCard visible={visible} delay={0.1} className="bg-white overflow-hidden">
-                <div className="flex items-center gap-3 mb-4 pt-12 px-10 md:px-14">
-                    <h1 className="text-4xl md:text-[3.5rem] font-semibold leading-[0.9] tracking-tight text-neutral-900">
-                        Velocidad que retiene
-                    </h1>
-                </div>
-                <p className="text-sm lg:text-lg md:text-lg font-medium text-foreground/60 px-10 md:px-14">
-                    Experiencias rápidas que mantienen al usuario dentro, no esperando.
-                </p>
-                <div className="relative h-48 w-full flex justify-center pt-15">
-                    <div className="relative w-64 h-64">
-                        <svg className="w-full h-full transform -rotate-[190deg]">
-                            <circle cx="128" cy="128" r="110" stroke="#f3f4f6" strokeWidth="28" fill="transparent" />
-                            <motion.circle
-                                cx="128" cy="128" r="110"
-                                stroke="url(#gradient)"
-                                strokeWidth="28" fill="transparent"
-                                strokeDasharray="690"
-                                initial={{ strokeDashoffset: 690 }}
-                                animate={visible ? { strokeDashoffset: 400 } : { strokeDashoffset: 690 }}
-                                transition={{ duration: 2, ease: "circOut", delay: 2 }}
-                                strokeLinecap="round"
-                            />
-                            <defs>
-                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stopColor="#86efac" />
-                                    <stop offset="100%" stopColor="#22c55e" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
+        <section className="relative w-full bg-[#F6F8FB] px-6 py-10">
+            <div className="mx-auto max-w-5xl">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="relative flex flex-col gap-20 sm:gap-32"
+                >
+                    {/* Línea Conectora Mejorada: Ajustada para móvil y desktop */}
+                    <div className="absolute left-6 top-0 h-full w-[1.5px] bg-neutral-200 sm:left-1/2 sm:-translate-x-1/2" />
+
+                    {features.map((feature, index) => (
                         <motion.div
-                            className="absolute top-0 left-1/2 w-8 h-8 bg-emerald-600 rounded-full border-4 border-white shadow-sm"
-                            initial={{ rotate: -120, x: "-50%" }}
-                            animate={visible ? { rotate: 30 } : { rotate: -120 }}
-                            style={{ originY: "128px" }}
-                            transition={{ duration: 1.5, ease: "circOut", delay: 3 }}
-                        />
-                    </div>
-                </div>
-            </AppleCard>
-        </div>
-    );
-};
+                            key={index}
+                            variants={itemVariants}
+                            className={`relative flex w-full items-start gap-10 sm:items-center ${index % 2 !== 0 ? "sm:flex-row-reverse" : "sm:flex-row"
+                                }`}
+                        >
+                            {/* Punto / Icono con Ring para "cortar" la línea visualmente */}
+                            <div className="z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#F6F8FB] shadow-sm ring-[12px] ring-[#F6F8FB] sm:absolute sm:left-1/2 sm:-translate-x-1/2">
+                                <feature.icon className={`h-5 w-5 ${feature.color}`} />
+                            </div>
 
-const GrowthCard = () => {
-    const { ref, visible } = useReveal(0.2);
-    return (
-        <div ref={ref}>
-            <AppleCard visible={visible} delay={0.1} className="bg-white">
-                <div className="flex items-center mb-6 pt-7 md:pt-14 px-10 md:px-14">
-                    <h1 className="text-4xl font-semibold md:text-[3.5rem] leading-[0.9] tracking-tight text-neutral-900">
-                        Presencia que convierte
-                    </h1>
-                </div>
-                <p className="text-sm lg:text-lg md:text-lg font-medium text-foreground/60 px-10 md:px-14">
-                    Desde landings hasta plataformas, cada interfaz está diseñada para generar resultados.
-                </p>
-                <Card2 />
-            </AppleCard>
-        </div>
-    );
-};
+                            {/* Contenido con ajuste de texto para móvil */}
+                            <div
+                                className={`flex flex-col gap-3 pt-1 sm:w-[42%] sm:pt-0 ${index % 2 !== 0 ? "sm:text-left" : "sm:text-right"
+                                    }`}
+                            >
+                                <h3 className="font-sans text-2xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">
+                                    {feature.title}
+                                </h3>
+                                <p className="font-sans text-base leading-relaxed text-neutral-500 sm:text-lg">
+                                    {feature.description}
+                                </p>
+                            </div>
 
-// --- Componente Exportado ---
-export default function Sistem() {
-    const { ref: sectionRef, visible: sectionVisible } = useReveal(0.05);
-
-    return (
-        <section ref={sectionRef} id="sistema" className="w-full bg-gray-200/50 py-5 font-sans">
-            <div className="mx-auto max-w-[1200px] px-4 flex flex-col items-center">
-
-                <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                    <ControlCard />
-                    <FrictionCard />
-                    <GrowthCard />
-                </div>
-
+                            {/* Espaciador Desktop */}
+                            <div className="hidden w-[42%] sm:block" />
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
         </section>
     );
