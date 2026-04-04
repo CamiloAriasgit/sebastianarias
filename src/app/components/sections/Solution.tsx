@@ -34,15 +34,15 @@ function SolutionCard({
 
 export default function Solutions() {
   return (
-    <section className="relative w-full bg-[#F6F8FB] px-6 py-24 sm:py-32">
+    <section className="relative w-full bg-gray-200/60 px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl">
         
         {/* Header de la Sección */}
         <div className="mb-16 flex flex-col items-center text-center sm:mb-24">
-          <h2 className="text-balance font-sans text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
+          <h2 className="text-balance font-sans text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl leading-[0.9]">
             Lo que construyes depende de lo que necesitas
           </h2>
-          <p className="mt-6 max-w-2xl text-pretty font-sans text-lg leading-snug text-neutral-500 sm:text-xl">
+          <p className="mt-6 max-w-2xl text-pretty font-sans text-lg leading-[1.0] text-neutral-500 sm:text-xl">
             No todos los negocios requieren lo mismo. Por eso cada solución se adapta a su etapa.
           </p>
         </div>
