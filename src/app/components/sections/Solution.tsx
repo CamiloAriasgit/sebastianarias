@@ -39,7 +39,7 @@ export default function Solutions() {
           {/* Bloque 2: Web Escalable */}
           <div className="group relative flex flex-col overflow-hidden rounded-[2.5rem] bg-white transition-all hover:border-neutral-300 shadow-2xl  w-full">
             <img
-              src="/images/Components.png"
+              src="/images/Tablet.png"
               alt="Web Escalable Mockup Background"
               className="relative h-full w-full object-contain"
             />
