@@ -56,7 +56,7 @@ export default function Solutions() {
           {/* Bloque 3: Sistema a Medida */}
           <div className="group relative flex flex-col overflow-hidden rounded-[2.5rem] bg-white transition-all hover:border-neutral-300 shadow-2xl w-full">
             <img
-              src="/images/Panel.png"
+              src="/images/Laptop.png"
               alt="Sistema a Medida Mockup Background"
               className="relative h-full w-full object-contain"
             />
