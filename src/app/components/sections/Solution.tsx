@@ -27,12 +27,12 @@ export default function Solutions() {
               className="relative h-full w-full object-contain"
             />
             <div className="absolute inset-0 z-10 flex flex-col gap-2 p-8">
-              <h3 className="font-sans text-2xl font-bold tracking-tight leading-[0.9] text-neutral-900">
-                Landing de alto impacto
+              <h3 className="font-sans md:text-2xl text-xl font-bold tracking-tight leading-[0.9] text-neutral-900">
+                Landing de alto impacto. <span className='text-neutral-500'>Para validar, posicionar o captar clientes desde el primer momento.</span>
               </h3>
-              <p className="font-sans text-[15px] leading-[0.9] text-neutral-500">
+              {/*<p className="font-sans text-2xl leading-[0.9] text-neutral-500">
                 Para validar, posicionar o captar clientes desde el primer momento.
-              </p>
+              </p>*/}
             </div>
           </div>
 
@@ -44,12 +44,12 @@ export default function Solutions() {
               className="relative h-full w-full object-contain"
             />
             <div className="absolute inset-0 z-10 flex flex-col gap-2 p-8">
-              <h3 className="font-sans text-2xl font-bold tracking-tight leading-[0.9] text-neutral-900">
-                Web con estructura escalable
+              <h3 className="font-sans text-xl md:text-2xl font-bold tracking-tight leading-[0.9] text-neutral-900">
+                Web con estructura escalable <span className='text-neutral-500'>Cuando necesitas crecer sin rehacer todo desde cero.</span>
               </h3>
-              <p className="font-sans text-[15px] leading-[0.9] text-neutral-500">
+              {/*<p className="font-sans text-[15px] leading-[0.9] text-neutral-500">
                 Cuando necesitas crecer sin rehacer todo desde cero.
-              </p>
+              </p>*/}
             </div>
           </div>
 
@@ -61,12 +61,12 @@ export default function Solutions() {
               className="relative h-full w-full object-contain"
             />
             <div className="absolute inset-0 z-10 flex flex-col gap-2 p-8">
-              <h3 className="font-sans text-2xl font-bold tracking-tight leading-[0.9] text-neutral-900">
-                Sistema a medida
+              <h3 className="font-sans text-xl md:text-2xl font-bold tracking-tight leading-[0.9] text-neutral-900">
+                Sistema a medida. <span className='text-neutral-500'>Para operar, automatizar y tener control total del negocio.</span>
               </h3>
-              <p className="font-sans text-[15px] leading-[0.9] text-neutral-500">
+              {/*<p className="font-sans text-[15px] leading-[0.9] text-neutral-500">
                 Para operar, automatizar y tener control total del negocio.
-              </p>
+              </p>*/}
             </div>
           </div>
 
