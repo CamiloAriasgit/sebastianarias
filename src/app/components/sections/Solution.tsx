@@ -20,7 +20,7 @@ export default function Solutions() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
 
           {/* Bloque 1: Landing */}
-          <div className="group relative flex flex-col overflow-hidden rounded-[2.5rem] bg-white transition-all hover:border-neutral-300 shadow-2xl w-full">
+          <div className="group relative flex flex-col overflow-hidden rounded-[2.5rem] bg-white transition-all hover:border-neutral-300 w-full">
             <img
               src="/images/Mobile.png"
               alt="Landing Mockup Background"
@@ -37,7 +37,7 @@ export default function Solutions() {
           </div>
 
           {/* Bloque 2: Web Escalable */}
-          <div className="group relative flex flex-col overflow-hidden rounded-[2.5rem] bg-white transition-all hover:border-neutral-300 shadow-2xl  w-full">
+          <div className="group relative flex flex-col overflow-hidden rounded-[2.5rem] bg-white transition-all hover:border-neutral-300 w-full">
             <img
               src="/images/Tablet.png"
               alt="Web Escalable Mockup Background"
@@ -45,7 +45,7 @@ export default function Solutions() {
             />
             <div className="absolute inset-0 z-10 flex flex-col gap-2 p-8">
               <h3 className="font-sans text-xl md:text-2xl font-bold tracking-tight leading-[0.9] text-neutral-900">
-                Web con estructura escalable <span className='text-neutral-500'>Cuando necesitas crecer sin rehacer todo desde cero.</span>
+                Web con estructura escalable. <span className='text-neutral-500'>Cuando necesitas crecer sin rehacer todo desde cero.</span>
               </h3>
               {/*<p className="font-sans text-[15px] leading-[0.9] text-neutral-500">
                 Cuando necesitas crecer sin rehacer todo desde cero.
@@ -54,9 +54,9 @@ export default function Solutions() {
           </div>
 
           {/* Bloque 3: Sistema a Medida */}
-          <div className="group relative flex flex-col overflow-hidden rounded-[2.5rem] bg-white transition-all hover:border-neutral-300 shadow-2xl w-full">
+          <div className="group relative flex flex-col overflow-hidden rounded-[2.5rem] bg-white transition-all hover:border-neutral-300 w-full">
             <img
-              src="/images/Laptop.png"
+              src="/images/Panel.png"
               alt="Sistema a Medida Mockup Background"
               className="relative h-full w-full object-contain"
             />
