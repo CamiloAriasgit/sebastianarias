@@ -2,6 +2,7 @@ import Hero from "./components/sections/Hero";
 import Header from "./components/ui/Header";
 import Sistems from "./components/sections/Sistems";
 import Solution from "./components/sections/Solution";
+import SectionTecnica from "./components/sections/SectionTecnica";
 
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
         <Hero />
         <Sistems/>
         <Solution/>
+        <SectionTecnica/>
       </main>
     </div>
   );
