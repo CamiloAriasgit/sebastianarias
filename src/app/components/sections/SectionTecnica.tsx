@@ -9,16 +9,15 @@ export default function PhilosophySection() {
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-20 lg:grid-cols-2 lg:items-center">
           
-          {/* TEXTO (Tu copy exacto) */}
           <div className="flex flex-col z-10">
             <h2 className="font-sans text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl leading-[0.9]">
               Diseñado para funcionar, no solo para verse bien
             </h2>
-            <p className="mt-8 max-w-lg font-sans text-lg leading-[1.0] text-neutral-500 sm:text-xl">
+            <p className="mt-4 max-w-lg font-sans text-lg leading-[1.0] text-neutral-500 sm:text-xl">
               Cada decisión responde a rendimiento, claridad y escalabilidad.
             </p>
 
-            <div className="mt-12 space-y-8">
+            <div className="mt-10 space-y-3">
               {[
                 "Menos fricción, más conversión",
                 "Estructura que soporta crecimiento",
@@ -63,7 +62,7 @@ export default function PhilosophySection() {
                 initial={{ opacity: 0, rotateX: 0, y: 0 }}
                 whileInView={{ opacity: 1, rotateX: 25, y: 0, rotateY: -10 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="absolute w-[80%] aspect-video rounded-2xl border-2 border-dashed border-blue-200 bg-blue-50/10 shadow-2xl shadow-black backdrop-blur-md p-6 lg:translate-x-6"
+                className="absolute w-[80%] aspect-video rounded-2xl border-2 border-dashed border-blue-200 bg-blue-50/10 shadow-2xl shadow-black/50 backdrop-blur-md p-6 lg:translate-x-6"
               >
                 <div className="flex justify-between items-center mb-6">
                    <div className="h-6 w-6 rounded-full border border-blue-200" />
@@ -78,7 +77,7 @@ export default function PhilosophySection() {
                 initial={{ opacity: 0, rotateX: 0, y: 0 }}
                 whileInView={{ opacity: 1, rotateX: 25, y: 40, rotateY: -10 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="absolute w-[80%] aspect-video rounded-2xl bg-neutral-800 p-6 shadow-2xl shadow-black"
+                className="absolute w-[80%] aspect-video rounded-2xl bg-neutral-800 p-6 shadow-2xl shadow-black/50"
               >
                 <div className="flex gap-4 items-center mb-4">
                    <div className="h-10 w-10 rounded-full bg-neutral-800 shadow-lg shadow-black" />
