@@ -87,10 +87,10 @@ export default function PhilosophySection() {
                      <div className="h-2 w-16 rounded-full bg-neutral-800 shadow-inner shadow-black" />
                    </div>
                 </div>
-                <div className="h-20 w-full rounded-xl bg-neutral-800 flex items-end p-4 shadow-lg shadow-black">
+                <div className="h-20 w-full rounded-xl bg-neutral-800 flex items-end p-4 shadow-lg shadow-black/80">
                    <div className="h-8 w-full rounded-lg bg-neutral-800 shadow-inner shadow-black" />
                 </div>
-                <div className="absolute flex items-center top-4 right-6 font-mono text-[8px] text-neutral-400 uppercase tracking-widest"><span className="bg-indigo-600 h-1 w-1 rounded-full mr-1"></span> Final_Interface</div>
+                <div className="absolute flex items-center top-4 right-6 font-mono text-[8px] text-neutral-400 uppercase tracking-widest"><span className="bg-indigo-600 h-1 w-1 rounded-full mr-1 animate-pulse"></span> Final_Interface</div>
               </motion.div>
 
             </div>
