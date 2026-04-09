@@ -36,7 +36,7 @@ export default function PhilosophySection() {
           </div>
 
           {/* RECURSO MEJORADO: SISTEMA EN CAPAS */}
-          <div className="relative flex justify-center items-center py-12 lg:py-0">
+          <div className="relative flex justify-center items-center">
             {/* Contenedor con perspectiva para desktop */}
             <div className="relative w-full max-w-[400px] lg:max-w-none h-[400px] [perspective:1000px] flex items-center justify-center">
               
