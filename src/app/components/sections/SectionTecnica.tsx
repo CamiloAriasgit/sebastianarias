@@ -42,7 +42,7 @@ export default function PhilosophySection() {
               
               {/* CAPA 3: Lógica / Datos (Fondo) */}
               <motion.div 
-                initial={{ opacity: 0, rotateX: 0, y: 0 }}
+                initial={{ rotateX: 0, y: 0 }}
                 whileInView={{ opacity: 1, rotateX: 25, y: -40, rotateY: -10 }}
                 transition={{ duration: 0.8 }}
                 className="absolute w-[80%] aspect-video rounded-2xl border border-neutral-200 bg-white/40 backdrop-blur-sm p-4 shadow-xl shadow-black/20 lg:translate-x-12"
@@ -60,7 +60,7 @@ export default function PhilosophySection() {
 
               {/* CAPA 2: Estructura / Skeleton (Medio) */}
               <motion.div 
-                initial={{ opacity: 0, rotateX: 0, y: 0 }}
+                initial={{ rotateX: 0, y: 0 }}
                 whileInView={{ opacity: 1, rotateX: 25, y: 0, rotateY: -10 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="absolute w-[80%] aspect-video rounded-2xl border-2 border-dashed border-blue-200 bg-blue-50/10 shadow-2xl shadow-black/50 backdrop-blur-md p-6 lg:translate-x-6"
@@ -75,7 +75,7 @@ export default function PhilosophySection() {
 
               {/* CAPA 1: UI Final (Frente) */}
               <motion.div 
-                initial={{ opacity: 0, rotateX: 0, y: 0 }}
+                initial={{ rotateX: 0, y: 0 }}
                 whileInView={{ opacity: 1, rotateX: 25, y: 40, rotateY: -10 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="absolute w-[80%] aspect-video rounded-2xl bg-neutral-800 p-6 shadow-2xl shadow-black/50"

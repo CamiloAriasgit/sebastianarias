@@ -1,0 +1,135 @@
+"use client";
+
+import React, { useState, useRef } from "react";
+import { motion, Variants, AnimatePresence, useInView } from "framer-motion";
+import { Search, PenTool, Code2, Rocket } from "lucide-react";
+
+const steps = [
+    {
+        title: "Entendemos tu negocio",
+        description: "No empezamos a programar sin entender tus objetivos. Analizamos tu modelo de negocio, identificamos cuellos de botella y definimos los KPI que determinarán el éxito del proyecto.",
+        icon: Search,
+    },
+    {
+        title: "Definimos la estructura",
+        description: "Creamos el mapa de arquitectura y los flujos de usuario. Aquí es donde la lógica se encuentra con la estrategia para asegurar que el sistema sea escalable y fácil de usar.",
+        icon: PenTool,
+    },
+    {
+        title: "Diseñamos y desarrollamos",
+        description: "Transformamos la estrategia en interfaces de alta fidelidad y código limpio. Utilizamos un stack moderno para garantizar que cada píxel y cada línea de comando funcionen en armonía.",
+        icon: Code2,
+    },
+    {
+        title: "Lanzamos y optimizamos",
+        description: "El proyecto no termina en el despliegue. Monitoreamos el rendimiento en tiempo real y realizamos ajustes basados en datos para asegurar que la solución siga creciendo contigo.",
+        icon: Rocket,
+    },
+];
+
+export default function ProcessSection() {
+    const [activeIndex, setActiveIndex] = useState(0);
+    
+    // Referencia para detectar la sección
+    const sectionRef = useRef(null);
+    
+    // Detecta si la sección está en el viewport (amount: 0.2 para que aparezca apenas entre un 20%)
+    const isInView = useInView(sectionRef, { amount: 0.2 });
+
+    return (
+        <section ref={sectionRef} className="relative w-full bg-[#F6F8FB] px-6 py-24 sm:py-40">
+            <div className="mx-auto max-w-7xl">
+                
+                {/* Título */}
+                <div className="mb-16 sm:mb-24 text-center sm:text-left">
+                    <h2 className="font-sans text-4xl font-bold tracking-tight text-neutral-900 sm:text-6xl leading-[0.9]">
+                        Un proceso claro, <br className="hidden sm:block" /> 
+                        <span className="text-neutral-400 font-medium">sin complicaciones</span>
+                    </h2>
+                </div>
+
+                {/* CONTENIDO MÓVIL */}
+                <div className="flex flex-col gap-12 sm:hidden pb-20">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeIndex}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            transition={{ duration: 0.4 }}
+                            className="min-h-[250px]"
+                        >
+                            <span className="text-sm font-mono font-bold text-blue-600 uppercase tracking-widest">Paso 0{activeIndex + 1}</span>
+                            <h3 className="mt-4 font-sans text-4xl font-bold tracking-tight text-neutral-900 leading-[0.9]">
+                                {steps[activeIndex].title}
+                            </h3>
+                            <p className="mt-6 font-sans text-lg font-medium leading-relaxed text-neutral-500">
+                                {steps[activeIndex].description}
+                            </p>
+                        </motion.div>
+                    </AnimatePresence>
+
+                    {/* BARRA FLOTANTE CON CONDICIONAL DE VISIBILIDAD */}
+                    <AnimatePresence>
+                        {isInView && (
+                            <motion.div 
+                                initial={{ y: 100, x: "-50%", opacity: 0 }}
+                                animate={{ y: 0, x: "-50%", opacity: 1 }}
+                                exit={{ y: 100, x: "-50%", opacity: 0 }}
+                                transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                                className="fixed bottom-8 left-1/2 z-50 w-[90%] rounded-full bg-white backdrop-blur-lg border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.1)] p-2"
+                            >
+                                <div className="flex justify-between items-center gap-1">
+                                    {steps.map((step, index) => {
+                                        const isActive = activeIndex === index;
+                                        return (
+                                            <button
+                                                key={index}
+                                                onClick={() => setActiveIndex(index)}
+                                                className="relative flex h-14 flex-1 items-center justify-center"
+                                            >
+                                                <step.icon
+                                                    className={`relative z-10 h-6 w-6 transition-all duration-300 ${
+                                                        isActive ? "text-neutral-900 scale-110" : "text-neutral-400 opacity-40"
+                                                    }`}
+                                                />
+                                                {isActive && (
+                                                    <motion.div
+                                                        layoutId="activeProcessTab"
+                                                        className="absolute inset-0 z-0 rounded-full bg-gray-200/60 shadow-inner shadow-neutral-400/70"
+                                                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                                    />
+                                                )}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+
+                {/* DESKTOP (Igual que antes) */}
+                <div className="hidden sm:grid sm:grid-cols-4 sm:gap-12 lg:gap-16">
+                    {steps.map((step, index) => (
+                        <div key={index} className="flex flex-col gap-6">
+                            <div className="flex items-center gap-4">
+                                <span className="font-mono text-xs font-bold text-neutral-400 border-b border-neutral-200 pb-1">0{index + 1}</span>
+                                <step.icon className="h-5 w-5 text-neutral-900" strokeWidth={1.5} />
+                            </div>
+                            <div className="space-y-4">
+                                <h3 className="font-sans text-2xl font-bold tracking-tight text-neutral-900 leading-tight">
+                                    {step.title}
+                                </h3>
+                                <p className="font-sans text-base font-medium leading-relaxed text-neutral-500">
+                                    {step.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+            </div>
+        </section>
+    );
+}

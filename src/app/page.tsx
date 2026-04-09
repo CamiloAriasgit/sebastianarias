@@ -3,6 +3,7 @@ import Header from "./components/ui/Header";
 import Sistems from "./components/sections/Sistems";
 import Solution from "./components/sections/Solution";
 import SectionTecnica from "./components/sections/SectionTecnica";
+import ProcessSection from "./components/sections/ProcessSection";
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
         <Sistems/>
         <Solution/>
         <SectionTecnica/>
+        <ProcessSection/>
       </main>
     </div>
   );
