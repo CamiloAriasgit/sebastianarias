@@ -7,9 +7,10 @@ export default function PhilosophySection() {
   return (
     <section className="w-full bg-[#F6F8FB] px-6 py-24 sm:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 gap-20 lg:grid-cols-2 lg:items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-center">
           
           <div className="flex flex-col z-10">
+            <span className='bg-gray-200/60 flex items-center justify-center rounded-full w-27 px-4 py-1 mb-5 font-sans font-semibold text-neutral-900'>Principios</span>
             <h2 className="font-sans text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl leading-[0.9]">
               Diseñado para funcionar, no solo para verse bien
             </h2>
