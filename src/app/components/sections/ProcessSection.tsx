@@ -77,7 +77,7 @@ export default function ProcessSection() {
                                 animate={{ y: 0, x: "-50%", opacity: 1 }}
                                 exit={{ y: 100, x: "-50%", opacity: 0 }}
                                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                                className="fixed bottom-8 left-1/2 z-50 w-[90%] rounded-full bg-white backdrop-blur-lg border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.1)] p-2"
+                                className="fixed bottom-8 left-1/2 z-50 w-[90%] rounded-full bg-gray-200 backdrop-blur-lg p-2"
                             >
                                 <div className="flex justify-between items-center gap-1">
                                     {steps.map((step, index) => {
@@ -96,7 +96,7 @@ export default function ProcessSection() {
                                                 {isActive && (
                                                     <motion.div
                                                         layoutId="activeProcessTab"
-                                                        className="absolute inset-0 z-0 rounded-full bg-gray-200/60 shadow-inner shadow-neutral-400/70"
+                                                        className="absolute inset-0 z-0 rounded-full bg-[#F6F8FB]"
                                                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                                                     />
                                                 )}
