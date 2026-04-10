@@ -39,7 +39,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-[#F6F8FB] px-6 py-10 sm:py-32">
+    <section className="w-full bg-gray-100 px-4 py-10 sm:py-32">
       <div className="mx-auto max-w-3xl">
         
         {/* HEADER */}
@@ -57,14 +57,14 @@ export default function FAQSection() {
               <div 
                 key={index}
                 className={`overflow-hidden rounded-3xl transition-all duration-300 ${
-                  isOpen ? "bg-white shadow-sm" : "bg-transparent border border-neutral-200"
+                  isOpen ? "bg-white" : "bg-white"
                 }`}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="flex w-full items-center justify-between p-6 text-left sm:p-8"
                 >
-                  <span className={`font-sans text-lg font-bold tracking-tight transition-colors duration-300 ${
+                  <span className={`font-sans text-lg font-bold tracking-tight leading-[1.2] transition-colors duration-300 ${
                     isOpen ? "text-neutral-900" : "text-neutral-600"
                   }`}>
                     {faq.question}
@@ -72,8 +72,8 @@ export default function FAQSection() {
                   <motion.div
                     animate={{ rotate: isOpen ? 45 : 0 }}
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${
-                      isOpen ? "bg-neutral-900 text-white" : "bg-neutral-100 text-neutral-400"
+                    className={`flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 transition-colors ${
+                      isOpen ? " text-neutral-900" : "text-neutral-400"
                     }`}
                   >
                     <Plus size={18} strokeWidth={2.5} />
@@ -89,7 +89,7 @@ export default function FAQSection() {
                       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     >
                       <div className="px-6 pb-8 pt-0 sm:px-8">
-                        <p className="font-sans text-lg leading-relaxed text-neutral-500 max-w-2xl">
+                        <p className="font-sans text-lg leading-[1.2] text-neutral-500 max-w-2xl">
                           {faq.answer}
                         </p>
                       </div>
