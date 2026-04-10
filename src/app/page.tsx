@@ -4,6 +4,7 @@ import Sistems from "./components/sections/Sistems";
 import Solution from "./components/sections/Solution";
 import SectionTecnica from "./components/sections/SectionTecnica";
 import ProcessSection from "./components/sections/ProcessSection";
+import FAQSection from "./components/sections/FAQsection";
 
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <Solution/>
         <SectionTecnica/>
         <ProcessSection/>
+        <FAQSection/>
       </main>
     </div>
   );
