@@ -33,7 +33,7 @@ export default function ProcessSection() {
     const isInView = useInView(sectionRef, { amount: 0.2 });
 
     return (
-        <section ref={sectionRef} className="relative w-full bg-[#F6F8FB] px-6 py-24 sm:py-32">
+        <section ref={sectionRef} className="relative w-full bg-[#F6F8FB] px-4 py-24 sm:py-32">
             <div className="mx-auto max-w-7xl">
                 
                 {/* Título de Sección: Mantenido */}
@@ -48,7 +48,7 @@ export default function ProcessSection() {
                 <div className="flex flex-col gap-6 sm:hidden"> {/* Compactado gap y pb */}
                     
                     {/* Contenedor Técnico (The Pager) */}
-                    <div className="overflow-hidden rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
+                    <div className="overflow-hidden rounded-3xl bg-gray-200/60 p-6">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeIndex}
@@ -61,7 +61,7 @@ export default function ProcessSection() {
                             >
                                 {/* Header del Paso Compacto */}
                                 <div className="flex items-center gap-4">
-                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#F6F8FB] border border-neutral-100">
+                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-200">
                                         <span className="font-mono text-xl font-bold text-neutral-900">0{activeIndex + 1}</span>
                                     </div>
                                     <h3 className="font-sans text-xl font-bold tracking-tight text-neutral-900 leading-tight">
@@ -70,7 +70,7 @@ export default function ProcessSection() {
                                 </div>
 
                                 {/* Separador técnico sutil */}
-                                <div className="h-px w-full bg-neutral-100" />
+                                <div className="h-px w-full bg-gray-200" />
 
                                 {/* Descripción refactorizada: normal font size/weight para legibilidad */}
                                 <p className="font-sans text-xl font-bold leading-[1] text-neutral-600">
