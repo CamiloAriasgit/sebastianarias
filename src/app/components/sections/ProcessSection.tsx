@@ -31,26 +31,26 @@ export default function ProcessSection() {
     const [activeIndex, setActiveIndex] = useState(0);
     const sectionRef = useRef(null);
     const isInView = useInView(sectionRef, { 
-    margin: "0px 0px -80% 0px", // Top, Right, Bottom, Left
+    margin: "-50% 0px -50% 0px", 
     amount: 0 
 });
 
     return (
         <section ref={sectionRef} className="relative w-full bg-[#F6F8FB] px-4 py-24 sm:py-32">
             <div className="mx-auto max-w-7xl">
-                
+
                 {/* Título de Sección: Mantenido */}
                 <div className="mb-16 sm:mb-24 text-center sm:text-left">
                     <span className='bg-gray-200/60 rounded-full px-4 py-1 font-sans font-semibold text-neutral-900'>Proceso</span>
                     <h2 className="font-sans text-3xl font-bold tracking-tight text-neutral-900 sm:text-6xl leading-[0.9] pt-5">
-                        Un proceso claro, <br className="hidden sm:block" /> 
+                        Un proceso claro, <br className="hidden sm:block" />
                         <span className="text-neutral-900 font-bold">sin complicaciones</span>
                     </h2>
                 </div>
 
                 {/* CONTENIDO MÓVIL REFACTORIZADO */}
                 <div className="flex flex-col gap-6 sm:hidden"> {/* Compactado gap y pb */}
-                    
+
                     {/* Contenedor Técnico (The Pager) */}
                     <div className="overflow-hidden rounded-3xl bg-gray-200/60 p-6">
                         <AnimatePresence mode="wait">
@@ -87,7 +87,7 @@ export default function ProcessSection() {
                     {/* BARRA FLOTANTE CON CONDICIONAL DE VISIBILIDAD */}
                     <AnimatePresence>
                         {isInView && (
-                            <motion.div 
+                            <motion.div
                                 initial={{ y: 100, x: "-50%", opacity: 0 }}
                                 animate={{ y: 0, x: "-50%", opacity: 1 }}
                                 exit={{ y: 100, x: "-50%", opacity: 0 }}
@@ -104,9 +104,8 @@ export default function ProcessSection() {
                                                 className="relative flex h-14 flex-1 items-center justify-center active:scale-95" // Añadida respuesta táctil
                                             >
                                                 <step.icon
-                                                    className={`relative z-10 h-6 w-6 transition-all duration-300 ${
-                                                        isActive ? "text-neutral-900 scale-110" : "text-neutral-400 opacity-40"
-                                                    }`}
+                                                    className={`relative z-10 h-6 w-6 transition-all duration-300 ${isActive ? "text-neutral-900 scale-110" : "text-neutral-400 opacity-40"
+                                                        }`}
                                                 />
                                                 {isActive && (
                                                     <motion.div
@@ -138,7 +137,7 @@ export default function ProcessSection() {
                                 </h3>
                                 <p className="font-sans text-base font-medium leading-relaxed text-neutral-500">
                                     {step.description}
-                                
+
                                 </p>
                             </div>
                         </div>
