@@ -5,6 +5,7 @@ import Solution from "./components/sections/Solution";
 import SectionTecnica from "./components/sections/SectionTecnica";
 import ProcessSection from "./components/sections/ProcessSection";
 import FAQSection from "./components/sections/FAQsection";
+import FinalCTA from "./components/sections/FinalCTA";
 
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         <SectionTecnica/>
         <ProcessSection/>
         <FAQSection/>
+        <FinalCTA/>
       </main>
     </div>
   );

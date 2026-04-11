@@ -39,7 +39,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-gray-100 px-4 py-10 sm:py-32">
+    <section className="w-full bg-gray-100 px-4 py-24 sm:py-32">
       <div className="mx-auto max-w-3xl">
         
         {/* HEADER */}
@@ -72,7 +72,7 @@ export default function FAQSection() {
                   <motion.div
                     animate={{ rotate: isOpen ? 45 : 0 }}
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className={`flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 transition-colors ${
+                    className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${
                       isOpen ? " text-neutral-900" : "text-neutral-400"
                     }`}
                   >

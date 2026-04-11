@@ -37,14 +37,14 @@ export default function ProcessSection() {
     const isInView = useInView(sectionRef, { amount: 0.2 });
 
     return (
-        <section ref={sectionRef} className="relative w-full bg-[#F6F8FB] px-6 py-24 sm:py-40">
+        <section ref={sectionRef} className="relative w-full bg-[#F6F8FB] px-6 py-24 sm:py-32">
             <div className="mx-auto max-w-7xl">
                 
                 {/* Título */}
                 <div className="mb-16 sm:mb-24 text-center sm:text-left">
                     <h2 className="font-sans text-4xl font-bold tracking-tight text-neutral-900 sm:text-6xl leading-[0.9]">
                         Un proceso claro, <br className="hidden sm:block" /> 
-                        <span className="text-neutral-400 font-medium">sin complicaciones</span>
+                        <span className="text-neutral-900 font-bold">sin complicaciones</span>
                     </h2>
                 </div>
 
@@ -59,11 +59,11 @@ export default function ProcessSection() {
                             transition={{ duration: 0.4 }}
                             className="min-h-[250px]"
                         >
-                            <span className="text-sm font-mono font-bold text-blue-600 uppercase tracking-widest">Paso 0{activeIndex + 1}</span>
-                            <h3 className="mt-4 font-sans text-4xl font-bold tracking-tight text-neutral-900 leading-[0.9]">
+                            <span className="text-sm font-mono font-bold text-neutral-400 uppercase tracking-widest">Paso 0{activeIndex + 1}</span>
+                            <h3 className="mt-4 font-sans text-2xl font-bold tracking-tight text-neutral-900 leading-[0.1]">
                                 {steps[activeIndex].title}
                             </h3>
-                            <p className="mt-6 font-sans text-lg font-medium leading-relaxed text-neutral-500">
+                            <p className="mt-6 font-sans text-xl font-bold leading-[0.9] text-neutral-500">
                                 {steps[activeIndex].description}
                             </p>
                         </motion.div>
