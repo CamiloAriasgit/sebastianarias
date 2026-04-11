@@ -6,6 +6,7 @@ import SectionTecnica from "./components/sections/SectionTecnica";
 import ProcessSection from "./components/sections/ProcessSection";
 import FAQSection from "./components/sections/FAQsection";
 import FinalCTA from "./components/sections/FinalCTA";
+import Footer from "./components/sections/Footer";
 
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         <ProcessSection/>
         <FAQSection/>
         <FinalCTA/>
+        <Footer/>
       </main>
     </div>
   );
