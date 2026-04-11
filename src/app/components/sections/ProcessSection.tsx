@@ -73,7 +73,7 @@ export default function ProcessSection() {
                                 <div className="h-px w-full bg-neutral-100" />
 
                                 {/* Descripción refactorizada: normal font size/weight para legibilidad */}
-                                <p className="font-sans text-base font-medium leading-relaxed text-neutral-600">
+                                <p className="font-sans text-xl font-bold leading-[1] text-neutral-600">
                                     {steps[activeIndex].description}
                                 </p>
                             </motion.div>
