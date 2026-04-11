@@ -43,10 +43,10 @@ export default function FinalCTA() {
                     className="mt-12 flex flex-col items-center gap-6"
                 >
                     {/* Botón en Ghost White (#F6F8FB) sólido */}
-                    <button className="p-[1px] bg-gradient-to-tr from-amber-500 to-violet-600 rounded-full">
+                    <button className="p-[1px] bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full">
                         <div className="group relative flex items-center gap-3 overflow-hidden rounded-full bg-neutral-950 px-8 py-4 text-lg text-white transition-all">
                             <span>Iniciar proyecto</span>
-                            <Sparkles className="h-5 w-5 fill-none text-cyan-500" strokeWidth={2} />
+                            <Sparkles className="h-5 w-5 fill-none text-white-500" strokeWidth={2} />
                         </div>
                     </button>
 
