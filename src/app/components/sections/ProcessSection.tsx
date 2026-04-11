@@ -30,7 +30,10 @@ const steps = [
 export default function ProcessSection() {
     const [activeIndex, setActiveIndex] = useState(0);
     const sectionRef = useRef(null);
-    const isInView = useInView(sectionRef, { amount: 0.2 });
+    const isInView = useInView(sectionRef, { 
+    margin: "0px 0px -80% 0px", // Top, Right, Bottom, Left
+    amount: 0 
+});
 
     return (
         <section ref={sectionRef} className="relative w-full bg-[#F6F8FB] px-4 py-24 sm:py-32">
@@ -38,7 +41,8 @@ export default function ProcessSection() {
                 
                 {/* Título de Sección: Mantenido */}
                 <div className="mb-16 sm:mb-24 text-center sm:text-left">
-                    <h2 className="font-sans text-4xl font-bold tracking-tight text-neutral-900 sm:text-6xl leading-[0.9]">
+                    <span className='bg-gray-200/60 rounded-full px-4 py-1 font-sans font-semibold text-neutral-900'>Proceso</span>
+                    <h2 className="font-sans text-3xl font-bold tracking-tight text-neutral-900 sm:text-6xl leading-[0.9] pt-5">
                         Un proceso claro, <br className="hidden sm:block" /> 
                         <span className="text-neutral-900 font-bold">sin complicaciones</span>
                     </h2>
