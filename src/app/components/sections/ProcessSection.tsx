@@ -29,18 +29,14 @@ const steps = [
 
 export default function ProcessSection() {
     const [activeIndex, setActiveIndex] = useState(0);
-    
-    // Referencia para detectar la sección
     const sectionRef = useRef(null);
-    
-    // Detecta si la sección está en el viewport (amount: 0.2 para que aparezca apenas entre un 20%)
     const isInView = useInView(sectionRef, { amount: 0.2 });
 
     return (
         <section ref={sectionRef} className="relative w-full bg-[#F6F8FB] px-6 py-24 sm:py-32">
             <div className="mx-auto max-w-7xl">
                 
-                {/* Título */}
+                {/* Título de Sección: Mantenido */}
                 <div className="mb-16 sm:mb-24 text-center sm:text-left">
                     <h2 className="font-sans text-4xl font-bold tracking-tight text-neutral-900 sm:text-6xl leading-[0.9]">
                         Un proceso claro, <br className="hidden sm:block" /> 
@@ -48,26 +44,41 @@ export default function ProcessSection() {
                     </h2>
                 </div>
 
-                {/* CONTENIDO MÓVIL */}
-                <div className="flex flex-col gap-12 sm:hidden pb-20">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeIndex}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -20 }}
-                            transition={{ duration: 0.4 }}
-                            className="min-h-[250px]"
-                        >
-                            <span className="text-sm font-mono font-bold text-neutral-400 uppercase tracking-widest">Paso 0{activeIndex + 1}</span>
-                            <h3 className="mt-4 font-sans text-2xl font-bold tracking-tight text-neutral-900 leading-[0.1]">
-                                {steps[activeIndex].title}
-                            </h3>
-                            <p className="mt-6 font-sans text-xl font-bold leading-[0.9] text-neutral-500">
-                                {steps[activeIndex].description}
-                            </p>
-                        </motion.div>
-                    </AnimatePresence>
+                {/* CONTENIDO MÓVIL REFACTORIZADO */}
+                <div className="flex flex-col gap-6 sm:hidden pb-32"> {/* Compactado gap y pb */}
+                    
+                    {/* Contenedor Técnico (The Pager) */}
+                    <div className="overflow-hidden rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeIndex}
+                                // Cambiada animación a Slide + Fade para reforzar la navegación
+                                initial={{ opacity: 0, x: 15 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -15 }}
+                                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                                className="flex flex-col gap-4"
+                            >
+                                {/* Header del Paso Compacto */}
+                                <div className="flex items-center gap-4">
+                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#F6F8FB] border border-neutral-100">
+                                        <span className="font-mono text-xl font-bold text-neutral-900">0{activeIndex + 1}</span>
+                                    </div>
+                                    <h3 className="font-sans text-xl font-bold tracking-tight text-neutral-900 leading-tight">
+                                        {steps[activeIndex].title}
+                                    </h3>
+                                </div>
+
+                                {/* Separador técnico sutil */}
+                                <div className="h-px w-full bg-neutral-100" />
+
+                                {/* Descripción refactorizada: normal font size/weight para legibilidad */}
+                                <p className="font-sans text-base font-medium leading-relaxed text-neutral-600">
+                                    {steps[activeIndex].description}
+                                </p>
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
 
                     {/* BARRA FLOTANTE CON CONDICIONAL DE VISIBILIDAD */}
                     <AnimatePresence>
@@ -86,7 +97,7 @@ export default function ProcessSection() {
                                             <button
                                                 key={index}
                                                 onClick={() => setActiveIndex(index)}
-                                                className="relative flex h-14 flex-1 items-center justify-center"
+                                                className="relative flex h-14 flex-1 items-center justify-center active:scale-95" // Añadida respuesta táctil
                                             >
                                                 <step.icon
                                                     className={`relative z-10 h-6 w-6 transition-all duration-300 ${
@@ -109,7 +120,7 @@ export default function ProcessSection() {
                     </AnimatePresence>
                 </div>
 
-                {/* DESKTOP (Igual que antes) */}
+                {/* DESKTOP: Inalterado */}
                 <div className="hidden sm:grid sm:grid-cols-4 sm:gap-12 lg:gap-16">
                     {steps.map((step, index) => (
                         <div key={index} className="flex flex-col gap-6">
@@ -123,6 +134,7 @@ export default function ProcessSection() {
                                 </h3>
                                 <p className="font-sans text-base font-medium leading-relaxed text-neutral-500">
                                     {step.description}
+                                
                                 </p>
                             </div>
                         </div>
