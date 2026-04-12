@@ -27,8 +27,10 @@ export default function FinalCTA() {
                         </button>
 
                         {/* Botón Secundario: Construir conmigo (Adaptación Dark) */}
-                        <button className="flex items-center justify-center gap-3 rounded-full border border-white/60 bg-transparent px-8 py-4 text-lg text-neutral-200 transition-all hover:border-white/30 hover:text-white active:scale-95">
-                            <span>Construir conmigo</span>
+                        <button className="p-[1px] bg-gradient-to-tr from-indigo-700 via-neutral-300 to-purple-700 rounded-full">
+                            <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-neutral-950 px-8 py-4 text-lg text-white transition-all hover:bg-neutral-900">
+                                <span>Construir conmigo</span>
+                            </div>
                         </button>
 
                     </div>
