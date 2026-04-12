@@ -1,25 +1,32 @@
+"use client";
+
+import React from "react";
+
+import { Sparkles } from "lucide-react";
+
+
 function StatusBadge() {
   return (
     <div className="animate-hero-fade-up flex items-center gap-2.5 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
       <span className="relative flex h-2 w-2 items-center justify-center">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-r from-indigo-500/0 via-indigo-500 to-indigo-500/0 opacity-75" />
-                <span
-                    style={{ animationDelay: '0.2s' }}
-                    className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-b from-indigo-500/0 via-violet-500 to-indigo-500/0 opacity-75"
-                />
-                <span
-                    style={{ animationDelay: '0.4s' }}
-                    className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-br from-indigo-500/0 via-purple-500 to-indigo-500/0 opacity-75"
-                />
-                <span
-                    style={{ animationDelay: '0.6s' }}
-                    className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-bl from-indigo-500/0 via-cyan-500 to-indigo-500/0 opacity-75"
-                />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-indigo-500/0" />
-            </span>
-            <span className="text-xs font-medium tracking-wide text-[#5E6472]">
-                Disponible para proyectos
-            </span>
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-r from-indigo-500/0 via-indigo-500 to-indigo-500/0 opacity-75" />
+        <span
+          style={{ animationDelay: '0.2s' }}
+          className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-b from-indigo-500/0 via-violet-500 to-indigo-500/0 opacity-75"
+        />
+        <span
+          style={{ animationDelay: '0.4s' }}
+          className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-br from-indigo-500/0 via-purple-500 to-indigo-500/0 opacity-75"
+        />
+        <span
+          style={{ animationDelay: '0.6s' }}
+          className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gradient-to-bl from-indigo-500/0 via-cyan-500 to-indigo-500/0 opacity-75"
+        />
+        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-indigo-500/0" />
+      </span>
+      <span className="text-xs font-medium tracking-wide text-[#5E6472]">
+        Disponible para proyectos
+      </span>
     </div>
   );
 }
@@ -40,12 +47,12 @@ function HeroHeading() {
 
 function HeroActions() {
   return (
-    <a
-      href="#contacto"
-      className="inline-flex h-12 items-center justify-center font-sans rounded-full bg-neutral-900 px-8 text-base text-white transition-all hover:scale-[1.02] active:scale-95"
-    >
-      Empezar proyecto
-    </a>
+    <button className="p-[3px] bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full">
+      <div className="group relative flex items-center gap-3 overflow-hidden rounded-full bg-[#F6F8FB] px-8 py-4 text-lg text-neutral-900 transition-all">
+        <span>Iniciar proyecto</span>
+        <Sparkles className="h-5 w-5 fill-none text-white-500" strokeWidth={2} />
+      </div>
+    </button>
   );
 }
 
