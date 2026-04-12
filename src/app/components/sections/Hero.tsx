@@ -47,12 +47,20 @@ function HeroHeading() {
 
 function HeroActions() {
   return (
-    <button className="p-[3px] bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full">
-      <div className="group relative flex items-center gap-3 overflow-hidden rounded-full bg-[#F6F8FB] px-8 py-4 text-lg text-neutral-900 transition-all">
-        <span>Iniciar proyecto</span>
-        <Sparkles className="h-5 w-5 fill-none text-white-500" strokeWidth={2} />
-      </div>
-    </button>
+    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
+      
+      <button className="p-[2px] bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full shadow-lg shadow-indigo-500/10">
+        <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-[#F6F8FB] px-8 py-4 text-lg font-bold text-neutral-900 transition-all hover:bg-white">
+          <span>Iniciar proyecto</span>
+          <Sparkles className="h-5 w-5 text-indigo-500" strokeWidth={2} />
+        </div>
+      </button>
+
+      <button className="flex items-center justify-center gap-3 rounded-full border-[2px] border-neutral-400 bg-transparent px-8 py-4 text-lg font-bold text-neutral-600 transition-all hover:text-neutral-900 active:scale-95">
+        <span>Construir conmigo</span>
+      </button>
+      
+    </div>
   );
 }
 
