@@ -1,40 +1,38 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Globe } from "lucide-react";
 
-export default function Navbar() {
+interface NavbarProps {
+  mode?: 'light' | 'dark';
+}
+
+export default function Navbar({ mode = 'light' }: NavbarProps) {
+  const isDark = mode === 'dark';
+
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
-      <nav className="flex w-full max-w-2xl items-center justify-between rounded-full bg-gray-200/60 pl-3 pr-3 py-2.5 backdrop-blur-md ">
+      <nav className={`flex w-full max-w-2xl items-center justify-between rounded-full pl-3 pr-3 py-2.5 backdrop-blur-md transition-all duration-300 ${
+        isDark 
+          ? "bg-zinc-900/60 border border-white/5" 
+          : "bg-gray-200/60 border border-transparent"
+      }`}>
 
-      <div className="flex items-center rounded-full">
-        <Globe className="h-10 w-10 text-gray-300/80" />
-      </div>
-        
-        {/*<div className="flex items-center gap-2">
-          <span className="text-sm font-mono tracking-tight text-neutral-900">
-            Scab
-          </span>
-        </div>*/}
+        {/* Logo / Icono */}
+        <div className="flex items-center rounded-full">
+          <Globe className={`h-10 w-10 transition-colors ${
+            isDark ? "text-zinc-700" : "text-gray-300/80"
+          }`} />
+        </div>
 
-        <ul className="hidden items-center gap-6 sm:flex">
-          <li>
-            <a href="#servicios" className="text-base font-sans text-neutral-500 transition-colors hover:text-neutral-900">
-              Servicios
-            </a>
-          </li>
-          <li>
-            <a href="#proyectos" className="text-base font-sans text-neutral-500 transition-colors hover:text-neutral-900">
-              Proyectos
-            </a>
-          </li>
-        </ul>
-
-        {/* CTA */}
+        {/* CTA - Se adapta al modo */}
         <a 
           href="#contacto" 
-          className="rounded-full bg-neutral-900 font-sans px-4 py-2 text-white transition-all hover:bg-neutral-800 active:scale-95"
+          className={`rounded-full font-sans px-5 py-2 text-sm font-bold transition-all active:scale-95 ${
+            isDark 
+              ? "bg-[#F6F8FB] text-neutral-950 hover:bg-white" 
+              : "bg-neutral-900 text-white hover:bg-neutral-800"
+          }`}
         >
           Contacto
         </a>

@@ -18,7 +18,6 @@ export default function FinalCTA() {
                 >
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
 
-                        {/* Botón Principal (Ya lo tienes, con el gradiente) */}
                         <button className="p-[2px] bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full">
                             <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-neutral-950 px-8 py-4 text-lg text-white transition-all hover:bg-neutral-900">
                                 <span>Iniciar proyecto</span>
@@ -26,11 +25,8 @@ export default function FinalCTA() {
                             </div>
                         </button>
 
-                        {/* Botón Secundario: Construir conmigo (Adaptación Dark) */}
-                        <button className="p-[2px] bg-gradient-to-tr from-indigo-700 via-neutral-300 to-purple-700 rounded-full">
-                            <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-neutral-950 px-8 py-4 text-lg text-white transition-all hover:bg-neutral-900">
-                                <span>Construir conmigo</span>
-                            </div>
+                        <button className="group relative flex items-center justify-center rounded-full border-2 border-neutral-500 bg-transparent px-8 py-4 text-lg text-neutral-300 transition-all hover:border-neutral-400 hover:text-white active:scale-95">
+                            <span>Construir conmigo</span>
                         </button>
 
                     </div>

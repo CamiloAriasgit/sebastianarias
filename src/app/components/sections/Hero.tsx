@@ -56,10 +56,8 @@ function HeroActions() {
         </div>
       </button>
 
-      <button className="p-[2px] bg-gradient-to-tr from-indigo-900 via-neutral-700 to-purple-600 rounded-full shadow-lg shadow-indigo-500/10">
-        <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-[#F6F8FB] px-8 py-4 text-lg font-bold text-neutral-900 transition-all">
-          <span>Construir conmigo</span>
-        </div>
+      <button className="group relative flex items-center justify-center rounded-full border-2 border-neutral-600 bg-transparent px-8 py-4 text-lg font-bold text-neutral-600 transition-all hover:border-neutral-900 hover:text-neutral-900 active:scale-95">
+        <span>Construir conmigo</span>
       </button>
 
     </div>
