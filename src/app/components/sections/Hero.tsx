@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-
+import Link from "next/link";
 import { Sparkles } from "lucide-react";
 
 
@@ -46,20 +46,30 @@ function HeroHeading() {
 }
 
 function HeroActions() {
-  return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
+  const whatsappUrl = "https://wa.me/573235619283?text=Hola%20Sebastian%2C%20vengo%20de%20tu%20sitio%20web.%20Tengo%20una%20idea%20de%20proyecto%20y%20me%20gustar%C3%ADa%20discutir%20c%C3%B3mo%20podemos%20construir%20un%20sistema%20que%20escale%20mi%20negocio.";
 
-      <button className="p-[2px] bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full shadow-lg shadow-indigo-500/10">
+  return (
+    <div className="flex flex-col gap-4 sm:flex-row font-sans sm:items-center sm:justify-center">
+      {/* WhatsApp Link */}
+      <a 
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="p-[2px] bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full shadow-lg shadow-indigo-500/10"
+      >
         <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-[#F6F8FB] px-8 py-4 text-lg font-bold text-neutral-900 transition-all active:scale-95">
-          <span>Iniciar proyecto</span>
+          <span>Empezar proyecto</span>
           <Sparkles className="h-5 w-5 text-indigo-500" strokeWidth={2} />
         </div>
-      </button>
+      </a>
 
-      <button className="group relative flex items-center justify-center rounded-full border-2 border-neutral-600 bg-transparent px-8 py-4 text-lg font-bold text-neutral-600 transition-all hover:border-neutral-900 hover:text-neutral-900 active:scale-95">
-        <span>Construir conmigo</span>
-      </button>
-
+      {/* Internal Route Link */}
+      <Link 
+        href="/colaborar"
+        className="group relative flex items-center justify-center rounded-full bg-gray-200 px-8 py-4 text-lg font-bold text-neutral-900 transition-all hover:bg-gray-300 active:scale-95"
+      >
+        <span>Ser colaborador</span>
+      </Link>
     </div>
   );
 }

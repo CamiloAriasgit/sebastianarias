@@ -36,7 +36,7 @@ function HeroActions() {
             <button className="p-[2px] bg-gradient-to-tr from-cyan-500 via-indigo-500 to-pink-600 rounded-full">
                 <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-neutral-950 px-8 py-4 text-lg text-white transition-all hover:bg-neutral-900 active:scale-95">
                     <span>Quiero Colaborar</span>
-                    <Rocket className="h-5 w-5" strokeWidth={2} />
+                    <Rocket className="h-5 w-5" strokeWidth={1} />
                 </div>
             </button>
         </div>
