@@ -7,7 +7,7 @@ import { Rocket } from "lucide-react";
 
 function StatusBadge() {
   return (
-    <div className="flex items-center gap-2.5 rounded-full border border-white/5 bg-white/5 px-3.5 py-1.5 backdrop-blur-md">
+    <div className="flex items-center gap-2.5 rounded-full bg-white/5 px-3.5 py-1.5 backdrop-blur-md">
       <span className="text-xs tracking-[0.15em] uppercase text-neutral-400/80">
         Programa de Validación
       </span>
@@ -18,7 +18,7 @@ function StatusBadge() {
 function HeroHeading() {
     return (
         <div className="animate-hero-fade-up-delay-1 flex flex-col items-center gap-4 sm:gap-6">
-            <h1 className="text-balance text-center text-5xl  font-sans font-bold leading-[0.9] tracking-tight text-neutral-300 sm:text-6xl lg:text-7xl">
+            <h1 className="text-balance text-center text-5xl  font-sans font-semibold leading-[0.9] tracking-tight text-neutral-300 sm:text-6xl lg:text-7xl">
                 Construyamos sistemas reales, no ideas vacías.
             </h1>
 
