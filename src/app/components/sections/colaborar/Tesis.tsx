@@ -8,7 +8,7 @@ export default function Tesis() {
       <div className="mx-auto max-w-3xl">
         
         <h2 className="font-sans text-3xl font-bold tracking-tight text-neutral-200 sm:text-4xl mb-12">
-          La mayoría de SaaS fallan por una razón
+          La mayoría de SaaS fallan <span className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-200 via-indigo-300 to-cyan-400">por una razón</span>
         </h2>
 
         <div className="space-y-6 font-sans text-lg leading-relaxed text-neutral-500">
