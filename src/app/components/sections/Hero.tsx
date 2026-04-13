@@ -50,7 +50,7 @@ function HeroActions() {
     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
 
       <button className="p-[2px] bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full shadow-lg shadow-indigo-500/10">
-        <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-[#F6F8FB] px-8 py-4 text-lg font-bold text-neutral-900 transition-all">
+        <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-[#F6F8FB] px-8 py-4 text-lg font-bold text-neutral-900 transition-all active:scale-95">
           <span>Iniciar proyecto</span>
           <Sparkles className="h-5 w-5 text-indigo-500" strokeWidth={2} />
         </div>

@@ -19,7 +19,7 @@ export default function FinalCTA() {
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
 
                         <button className="p-[2px] bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full">
-                            <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-neutral-950 px-8 py-4 text-lg text-white transition-all hover:bg-neutral-900">
+                            <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-neutral-950 px-8 py-4 text-lg text-white transition-all hover:bg-neutral-900 active:scale-95">
                                 <span>Iniciar proyecto</span>
                                 <Sparkles className="h-5 w-5 text-white" strokeWidth={2} />
                             </div>

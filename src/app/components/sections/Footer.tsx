@@ -56,7 +56,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-20 flex flex-col items-center justify-between gap-6 border-t border-white/5 pt-8 sm:flex-row">
-          <p className="font-sans text-sm font-medium text-neutral-600">
+          <p className="font-sans text-sm text-center font-medium text-neutral-600">
             © {currentYear} SCAB Systems. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-2">
