@@ -18,7 +18,7 @@ function StatusBadge() {
 function HeroHeading() {
     return (
         <div className="animate-hero-fade-up-delay-1 flex flex-col items-center gap-4 sm:gap-6">
-            <h1 className="text-balance text-center text-5xl  font-sans font-semibold leading-[0.9] tracking-tight text-neutral-300 sm:text-6xl lg:text-7xl">
+            <h1 className="text-balance text-center text-4xl  font-sans font-semibold leading-[0.9] tracking-tight text-neutral-300 sm:text-6xl lg:text-7xl">
                 Construyamos sistemas reales, no ideas vacías.
             </h1>
 
@@ -33,7 +33,7 @@ function HeroActions() {
     return (
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
 
-            <button className="p-[2px] bg-gradient-to-tr from-cyan-500 via-indigo-500 to-pink-600 rounded-full">
+            <button className="p-[2px] bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full">
                 <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-neutral-950 px-8 py-4 text-lg text-white transition-all hover:bg-neutral-900 active:scale-95">
                     <span>Quiero Colaborar</span>
                     <Rocket className="h-5 w-5" strokeWidth={1} />
