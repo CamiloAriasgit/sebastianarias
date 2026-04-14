@@ -2,6 +2,7 @@ import HeroColab from "../components/sections/colaborar/HeroColab";
 import Propuesta from "../components/sections/colaborar/Propuesta";
 import Tesis from "../components/sections/colaborar/Tesis";
 import Header from "../components/ui/Header";
+import ProcessColab from "../components/sections/colaborar/ProcessColab";
 
 export default function ColaborarPage() {
     return (
@@ -10,6 +11,7 @@ export default function ColaborarPage() {
             <HeroColab/>
             <Tesis/>
             <Propuesta/>
+            <ProcessColab/>
 
         </main>
     );

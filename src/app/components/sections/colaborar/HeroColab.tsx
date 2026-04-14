@@ -1,8 +1,11 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
-import { Rocket } from "lucide-react";
+
+import { Rocket, Sparkles } from "lucide-react";
+  const whatsappUrl = "https://wa.me/573235619283?text=Hola%20Sebastian%2C%20me%20interesa%20el%20programa%20de%20Colaborador%20SaaS.%20Trabajo%20en%20[Industria/Sector]%20y%20he%20identificado%20un%20problema%20que%20creo%20que%20vale%20la%20pena%20digitalizar.%20%C2%BFPodemos%20hablar%3F";
 
 
 function StatusBadge() {
@@ -33,12 +36,17 @@ function HeroActions() {
     return (
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
 
-            <button className="p-[2px] bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full">
-                <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-neutral-950 px-8 py-4 text-lg text-white transition-all hover:bg-neutral-900 active:scale-95">
-                    <span>Quiero Colaborar</span>
-                    <Rocket className="h-5 w-5" strokeWidth={1} />
-                </div>
-            </button>
+            <a 
+                          href={whatsappUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-[2px] bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full inline-block"
+                        >
+                          <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-neutral-950 px-8 py-4 text-lg text-white transition-all hover:bg-neutral-900 active:scale-95">
+                            <span>Quiero Colaborar</span>
+                            <Rocket className="h-5 w-5 text-white" strokeWidth={1} />
+                          </div>
+                        </a>
         </div>
     );
 }
