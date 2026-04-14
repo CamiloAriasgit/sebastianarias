@@ -11,21 +11,21 @@ export default function Tesis() {
           La mayoría de SaaS fallan por una razón
         </h2>
 
-        <div className="space-y-6 font-sans text-lg leading-relaxed text-neutral-500">
+        <div className="space-y-1 font-sans text-2xl font-bold leading-[0.9] text-neutral-500">
           <p className="text-neutral-200 font-semibold">
             No fallan por falta de código.
           </p>
           
-          <p>
+          <p className="text-neutral-500">
             Fallan porque nadie validó si realmente eran necesarios.
           </p>
 
-          <p className="pt-4">
+          <p className="pt-10 bg-gradient-to-r from-blue-500 via-pink-500 to-yellow-500 bg-clip-text text-transparent">
             Este proceso es diferente.
           </p>
 
-          <p className="text-neutral-300">
-            En lugar de construir desde suposiciones, se construye desde la experiencia directa de personas que viven los problemas todos los días.
+          <p className="text-neutral-500">
+            En lugar de construir desde suposiciones, se construye desde la experiencia directa de <span className="text-neutral-200">personas que viven los problemas todos los días.</span>
           </p>
         </div>
 

@@ -8,7 +8,7 @@ import { Rocket } from "lucide-react";
 function StatusBadge() {
   return (
     <div className="flex items-center gap-2.5 rounded-full bg-white/5 px-3.5 py-1.5 backdrop-blur-md">
-      <span className="text-xs tracking-[0.15em] uppercase text-neutral-400/80">
+      <span className="text-xs font-sans tracking-[0.1em] text-neutral-400/80">
         Programa de Validación
       </span>
     </div>
