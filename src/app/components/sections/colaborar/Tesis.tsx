@@ -4,10 +4,10 @@ import React from "react";
 
 export default function Tesis() {
   return (
-    <section className="w-full bg-neutral-950 px-6 py-24 sm:py-32 border-t border-white/5">
+    <section className="w-full bg-neutral-950 px-4 py-24 sm:py-32 border-t border-white/5">
       <div className="mx-auto max-w-3xl">
         
-        <h2 className="font-sans text-3xl font-bold tracking-tight text-neutral-200 sm:text-4xl mb-12">
+        <h2 className="font-sans text-3xl font-bold tracking-tight leading-[0.9] text-neutral-200 sm:text-4xl mb-12">
           La mayoría de SaaS fallan por una razón
         </h2>
 

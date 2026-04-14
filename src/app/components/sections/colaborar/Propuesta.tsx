@@ -1,43 +1,29 @@
 "use client";
-
-import React from "react";
-import { CheckCircle2 } from "lucide-react";
+import { User, Search, Settings, Lightbulb } from "lucide-react";
 
 export default function Propuesta() {
-  const puntos = [
-    "Trabaja en una industria específica",
-    "Conoce procesos reales (no teoría)",
-    "Ha identificado problemas repetitivos o ineficiencias",
-    "Está dispuesto a aportar su visión para diseñar una solución"
+  const cards = [
+    { icon: <User className="text-cyan-400" />, title: "Insider", desc: "Trabaja activamente en una industria específica." },
+    { icon: <Search className="text-indigo-400" />, title: "Experto", desc: "Conoce procesos reales, no solo la teoría." },
+    { icon: <Settings className="text-pink-400" />, title: "Observador", desc: "Identifica problemas repetitivos o ineficiencias." },
+    { icon: <Lightbulb className="text-amber-400" />, title: "Visionario", desc: "Aporta su visión para diseñar una solución real." },
   ];
 
   return (
-    <section className="w-full bg-neutral-950 px-6 py-20">
-      <div className="mx-auto max-w-3xl">
-        <h2 className="font-sans text-2xl font-bold text-neutral-200 mb-10">
-          ¿Qué significa ser colaborador?
-        </h2>
-
-        <div className="space-y-4 mb-10">
-          <p className="text-neutral-400 text-lg">
-            Un colaborador SaaS es alguien que:
-          </p>
-          
-          <ul className="space-y-4">
-            {puntos.map((punto, index) => (
-              <li key={index} className="flex items-start gap-3 text-neutral-500">
-                <CheckCircle2 className="h-6 w-6 text-cyan-500 shrink-0 mt-0.5" strokeWidth={1.5} />
-                <span>{punto}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5">
-          <p className="text-neutral-300 font-medium">
-            No necesitas saber de tecnología. <br className="hidden sm:block" />
-            <span className="text-neutral-500 font-normal">Solo necesitas entender bien lo que haces.</span>
-          </p>
+    <section className="w-full bg-neutral-950 px-4 py-20 border-t border-white/5">
+      <div className="mx-auto max-w-5xl">
+        <h2 className="text-3xl font-bold text-neutral-200 mb-16 text-center">¿Qué significa ser colaborador?</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {cards.map((card, i) => (
+            <div key={i} className="group p-8 rounded-3xl bg-white/[0.02] hover:bg-white/[0.04] transition-all">
+              <div className="mb-4 p-3 w-fit rounded-2xl bg-neutral-900 group-hover:scale-110 transition-transform">
+                {card.icon}
+              </div>
+              <h3 className="text-white font-bold mb-2">{card.title}</h3>
+              <p className="text-neutral-500 text-sm leading-relaxed">{card.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
