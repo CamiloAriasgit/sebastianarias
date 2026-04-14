@@ -34,13 +34,13 @@ export default function FinalCTA() {
               </div>
             </a>
 
-            {/* BOTÓN 2: SER COLABORADOR (Interno) */}
+            {/* BOTÓN 2: SER COLABORADOR (Interno) 
             <Link 
               href="/colaborar" 
               className="group relative flex items-center justify-center rounded-full bg-neutral-900 border border-neutral-900 px-8 py-4 text-lg text-white transition-all active:scale-95"
             >
               <span>Ser colaborador</span>
-            </Link>
+            </Link>*/}
 
           </div>
 

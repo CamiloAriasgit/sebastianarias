@@ -63,13 +63,13 @@ function HeroActions() {
         </div>
       </a>
 
-      {/* Internal Route Link */}
+      {/* Internal Route Link 
       <Link 
         href="/colaborar"
         className="group relative flex items-center justify-center rounded-full bg-gray-200 px-8 py-4 text-lg font-bold text-neutral-900 transition-all hover:bg-gray-300 active:scale-95"
       >
         <span>Ser colaborador</span>
-      </Link>
+      </Link>*/}
     </div>
   );
 }
