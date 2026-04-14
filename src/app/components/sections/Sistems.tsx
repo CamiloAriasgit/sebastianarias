@@ -49,9 +49,7 @@ export default function ProcessSection() {
         <section className="w-full bg-gray-200/60 px-6 py-24 sm:py-32">
             <div className="mx-auto max-w-5xl">
 
-                {/* VERSION MÓVIL: Menú de Iconos + Contenido Activo */}
                 <div className="flex flex-col items-center gap-8 sm:hidden">
-                    {/* Selector de Iconos */}
                     <div className="relative flex justify-center gap-4 rounded-full bg-gray-200/60 p-2 shadow-inner shadow-neutral-400">
                         {features.map((feature, index) => {
                             const isActive = activeIndex === index;
@@ -61,14 +59,12 @@ export default function ProcessSection() {
                                     onClick={() => setActiveIndex(index)}
                                     className="relative z-10 flex h-14 w-14 items-center justify-center transition-colors duration-300"
                                 >
-                                    {/* Icono */}
                                     <feature.icon
                                         className={`h-7 w-7 transition-all duration-300 ${isActive ? `${feature.color} scale-110` : "text-neutral-500 opacity-50 grayscale"
                                             }`}
                                         strokeWidth={1.5}
                                     />
 
-                                    {/* Contenedor Blanco Deslizable (Pill) */}
                                     {isActive && (
                                         <motion.div
                                             layoutId="activeTabBackground"
@@ -84,8 +80,6 @@ export default function ProcessSection() {
                             );
                         })}
                     </div>
-
-                    {/* Contenido Dinámico Móvil */}
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeIndex}
@@ -104,8 +98,6 @@ export default function ProcessSection() {
                         </motion.div>
                     </AnimatePresence>
                 </div>
-
-                {/* VERSION DESKTOP: 3 Columnas Horizontales */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"

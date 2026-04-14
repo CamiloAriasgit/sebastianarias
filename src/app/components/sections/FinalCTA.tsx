@@ -16,13 +16,12 @@ export default function FinalCTA() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }} // Para que la animación no se repita cada vez que haces scroll
+          viewport={{ once: true }}
           className="mt-12 flex flex-col items-center gap-6"
         >
           <div className="flex flex-col gap-4 sm:flex-row font-sans sm:items-center sm:justify-center">
-            
-            {/* BOTÓN 1: WHATSAPP (Externo) */}
-            <a 
+
+            <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"

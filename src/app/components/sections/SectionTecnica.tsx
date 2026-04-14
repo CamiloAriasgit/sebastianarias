@@ -35,12 +35,9 @@ export default function PhilosophySection() {
             </div>
           </div>
 
-          {/* RECURSO MEJORADO: SISTEMA EN CAPAS */}
           <div className="relative flex justify-center items-center">
-            {/* Contenedor con perspectiva para desktop */}
             <div className="relative w-full max-w-[400px] lg:max-w-none h-[400px] [perspective:1000px] flex items-center justify-center">
               
-              {/* CAPA 3: Lógica / Datos (Fondo) */}
               <motion.div 
                 initial={{ rotateX: 0, y: 0 }}
                 whileInView={{ opacity: 1, rotateX: 25, y: -40, rotateY: -10 }}
@@ -58,7 +55,6 @@ export default function PhilosophySection() {
                 <div className="absolute bottom-4 right-4 font-mono text-[8px] text-neutral-400">LOGIC_LAYER</div>
               </motion.div>
 
-              {/* CAPA 2: Estructura / Skeleton (Medio) */}
               <motion.div 
                 initial={{ rotateX: 0, y: 0 }}
                 whileInView={{ opacity: 1, rotateX: 25, y: 0, rotateY: -10 }}
@@ -73,7 +69,6 @@ export default function PhilosophySection() {
                 <div className="absolute bottom-4 right-4 font-mono text-[8px] text-blue-400">STRUCT_V04</div>
               </motion.div>
 
-              {/* CAPA 1: UI Final (Frente) */}
               <motion.div 
                 initial={{ rotateX: 0, y: 0 }}
                 whileInView={{ opacity: 1, rotateX: 25, y: 40, rotateY: -10 }}

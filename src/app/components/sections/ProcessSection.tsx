@@ -30,16 +30,15 @@ const steps = [
 export default function ProcessSection() {
     const [activeIndex, setActiveIndex] = useState(0);
     const sectionRef = useRef(null);
-    const isInView = useInView(sectionRef, { 
-    margin: "-50% 0px -50% 0px", 
-    amount: 0 
-});
+    const isInView = useInView(sectionRef, {
+        margin: "-50% 0px -50% 0px",
+        amount: 0
+    });
 
     return (
         <section ref={sectionRef} className="relative w-full bg-[#F6F8FB] px-4 py-24 sm:py-32">
             <div className="mx-auto max-w-7xl">
 
-                {/* Título de Sección: Mantenido */}
                 <div className="mb-16 sm:mb-24 text-center sm:text-left">
                     <span className='bg-gray-200/60 rounded-full px-4 py-1 font-sans font-semibold text-neutral-900'>Proceso</span>
                     <h2 className="font-sans text-3xl font-bold tracking-tight text-neutral-900 sm:text-6xl leading-[0.9] pt-5">
@@ -48,22 +47,18 @@ export default function ProcessSection() {
                     </h2>
                 </div>
 
-                {/* CONTENIDO MÓVIL REFACTORIZADO */}
-                <div className="flex flex-col gap-6 sm:hidden"> {/* Compactado gap y pb */}
+                <div className="flex flex-col gap-6 sm:hidden">
 
-                    {/* Contenedor Técnico (The Pager) */}
                     <div className="overflow-hidden rounded-3xl bg-gray-200/60 p-6">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeIndex}
-                                // Cambiada animación a Slide + Fade para reforzar la navegación
                                 initial={{ opacity: 0, x: 15 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -15 }}
                                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                                 className="flex flex-col gap-4"
                             >
-                                {/* Header del Paso Compacto */}
                                 <div className="flex items-center gap-4">
                                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-200">
                                         <span className="font-mono text-xl font-bold text-neutral-900">0{activeIndex + 1}</span>
@@ -73,10 +68,8 @@ export default function ProcessSection() {
                                     </h3>
                                 </div>
 
-                                {/* Separador técnico sutil */}
                                 <div className="h-px w-full bg-gray-200" />
 
-                                {/* Descripción refactorizada: normal font size/weight para legibilidad */}
                                 <p className="font-sans text-xl font-bold leading-[1] text-neutral-600">
                                     {steps[activeIndex].description}
                                 </p>
@@ -84,7 +77,6 @@ export default function ProcessSection() {
                         </AnimatePresence>
                     </div>
 
-                    {/* BARRA FLOTANTE CON CONDICIONAL DE VISIBILIDAD */}
                     <AnimatePresence>
                         {isInView && (
                             <motion.div
@@ -123,7 +115,6 @@ export default function ProcessSection() {
                     </AnimatePresence>
                 </div>
 
-                {/* DESKTOP: Inalterado */}
                 <div className="hidden sm:grid sm:grid-cols-4 sm:gap-12 lg:gap-16">
                     {steps.map((step, index) => (
                         <div key={index} className="flex flex-col gap-6">

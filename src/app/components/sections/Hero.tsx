@@ -50,7 +50,6 @@ function HeroActions() {
 
   return (
     <div className="flex flex-col gap-4 sm:flex-row font-sans sm:items-center sm:justify-center">
-      {/* WhatsApp Link */}
       <a 
         href={whatsappUrl}
         target="_blank"

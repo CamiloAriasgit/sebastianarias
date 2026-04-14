@@ -41,40 +41,35 @@ export default function FAQSection() {
   return (
     <section className="w-full bg-gray-100 px-4 py-24 sm:py-32">
       <div className="mx-auto max-w-3xl">
-        
-        {/* HEADER */}
+
         <div className="mb-7">
           <h2 className="font-sans text-4xl font-bold tracking-tight text-neutral-900 sm:text-5xl leading-[0.9]">
             Preguntas antes <br /> de empezar
           </h2>
         </div>
 
-        {/* ACORDEÓN */}
         <div className="space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div 
+              <div
                 key={index}
-                className={`overflow-hidden rounded-3xl transition-all duration-300 ${
-                  isOpen ? "bg-white" : "bg-white"
-                }`}
+                className={`overflow-hidden rounded-3xl transition-all duration-300 ${isOpen ? "bg-white" : "bg-white"
+                  }`}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="flex w-full items-center justify-between p-6 text-left sm:p-8"
                 >
-                  <span className={`font-sans text-lg font-bold tracking-tight leading-[1.2] transition-colors duration-300 ${
-                    isOpen ? "text-neutral-900" : "text-neutral-600"
-                  }`}>
+                  <span className={`font-sans text-lg font-bold tracking-tight leading-[1.2] transition-colors duration-300 ${isOpen ? "text-neutral-900" : "text-neutral-600"
+                    }`}>
                     {faq.question}
                   </span>
                   <motion.div
                     animate={{ rotate: isOpen ? 45 : 0 }}
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${
-                      isOpen ? " text-neutral-900" : "text-neutral-400"
-                    }`}
+                    className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${isOpen ? " text-neutral-900" : "text-neutral-400"
+                      }`}
                   >
                     <Plus size={18} strokeWidth={2.5} />
                   </motion.div>
