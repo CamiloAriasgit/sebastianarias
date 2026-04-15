@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
 export default function FinalCTA() {
-  // El mensaje predeterminado: profesional, directo y con contexto
   const whatsappUrl = "https://wa.me/573235619283?text=Hola%20Sebastian%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20iniciar%20un%20proyecto%20con%20SCAB%20Systems.%20%C2%BFPodemos%20hablar%3F";
 
   return (
@@ -17,7 +16,7 @@ export default function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mt-12 flex flex-col items-center gap-6"
+          className="my-12 flex flex-col items-center gap-6"
         >
           <div className="flex flex-col gap-4 sm:flex-row font-sans sm:items-center sm:justify-center">
 
