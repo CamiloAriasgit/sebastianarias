@@ -12,7 +12,7 @@ export default function Navbar({ mode = 'light' }: NavbarProps) {
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
-      <nav className={`flex w-full max-w-2xl items-center justify-between rounded-full pl-3 pr-3 py-2.5 backdrop-blur-md transition-all duration-300 ${
+      <nav className={`flex w-full max-w-2xl items-center font-sans justify-between rounded-full pl-3 pr-3 py-2.5 backdrop-blur-md transition-all duration-300 ${
         isDark
           ? "bg-zinc-900/60 border border-white/5"
           : "bg-gray-200/60 border border-transparent"
@@ -32,7 +32,7 @@ export default function Navbar({ mode = 'light' }: NavbarProps) {
           rel="noopener noreferrer"
           className={`
             group relative p-[2px] transition-all duration-300 active:scale-95
-            bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full
+            bg-[#F6F8FB] rounded-full
           `}
         >
           <div className={`
