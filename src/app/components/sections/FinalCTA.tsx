@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { Sparkles, Rocket } from "lucide-react";
 
 export default function FinalCTA() {
   const whatsappUrl = "https://wa.me/573235619283?text=Hola%20Sebastian%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20iniciar%20un%20proyecto%20con%20SCAB%20Systems.%20%C2%BFPodemos%20hablar%3F";
@@ -28,7 +28,7 @@ export default function FinalCTA() {
             >
               <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-neutral-950 px-8 py-4 text-lg text-white transition-all hover:bg-neutral-900 active:scale-95">
                 <span>Iniciar proyecto</span>
-                <Sparkles className="h-5 w-5 text-indigo-500" strokeWidth={2} />
+                <Rocket className="h-5 w-5" strokeWidth={2} />
               </div>
             </a>
 

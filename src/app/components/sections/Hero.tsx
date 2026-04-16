@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
+import { Sparkles, Rocket } from "lucide-react";
 
 
 function StatusBadge() {
@@ -58,7 +58,7 @@ function HeroActions() {
       >
         <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-[#F6F8FB] px-8 py-4 text-lg font-bold text-neutral-900 transition-all active:scale-95">
           <span>Empezar proyecto</span>
-          <Sparkles className="h-5 w-5 text-indigo-500" strokeWidth={2} />
+          <Rocket className="h-5 w-5 text-indigo-500" strokeWidth={2} />
         </div>
       </a>
 

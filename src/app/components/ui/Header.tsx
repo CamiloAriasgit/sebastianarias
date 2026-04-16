@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Globe, Sparkles } from "lucide-react";
+import { Sparkles, Rocket } from "lucide-react";
 
 interface NavbarProps {
   mode?: 'light' | 'dark';
@@ -43,7 +43,7 @@ export default function Navbar({ mode = 'light' }: NavbarProps) {
             }
           `}>
             <span>Empezar</span>
-            <Sparkles
+            <Rocket
               className={`h-4 w-4 transition-transform group-hover:rotate-12 ${isDark ? "text-indigo-400" : "text-indigo-500"
                 }`}
               strokeWidth={2}

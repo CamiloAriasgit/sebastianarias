@@ -16,7 +16,7 @@ export default function Footer() {
               Sebastian Arias <span className="text-neutral-600 font-normal">/ Software And Business</span>
             </h2>
             <p className="text-base font-medium leading-[1] text-neutral-500">
-              Construyendo la próxima generación de sistemas web. Enfocado en transformar problemas complejos en soluciones simples y escalables.
+              Enfocado en transformar problemas complejos en soluciones simples y escalables.
             </p>
           </div>
 
