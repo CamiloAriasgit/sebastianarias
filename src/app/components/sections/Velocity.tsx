@@ -102,7 +102,7 @@ export default function SpeedSection() {
                                     strokeDasharray="1005" 
                                     initial={{ strokeDashoffset: 1005 }}
                                     animate={visible ? { strokeDashoffset: 10 } : { strokeDashoffset: 1005 }}
-                                    transition={{ duration: 2.5, ease: "circOut", delay: 0.5 }}
+                                    transition={{ duration: 2.5, ease: "circOut", delay: 0.8 }}
                                     strokeLinecap="round"
                                 />
                                 <defs>
@@ -122,7 +122,7 @@ export default function SpeedSection() {
                                     originY: originY, // Valor dinámico
                                     top: "6%" // Ajustado para que descanse sobre el trazo
                                 }}
-                                transition={{ duration: 2.3, ease: "circOut", delay: 0.6 }}
+                                transition={{ duration: 2.3, ease: "circOut", delay: 0.9 }}
                             />
 
                             {/* Indicador Central */}
