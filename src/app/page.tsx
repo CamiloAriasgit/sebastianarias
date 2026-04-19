@@ -3,6 +3,7 @@ import Header from "./components/ui/Header";
 import Sistems from "./components/sections/Sistems";
 import Solution from "./components/sections/Solution";
 import SectionTecnica from "./components/sections/SectionTecnica";
+import Velocity from "./components/sections/Velocity";
 import ProcessSection from "./components/sections/ProcessSection";
 import FAQSection from "./components/sections/FAQsection";
 import FinalCTA from "./components/sections/FinalCTA";
@@ -18,6 +19,7 @@ export default function Home() {
         <Sistems/>
         <Solution/>
         <SectionTecnica/>
+        <Velocity/>
         <ProcessSection/>
         <FAQSection/>
         <FinalCTA/>
