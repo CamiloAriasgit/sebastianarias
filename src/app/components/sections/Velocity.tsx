@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
 // --- Hook de Visibilidad ---
-function useReveal(threshold = 0.1) {
+function useReveal(threshold = 0.5) {
     const ref = useRef<HTMLDivElement>(null);
     const [visible, setVisible] = useState(false);
 
