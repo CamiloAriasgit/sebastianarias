@@ -29,7 +29,7 @@ function useReveal(threshold = 0.5) {
 
 export default function SpeedSection() {
     const { ref, visible } = useReveal(0.2);
-    
+
     // Estado para manejar el radio de rotación responsivo de la bolita
     const [originY, setOriginY] = useState("127px");
 
@@ -71,8 +71,8 @@ export default function SpeedSection() {
                             La velocidad es <br />una ventaja competitiva.
                         </h2>
 
-                        <p className="text-lg md:text-xl font-bold font-sans text-neutral-500 leading-[0.9] max-w-md">
-                            En la web, cada milisegundo cuenta. Construyo sistemas que cargan al instante, asegurando que tus clientes nunca tengan que esperar por tu solución.
+                        <p className="text-lg md:text-xl font-bold font-sans text-neutral-500 leading-[1] max-w-md">
+                            En la web, cada milisegundo cuenta. Una web que carga al instante, asegura que tus clientes nunca tengan que esperar por tu solución.
                         </p>
                     </div>
 
@@ -99,7 +99,7 @@ export default function SpeedSection() {
                                     cx="50%" cy="50%" r="40%"
                                     stroke="url(#speedGradient)"
                                     strokeWidth="8%" fill="transparent"
-                                    strokeDasharray="1005" 
+                                    strokeDasharray="1005"
                                     initial={{ strokeDashoffset: 1005 }}
                                     animate={visible ? { strokeDashoffset: 10 } : { strokeDashoffset: 1005 }}
                                     transition={{ duration: 2.5, ease: "circOut", delay: 0.8 }}
@@ -115,12 +115,12 @@ export default function SpeedSection() {
 
                             {/* La Bolita (Dot) siguiendo el arco */}
                             <motion.div
-                                className="absolute top-0 left-1/2 w-6 h-6 md:w-8 md:h-8 rounded-full border-[4px] border-white shadow-lg bg-indigo-600"
+                                className="absolute top-0 left-1/2 w-6 h-6 md:w-8 md:h-8 rounded-full border-[4px] border-white shadow-lg bg-violet-600"
                                 initial={{ rotate: 0, x: "-50%" }}
                                 animate={visible ? { rotate: 355 } : { rotate: 0 }}
                                 style={{
                                     originY: originY, // Valor dinámico
-                                    top: "6%" // Ajustado para que descanse sobre el trazo
+                                    top: "5.7%" // Ajustado para que descanse sobre el trazo
                                 }}
                                 transition={{ duration: 2.3, ease: "circOut", delay: 0.9 }}
                             />
