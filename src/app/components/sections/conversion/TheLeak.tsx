@@ -4,84 +4,64 @@ import { motion } from "framer-motion";
 
 const leaks = [
   {
-    code: "LEAK_01",
-    title: "Latencia de Carga",
-    impact: "Impacto Crítico",
-    description: "Cada milisegundo de espera es un filtro que elimina usuarios con alta intención de compra. Si no es instantáneo, es irrelevante.",
-    value: "+3s delay"
+    title: "El costo de la espera",
+    description: "Cada segundo de carga adicional reduce la intención de compra. La velocidad no es un lujo, es la base de la confianza.",
   },
   {
-    code: "LEAK_02",
-    title: "Ambigüedad Visual",
-    impact: "Fricción Cognitiva",
-    description: "Demasiados elementos compitiendo por atención. El cerebro del usuario elige la opción más fácil: cerrar la pestaña.",
-    value: "High Noise"
+    title: "La parálisis por análisis",
+    description: "Interfaces saturadas que confunden al usuario. Si el camino no es evidente, el visitante elige abandonar.",
   },
   {
-    code: "LEAK_03",
-    title: "Puntos de Fuga",
-    impact: "Erosión de Conversión",
-    description: "Links externos, menús complejos y CTAs secundarios que funcionan como salidas de emergencia en medio de tu proceso de venta.",
-    value: "Exit Paths"
-  }
+    title: "Puntos de salida innecesarios",
+    description: "Elementos que distraen del objetivo principal. Un sistema de conversión debe guiar, no dispersar.",
+  },
 ];
 
 export default function TheLeak() {
   return (
-    <section className="relative py-20 border-y border-[#2D3748]/30">
-      <div className="flex flex-col space-y-12">
-        <div className="space-y-4">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">
-            Anatomía de una <span className="text-red-500/80 underline decoration-1 underline-offset-8">fuga de capital</span>
+    <section className="relative">
+      {/* Gradiente de fondo desenfocado (Glow) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-3xl bg-indigo-500/10 rounded-full blur-[160px] pointer-events-none" />
+
+      <div className="relative z-10 space-y-16">
+        <div className="max-w-2xl">
+          <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-white mb-6">
+            Dónde se detiene <br /> el crecimiento.
           </h2>
-          <p className="text-[#718096] max-w-xl text-sm md:text-base leading-relaxed">
-            Un sitio web convencional está diseñado para informar. Un Sistema de Conversión está diseñado para capturar. 
-            Identificamos los puntos donde su infraestructura actual está trabajando en su contra.
+          <p className="text-[#888888] text-lg font-light leading-relaxed">
+            Identificamos las fricciones invisibles que impiden que tu tráfico actual se transforme en resultados medibles.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4">
+        <div className="space-y-4">
           {leaks.map((leak, index) => (
             <motion.div
               key={index}
-              initial={{ x: -20, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-[#1A202C]/30 border border-[#2D3748]/50 hover:border-[#E2E8F0]/30 transition-all duration-300"
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="group p-8 rounded-2xl border border-white/5 bg-white/[0.01] backdrop-blur-sm hover:bg-white/[0.03] transition-all duration-500"
             >
-              <div className="flex items-center space-x-6 md:w-1/2">
-                <span className="font-mono text-xs text-[#4A5568] rotate-90 md:rotate-0">
-                  {leak.code}
-                </span>
-                <div className="space-y-1">
-                  <h3 className="text-xl font-bold tracking-tight text-[#E2E8F0]">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="space-y-1 max-w-xl">
+                  <h3 className="text-xl font-medium text-white/90 group-hover:text-white transition-colors">
                     {leak.title}
                   </h3>
-                  <p className="text-xs uppercase tracking-widest text-red-400/60 font-semibold">
-                    {leak.impact}
+                  <p className="text-sm text-[#888888] font-light leading-relaxed">
+                    {leak.description}
                   </p>
                 </div>
-              </div>
-
-              <div className="mt-4 md:mt-0 md:w-1/3">
-                <p className="text-sm text-[#718096] leading-relaxed group-hover:text-[#A0AEC0] transition-colors">
-                  {leak.description}
-                </p>
-              </div>
-
-              <div className="hidden md:block text-right">
-                <span className="font-mono text-sm text-[#2D3748] group-hover:text-[#E2E8F0] transition-colors">
-                  [{leak.value}]
-                </span>
+                
+                {/* Flecha minimalista sutil */}
+                <div className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0 duration-500">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
               </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* Decoración técnica - Scanline */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(rgba(18,20,23,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
         </div>
       </div>
     </section>

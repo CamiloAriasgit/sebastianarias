@@ -4,38 +4,40 @@ import TheLeak from "../components/sections/conversion/TheLeak";
 import SolutionSystem from "../components/sections/conversion/SolutionSystem";
 import AuditCTA from "../components/sections/conversion/AuditCTA";
 
-
 export default function ConversionPage() {
-    return (
-        /* TEMA: Industrial Titanium
-           Background: #121417 | Text: #E2E8F0
-        */
-        <main className="min-h-screen bg-[#121417] text-[#E2E8F0] selection:bg-white selection:text-black font-sans">
-            {/* Luz ambiental sutil en el top para profundidad */}
-            <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-[#1a1f26] to-transparent opacity-50 pointer-events-none" />
+  return (
+    /* Fondo: Negro profundo para resaltar efectos de luz.
+       Acento de luz: Un degradado radial sutil que vive en el fondo.
+    */
+    <main className="relative min-h-screen bg-[#050505] text-[#E2E8F0] selection:bg-white selection:text-black overflow-hidden">
+      
+      {/* Elementos de Iluminación Ambiental (Blur) */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-900/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-indigo-900/10 rounded-full blur-[120px]" />
+      </div>
 
-            <div className="relative z-10 max-w-6xl mx-auto px-6 py-12 md:py-24 space-y-32">
-                <Hero />
+      <div className="relative z-10 max-w-5xl mx-auto px-6 py-16 md:py-32 space-y-40 md:space-y-64">
+        
+        <Hero />
 
-                <section id="metrics">
-                    <h2 className="text-[10px] uppercase tracking-[0.4em] text-[#4A5568] mb-16 text-center font-bold">
-                        Data-Driven Reality
-                    </h2>
-                    <ProblemMetrics />
-                </section>
+        <section id="metrics" className="relative">
+          {/* Eliminamos el título pequeño de adorno */}
+          <ProblemMetrics />
+        </section>
 
-                <TheLeak />
+        <TheLeak />
 
-                <SolutionSystem />
+        <SolutionSystem />
 
-                <AuditCTA />
-            </div>
+        <AuditCTA />
+      </div>
 
-            <footer className="py-12 border-t border-[#1A202C] text-center opacity-40">
-                <p className="text-[10px] tracking-[0.3em] uppercase">
-                    SCAB Systems — High Performance Conversion
-                </p>
-            </footer>
-        </main>
-    );
+      <footer className="relative z-10 py-20 border-t border-white/5 text-center">
+        <p className="text-[11px] tracking-widest uppercase opacity-30">
+          SCAB Systems
+        </p>
+      </footer>
+    </main>
+  );
 }

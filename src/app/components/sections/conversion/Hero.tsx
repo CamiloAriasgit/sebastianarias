@@ -4,56 +4,46 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col items-center text-center space-y-8 pt-12 md:pt-20">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
+    <section className="flex flex-col items-center text-center space-y-10">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="inline-block px-3 py-1 border border-[#2D3748] rounded-full"
+        transition={{ duration: 1 }}
+        className="space-y-6"
       >
-        <span className="text-[10px] uppercase tracking-[0.2em] text-[#A0AEC0]">
-          Protocolo de Conversión v1.0
-        </span>
+        <h1 className="text-5xl md:text-8xl font-medium tracking-tight leading-[1.05] bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40">
+          Tu sitio web debe <br /> ser un activo.
+        </h1>
+        
+        <p className="text-[#888888] text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+          La mayoría de las empresas pierden el 60% de su tráfico por fricción técnica. 
+          Creamos sistemas diseñados para convertir extraños en clientes.
+        </p>
       </motion.div>
-
-      <motion.h1 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-4xl md:text-7xl font-bold tracking-tight leading-[1.1] max-w-4xl"
-      >
-        Tu web no está vendiendo. <br />
-        <span className="text-[#4A5568]">Solo está existiendo.</span>
-      </motion.h1>
-
-      <motion.p 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className="text-[#718096] text-lg md:text-xl max-w-2xl leading-relaxed"
-      >
-        Enviar tráfico a una landing page genérica es la forma más rápida de quemar capital. 
-        Construimos <span className="text-[#E2E8F0]">Sistemas de Conversión</span> diseñados para eliminar la fricción y forzar la decisión de compra.
-      </motion.p>
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="flex flex-col md:flex-row gap-4 pt-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="flex flex-col md:flex-row gap-5"
       >
-        <button className="bg-[#E2E8F0] text-[#0B0D12] px-8 py-4 rounded-sm font-bold text-sm uppercase tracking-widest hover:bg-white transition-all">
-          Diagnosticar mi fuga
+        <button className="px-10 py-4 bg-white text-black rounded-full font-medium text-sm transition-transform hover:scale-105 active:scale-95">
+          Diagnosticar mi sistema
         </button>
-        <button className="border border-[#2D3748] text-[#E2E8F0] px-8 py-4 rounded-sm font-bold text-sm uppercase tracking-widest hover:bg-[#1A202C] transition-all">
-          Ver la arquitectura
+        
+        <button className="px-10 py-4 bg-white/5 border border-white/10 rounded-full font-medium text-sm backdrop-blur-md hover:bg-white/10 transition-all">
+          Cómo funciona
         </button>
       </motion.div>
 
-      {/* Indicador de scroll industrial */}
-      <div className="pt-20 opacity-20">
-        <div className="w-[1px] h-16 bg-gradient-to-b from-[#E2E8F0] to-transparent mx-auto" />
-      </div>
+      {/* Un indicador visual minimalista */}
+      <motion.div 
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="pt-16 opacity-20"
+      >
+        <div className="w-px h-12 bg-gradient-to-b from-white to-transparent" />
+      </motion.div>
     </section>
   );
 }

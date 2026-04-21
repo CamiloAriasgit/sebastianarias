@@ -4,63 +4,54 @@ import { motion } from "framer-motion";
 
 const metrics = [
   {
-    label: "Tasa de Abandono",
     value: "53%",
-    description: "De los usuarios abandonan si la carga supera los 3 segundos.",
-    impact: "Pérdida de Adquisición",
+    label: "Abandono por Latencia",
+    description: "Usuarios que cierran la pestaña antes de que el sitio cargue por completo.",
   },
   {
-    label: "Fricción de Interfaz",
-    value: "26%",
-    description: "Menor conversión por cada campo innecesario en un formulario.",
-    impact: "Derrame de Leads",
+    value: "2.6s",
+    label: "Tiempo de Atención",
+    description: "El umbral máximo antes de que un visitante pierda el interés en tu propuesta.",
   },
   {
-    label: "Costo de Latencia",
-    value: "$2.6B",
-    description: "Pérdidas anuales globales por sitios web de bajo rendimiento.",
-    impact: "Impacto en ROI",
+    value: "64%",
+    label: "Fuga de Pauta",
+    description: "Presupuesto publicitario desperdiciado en interfaces que no retienen al usuario.",
   },
 ];
 
 export default function ProblemMetrics() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#2D3748] border border-[#2D3748]">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {metrics.map((metric, index) => (
         <motion.div
           key={index}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: index * 0.2 }}
-          className="bg-[#121417] p-8 space-y-6 group hover:bg-[#1A202C] transition-colors"
+          transition={{ duration: 0.8, delay: index * 0.1 }}
+          className="relative group p-10 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-xl overflow-hidden"
         >
-          <div className="flex justify-between items-start">
-            <span className="text-[10px] font-mono text-[#4A5568] tracking-tighter">
-              ERR_METRIC_0{index + 1}
-            </span>
-            <div className="h-1.5 w-1.5 rounded-full bg-red-500/50 animate-pulse" />
-          </div>
+          {/* Gradiente interno sutil para profundidad al hacer hover */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-          <div className="space-y-2">
-            <h3 className="text-5xl font-light tracking-tighter text-[#E2E8F0]">
+          <div className="relative z-10 space-y-4">
+            <h3 className="text-6xl font-light tracking-tighter text-white">
               {metric.value}
             </h3>
-            <p className="text-xs uppercase tracking-[0.2em] text-[#718096] font-bold">
-              {metric.label}
-            </p>
-          </div>
-
-          <div className="pt-4 border-t border-[#1A202C] space-y-4">
-            <p className="text-sm text-[#4A5568] leading-relaxed">
-              {metric.description}
-            </p>
-            <div className="inline-flex items-center space-x-2">
-              <span className="text-[9px] uppercase tracking-widest text-red-400/80">
-                Status: {metric.impact}
-              </span>
+            
+            <div className="space-y-2">
+              <p className="text-sm font-medium text-white/90 tracking-wide">
+                {metric.label}
+              </p>
+              <p className="text-sm text-[#888888] font-light leading-relaxed">
+                {metric.description}
+              </p>
             </div>
           </div>
+          
+          {/* Acento de luz en la esquina */}
+          <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 blur-3xl rounded-full -mr-10 -mt-10" />
         </motion.div>
       ))}
     </div>

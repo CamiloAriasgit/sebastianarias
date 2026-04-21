@@ -2,99 +2,57 @@
 
 import { motion } from "framer-motion";
 
-const features = [
+const solutions = [
   {
-    tag: "01 / INFRAESTRUCTURA",
-    title: "Next.js 15 + Edge Runtime",
-    benefit: "Carga instantánea global.",
-    detail: "Renderizado en el borde (Edge) para que el sitio cargue antes de que el usuario termine de parpadear. Cero latencia, cero pérdida de interés."
+    title: "Arquitectura Instantánea",
+    description: "Eliminamos los tiempos de carga que matan la conversión. Cada interacción es inmediata, manteniendo la atención donde debe estar: en tu oferta.",
   },
   {
-    tag: "02 / INTERFAZ",
-    title: "Atomic Design (Apple Style)",
-    benefit: "Fricción cognitiva cero.",
-    detail: "Minimalismo funcional. Eliminamos el ruido visual para que el único camino posible del usuario sea el botón de conversión."
+    title: "Diseño por Intención",
+    description: "Cada elemento visual tiene un propósito. No diseñamos para decorar, sino para guiar al usuario hacia la decisión de compra sin distracciones.",
   },
   {
-    tag: "03 / DATA",
-    title: "Real-time Analytics con Supabase",
-    benefit: "Decisiones basadas en cruda realidad.",
-    detail: "Tracking de eventos en tiempo real. No adivinamos qué funciona; medimos cada interacción para optimizar el ROI quirúrgicamente."
-  }
+    title: "Medición Quirúrgica",
+    description: "Implementamos sistemas de seguimiento que nos dicen exactamente qué funciona. Menos suposiciones, más decisiones basadas en resultados.",
+  },
 ];
 
 export default function SolutionSystem() {
   return (
-    <section className="relative py-32 overflow-hidden">
-      {/* Fondo decorativo de rejilla de ingeniería */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#2d37481a_1px,transparent_1px),linear-gradient(to_bottom,#2d37481a_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+    <section className="relative py-20">
+      {/* Luz lateral orgánica */}
+      <div className="absolute right-0 top-0 w-[40%] h-[100%] bg-blue-600/5 blur-[120px] pointer-events-none rounded-full" />
 
-      <div className="relative z-10 space-y-24">
-        <div className="text-center space-y-4">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-[10px] uppercase tracking-[0.5em] text-[#4A5568] font-mono"
-          >
-            Core Architecture
-          </motion.span>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-[#E2E8F0]">
-            El Sistema de <span className="text-white">Alto Rendimiento</span>
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div className="space-y-8">
+          <h2 className="text-4xl md:text-6xl font-medium tracking-tight text-white leading-tight">
+            Un sistema diseñado <br /> 
+            <span className="text-white/40 text-3xl md:text-5xl italic font-light">para el rendimiento.</span>
           </h2>
+          <p className="text-[#888888] text-lg font-light leading-relaxed max-w-md">
+            Sustituimos las páginas web convencionales por sistemas optimizados para capturar valor y escalar resultados.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {features.map((f, i) => (
+        <div className="space-y-6">
+          {solutions.map((sol, index) => (
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
+              key={index}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: i * 0.2 }}
-              className="relative group"
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="p-8 rounded-3xl border border-white/5 bg-white/[0.01] backdrop-blur-2xl"
             >
-              {/* Conector visual tipo blueprint */}
-              <div className="absolute -top-6 left-0 w-full h-[1px] bg-gradient-to-r from-[#2D3748] via-transparent to-transparent" />
-              
-              <div className="space-y-6">
-                <span className="text-[10px] font-mono text-[#718096] bg-[#1A202C] px-2 py-1 border border-[#2D3748]">
-                  {f.tag}
-                </span>
-                
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold text-[#E2E8F0] group-hover:text-white transition-colors">
-                    {f.title}
-                  </h3>
-                  <p className="text-sm font-semibold text-[#4A5568] uppercase tracking-wider">
-                    {f.benefit}
-                  </p>
-                </div>
-
-                <p className="text-sm text-[#718096] leading-relaxed border-l-2 border-[#2D3748] pl-4 group-hover:border-[#E2E8F0] transition-all">
-                  {f.detail}
-                </p>
-              </div>
-
-              {/* Elemento decorativo técnico en la esquina */}
-              <div className="absolute -bottom-4 -right-2 opacity-0 group-hover:opacity-20 transition-opacity">
-                <span className="text-[40px] font-mono text-[#E2E8F0]">+</span>
-              </div>
+              <h3 className="text-lg font-medium text-white mb-2">
+                {sol.title}
+              </h3>
+              <p className="text-sm text-[#888888] font-light leading-relaxed">
+                {sol.description}
+              </p>
             </motion.div>
           ))}
         </div>
-
-        {/* Bloque Central de Autoridad Técnica */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="mt-20 p-1 bg-gradient-to-r from-transparent via-[#2D3748] to-transparent"
-        >
-          <div className="bg-[#0B0D12] py-8 text-center">
-            <p className="text-[11px] uppercase tracking-[0.4em] text-[#718096]">
-              Stack: Next.js 15 (App Router) • TypeScript • Tailwind • Supabase • Framer Motion
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
