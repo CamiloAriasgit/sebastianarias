@@ -1,4 +1,5 @@
 import Hero from "../components/sections/conversion/Hero";
+import ProblemMetrics from "../components/sections/conversion/ProblemMetrics";
 
 
 export default function ConversionPage() {
@@ -12,6 +13,12 @@ export default function ConversionPage() {
       
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-12 md:py-24 space-y-32">
         <Hero />
+        <section id="metrics">
+          <h2 className="text-[10px] uppercase tracking-[0.4em] text-[#4A5568] mb-16 text-center font-bold">
+            Data-Driven Reality
+          </h2>
+          <ProblemMetrics />
+        </section>
         
         
       </div>
