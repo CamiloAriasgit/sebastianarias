@@ -30,7 +30,7 @@ export default function ProblemMetrics() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: index * 0.1 }}
-          className="relative group p-10 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-xl overflow-hidden"
+          className="relative group p-10 rounded-3xl border border-white/0 bg-white/[0.02] backdrop-blur-xl overflow-hidden"
         >
           {/* Gradiente interno sutil para profundidad al hacer hover */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -51,7 +51,7 @@ export default function ProblemMetrics() {
           </div>
           
           {/* Acento de luz en la esquina */}
-          <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 blur-3xl rounded-full -mr-10 -mt-10" />
+          <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 blur-3xl rounded-full -mr-10 -mt-10" />
         </motion.div>
       ))}
     </div>

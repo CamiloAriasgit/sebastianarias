@@ -9,11 +9,11 @@ export default function ConversionPage() {
     /* Fondo: Negro profundo para resaltar efectos de luz.
        Acento de luz: Un degradado radial sutil que vive en el fondo.
     */
-    <main className="relative min-h-screen bg-[#050505] text-[#E2E8F0] selection:bg-white selection:text-black overflow-hidden">
+    <main className="relative min-h-screen bg-[#050505] text-[#E2E8F0] selection:bg-white selection:text-black font-sans overflow-hidden">
       
       {/* Elementos de Iluminación Ambiental (Blur) */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-900/10 rounded-full blur-[120px]" />
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-900/20 rounded-full blur-[120px]" />
         <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-indigo-900/10 rounded-full blur-[120px]" />
       </div>
 

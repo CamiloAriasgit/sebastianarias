@@ -11,7 +11,7 @@ export default function Hero() {
         transition={{ duration: 1 }}
         className="space-y-6"
       >
-        <h1 className="text-5xl md:text-8xl font-medium tracking-tight leading-[1.05] bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40">
+        <h1 className="text-5xl md:text-8xl font-medium tracking-tight leading-[0.9] bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40">
           Tu sitio web debe <br /> ser un activo.
         </h1>
         
