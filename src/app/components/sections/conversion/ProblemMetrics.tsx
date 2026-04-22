@@ -36,7 +36,7 @@ export default function ProblemMetrics() {
           <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
           <div className="relative z-10 space-y-4">
-            <h3 className="text-6xl font-light tracking-tighter text-white">
+            <h3 className="text-6xl font-medium tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-white/10">
               {metric.value}
             </h3>
             
