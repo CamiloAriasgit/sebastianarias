@@ -20,16 +20,13 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
     }, [isInView, setBg]);
 
     return (
-        <section ref={ref} className="min-h-[100svh] flex flex-col items-center justify-center text-center px-4">
-            <span className=" bg-black/5 rounded-full px-2 py-1 text-neutral-900 text-sm mb-4 shadow-inner shadow-black/10">
-                Conversion
+        <section ref={ref} className="min-h-[100svh] border flex flex-col items-start px-4">
+            <span className=" bg-black/5 rounded-full px-2 py-1 text-neutral-900 text-sm mb-4 shadow-inner shadow-black/0">
+                Service
             </span>
-            <h1 className="text-black text-4xl md:text-7xl tracking-tight max-w-4xl font-bold leading-[0.9]">
-                Tu negocio es real. Tu infraestructura digital no.
-            </h1>
-            {/*<p className="text-neutral-500 mt-6 max-w-xl text-sm md:text-lg leading-[1.2]">
+            <h1 className="text-black text-2xl md:text-2xl tracking-tight max-w-xl font-bold leading-[0.9]">
                 Desplegamos sistemas de conversión de alta velocidad para empresas que no pueden permitirse perder clientes.
-            </p>*/}
+            </h1>
             <a
                 href={whatsappUrl}
                 target="_blank"
