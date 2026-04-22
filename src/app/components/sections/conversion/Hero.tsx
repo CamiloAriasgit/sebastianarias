@@ -17,7 +17,7 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
   }, [isInView, setBg]);
 
   return (
-    <section ref={ref} className="min-h-screen flex flex-col items-center justify-center text-center px-4">
+    <section ref={ref} className="min-h-[95svh] md:min-h-[90svh] flex flex-col items-center justify-center text-center px-4">
       <span className=" bg-white/10 rounded-full px-2 py-1 text-white text-sm mb-4 shadow-inner shadow-white/30">
         Conversion
       </span>
