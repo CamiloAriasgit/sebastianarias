@@ -21,7 +21,7 @@ export default function TheLeak() {
   return (
     <section className="relative">
       {/* Gradiente de fondo desenfocado (Glow) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-3xl bg-indigo-500/10 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-3xl bg-gradient-to-br from-violet-500/10 via-indigo-500/10 to-pink-500/10 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="relative z-10 space-y-16">
         <div className="max-w-2xl">
@@ -41,7 +41,7 @@ export default function TheLeak() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group p-8 rounded-2xl border border-white/5 bg-white/[0.01] backdrop-blur-sm hover:bg-white/[0.03] transition-all duration-500"
+              className="group p-8 rounded-2xl border border-white/0 bg-white/[0.02] backdrop-blur-sm hover:bg-white/[0.03] transition-all duration-500"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="space-y-1 max-w-xl">
