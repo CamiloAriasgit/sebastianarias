@@ -3,15 +3,13 @@ import { useEffect, useRef } from 'react';
 import { useInView } from 'framer-motion';
 import { ArrowRight } from "lucide-react";
 
-const whatsappUrl = "https://wa.me/573235619283?text=Hola%20Sebastian%2C%20vengo%20de%20tu%20sitio%20web.%20Tengo%20una%20idea%20de%20proyecto%20y%20me%20gustar%C3%ADa%20discutir%20c%C3%B3mo%20podemos%20construir%20un%20sistema%20que%20escale%20mi%20negocio.";
-
-export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
+export default function Introduction({ setBg }: { setBg: (colors: any) => void }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { amount: 0.5 });
 
     const colors = {
         from: '#f8f8ff',
-        via: '#f8f8ff', // Azul medianoche muy sutil
+        via: '#f8f8ff',
         to: '#f8f8ff'
     };
 
@@ -20,24 +18,24 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
     }, [isInView, setBg]);
 
     return (
-        <section ref={ref} className="min-h-[100svh] border flex flex-col items-start px-4">
-            <span className=" bg-black/5 rounded-full px-2 py-1 text-neutral-900 text-sm mb-4 shadow-inner shadow-black/0">
-                Service
-            </span>
-            <h1 className="text-black text-2xl md:text-2xl tracking-tight max-w-xl font-bold leading-[0.9]">
-                Desplegamos sistemas de conversión de alta velocidad para empresas que no pueden permitirse perder clientes.
-            </h1>
-            <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pt-10"
-            >
-                <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-black px-6 py-3 text-lg text-white transition-all active:scale-95">
-                    <span>Empezar</span>
-                    <ArrowRight className="h-5 w-5" strokeWidth={2} />
-                </div>
-            </a>
+        <section ref={ref} className="min-h-[100svh] flex flex-col md:flex-row items-center md:justify-between gap-7 px-6 md:px-12 max-w-7xl mx-auto">
+            <div className='flex flex-col items-start'>
+                <span className=" bg-black/5 rounded-full px-3 py-1 text-neutral-900 text-sm mb-4 shadow-inner shadow-black/0">
+                    Service
+                </span>
+                <h1 className="text-black text-2xl md:text-6xl tracking-tight max-w-xl font-bold leading-[0.9]">
+                    Desplegamos sistemas de conversión de alta velocidad para empresas que no pueden permitirse perder clientes.
+                </h1>
+            </div>
+
+            <div className="w-full md:w-1/2 overflow-hidden">
+                <img 
+                    src="/images/conversion/Message.png" 
+                    alt="Mensaje de cliente potencial" 
+                    className="w-full h-full object-cover"
+                />
+            </div>
+
         </section>
     );
 }
