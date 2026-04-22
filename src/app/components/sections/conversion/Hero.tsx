@@ -27,9 +27,9 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
             <h1 className="text-black text-4xl md:text-7xl tracking-tight max-w-4xl font-bold leading-[0.9]">
                 Tu negocio es real. Tu infraestructura digital no.
             </h1>
-            <p className="text-neutral-500 mt-6 max-w-xl text-sm md:text-lg leading-[1.2]">
+            {/*<p className="text-neutral-500 mt-6 max-w-xl text-sm md:text-lg leading-[1.2]">
                 Desplegamos sistemas de conversión de alta velocidad para empresas que no pueden permitirse perder clientes.
-            </p>
+            </p>*/}
             <a
                 href={whatsappUrl}
                 target="_blank"
