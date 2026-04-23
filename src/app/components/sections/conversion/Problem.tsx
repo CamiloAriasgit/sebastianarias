@@ -25,9 +25,9 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
     const ref = useRef(null);
     // Cambiamos a un tono violeta-carbón muy profundo para enfatizar las métricas
     const colors = { 
-        from: "#050505", 
-        via: "#0a0a12", // Un toque sutil de violeta oscuro
-        to: "#000000" 
+        from: "#162440", 
+        via: "#3a5b94",
+        to: "#6b82a8" 
     };
 
     const isInView = useInView(ref, { amount: 0.2 });
@@ -50,7 +50,7 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                     <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-white leading-tight">
                         El costo de la invisibilidad<br />
                     </h2>
-                    <p className="text-[#888888] text-lg font-light leading-relaxed">
+                    <p className="text-gray-200 text-lg font-light leading-[1.2]">
                         Tener un sitio lento no es un error técnico; es un impuesto al crecimiento. Si no retienes la atención en milisegundos, estás financiando a tu competencia.
                     </p>
                     <p className="text-xs uppercase text-white/30 font-medium">
