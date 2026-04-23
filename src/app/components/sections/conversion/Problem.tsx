@@ -25,9 +25,9 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
     const ref = useRef(null);
     // Cambiamos a un tono violeta-carbón muy profundo para enfatizar las métricas
     const colors = { 
-        from: "#162440", 
-        via: "#3a5b94",
-        to: "#6b82a8" 
+        from: "#101010", 
+        via: "#101010",
+        to: "#101010" 
     };
 
     const isInView = useInView(ref, { amount: 0.2 });
