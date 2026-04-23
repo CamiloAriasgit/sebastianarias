@@ -53,7 +53,7 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                     <h2 className="bg-gradient-to-bl from-white via-white to-purple-800 bg-clip-text text-transparent text-2xl md:text-2xl tracking-tight max-w-xl font-semibold leading-[1] pt-4">
                         No es solo estar.<br />Es dominar la carga.
                     </h2>
-                    <p className="text-neutral-500 text-lg font-light leading-[1.2]">
+                    <p className="text-neutral-400 text-lg font-light leading-[1.2]">
                         La autoridad se pierde en cada segundo de espera. Si tu infraestructura no es instantánea, tu inversión en redes sociales se diluye antes de que el cliente vea tu oferta.
                     </p>
                 </motion.div>
@@ -70,7 +70,7 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                             className="relative group p-10 rounded-3xl bg-white/3 backdrop-blur-xl overflow-hidden"
                         >
                             {/* Gradiente interno sutil para profundidad al hacer hover */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                             <div className="relative z-10 space-y-4">
                                 <h3 className="text-6xl font-medium tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-purple-800/50">
@@ -88,7 +88,7 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                             </div>
 
                             {/* Acento de luz en la esquina */}
-                            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 blur-3xl rounded-full -mr-10 -mt-10" />
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-white/20 blur-3xl rounded-full -mr-10 -mt-10" />
                         </motion.div>
                     ))}
                 </div>
