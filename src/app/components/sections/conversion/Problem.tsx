@@ -37,7 +37,7 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
     }, [isInView, setBg]);
 
     return (
-        <section ref={ref} className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+        <section ref={ref} className="min-h-[100svh] py-24 px-6 md:px-12 max-w-7xl mx-auto">
             <div className="space-y-16">
                 {/* Sección de Copy Adicional */}
                 <motion.div

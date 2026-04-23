@@ -1,11 +1,20 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { useInView } from 'framer-motion';
+import { useInView, motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from "lucide-react";
 
 export default function Introduction({ setBg }: { setBg: (colors: any) => void }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { amount: 0.5 });
+
+    // Lógica de Scroll para el desvanecimiento
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end start"] 
+    });
+
+    // La opacidad será 1 al inicio y llegará a 0 justo a la mitad (0.5) del scroll de la sección
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 0.65], [1, 1, 0]);
 
     const colors = {
         from: '#f8f8ff',
@@ -28,14 +37,17 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
                 </h1>
             </div>
 
-            <div className="w-full md:w-1/2 overflow-hidden">
+            {/* Convertimos el div en motion.div y le pasamos la opacidad dinámica */}
+            <motion.div 
+                style={{ opacity }}
+                className="w-full md:w-1/2 overflow-hidden"
+            >
                 <img 
                     src="/images/conversion/Message.png" 
                     alt="Mensaje de cliente potencial" 
                     className="w-full h-full object-cover"
                 />
-            </div>
-
+            </motion.div>
         </section>
     );
 }

@@ -5,6 +5,7 @@ import Header from "../components/ui/ConversionHeader";
 import Hero from '../components/sections/conversion/Hero';
 import Problem from '../components/sections/conversion/Problem';
 import Introduction from "../components/sections/conversion/Introduction";
+import Search from '../components/sections/conversion/Search';
 
 export default function ConversionPage() {
     // Estado inicial: Negro profundo tipo Apple
@@ -34,6 +35,7 @@ export default function ConversionPage() {
 
             <Hero setBg={setCurrentBg} />
             <Introduction setBg={setCurrentBg} />
+            <Search setBg={setCurrentBg} />
 
             <Problem setBg={setCurrentBg} />
         </main>

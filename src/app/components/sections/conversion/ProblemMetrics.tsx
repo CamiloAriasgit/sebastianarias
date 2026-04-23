@@ -22,7 +22,7 @@ const metrics = [
 
 export default function ProblemMetrics() {
     return (
-        <div className="space-y-16">
+        <div className="min-h-[100svh] space-y-16">
             {/* Sección de Copy Adicional */}
             <motion.div
                 initial={{ opacity: 0, y: 10 }}
