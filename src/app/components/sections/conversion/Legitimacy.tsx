@@ -34,7 +34,7 @@ export default function Legitimacy({ setBg }: { setBg: (colors: any) => void }) 
                         Has construido algo sólido. Ahora, hazlo oficial.<br />
                     </h2>
                     <p className="text-gray-200 text-lg font-light leading-[1.2]">
-                        Tu negocio ha crecido gracias a tu ejecución y a las redes sociales. Pero en el mundo digital, el éxito no se cuenta, se demuestra. Es momento de que tu presencia en la web refleje la calidad que ya ofreces en el mundo real.
+                        Tu negocio ha crecido gracias a tu ejecución y a tu presencia en redes sociales. Pero en el mundo digital, la autoridad no se mide en seguidores, se demuestra con infraestructura. Es momento de que tu presencia en la web refleje la verdadera escala de lo que ya ofreces en el mundo real.
                     </p>
                 </motion.div>
             </div>
