@@ -24,51 +24,52 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     Service
                 </span>
                 <h1 className="text-black text-2xl md:text-5xl tracking-tight max-w-xl font-bold leading-[0.9]">
-                    Tu reputación offline es real. <span className='text-black'>Pero para el mundo digital, eres un fantasma. Cada búsqueda que no termina en tu web es una venta que acaba en tu competencia.</span>
+                    Tu reputación offline es real. <span className='text-black/40'>Pero para el mundo digital, eres un fantasma. Cada búsqueda que no termina en tu web es una venta que acaba en tu competencia.</span>
                 </h1>
             </div>
 
-            {/* Elemento de Interfaz de Búsqueda Fracasada */}
+            {/* Contenedor con Imagen de Fondo Abstracta */}
             <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="w-full md:w-[450px] aspect-square relative flex items-center justify-center"
+                transition={{ duration: 0.8 }}
+                className="w-full md:w-[500px] aspect-[4/5] relative rounded-[40px] overflow-hidden shadow-2xl border border-black/5"
             >
-                {/* Contenedor Principal (Vidrio) */}
-                <div className="w-full p-8 rounded-2xl bg-black/5 backdrop-blur-2xl shadow-inner shadow-[#3d537b]/0 flex flex-col gap-6">
+                {/* Imagen Abstracta de Fondo (El "Wallpaper") */}
+                <img 
+                    src="https://static.vecteezy.com/system/resources/previews/011/592/403/large_2x/abstract-blue-papercut-wavy-pattern-design-decorative-artwork-overlapping-style-with-minimal-template-background-illustrator-vector.jpg" 
+                    className="absolute inset-0 w-full h-full object-cover"
+                    alt="Abstract background"
+                />
+
+                {/* Overlay de la Interfaz (Aquí sucede el Glassmorphism) */}
+                <div className="absolute inset-0 p-8 flex flex-col justify-center gap-6 bg-black/10">
                     
-                    {/* Input Simulado */}
-                    <div className="w-full h-14 rounded-xl bg-white/30 px-5 flex items-center gap-3 text-neutral-400 shadow-xl shadow-violet-200/50">
-                        <SearchIcon size={20} className="text-neutral-400" />
-                        <span className="text-sm font-medium">Buscando...</span>
+                    {/* Input Glassmorphism */}
+                    <div className="w-full h-16 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 px-6 flex items-center gap-4 shadow-lg">
+                        <SearchIcon size={20} className="text-white" />
+                        <span className="text-sm font-medium text-white/80">Buscando tu negocio...</span>
                     </div>
 
-                    {/* Estado de "No Encontrado" */}
-                    <div className="flex flex-col items-center justify-center py-10 text-center space-y-4">
-                        <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center text-red-500">
-                            <AlertCircle size={32} />
+                    {/* Card Central Glassmorphism */}
+                    <div className="flex-1 rounded-[32px] bg-white/10 backdrop-blur-xl border border-white/20 p-8 flex flex-col items-center justify-center text-center shadow-2xl">
+                        <div className="w-20 h-20 rounded-full bg-red-500/20 backdrop-blur-md flex items-center justify-center text-red-400 border border-red-500/30 mb-6">
+                            <AlertCircle size={40} />
                         </div>
-                        <div className="space-y-1">
-                            <h3 className="text-xl font-bold text-neutral-800 tracking-tight">0 resultados encontrados</h3>
-                            <p className="text-sm text-neutral-200 max-w-[220px] mx-auto leading-relaxed">
-                                No se encontraron registros digitales que conecten con tu negocio.
-                            </p>
-                        </div>
+                        <h3 className="text-2xl font-bold text-white tracking-tight mb-2">0 coincidencias</h3>
+                        <p className="text-white/60 text-sm leading-relaxed max-w-[200px]">
+                            No hay huella digital que respalde tu autoridad actual.
+                        </p>
                     </div>
 
-                    {/* Lista de sugerencias vacías (skeleton) */}
-                    <div className="space-y-3">
-                        <div className="h-4 w-3/4 bg-gradient-to-r from-white/20 via-white to-white/40 rounded-full animate-pulse" />
-                        <div className="h-4 w-1/2 bg-gradient-to-r from-white via-white/20 to-white/20 rounded-full animate-pulse" />
+                    {/* Skeletons inferiores */}
+                    <div className="space-y-3 px-2">
+                        <div className="h-4 w-full bg-white/10 backdrop-blur-sm rounded-full border border-white/10" />
+                        <div className="h-4 w-2/3 bg-white/10 backdrop-blur-sm rounded-full border border-white/10" />
                     </div>
                 </div>
-
-                {/* Decoración: Orbe de luz suave detrás del vidrio */}
-                <div className="absolute -z-10 w-64 h-64 bg-violet-400 blur-[100px] rounded-full" />
             </motion.div>
-
         </section>
     );
 }
