@@ -8,7 +8,6 @@ import Introduction from "../components/sections/conversion/Introduction";
 import Search from '../components/sections/conversion/Search';
 
 export default function ConversionPage() {
-    // Estado inicial: Negro profundo tipo Apple
     const [currentBg, setCurrentBg] = useState({
         from: '#f8f8ff',
         via: '#f8f8ff',
@@ -24,8 +23,8 @@ export default function ConversionPage() {
                     background: `linear-gradient(to bottom, ${currentBg.from}, ${currentBg.via}, ${currentBg.to})`
                 }}
                 transition={{
-                    duration: 1.2, // Transición lenta para elegancia
-                    ease: [0.22, 1, 0.36, 1] // Ease-out suave
+                    duration: 0.5, // Transición lenta para elegancia
+                    ease: "circOut" // Ease-out suave
                 }}
             />
             <Header />

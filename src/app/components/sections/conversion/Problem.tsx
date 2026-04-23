@@ -30,7 +30,7 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
         to: "#000000" 
     };
 
-    const isInView = useInView(ref, { amount: 0.4 });
+    const isInView = useInView(ref, { amount: 0.2 });
 
     useEffect(() => {
         if (isInView) setBg(colors);
