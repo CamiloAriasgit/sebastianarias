@@ -35,7 +35,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
                 // Eliminamos el aspect fijo en móvil para que no se aplaste el contenido
-                className="w-full md:w-[500px] min-h-[500px] md:aspect-[4/5] relative rounded-[32px] overflow-hidden shadow-2xl border border-black/5"
+                className="w-full md:w-[500px] min-h-[500px] md:aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl border border-black/5"
             >
                 {/* Imagen Abstracta de Fondo */}
                 <img 
@@ -48,14 +48,14 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                 <div className="absolute inset-0 p-6 md:p-8 flex flex-col gap-5 md:gap-6 bg-black/10">
                     
                     {/* Input Glassmorphism - Un poco más bajo en móvil */}
-                    <div className="w-full h-14 md:h-16 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 px-5 md:px-6 flex items-center gap-4 shadow-lg">
+                    <div className="w-full h-14 md:h-16 rounded-xl bg-white/20 backdrop-blur-md px-5 md:px-6 flex items-center gap-4 shadow-lg">
                         <SearchIcon size={18} className="text-white" />
                         <span className="text-xs md:text-sm font-medium text-white/80">Buscando tu negocio...</span>
                     </div>
 
                     {/* Card Central Glassmorphism - Ajuste de padding y escala */}
-                    <div className="flex-1 rounded-[28px] bg-white/10 backdrop-blur-xl border border-white/20 p-6 md:p-8 flex flex-col items-center justify-center text-center shadow-2xl">
-                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-red-500/20 backdrop-blur-md flex items-center justify-center text-red-400 border border-red-500/30 mb-4 md:mb-6">
+                    <div className="flex-1 rounded-xl bg-white/10 backdrop-blur-xl p-6 md:p-8 flex flex-col items-center justify-center text-center shadow-2xl">
+                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-red-500/20 backdrop-blur-md flex items-center justify-center text-red-400 mb-4 md:mb-6">
                             <AlertCircle size={32} className="md:w-10 md:h-10" />
                         </div>
                         <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight mb-2">0 coincidencias</h3>
@@ -66,8 +66,8 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
 
                     {/* Skeletons inferiores - Más delgados en móvil */}
                     <div className="space-y-3 px-2 pb-2">
-                        <div className="h-3 md:h-4 w-full bg-white/10 backdrop-blur-sm rounded-full border border-white/10" />
-                        <div className="h-3 md:h-4 w-2/3 bg-white/10 backdrop-blur-sm rounded-full border border-white/10" />
+                        <div className="h-3 md:h-4 w-full bg-white/10 backdrop-blur-sm rounded-full border" />
+                        <div className="h-3 md:h-4 w-2/3 bg-white/10 backdrop-blur-sm rounded-full border" />
                     </div>
                 </div>
             </motion.div>
