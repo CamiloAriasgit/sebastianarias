@@ -37,12 +37,12 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                 className="w-full md:w-[450px] aspect-square relative flex items-center justify-center"
             >
                 {/* Contenedor Principal (Vidrio) */}
-                <div className="w-full p-8 rounded-2xl bg-black/10 backdrop-blur-2xl shadow-inner shadow-[#3d537b]/0 flex flex-col gap-6">
+                <div className="w-full p-8 rounded-2xl bg-black/5 backdrop-blur-2xl shadow-inner shadow-[#3d537b]/0 flex flex-col gap-6">
                     
                     {/* Input Simulado */}
-                    <div className="w-full h-14 rounded-xl bg-white/50 px-5 flex items-center gap-3 text-neutral-400">
+                    <div className="w-full h-14 rounded-xl bg-white/30 px-5 flex items-center gap-3 text-neutral-400 shadow-xl shadow-violet-200/50">
                         <SearchIcon size={20} className="text-neutral-400" />
-                        <span className="text-sm font-medium">Buscando..</span>
+                        <span className="text-sm font-medium">Buscando...</span>
                     </div>
 
                     {/* Estado de "No Encontrado" */}
@@ -59,14 +59,14 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     </div>
 
                     {/* Lista de sugerencias vacías (skeleton) */}
-                    <div className="space-y-3 opacity-40">
-                        <div className="h-4 w-3/4 bg-neutral-200 rounded-full animate-pulse" />
-                        <div className="h-4 w-1/2 bg-neutral-200 rounded-full animate-pulse" />
+                    <div className="space-y-3">
+                        <div className="h-4 w-3/4 bg-gradient-to-r from-white/20 via-white to-white/40 rounded-full animate-pulse" />
+                        <div className="h-4 w-1/2 bg-gradient-to-r from-white via-white/20 to-white/20 rounded-full animate-pulse" />
                     </div>
                 </div>
 
                 {/* Decoración: Orbe de luz suave detrás del vidrio */}
-                <div className="absolute -z-10 w-64 h-64 bg-blue-400/20 blur-[100px] rounded-full" />
+                <div className="absolute -z-10 w-64 h-64 bg-violet-400 blur-[100px] rounded-full" />
             </motion.div>
 
         </section>
