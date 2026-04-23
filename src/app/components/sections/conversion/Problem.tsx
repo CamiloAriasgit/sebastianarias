@@ -50,7 +50,7 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                     <span className="bg-white/5 rounded-full px-3 py-1 text-purple-500 text-xs mb-4 shadow-inner shadow-purple-500/40">
                         Velocidad
                     </span>
-                    <h2 className="bg-gradient-to-bl from-white via-white to-purple-800 bg-clip-text text-transparent text-2xl md:text-2xl tracking-tight max-w-xl font-semibold leading-[1] pt-4">
+                    <h2 className="bg-gradient-to-bl from-white via-white to-purple-800 bg-clip-text text-transparent text-2xl md:text-6xl tracking-tight max-w-xl font-semibold leading-[1] pt-4">
                         No es solo estar.<br />Es dominar la carga.
                     </h2>
                     <p className="text-neutral-400 text-lg font-light leading-[1.2]">
@@ -67,7 +67,7 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: index * 0.1 }}
-                            className="relative group p-10 rounded-3xl bg-white/3 backdrop-blur-xl overflow-hidden"
+                            className="relative group p-10 rounded-3xl bg-white/5 backdrop-blur-xl overflow-hidden"
                         >
                             {/* Gradiente interno sutil para profundidad al hacer hover */}
                             <div className="absolute inset-0 bg-gradient-to-br from-white/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

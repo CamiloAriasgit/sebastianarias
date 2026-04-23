@@ -7,6 +7,7 @@ import Problem from '../components/sections/conversion/Problem';
 import Introduction from "../components/sections/conversion/Introduction";
 import Search from '../components/sections/conversion/Search';
 import Legitimacy from '../components/sections/conversion/Legitimacy';
+import Closed from '../components/sections/conversion/Closed';
 
 export default function ConversionPage() {
     const [currentBg, setCurrentBg] = useState({
@@ -37,8 +38,8 @@ export default function ConversionPage() {
             <Introduction setBg={setCurrentBg} />
             <Search setBg={setCurrentBg} />
             <Legitimacy setBg={setCurrentBg} />
-
             <Problem setBg={setCurrentBg} />
+            <Closed setBg={setCurrentBg} />
         </main>
     );
 }
