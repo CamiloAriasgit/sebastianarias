@@ -47,13 +47,13 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                     transition={{ duration: 1 }}
                     className="max-w-3xl space-y-6"
                 >
-                    <span className="bg-white/5 rounded-full px-3 py-1 text-purple-500/90 text-xs mb-4 shadow-inner shadow-purple-500/20">
+                    <span className="bg-white/5 rounded-full px-3 py-1 text-purple-500 text-xs mb-4 shadow-inner shadow-purple-500/40">
                         Velocidad
                     </span>
-                    <h2 className="bg-gradient-to-br from-white via-white to-purple-600 bg-clip-text text-transparent text-2xl md:text-2xl tracking-tight max-w-xl font-semibold leading-[1] pt-4">
-                        No es solo estar.  Es dominar la carga.
+                    <h2 className="bg-gradient-to-bl from-white via-white to-purple-800 bg-clip-text text-transparent text-2xl md:text-2xl tracking-tight max-w-xl font-semibold leading-[1] pt-4">
+                        No es solo estar.<br />Es dominar la carga.
                     </h2>
-                    <p className="text-neutral-500 text-xl md:text-2xl tracking-tight max-w-xl font-semibold leading-[1]">
+                    <p className="text-neutral-500 text-lg font-light leading-[1.2]">
                         La autoridad se pierde en cada segundo de espera. Si tu infraestructura no es instantánea, tu inversión en redes sociales se diluye antes de que el cliente vea tu oferta.
                     </p>
                 </motion.div>
