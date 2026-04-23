@@ -25,9 +25,9 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
     const ref = useRef(null);
     // Cambiamos a un tono violeta-carbón muy profundo para enfatizar las métricas
     const colors = { 
-        from: "#101010", 
-        via: "#101010",
-        to: "#101010" 
+        from: "#000000", 
+        via: "#000000",
+        to: "#000000" 
     };
 
     const isInView = useInView(ref, { amount: 0.2 });
@@ -47,14 +47,14 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                     transition={{ duration: 1 }}
                     className="max-w-3xl space-y-6"
                 >
-                    <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-white leading-tight">
-                        El costo de la invisibilidad<br />
+                    <span className="bg-white/5 rounded-full px-3 py-1 text-purple-500/90 text-xs mb-4 shadow-inner shadow-purple-500/20">
+                        Velocidad
+                    </span>
+                    <h2 className="text-white text-2xl md:text-6xl tracking-tight max-w-xl font-semibold leading-[0.9] pt-4">
+                        No es solo estar.  Es dominar la carga.<br />
                     </h2>
-                    <p className="text-gray-200 text-lg font-light leading-[1.2]">
-                        Tener un sitio lento no es un error técnico; es un impuesto al crecimiento. Si no retienes la atención en milisegundos, estás financiando a tu competencia.
-                    </p>
-                    <p className="text-xs uppercase text-white/30 font-medium">
-                        Los números hablan por si solos:
+                    <p className="text-neutral-400 text-lg font-light leading-[1.2]">
+                        La autoridad se pierde en cada segundo de espera. Si tu infraestructura no es instantánea, tu inversión en redes sociales se diluye antes de que el cliente vea tu oferta.
                     </p>
                 </motion.div>
 
@@ -67,13 +67,13 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: index * 0.1 }}
-                            className="relative group p-10 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-xl overflow-hidden"
+                            className="relative group p-10 rounded-3xl bg-white/3 backdrop-blur-xl overflow-hidden"
                         >
                             {/* Gradiente interno sutil para profundidad al hacer hover */}
                             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                             <div className="relative z-10 space-y-4">
-                                <h3 className="text-6xl font-medium tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-violet-500/30">
+                                <h3 className="text-6xl font-medium tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-purple-800/50">
                                     {metric.value}
                                 </h3>
 
@@ -81,7 +81,7 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                                     <p className="text-sm font-medium text-white/90 tracking-wide">
                                         {metric.label}
                                     </p>
-                                    <p className="text-sm text-[#888888] font-light leading-relaxed">
+                                    <p className="text-sm text-neutral-400 font-light leading-relaxed">
                                         {metric.description}
                                     </p>
                                 </div>

@@ -58,7 +58,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                         <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-red-500/20 backdrop-blur-md flex items-center justify-center text-red-400 mb-4 md:mb-6">
                             <AlertCircle size={32} className="md:w-10 md:h-10" />
                         </div>
-                        <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight mb-2">0 coincidencias</h3>
+                        <h3 className="text-xl md:text-2xl font-medium text-white tracking-tight mb-2">0 coincidencias</h3>
                         <p className="text-white/60 text-[13px] md:text-sm leading-relaxed max-w-[180px] md:max-w-[200px]">
                             No hay huella digital que respalde tu autoridad actual.
                         </p>
