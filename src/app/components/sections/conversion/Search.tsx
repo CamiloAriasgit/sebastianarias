@@ -54,7 +54,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     </div>
 
                     {/* Card Central Glassmorphism - Ajuste de padding y escala */}
-                    <div className="flex-1 rounded-xl bg-white/5 backdrop-blur-xl p-6 md:p-8 flex flex-col items-center justify-center text-center shadow-2xl">
+                    <div className="flex-1 rounded-xl bg-white/5 backdrop-blur-md p-6 md:p-8 flex flex-col items-center justify-center text-center shadow-2xl">
                         <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-red-500/20 backdrop-blur-md flex items-center justify-center text-red-400 mb-4 md:mb-6">
                             <AlertCircle size={32} className="md:w-10 md:h-10" />
                         </div>
@@ -66,8 +66,8 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
 
                     {/* Skeletons inferiores - Más delgados en móvil */}
                     <div className="space-y-3 px-2 pb-2">
-                        <div className="h-3 md:h-4 w-full bg-white/5 backdrop-blur-sm rounded-full" />
-                        <div className="h-3 md:h-4 w-2/3 bg-white/5 backdrop-blur-sm rounded-full" />
+                        <div className="h-3 md:h-4 w-full bg-white/5 backdrop-blur-md rounded-full" />
+                        <div className="h-3 md:h-4 w-2/3 bg-white/5 backdrop-blur-md rounded-full" />
                     </div>
                 </div>
             </motion.div>
