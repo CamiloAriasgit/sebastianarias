@@ -23,8 +23,8 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                 <span className="bg-black/5 rounded-full px-3 py-1 text-neutral-900 text-sm mb-4 shadow-inner">
                     Service
                 </span>
-                <h1 className="text-black text-2xl md:text-5xl tracking-tight max-w-xl font-bold leading-[1.1] md:leading-[0.9]">
-                    Tu reputación offline es real. <span className='text-black/40'>Pero para el mundo digital, eres un fantasma. Cada búsqueda que no termina en tu web es una venta que acaba en tu competencia.</span>
+                <h1 className="text-black text-2xl md:text-5xl tracking-tight max-w-xl font-bold leading-[0.9] md:leading-[0.9]">
+                    Tu reputación offline es real. Pero para el mundo digital, eres un fantasma. <span className='text-neutral-500'>Cada búsqueda que no termina en tu web es una venta que acaba en tu competencia.</span>
                 </h1>
             </div>
 
