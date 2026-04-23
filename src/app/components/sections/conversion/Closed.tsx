@@ -5,10 +5,10 @@ import { motion, useInView } from "framer-motion";
 
 export default function Closed({ setBg }: { setBg: (colors: any) => void }) {
     const ref = useRef(null);
-    const colors = { 
-        from: "#4160aa", 
+    const colors = {
+        from: "#4160aa",
         via: "#91a5b3",
-        to: "#a78770" 
+        to: "#a78770"
     };
 
     const isInView = useInView(ref, { amount: 0.2 });
@@ -36,6 +36,15 @@ export default function Closed({ setBg }: { setBg: (colors: any) => void }) {
                     <p className="text-neutral-200 text-lg font-light leading-[1.2]">
                         Convertimos el interés en conversación instantánea. Diseñamos puntos de contacto con mensajes predeterminados que eliminan la fricción del "primer saludo", permitiendo que tu cliente inicie la venta con un solo toque.
                     </p>
+                </motion.div>
+                <motion.div
+                    className="w-full md:w-1/2 overflow-hidden rounded-xl"
+                >
+                    <img
+                        src="/images/conversion/Message.png"
+                        alt="Mensaje de cliente potencial"
+                        className="w-full h-full object-cover"
+                    />
                 </motion.div>
             </div>
         </section>
