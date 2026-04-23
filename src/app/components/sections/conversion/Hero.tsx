@@ -21,7 +21,7 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
 
     return (
         <section ref={ref} className="min-h-[100svh] flex flex-col items-center justify-center text-center px-4">
-            <span className=" bg-black/5 rounded-full px-3 py-1 text-neutral-900 text-sm mb-4 shadow-inner shadow-black/10">
+            <span className=" bg-black/5 rounded-full px-3 py-1 text-neutral-900 text-xs mb-4 shadow-inner shadow-black/10">
                 Conversion
             </span>
             <h1 className="text-black text-4xl md:text-7xl tracking-tight max-w-4xl font-bold leading-[0.9]">
