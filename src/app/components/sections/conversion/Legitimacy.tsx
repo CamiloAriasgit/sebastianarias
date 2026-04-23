@@ -5,10 +5,10 @@ import { motion, useInView } from "framer-motion";
 
 export default function Legitimacy({ setBg }: { setBg: (colors: any) => void }) {
     const ref = useRef(null);
-    const colors = { 
-        from: "#162440", 
+    const colors = {
+        from: "#162440",
         via: "#3a5b94",
-        to: "#6b82a8" 
+        to: "#6b82a8"
     };
 
     const isInView = useInView(ref, { amount: 0.2 });
@@ -27,8 +27,11 @@ export default function Legitimacy({ setBg }: { setBg: (colors: any) => void }) 
                     transition={{ duration: 1 }}
                     className="max-w-3xl space-y-6"
                 >
-                    <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-white leading-tight">
-                        Has construido algo sólido.  Ahora, hazlo oficial.<br />
+                    <span className="bg-white/5 rounded-full px-3 py-1 text-white/80 text-xs mb-4 shadow-inner shadow-white/20">
+                        Comienza ahora
+                    </span>
+                    <h2 className="text-2xl md:text-6xl font-medium tracking-tight text-white pt-4 leading-[1]">
+                        Has construido algo sólido. Ahora, hazlo oficial.<br />
                     </h2>
                     <p className="text-gray-200 text-lg font-light leading-[1.2]">
                         Tu negocio ha crecido gracias a tu ejecución y al boca a boca. Pero en el mundo digital, el éxito no se cuenta, se demuestra. Es momento de que tu presencia en internet refleje la calidad que ya ofreces en el mundo real.
