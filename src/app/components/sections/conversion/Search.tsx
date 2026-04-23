@@ -21,7 +21,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
         <section ref={ref} className="min-h-[100svh] flex flex-col md:flex-row items-center md:justify-between gap-12 px-6 md:px-12 max-w-7xl mx-auto py-20 md:py-0">
             <div className='flex flex-col items-start'>
                 <span className="bg-black/5 rounded-full px-3 py-1 text-neutral-900 text-sm mb-4 shadow-inner">
-                    Service
+                    Autoridad
                 </span>
                 <h1 className="text-black text-2xl md:text-5xl tracking-tight max-w-xl font-bold leading-[0.9] md:leading-[0.9]">
                     Tu reputación offline es real. Pero para el mundo digital, eres un fantasma. <span className='text-neutral-500'>Cada búsqueda que no termina en tu web es una venta que acaba en tu competencia.</span>
