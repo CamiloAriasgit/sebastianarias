@@ -54,7 +54,7 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                         El diseño importa.<br />Pero la velocidad decide
                     </h2>
                     <p className="text-neutral-200 text-lg font-light leading-[1.2]">
-                        Tener una presencia digital estéticamente perfecta no sirve de nada si tu infraestructura no es instantánea. La paciencia de tu cliente es limitada, y cada milisegundo de carga extra es un cliente que se diluye antes de ver tu oferta.
+                        La paciencia de tu cliente es limitada, y cada milisegundo de carga extra es un cliente que se diluye antes de ver tu oferta.
                     </p>
                 </motion.div>
 

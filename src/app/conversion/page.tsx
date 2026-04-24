@@ -41,7 +41,6 @@ export default function ConversionPage() {
             <Legitimacy setBg={setCurrentBg} />
             <Problem setBg={setCurrentBg} />
             <Clients setBg={setCurrentBg}/>
-            <Closed setBg={setCurrentBg} />
         </main>
     );
 }
