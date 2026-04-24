@@ -27,7 +27,7 @@ export default function Closed({ setBg }: { setBg: (colors: any) => void }) {
                     transition={{ duration: 1 }}
                     className="max-w-3xl space-y-6"
                 >
-                    <span className="bg-white/5 rounded-full px-3 py-1 text-white/80 text-xs mb-4 shadow-inner gap-7 shadow-white/20">
+                    <span className="bg-white/5 rounded-full px-3 py-1 text-white/80 text-xs mb-4 shadow-inner shadow-white/20">
                         Cierra ventas
                     </span>
                     <h2 className="text-white text-2xl md:text-6xl tracking-tight max-w-xl font-medium leading-[1] pt-4">

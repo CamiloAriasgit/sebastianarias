@@ -45,16 +45,16 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1 }}
-                    className="max-w-3xl space-y-6"
+                    className="max-w-3xl"
                 >
                     <span className="bg-white/5 rounded-full px-3 py-1 text-white/80 text-xs mb-4 shadow-inner shadow-white/20">
                         Velocidad
                     </span>
-                    <h2 className="text-2xl md:text-6xl font-medium tracking-tight text-white pt-4 leading-[1] max-w-xl">
-                        No es solo estar.<br />Es dominar la carga.
+                    <h2 className="text-2xl md:text-6xl font-medium tracking-tight text-white py-4 leading-[1] max-w-xl">
+                        El diseño importa.<br />Pero la velocidad decide
                     </h2>
                     <p className="text-neutral-200 text-lg font-light leading-[1.2]">
-                        La autoridad se pierde en cada segundo de espera. Si tu infraestructura no es instantánea, tu inversión en redes sociales se diluye antes de que el cliente vea tu oferta.
+                        Tener una presencia digital estéticamente perfecta no sirve de nada si tu infraestructura no es instantánea. La paciencia de tu cliente es limitada, y cada milisegundo de carga extra es un cliente que se diluye antes de ver tu oferta.
                     </p>
                 </motion.div>
 
@@ -78,7 +78,7 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                                 </h3>
 
                                 <div className="space-y-2">
-                                    <p className="text-sm font-semibold text-white/90 tracking-wide">
+                                    <p className="text-xl font-semibold text-white/90 tracking-wide">
                                         {metric.label}
                                     </p>
                                     <p className="text-sm text-neutral-200 font-light leading-relaxed">
