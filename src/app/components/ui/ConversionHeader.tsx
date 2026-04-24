@@ -7,10 +7,12 @@ export default function Navbar() {
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
       <nav className="flex w-full max-w-2xl items-center font-sans justify-between rounded-full pl-3 pr-3 py-2.5 backdrop-blur-md transition-all duration-300 bg-black/10 border border-white/10">
         
-        <div className="flex flex-col justify-center text-sm font-sans font-bold leading-[0.9] pl-1 text-neutral-500">
+        <div className="h-7 w-7 bg-white/0 rounded-full shadow-inner shadow-white/60">
+        </div>
+        {/*<div className="flex flex-col justify-center text-sm font-sans font-bold leading-[0.9] pl-1 text-neutral-500">
           <span>Sebastian</span>
           <span>Arias</span>
-        </div>
+        </div>*/}
 
         <a
           href="https://wa.me/573235619283"

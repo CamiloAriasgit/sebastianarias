@@ -67,13 +67,13 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: index * 0.1 }}
-                            className="relative group p-10 rounded-3xl bg-white/10 border border-white/10 backdrop-blur-xl overflow-hidden"
+                            className="relative group p-10 rounded-3xl bg-white/10 border border-white/10 backdrop-blur-xl overflow-hidden shadow-inner shadow-white/10"
                         >
                             {/* Gradiente interno sutil para profundidad al hacer hover */}
                             <div className="absolute inset-0 bg-gradient-to-br from-white/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                             <div className="relative z-10 space-y-4">
-                                <h3 className="text-6xl font-medium tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-white/10">
+                                <h3 className="text-6xl font-medium tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-white/5">
                                     {metric.value}
                                 </h3>
 
@@ -81,7 +81,7 @@ export default function ProblemMetrics({ setBg }: { setBg: (colors: any) => void
                                     <p className="text-xl font-semibold text-white/90 tracking-wide">
                                         {metric.label}
                                     </p>
-                                    <p className="text-sm text-neutral-200 font-light leading-relaxed">
+                                    <p className="text-sm text-white font-light leading-relaxed">
                                         {metric.description}
                                     </p>
                                 </div>
