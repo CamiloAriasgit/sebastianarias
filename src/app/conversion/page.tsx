@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Header from "../components/ui/ConversionHeader";
 import Hero from '../components/sections/conversion/Hero';
-import Problem from '../components/sections/conversion/Problem';
+import Problem from '../components/sections/conversion/ProblemMetrics';
 import Introduction from "../components/sections/conversion/Introduction";
 import Search from '../components/sections/conversion/Search';
 import Legitimacy from '../components/sections/conversion/Legitimacy';
