@@ -8,7 +8,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
     const isInView = useInView(ref, { amount: 0.5 });
 
     const colors = {
-        from: '#f8f8ff',
+        from: '#b4c1d5',
         via: '#f8f8ff',
         to: '#f8f8ff'
     };

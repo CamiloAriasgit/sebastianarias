@@ -10,9 +10,9 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
     const isInView = useInView(ref, { amount: 0.5 });
 
     const colors = {
-        from: '#f8f8ff',
-        via: '#f8f8ff', // Azul medianoche muy sutil
-        to: '#f8f8ff'
+        from: "#162440",
+        via: "#3a5b94",
+        to: "#6b82a8"
     };
 
     useEffect(() => {
@@ -21,10 +21,10 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
 
     return (
         <section ref={ref} className="min-h-[100svh] flex flex-col items-center justify-center text-center px-4">
-            <span className=" bg-black/5 rounded-full px-3 py-1 text-neutral-900 text-xs mb-4 shadow-inner shadow-black/10">
+            <span className=" bg-white/5 rounded-full px-3 py-1 text-white/80 text-xs mb-4 shadow-inner shadow-white/20">
                 Conversion
             </span>
-            <h1 className="text-black text-4xl md:text-7xl tracking-tight max-w-4xl font-bold leading-[0.9]">
+            <h1 className="text-white text-4xl md:text-7xl tracking-tight max-w-4xl font-medium leading-[0.9]">
                 Tu negocio es real. Tu infraestructura digital no.
             </h1>
             {/*<p className="text-neutral-500 mt-6 max-w-xl text-sm md:text-lg leading-[1.2]">
@@ -36,7 +36,7 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
                 rel="noopener noreferrer"
                 className="pt-10"
             >
-                <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-black px-6 py-3 text-lg text-white transition-all active:scale-95">
+                <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white/90 px-5 py-2 text-lg text-black transition-all active:scale-95">
                     <span>Empezar</span>
                     <ArrowRight className="h-5 w-5" strokeWidth={2} />
                 </div>

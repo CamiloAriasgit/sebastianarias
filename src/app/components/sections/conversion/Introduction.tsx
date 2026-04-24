@@ -17,9 +17,9 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
     const opacity = useTransform(scrollYProgress, [0, 0.5, 0.65], [1, 1, 0]);
 
     const colors = {
-        from: '#f8f8ff',
-        via: '#f8f8ff',
-        to: '#f8f8ff'
+        from: '#d8dee9',
+        via: '#e5e9f0',
+        to: '#b4c1d5'
     };
 
     useEffect(() => {
