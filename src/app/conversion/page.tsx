@@ -41,21 +41,20 @@ export default function ConversionPage() {
         <main className="relative w-full overflow-x-hidden">
             {/* Background Dinámico con "Sangrado" para evitar saltos de layout */}
             <motion.div
-                /**
-                 * Usamos -top-[10vh] y h-[120vh] para que el fondo sobresalga 
-                 * por arriba y abajo. Así, cuando las barras del navegador se ocultan
-                 * o aparecen, nunca llegan a ver el final del div.
-                 */
-                className="fixed -top-[10vh] left-0 -z-10 h-[120vh] w-full"
-                style={{ backgroundColor: currentBg.to }}
-                animate={{
-                    background: `linear-gradient(to bottom, ${currentBg.from}, ${currentBg.via}, ${currentBg.to})`
-                }}
-                transition={{
-                    duration: 0.5,
-                    ease: "circOut"
-                }}
-            />
+            className="fixed -top-[10vh] left-0 -z-10 h-[120vh] w-full"
+            initial={false}
+            animate={{
+                // Usamos backgroundImage explícitamente para el gradiente
+                backgroundImage: `linear-gradient(to bottom, ${currentBg.from}, ${currentBg.via}, ${currentBg.to})`,
+                // El backgroundColor se mantiene para que el navegador lo detecte, 
+                // pero el gradiente vivirá "encima"
+                backgroundColor: currentBg.to 
+            }}
+            transition={{
+                duration: 0.5,
+                ease: "circOut"
+            }}
+        />
 
             <Header />
 
