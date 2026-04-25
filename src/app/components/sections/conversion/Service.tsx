@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import { useInView, motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, } from "lucide-react";
 
 export default function Introduction({ setBg }: { setBg: (colors: any) => void }) {
     const ref = useRef(null);
@@ -46,26 +46,28 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
                 className="w-64 md:w-[400px] aspect-[9/16] relative rounded-[2.5rem] md:rounded-[3rem] shadow-2xl border-[6px] md:border-[8px] border-black bg-zinc-900 overflow-visible"
             >
                 {/* Pantalla interna */}
-                <div className="absolute inset-0 rounded-[2.2rem] md:rounded-[2.5rem] overflow-hidden bg-gradient-to-b from-zinc-800 to-black">
+                <div className="absolute inset-0 rounded-[2.2rem] md:rounded-[2.5rem] overflow-hidden bg-gradient-to-b from-zinc-800 via-black to-[#3a5b94]/80">
                     <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 md:w-20 h-3 md:h-4 bg-black rounded-full"></div>
 
                     <div className="p-4 md:p-6 pt-10 md:pt-12 flex flex-col gap-3">
                         <div className="h-3 md:h-4 w-3/4 bg-white/10 rounded-full"></div>
                         <div className="h-3 md:h-4 w-1/2 bg-white/10 rounded-full"></div>
                     </div>
-                    
+
                 </div>
 
-                {/* EL MENSAJE: Adaptado para móvil */}
-                <div className="absolute top-1/3 scale-90 origin-right md:-left-20 md:scale-100 md:origin-center w-56 md:w-72 p-3 md:p-4 bg-white rounded-xl md:rounded-2xl shadow-2xl ring-1 ring-black/5 z-10">
+                {/* EL MENSAJE: Centrado absoluto sobre el mockup */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 md:w-72 p-3 md:p-4 bg-white rounded-xl md:rounded-2xl shadow-2xl ring-1 ring-black/5 z-10">
                     <div className="flex items-start gap-2 md:gap-3">
-                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-indigo-500 flex-shrink-0 flex items-center justify-center text-white text-xs md:text-base font-bold">
-                            AI
-                        </div>
+                        <img
+                            src="images/conversion/HeadshotProfile.png"
+                            className="w-8 h-8 rounded-full shadow ring-1 ring-black/10"
+                            alt="Headshot about asian young women happy"
+                        />
                         <div className="flex flex-col gap-0.5 md:gap-1">
-                            <p className="text-[10px] md:text-sm font-semibold text-gray-900 leading-none">Nueva conversión</p>
+                            <p className="text-[10px] md:text-sm font-semibold text-gray-900 leading-none">Sophia</p>
                             <p className="text-[9px] md:text-xs text-gray-500 leading-tight">
-                                Sistemas de alta velocidad activos.
+                               Impresionante la web. No necesito más info, pásame el link de pago para empezar hoy mismo.
                             </p>
                         </div>
                     </div>
