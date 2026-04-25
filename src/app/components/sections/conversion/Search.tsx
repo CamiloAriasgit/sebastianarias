@@ -24,7 +24,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     Autoridad
                 </span>
                 <h1 className="text-white text-2xl md:text-5xl tracking-tight max-w-xl font-medium leading-[1]">
-                    Tu reputación offline es real. Pero para el mundo digital, eres un fantasma. <span className='text-neutral-500'>Cada búsqueda que no termina en tu web es una venta que acaba en tu competencia.</span>
+                    Tu reputación offline es real. Pero para el mundo digital, eres un fantasma. <span className='text-white'>Cada búsqueda que no termina en tu web es una venta que acaba en tu competencia.</span>
                 </h1>
             </div>
 
@@ -39,7 +39,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
             >
                 {/* Imagen Abstracta de Fondo */}
                 <img 
-                    src="https://static.vecteezy.com/system/resources/previews/011/592/403/large_2x/abstract-blue-papercut-wavy-pattern-design-decorative-artwork-overlapping-style-with-minimal-template-background-illustrator-vector.jpg" 
+                    src="https://wallpaperaccess.com/full/1129093.jpg" 
                     className="absolute inset-0 w-full h-full object-cover"
                     alt="Abstract background"
                 />
