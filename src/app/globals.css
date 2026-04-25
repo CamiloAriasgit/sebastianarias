@@ -18,5 +18,7 @@
     --foreground: #171717;
   }
 }
-
+html {
+  color-scheme: light dark;
+}
 
