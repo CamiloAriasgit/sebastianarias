@@ -18,7 +18,13 @@
     --foreground: #171717;
   }
 }
+
 html {
-  color-scheme: light dark;
+  color-scheme: light dark; 
 }
 
+body {
+  /* Evita el efecto rebote elástico en móviles que suele causar parpadeos blancos/negros */
+  overscroll-behavior-y: none;
+  background-color: #000000;
+}
