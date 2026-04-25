@@ -17,7 +17,7 @@ export default function ConversionPage() {
         to: '#f8f8ff'
     });
 
-    // Punto 1: Control dinámico del Theme Color para la barra del móvil
+    // Punto 1 y 3: Control dinámico y sincronización del "suelo" de la web
     useEffect(() => {
         let metaThemeColor = document.querySelector('meta[name="theme-color"]');
 
@@ -25,20 +25,28 @@ export default function ConversionPage() {
             metaThemeColor = document.createElement('meta');
             metaThemeColor.setAttribute('name', 'theme-color');
             document.head.appendChild(metaThemeColor);
-            document.body.style.backgroundColor = currentBg.to;
-            document.documentElement.style.backgroundColor = currentBg.to;
         }
 
-        // Actualiza el color de la barra del sistema con el color "to" del gradiente
+        // Actualizamos el meta tag
         metaThemeColor.setAttribute('content', currentBg.to);
+
+        // FORZADO DE BODY Y HTML: Esto elimina el recuadro que aparece al ocultarse las barras
+        // Lo aplicamos directamente al DOM para que sea instantáneo
+        document.body.style.backgroundColor = currentBg.to;
+        document.documentElement.style.backgroundColor = currentBg.to;
+        
     }, [currentBg.to]);
 
     return (
         <main className="relative w-full overflow-x-hidden">
-            {/* Background Dinámico Fijo */}
+            {/* Background Dinámico con "Sangrado" para evitar saltos de layout */}
             <motion.div
-                className="fixed inset-0 -z-10 h-full w-full"
-                // Punto 2: backgroundColor sólido detrás para forzar la detección del navegador
+                /**
+                 * Usamos -top-[10vh] y h-[120vh] para que el fondo sobresalga 
+                 * por arriba y abajo. Así, cuando las barras del navegador se ocultan
+                 * o aparecen, nunca llegan a ver el final del div.
+                 */
+                className="fixed -top-[10vh] left-0 -z-10 h-[120vh] w-full"
                 style={{ backgroundColor: currentBg.to }}
                 animate={{
                     background: `linear-gradient(to bottom, ${currentBg.from}, ${currentBg.via}, ${currentBg.to})`
@@ -51,7 +59,7 @@ export default function ConversionPage() {
 
             <Header />
 
-            {/* Capa de grano/ruido opcional */}
+            {/* Capa de grano/ruido */}
             <div className="fixed inset-0 -z-10 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
             <Hero setBg={setCurrentBg} />
