@@ -18,7 +18,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
     }, [isInView, setBg]);
 
     return (
-        <section ref={ref} className="min-h-[100svh] flex flex-col md:flex-row items-center md:justify-between gap-12 px-6 md:px-12 max-w-7xl mx-auto py-20 md:py-0">
+        <section ref={ref} className="min-h-screen flex flex-col md:flex-row items-center md:justify-between gap-12 px-6 md:px-12 max-w-7xl mx-auto py-20 md:py-0">
             <div className='flex flex-col items-start'>
                 <span className="bg-white/5 rounded-full px-3 py-1 text-white/80 text-xs mb-4 shadow-inner shadow-white/20">
                     Autoridad

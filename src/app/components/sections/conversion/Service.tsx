@@ -27,7 +27,7 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
     }, [isInView, setBg]);
 
     return (
-        <section ref={ref} className="min-h-[100svh] flex flex-col md:flex-row items-center md:justify-between gap-7 px-6 md:px-12 max-w-7xl mx-auto">
+        <section ref={ref} className="min-h-screen flex flex-col md:flex-row items-center md:justify-between gap-7 px-6 md:px-12 max-w-7xl mx-auto">
             <div className='flex flex-col items-start'>
                 <span className="bg-white/5 rounded-full px-3 py-1 text-white/80 text-xs mb-4 shadow-inner shadow-white/20">
                     Service
@@ -38,47 +38,39 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
             </div>
 
             <motion.div
-    initial={{ opacity: 0, scale: 0.95 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8 }}
-    /* Ajustamos el ancho en móvil (w-64) vs desktop (md:w-[400px]) */
-    className="w-64 md:w-[400px] aspect-[9/16] relative rounded-[2.5rem] md:rounded-[3rem] shadow-2xl border-[6px] md:border-[8px] border-black bg-zinc-900 overflow-visible"
->
-    {/* Pantalla interna */}
-    <div className="absolute inset-0 rounded-[2rem] md:rounded-[2.2rem] overflow-hidden bg-gradient-to-b from-zinc-800 to-black">
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 md:w-20 h-3 md:h-4 bg-black rounded-full"></div>
-        
-        <div className="p-4 md:p-6 pt-10 md:pt-12 flex flex-col gap-3">
-            <div className="h-3 md:h-4 w-3/4 bg-white/10 rounded-full"></div>
-            <div className="h-3 md:h-4 w-1/2 bg-white/10 rounded-full"></div>
-        </div>
-    </div>
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                /* Ajustamos el ancho en móvil (w-64) vs desktop (md:w-[400px]) */
+                className="w-64 md:w-[400px] aspect-[9/16] relative rounded-[2.5rem] md:rounded-[3rem] shadow-2xl border-[6px] md:border-[8px] border-black bg-zinc-900 overflow-visible"
+            >
+                {/* Pantalla interna */}
+                <div className="absolute inset-0 rounded-[2.2rem] md:rounded-[2.5rem] overflow-hidden bg-gradient-to-b from-zinc-800 to-black">
+                    <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 md:w-20 h-3 md:h-4 bg-black rounded-full"></div>
 
-    {/* EL MENSAJE: Adaptado para móvil */}
-    <div className="
-        absolute top-1/4 
-        /* En móvil: menos desplazamiento y escala reducida. En desktop: posición original */
-        -left-6 scale-90 origin-right
-        md:-left-20 md:scale-100 md:origin-center
-        
-        w-56 md:w-72 p-3 md:p-4 
-        bg-white rounded-xl md:rounded-2xl 
-        shadow-2xl ring-1 ring-black/5 z-10
-    ">
-        <div className="flex items-start gap-2 md:gap-3">
-            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-indigo-500 flex-shrink-0 flex items-center justify-center text-white text-xs md:text-base font-bold">
-                AI
-            </div>
-            <div className="flex flex-col gap-0.5 md:gap-1">
-                <p className="text-[10px] md:text-sm font-semibold text-gray-900 leading-none">Nueva conversión</p>
-                <p className="text-[9px] md:text-xs text-gray-500 leading-tight">
-                    Sistemas de alta velocidad activos.
-                </p>
-            </div>
-        </div>
-    </div>
-</motion.div>
+                    <div className="p-4 md:p-6 pt-10 md:pt-12 flex flex-col gap-3">
+                        <div className="h-3 md:h-4 w-3/4 bg-white/10 rounded-full"></div>
+                        <div className="h-3 md:h-4 w-1/2 bg-white/10 rounded-full"></div>
+                    </div>
+                    
+                </div>
+
+                {/* EL MENSAJE: Adaptado para móvil */}
+                <div className="absolute top-1/3 scale-90 origin-right md:-left-20 md:scale-100 md:origin-center w-56 md:w-72 p-3 md:p-4 bg-white rounded-xl md:rounded-2xl shadow-2xl ring-1 ring-black/5 z-10">
+                    <div className="flex items-start gap-2 md:gap-3">
+                        <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-indigo-500 flex-shrink-0 flex items-center justify-center text-white text-xs md:text-base font-bold">
+                            AI
+                        </div>
+                        <div className="flex flex-col gap-0.5 md:gap-1">
+                            <p className="text-[10px] md:text-sm font-semibold text-gray-900 leading-none">Nueva conversión</p>
+                            <p className="text-[9px] md:text-xs text-gray-500 leading-tight">
+                                Sistemas de alta velocidad activos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
         </section>
     );
 }
