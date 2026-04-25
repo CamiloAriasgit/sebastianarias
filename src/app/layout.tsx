@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   title: "Sebastian Arias | Software Developer",
   description: "Especialista en el T3 Stack: Next.js, Supabase, Tailwind y TypeScript.",
 };
+
+export const viewport: Viewport = {
+  themeColor: "#000000"
+}
 
 export default function RootLayout({
   children,
