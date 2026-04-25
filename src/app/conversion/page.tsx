@@ -5,6 +5,7 @@ import Header from "../components/ui/ConversionHeader";
 import Hero from '../components/sections/conversion/Hero';
 import Problem from '../components/sections/conversion/ProblemMetrics';
 import Introduction from "../components/sections/conversion/Introduction";
+import Service from "../components/sections/conversion/Service"
 import Search from '../components/sections/conversion/Search';
 import Legitimacy from '../components/sections/conversion/Legitimacy';
 import Closed from '../components/sections/conversion/Closed';
@@ -37,6 +38,7 @@ export default function ConversionPage() {
 
             <Hero setBg={setCurrentBg} />
             <Introduction setBg={setCurrentBg} />
+            <Service setBg={setCurrentBg} />
             <Search setBg={setCurrentBg} />
             <Legitimacy setBg={setCurrentBg} />
             <Problem setBg={setCurrentBg} />

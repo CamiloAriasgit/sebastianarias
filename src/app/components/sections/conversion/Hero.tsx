@@ -20,7 +20,7 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
     }, [isInView, setBg]);
 
     return (
-        <section ref={ref} className="min-h-[100svh] flex flex-col items-center justify-center text-center px-4">
+        <section ref={ref} className="relative min-h-[100svh] flex flex-col items-center justify-center text-center px-4">
             <span className=" bg-white/5 rounded-full px-3 py-1 text-white/80 text-xs mb-4 shadow-inner shadow-white/20">
                 Conversion
             </span>
@@ -40,6 +40,7 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
                     <span>Empezar</span>
                     <ArrowRight className="h-5 w-5" strokeWidth={2} />
                 </div>
+                {/*<div className='absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-50 h-90 w-90 rounded-full shadow-inner shadow-white'></div>*/}
             </a>
         </section>
     );
