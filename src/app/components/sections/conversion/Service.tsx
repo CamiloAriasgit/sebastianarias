@@ -27,7 +27,7 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
     }, [isInView, setBg]);
 
     return (
-        <section ref={ref} className="min-h-screen flex flex-col md:flex-row items-center md:justify-between gap-7 px-6 md:px-12 max-w-7xl mx-auto">
+        <section ref={ref} className="min-h-screen flex flex-col md:flex-row items-center md:justify-between gap-7 px-6 pt-20 md:pt-0 md:px-12 max-w-7xl mx-auto">
             <div className='flex flex-col items-start'>
                 <span className="bg-white/5 rounded-full px-3 py-1 text-white/80 text-xs mb-4 shadow-inner shadow-white/20">
                     Service
@@ -65,7 +65,7 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
 
 
                 {/* EL MENSAJE: Centrado absoluto sobre el mockup */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 md:w-120 p-3 md:p-4 bg-white rounded-xl md:rounded-2xl shadow-2xl ring-1 ring-black/5 z-10">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 md:w-120 p-3 md:p-4 bg-white rounded-xl md:rounded-2xl shadow-2xl shadow-black/50 ring-1 ring-black/5 z-10">
                     <div className="flex items-start gap-2 md:gap-3">
                         <img
                             src="images/conversion/HeadshotProfile.png"
