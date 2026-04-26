@@ -85,7 +85,7 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
                             />
                             <div className="flex flex-col gap-0.5 md:gap-1">
                                 <p className="text-[18px] md:text-xl font-bold text-neutral-900 leading-none">Sophia</p>
-                                <p className="text-[14px] md:text-lg text-gray-500 leading-tight">
+                                <p className="text-[15px] md:text-lg text-gray-600 leading-tight">
                                     ¡Impresionante la web! No necesito más info, pásame el link de pago para empezar HOY MISMO.
                                 </p>
                             </div>
