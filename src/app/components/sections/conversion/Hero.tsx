@@ -36,7 +36,7 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
                 rel="noopener noreferrer"
                 className="pt-10"
             >
-                <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-5 py-2 text-lg text-black transition-all active:scale-95">
+                <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white/90 px-5 py-2 text-lg text-black transition-all active:scale-95 shadow-inner shadow-white">
                     <span>Empezar</span>
                     <ArrowRight className="h-5 w-5" strokeWidth={2} />
                 </div>

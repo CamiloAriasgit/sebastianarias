@@ -9,18 +9,13 @@ export default function Navbar() {
         
         <div className="h-7 w-7 bg-white/0 rounded-full shadow-inner shadow-white/60">
         </div>
-        {/*<div className="flex flex-col justify-center text-sm font-sans font-bold leading-[0.9] pl-1 text-neutral-500">
-          <span>Sebastian</span>
-          <span>Arias</span>
-        </div>*/}
-
         <a
           href="https://wa.me/573235619283"
           target="_blank"
           rel="noopener noreferrer"
           className="group relative p-[2px] transition-all duration-300 active:scale-95 bg-[#F6F8FB] rounded-full"
         >
-          <div className="relative flex items-center justify-center gap-2 rounded-full px-3 py-1 text-sm font-bold tracking-tight transition-all bg-[#F6F8FB] text-neutral-900 group-hover:bg-white">
+          <div className="relative flex items-center justify-center gap-2 rounded-full px-3 py-1 text-sm tracking-tight transition-all bg-[#F6F8FB] text-neutral-900  group-hover:bg-white">
             <span>Empezar</span>
           </div>
         </a>
