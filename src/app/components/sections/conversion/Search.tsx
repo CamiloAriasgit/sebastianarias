@@ -46,9 +46,9 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                 <div className="absolute inset-0 p-6 md:p-8 rounded-lg flex flex-col gap-5 md:gap-6 mt-11 m-2 bg-gradient-to-b from-[#3a5b94] to-[#6b82a8]">
 
 
-                    <div className="w-full h-14 md:h-16 rounded-xl bg-white/20 backdrop-blur-md px-5 md:px-6 flex items-center gap-4">
+                    <div className="w-full h-14 md:h-16 rounded-full bg-gradient-to-t from-white/10 via-white/2 to-white/0 backdrop-blur-md px-5 md:px-6 flex items-center gap-4">
                         <SearchIcon size={18} className="text-white" />
-                        <span className="text-xs md:text-sm font-medium text-black/80">Buscando tu negocio...</span>
+                        <span className="text-xs md:text-sm font-medium text-white/90">Buscando tu negocio...</span>
                     </div>
 
                     <div className="flex-1 rounded-xl bg-black/0 backdrop-blur-md p-6 md:p-8 flex flex-col items-center justify-center text-center">
