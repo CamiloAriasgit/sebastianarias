@@ -76,7 +76,7 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
                             <p className="text-[7px] md:text-xs text-end text-gray-500 leading-tight">NOW</p>
                             <p className="text-[18px] md:text-xl font-bold text-neutral-900 leading-none">Sophia</p>
                             <p className="text-[14px] md:text-lg text-gray-500 leading-tight">
-                                Impresionante la web. No necesito más info, pásame el link de pago para empezar hoy mismo.
+                                ¡Impresionante la web! No necesito más info, pásame el link de pago para empezar HOY MISMO.
                             </p>
                         </div>
                     </div>
