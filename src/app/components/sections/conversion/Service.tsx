@@ -66,18 +66,29 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
 
                 {/* EL MENSAJE: Centrado absoluto sobre el mockup */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 md:w-120 p-3 md:p-4 bg-white rounded-xl md:rounded-2xl shadow-2xl shadow-black/50 ring-1 ring-black/5 z-10">
-                    <div className="flex items-start gap-2 md:gap-3">
-                        <img
-                            src="images/conversion/HeadshotProfile.png"
-                            className="w-10 h-10 rounded-full shadow ring-1 ring-black/10 mt-1"
-                            alt="Headshot about asian young women happy"
-                        />
-                        <div className="flex flex-col gap-0.5 md:gap-1">
-                            <p className="text-[7px] md:text-xs text-end text-gray-500 leading-tight">NOW</p>
-                            <p className="text-[18px] md:text-xl font-bold text-neutral-900 leading-none">Sophia</p>
-                            <p className="text-[14px] md:text-lg text-gray-500 leading-tight">
-                                ¡Impresionante la web! No necesito más info, pásame el link de pago para empezar HOY MISMO.
-                            </p>
+                    <div className="flex flex-col items-start gap-2 md:gap-3">
+                        <div className="flex items-center gap-1">
+                            <img
+                                src="https://freepnglogo.com/images/all_img/1716574832whatsapp-icon-png.png"
+                                alt="WhatsApp Icon"
+                                className="h-3 w-3"
+                            />
+                            <h1 className="text-[8px] font-medium text-neutral-600">WhatsApp</h1>
+                            <span className="h-[2.5px] w-[2.5px] rounded-full bg-neutral-600"></span>
+                            <h1 className="text-[8px] font-medium text-neutral-600">ahora</h1>
+                        </div>
+                        <div className="flex gap-2">
+                            <img
+                                src="images/conversion/HeadshotProfile.png"
+                                className="w-8 h-8 rounded-full shadow ring-1 ring-black/10"
+                                alt="Headshot about asian young women happy"
+                            />
+                            <div className="flex flex-col gap-0.5 md:gap-1">
+                                <p className="text-[18px] md:text-xl font-bold text-neutral-900 leading-none">Sophia</p>
+                                <p className="text-[14px] md:text-lg text-gray-500 leading-tight">
+                                    ¡Impresionante la web! No necesito más info, pásame el link de pago para empezar HOY MISMO.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

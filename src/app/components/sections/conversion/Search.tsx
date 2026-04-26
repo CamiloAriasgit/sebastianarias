@@ -40,7 +40,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     <div className='rounded-full h-7 w-7 bg-neutral-800 border border-neutral-900 overflow-hidden flex items-center justify-center shadow-sm'>
                         <img
                             src="https://pngfile.net/files/preview/960x960/4381749752382exsishlqhhpbmcuqbanyle2fuazmrd1ckgbtx5pdseaomb46bazvbfwv6ccmmmotyostjuabc5mgnjtlg4jrvkj6etjfu9bxcrpm.png?type=free"
-                            alt="Safari"
+                            alt="Edge"
                             className="h-5 w-5"
                         />
                     </div>
@@ -48,7 +48,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     <div className='rounded-full h-7 w-7 bg-neutral-800 border border-neutral-900 overflow-hidden flex items-center justify-center shadow-sm'>
                         <img
                             src="https://pngimg.com/uploads/safari/safari_PNG25.png"
-                            alt="Firefox"
+                            alt="Safari"
                             className="h-5 w-5"
                         />
                     </div>
@@ -72,7 +72,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     </div>
 
                     <div className="flex-1 rounded-xl bg-black/0 backdrop-blur-md p-6 md:p-8 flex flex-col items-center justify-center text-center">
-                        <h1 className="text-9xl bg-clip-text text-transparent bg-gradient-to-b from-white to-white/1">404</h1>
+                        <h1 className="text-9xl bg-clip-text text-transparent bg-gradient-to-b from-white via-white/50 to-transparent">404</h1>
                         <h3 className="text-xl md:text-2xl font-mono text-white tracking-tight mb-2">Not Found</h3>
                         <p className="text-white/60 text-[13px] md:text-sm leading-relaxed max-w-[180px] md:max-w-[200px]">
                             No hay huella digital que respalde tu autoridad actual.
@@ -95,7 +95,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     src="https://wallpaperaccess.com/full/1129093.jpg" 
                     className="absolute inset-0 w-full h-full object-cover"
                     alt="Abstract background"
-                />
+                />a
 
                 <div className="absolute inset-0 p-6 md:p-8 flex flex-col gap-5 md:gap-6 bg-black/10">
                     
