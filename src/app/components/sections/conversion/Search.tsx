@@ -52,8 +52,8 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     </div>
 
                     <div className="flex-1 rounded-xl bg-black/0 backdrop-blur-md p-6 md:p-8 flex flex-col items-center justify-center text-center">
-                    <h1 className="text-7xl bg-clip-text text-transparent bg-gradient-to-b from-white to-white/1">404</h1>
-                        <h3 className="text-xl md:text-2xl font-medium text-white tracking-tight mb-2">0 coincidencias</h3>
+                    <h1 className="text-9xl bg-clip-text text-transparent bg-gradient-to-b from-white to-white/1">404</h1>
+                        <h3 className="text-xl md:text-2xl font-mono text-white tracking-tight mb-2">Not Found</h3>
                         <p className="text-white/60 text-[13px] md:text-sm leading-relaxed max-w-[180px] md:max-w-[200px]">
                             No hay huella digital que respalde tu autoridad actual.
                         </p>
