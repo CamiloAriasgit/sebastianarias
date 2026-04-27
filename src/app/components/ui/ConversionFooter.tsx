@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
 
           {/* Redes Sociales Reducidas */}
-          <div className="flex flex-wrap gap-8">
+          <div className="flex flex-col gap-4">
             {socialLinks.map((social) => (
               <a
                 key={social.name}

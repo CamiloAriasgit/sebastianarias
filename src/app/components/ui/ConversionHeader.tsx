@@ -14,9 +14,9 @@ export default function Navbar() {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative p-[2px] transition-all duration-300 active:scale-95 bg-[#F6F8FB] rounded-full"
+          className="group relative p-[2px] transition-all duration-300 active:scale-95 bg-white/70 shadow-inner shadow-white/60 rounded-full"
         >
-          <div className="relative flex items-center justify-center gap-2 rounded-full px-3 py-1 text-sm tracking-tight transition-all bg-[#F6F8FB] text-neutral-900  group-hover:bg-white">
+          <div className="relative flex items-center justify-center gap-2 rounded-full px-3 py-1 text-sm tracking-tight transition-all text-neutral-900 ">
             <span>Empezar</span>
           </div>
         </a>
