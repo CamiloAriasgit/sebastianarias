@@ -27,9 +27,6 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
             <h1 className="text-white text-4xl md:text-7xl tracking-tight max-w-4xl font-medium leading-[0.9]">
                 Tu negocio es real. Tu infraestructura digital no.
             </h1>
-            {/*<p className="text-neutral-500 mt-6 max-w-xl text-sm md:text-lg leading-[1.2]">
-                Desplegamos sistemas de conversión de alta velocidad para empresas que no pueden permitirse perder clientes.
-            </p>*/}
             <a
                 href={whatsappUrl}
                 target="_blank"
@@ -40,7 +37,6 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
                     <span>Empezar</span>
                     <ArrowRight className="h-5 w-5" strokeWidth={2} />
                 </div>
-                {/*<div className='absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-50 h-90 w-90 rounded-full shadow-inner shadow-white'></div>*/}
             </a>
         </section>
     );

@@ -67,7 +67,7 @@ export default function FAQ({ setBg }: FAQProps) {
                     return (
                         <div
                             key={idx}
-                            className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden transition-all duration-300"
+                            className="rounded-2xl border border-white/0 bg-white/5 backdrop-blur-md overflow-hidden transition-all duration-300 shadow-inner shadow-white/10"
                         >
                             <button
                                 onClick={() => setActiveIdx(isOpen ? null : idx)}
@@ -104,7 +104,7 @@ export default function FAQ({ setBg }: FAQProps) {
             </div>
 
             <p className="mt-12 text-center text-white/40 text-sm italic">
-                ¿Tienes una duda específica? La resolvemos en la auditoría inicial.
+                ¿Tienes una duda específica?<br />La resolvemos en la auditoría inicial.
             </p>
         </section>
     );
