@@ -43,7 +43,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     <div className="bg-amber-600 h-4 w-full rounded-t-xl">
 
                     </div>
-                    <div className='bg-[#273443] h-11 w-full flex items-center justify-between p-1'>
+                    <div className='bg-[#273443] w-full flex items-center justify-between px-1'>
                         <div className='flex items-center'>
                             <ArrowLeft className="h-3 w-3 text-white" />
                             <img
