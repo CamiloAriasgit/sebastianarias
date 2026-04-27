@@ -3,8 +3,7 @@ import { useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
-const whatsappUrl = "https://wa.me/573235619283?text=Hola%20Sebastian%2C%20vengo%20de%20tu%20sitio%20web.%20Tengo%20una%20idea%20de%20proyecto%20y%20me%20gustar%C3%ADa%20discutir%20c%C3%B3mo%20podemos%20construir%20un%20sistema%20que%20escale%20mi%20negocio.";
-
+const whatsappUrl = "https://wa.me/573235619283?text=Hola%20Sebastian%2C%20vengo%20de%20tu%20web.%20Me%20interesa%20implementar%20tu%20infraestructura%20de%20conversi%C3%B3n.%20%C2%BFPodemos%20agendar%20una%20auditor%C3%ADa%20inicial%3F";
 interface PricingProps {
     setBg: (colors: { from: string; via: string; to: string }) => void;
 }
@@ -32,7 +31,7 @@ export default function Pricing({ setBg }: PricingProps) {
                 transition={{ duration: 0.8 }}
                 className="max-w-3xl"
             >
-                <span className="text-white/40 text-xs uppercase tracking-[0.3em] mb-8 block">
+                <span className="text-white/60 text-xs uppercase tracking-[0.3em] mb-8 block">
                     Inversión desde
                 </span>
                 
@@ -40,7 +39,7 @@ export default function Pricing({ setBg }: PricingProps) {
                     $1.199<span className="text-2xl md:text-4xl text-white/20 ml-2">USD</span>
                 </h2>
 
-                <p className="text-neutral-500 text-lg md:text-2xl font-light tracking-tight mb-16 max-w-xl mx-auto">
+                <p className="text-neutral-300 text-lg md:text-2xl font-light tracking-tight mb-16 max-w-xl mx-auto">
                     Tu infraestructura de conversión. <br className="hidden md:block" />
                     Sin cuotas mensuales. Propiedad absoluta.
                 </p>
@@ -56,7 +55,7 @@ export default function Pricing({ setBg }: PricingProps) {
                             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </span>
                     </a>
-                    <p className="text-white/20 text-[10px] uppercase tracking-[0.2em]">
+                    <p className="text-white/50 text-[10px] uppercase tracking-[0.2em]">
                         Solo 1 cupo disponible para {new Date().toLocaleString('es-ES', { month: 'long' })}
                     </p>
                 </div>

@@ -3,8 +3,7 @@ import { useEffect, useRef } from 'react';
 import { useInView } from 'framer-motion';
 import { ArrowRight } from "lucide-react";
 
-const whatsappUrl = "https://wa.me/573235619283?text=Hola%20Sebastian%2C%20vengo%20de%20tu%20sitio%20web.%20Tengo%20una%20idea%20de%20proyecto%20y%20me%20gustar%C3%ADa%20discutir%20c%C3%B3mo%20podemos%20construir%20un%20sistema%20que%20escale%20mi%20negocio.";
-
+const whatsappUrl = "https://wa.me/573235619283?text=Hola%20Sebastian%2C%20vengo%20de%20tu%20web.%20Me%20interesa%20implementar%20tu%20infraestructura%20de%20conversi%C3%B3n.%20%C2%BFPodemos%20agendar%20una%20auditor%C3%ADa%20inicial%3F";
 export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { amount: 0.5 });
@@ -25,7 +24,7 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
                 Conversion
             </span>
             <h1 className="text-white text-4xl md:text-7xl tracking-tight max-w-4xl font-medium leading-[0.9]">
-                Tu negocio es real. Tu infraestructura digital no.
+                Tu negocio es real. Tu conversion web no.
             </h1>
             <a
                 href={whatsappUrl}

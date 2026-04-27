@@ -75,7 +75,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                         <h1 className="text-9xl bg-clip-text text-transparent bg-gradient-to-b from-white via-white/50 to-transparent">404</h1>
                         <h3 className="text-xl md:text-2xl font-mono text-white tracking-tight mb-2">Not Found</h3>
                         <p className="text-white/60 text-[13px] md:text-sm leading-relaxed max-w-[180px] md:max-w-[200px]">
-                            No hay huella digital que respalde tu autoridad actual.
+                            No hay huella web que respalde tu autoridad actual.
                         </p>
                     </div>
 

@@ -30,10 +30,10 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
         <section ref={ref} className="min-h-screen flex flex-col md:flex-row items-center md:justify-between gap-7 px-6 pt-20 md:pt-0 md:px-12 max-w-7xl mx-auto">
             <div className='flex flex-col items-start'>
                 <span className="bg-white/5 rounded-full px-3 py-1 text-white/80 text-xs mb-4 shadow-inner shadow-white/20">
-                    Service
+                    Servicio
                 </span>
                 <h1 className="text-white text-2xl md:text-6xl tracking-tight max-w-xl font-medium leading-[1]">
-                    Desplegamos sistemas de conversión de alta velocidad para empresas que no pueden permitirse perder clientes.
+                    Desplegamos webs de conversión de alta velocidad para empresas que no pueden permitirse perder clientes.
                 </h1>
             </div>
 

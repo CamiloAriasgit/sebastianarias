@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+const whatsappUrl = "https://wa.me/573235619283?text=Hola%20Sebastian%2C%20vengo%20de%20tu%20web.%20Me%20interesa%20implementar%20tu%20infraestructura%20de%20conversi%C3%B3n.%20%C2%BFPodemos%20agendar%20una%20auditor%C3%ADa%20inicial%3F";
 
 export default function Navbar() {
   return (
@@ -10,7 +11,7 @@ export default function Navbar() {
         <div className="h-7 w-7 bg-white/0 rounded-full shadow-inner shadow-white/60">
         </div>
         <a
-          href="https://wa.me/573235619283"
+          href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="group relative p-[2px] transition-all duration-300 active:scale-95 bg-[#F6F8FB] rounded-full"
