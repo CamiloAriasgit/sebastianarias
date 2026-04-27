@@ -37,11 +37,11 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="w-full md:w-[500px] min-h-[500px] md:aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl p-2 bg-black/90"
+                className="w-full md:w-[500px] min-h-[350px] md:aspect-[1/1] relative rounded-2xl overflow-hidden shadow-2xl p-2 bg-black/90"
             >
                 <div
                     className="absolute top-2 bottom-2 left-2 right-2 mx-10 rounded-xl flex flex-col bg-white bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: "url('https://wallpapercave.com/wp/wp7130404.jpg')" }}
+                    style={{ backgroundImage: "url('https://static.tildacdn.pro/tild3739-3166-4235-b761-636238303962/background-whatsapp.jpg')" }}
                 >
                     <div className="bg-gray-800 h-3 w-full text-gray-800 rounded-t-xl flex justify-between pt-1">
                         <div className=" h-full flex items-center justify-start">
