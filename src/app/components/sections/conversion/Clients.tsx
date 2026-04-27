@@ -40,10 +40,10 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                 className="w-full md:w-[500px] min-h-[350px] md:aspect-[1/1] relative rounded-2xl overflow-hidden shadow-2xl p-2 bg-black/90"
             >
                 <div
-                    className="absolute top-2 bottom-2 left-2 right-2 mx-10 rounded-xl flex flex-col bg-white bg-cover bg-center bg-no-repeat"
+                    className="absolute top-2 bottom-2 left-2 right-2 mx-5 rounded-xl flex flex-col bg-white bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: "url('https://static.tildacdn.pro/tild3739-3166-4235-b761-636238303962/background-whatsapp.jpg')" }}
                 >
-                    <div className="bg-gray-800 h-3 w-full text-gray-800 rounded-t-xl flex justify-between pt-1">
+                    <div className="bg-white h-3 w-full text-gray-400 rounded-t-3xl flex justify-between px-2 pt-1">
                         <div className=" h-full flex items-center justify-start">
                             <h1 className='pl-2 text-[9px]'>9:41</h1>
                         </div>
@@ -52,26 +52,26 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                             <BatteryLow className="h-3 w-3" />
                         </div>
                     </div>
-                    <div className='bg-gray-800 w-full flex items-center justify-between px-1'>
+                    <div className='bg-white w-full flex items-center justify-between text-neutral-700 px-1'>
                         <div className='flex items-center'>
-                            <ArrowLeft className="h-3 w-3 text-white" />
+                            <ArrowLeft className="h-3 w-3" />
                             <img
                                 src="https://cdnhomecare.ca/wp-content/uploads/2023/01/Alex-Mihailidis_headshot-1-1.jpg"
                                 alt="Profile"
                                 className="h-5 w-5 rounded-full ml-2"
                             />
-                            <h1 className='text-neutral-200 pl-2 text-xs'>Alex</h1>
+                            <h1 className='pl-2 text-xs'>Alex</h1>
                         </div>
                         <div className="h-8 w-30 flex items-center justify-end gap-1">
-                            <Phone className="h-3 w-3 text-white" />
-                            <ChevronDown className="h-2 w-2 text-white" />
-                            <EllipsisVertical className="h-3 w-3 text-white" />
+                            <Phone className="h-3 w-3" />
+                            <ChevronDown className="h-2 w-2" />
+                            <EllipsisVertical className="h-3 w-3" />
                         </div>
 
                     </div>
                     <div className="h-7 w-full flex items-center justify-center">
-                        <div className="bg-gray-800 rounded-full py-[0.5px] px-[5px]">
-                            <h1 className="text-[11px] text-neutral-300">Hoy</h1>
+                        <div className="bg-white rounded-full py-[0.5px] px-[5px]">
+                            <h1 className="text-[11px] text-neutral-600">Hoy</h1>
 
                         </div>
 
