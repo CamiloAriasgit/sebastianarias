@@ -37,7 +37,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="w-full md:w-[500px] min-h-[350px] md:aspect-[1/1] relative rounded-2xl overflow-hidden shadow-2xl p-2 bg-black/90"
+                className="w-full md:w-[500px] min-h-[350px] md:aspect-[1/1] relative overflow-hidden p-2 border"
             >
                 <div
                     className="absolute top-2 bottom-2 left-2 right-2 mx-5 rounded-xl flex flex-col bg-white bg-cover bg-center bg-no-repeat"
@@ -58,7 +58,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                             <img
                                 src="https://cdnhomecare.ca/wp-content/uploads/2023/01/Alex-Mihailidis_headshot-1-1.jpg"
                                 alt="Profile"
-                                className="h-5 w-5 rounded-full ml-2"
+                                className="h-6 w-6 rounded-full ml-2"
                             />
                             <h1 className='pl-2 text-xs'>Alex</h1>
                         </div>
@@ -78,9 +78,9 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     </div>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 h-40 p-2  rounded-2xl flex items-end justify-center gap-1 md:gap-6 m-2 bg-blue-600">
-                    <div className='bg-white h-full rounded-3xl p-4 md:p-8 flex flex-1'>
-                        <h1>Lorem ipsum dolor sit amet, consectetur elit. Voluptate optio? Eos molestias optio eum ea ab corrupti ipsam?</h1>
+                <div className="absolute bg-white/10 backdrop-blur-md bottom-0 left-0 right-0 h-40 p-2 rounded-4xl flex items-end justify-center gap-1 md:gap-2 m-2">
+                    <div className='bg-white h-full rounded-3xl p-4 md:p-5 flex flex-1'>
+                        <h1>Hola, vengo de su web. Me interesó la propiedad en El Poblado y me gustaría agendar una visita. ¿Tienen disponibilidad hoy?</h1>
 
                     </div>
                     <div className='bg-emerald-400 rounded-full flex items-center shrink-0 justify-center h-10 w-10'>
