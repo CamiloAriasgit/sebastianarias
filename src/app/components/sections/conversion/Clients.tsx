@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
-import { Search as SearchIcon, AlertCircle } from "lucide-react";
+import { ArrowLeft, EllipsisVertical, ChevronDown, Phone } from "lucide-react";
 
 export default function Search({ setBg }: { setBg: (colors: any) => void }) {
     const ref = useRef(null);
@@ -32,32 +32,38 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                 </p>
             </div>
 
-            {/* Contenedor Optimizado */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                // Eliminamos el aspect fijo en móvil para que no se aplaste el contenido
-                className="w-full md:w-[500px] min-h-[500px] md:aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl border border-black/5"
+                className="w-full md:w-[500px] min-h-[500px] md:aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl p-2 bg-black/90"
             >
-                {/* Imagen Abstracta de Fondo 
-                <img
-                    src="https://static.vecteezy.com/system/resources/previews/011/592/403/large_2x/abstract-blue-papercut-wavy-pattern-design-decorative-artwork-overlapping-style-with-minimal-template-background-illustrator-vector.jpg"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    alt="Abstract background"
-                />*/}
+                <div className="absolute top-2 bottom-2 left-2 right-2 mx-10 rounded-xl flex flex-col bg-white">
+                    <div className="bg-amber-600 h-4 w-full rounded-t-xl">
 
-                {/* Overlay de la Interfaz con Padding Adaptativo */}
-                <div className="absolute inset-0 p-6 md:p-8 flex flex-col gap-5 md:gap-6 bg-black/10">
-
-
-                    {/* Card Central Glassmorphism - Ajuste de padding y escala */}
-                    <div className="flex-1 rounded-xl bg-white/5 backdrop-blur-md p-6 md:p-8 flex flex-col items-center justify-center text-center shadow-2xl">
-                        
-                        <h3 className="text-xl md:text-2xl font-medium text-white tracking-tight mb-2">Recurso Gráfico Faltante</h3>
-                        
                     </div>
+                    <div className='bg-[#273443] h-11 w-full flex items-center justify-between p-1'>
+                        <div className='flex items-center'>
+                            <ArrowLeft className="h-5 w-5 text-white" />
+                            <img
+                                src="https://cdnhomecare.ca/wp-content/uploads/2023/01/Alex-Mihailidis_headshot-1-1.jpg"
+                                alt="Profile"
+                                className="h-8 w-8 rounded-full ml-2"
+                            />
+                            <h1 className='text-neutral-200 pl-2'>Alex Mihailidis</h1>
+                        </div>
+                        <div className="h-8 w-30 flex items-center justify-end gap-1">
+                            <Phone className="h-5 w-5 text-white" />
+                            <ChevronDown className="h-3 w-3 text-white" />
+                            <EllipsisVertical className="h-5 w-5 text-white" />
+                        </div>
+
+                    </div>
+                </div>
+
+                <div className="absolute bottom-0 left-0 right-0 h-40 p-6 md:p-8 rounded-lg flex flex-col gap-5 md:gap-6 m-2 bg-gradient-to-b from-[#3a5b94] to-[#6b82a8]">
+
 
                 </div>
             </motion.div>
