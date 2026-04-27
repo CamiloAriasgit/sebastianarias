@@ -4,6 +4,34 @@ import { useInView } from 'framer-motion';
 import { ArrowRight } from "lucide-react";
 
 const whatsappUrl = "https://wa.me/573235619283?text=Hola%20Sebastian%2C%20vengo%20de%20tu%20web.%20Me%20interesa%20implementar%20tu%20infraestructura%20de%20conversi%C3%B3n.%20%C2%BFPodemos%20agendar%20una%20auditor%C3%ADa%20inicial%3F";
+
+function MetricPill({
+  value,
+  label,
+}: {
+  value: string;
+  label: string;
+}) {
+  return (
+    <div className="flex items-center gap-2 text-xs sm:text-sm">
+      <span className=" tabular-nums text-neutral-200">{value}</span>
+      <span className="text-neutral-300">{label}</span>
+    </div>
+  );
+}
+
+function HeroMetrics() {
+  return (
+    <div className="animate-hero-fade-up-delay-3 flex items-center gap-4 sm:gap-6 pt-10">
+      <MetricPill value="+2" label="years" />
+      <span className="h-3 w-px bg-white/10" />
+      <MetricPill value="99%" label="uptime" />
+      <span className="h-3 w-px bg-white/10" />
+      <MetricPill value="4.9" label="rating" />
+    </div>
+  );
+}
+
 export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { amount: 0.5 });
@@ -37,6 +65,7 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
                     <ArrowRight className="h-5 w-5" strokeWidth={2} />
                 </div>
             </a>
+            <HeroMetrics />
         </section>
     );
 }
