@@ -9,6 +9,7 @@ import Search from '../components/sections/conversion/Search';
 import Legitimacy from '../components/sections/conversion/Legitimacy';
 import Clients from '../components/sections/conversion/Clients';
 import FAQ from '../components/sections/conversion/FAQ';
+import Pricing from '../components/sections/conversion/Pricing';
 
 export default function ConversionPage() {
     const [currentBg, setCurrentBg] = useState({
@@ -52,6 +53,7 @@ export default function ConversionPage() {
             <div className="snap-start w-full"><Problem setBg={setCurrentBg} /></div>
             <div className="snap-start w-full"><Clients setBg={setCurrentBg}/></div>
             <div className="snap-start w-full"><FAQ setBg={setCurrentBg}/></div>
+            <div className="snap-start w-full"><Pricing setBg={setCurrentBg}/></div>
         </main>
     );
 }
