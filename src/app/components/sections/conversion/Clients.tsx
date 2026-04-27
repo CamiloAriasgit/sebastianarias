@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
-import { ArrowLeft, EllipsisVertical, ChevronDown, Phone, SignalHigh, BatteryLow } from "lucide-react";
+import { ArrowLeft, EllipsisVertical, ChevronDown, Phone, SignalHigh, BatteryLow, Send } from "lucide-react";
 
 export default function Search({ setBg }: { setBg: (colors: any) => void }) {
     const ref = useRef(null);
@@ -39,17 +39,17 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                 transition={{ duration: 0.8 }}
                 className="w-full md:w-[500px] min-h-[500px] md:aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl p-2 bg-black/90"
             >
-                <div 
-        className="absolute top-2 bottom-2 left-2 right-2 mx-10 rounded-xl flex flex-col bg-white bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('https://wallpapercave.com/wp/wp7130404.jpg')" }}
-    >
-                    <div className="bg-gray-800 h-3 w-full rounded-t-xl flex justify-between pt-1">
+                <div
+                    className="absolute top-2 bottom-2 left-2 right-2 mx-10 rounded-xl flex flex-col bg-white bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: "url('https://wallpapercave.com/wp/wp7130404.jpg')" }}
+                >
+                    <div className="bg-gray-800 h-3 w-full text-gray-800 rounded-t-xl flex justify-between pt-1">
                         <div className=" h-full flex items-center justify-start">
-                            <h1 className='text-neutral-200 pl-2 text-[9px]'>9:41</h1>
+                            <h1 className='pl-2 text-[9px]'>9:41</h1>
                         </div>
                         <div className="flex items-center justify-end h-full  gap-1 pr-2">
-                            <SignalHigh className="h-3 w-3 text-white" />
-                            <BatteryLow className="h-3 w-3 text-white" />
+                            <SignalHigh className="h-3 w-3" />
+                            <BatteryLow className="h-3 w-3" />
                         </div>
                     </div>
                     <div className='bg-gray-800 w-full flex items-center justify-between px-1'>
@@ -78,9 +78,14 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     </div>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 h-40 p-6 md:p-8 rounded-lg flex flex-col gap-5 md:gap-6 m-2 bg-gradient-to-b from-[#3a5b94] to-[#6b82a8]">
+                <div className="absolute bottom-0 left-0 right-0 h-40 p-2  rounded-2xl flex items-end justify-center gap-1 md:gap-6 m-2 bg-blue-600">
+                    <div className='bg-white h-full rounded-3xl p-4 md:p-8 w-80 flex '>
+                        <h1>Lorem ipsum dolor sit amet, consectetur elit. Voluptate optio? Eos molestias optio eum ea ab corrupti ipsam?</h1>
 
-
+                    </div>
+                    <div className='bg-emerald-400 rounded-full flex items-center justify-center h-10 w-10'>
+                        <Send className="h-5 w-5 text-white" />
+                    </div>
                 </div>
             </motion.div>
         </section>
