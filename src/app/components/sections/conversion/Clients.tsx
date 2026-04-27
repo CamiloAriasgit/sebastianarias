@@ -45,18 +45,18 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     </div>
                     <div className='bg-[#273443] h-11 w-full flex items-center justify-between p-1'>
                         <div className='flex items-center'>
-                            <ArrowLeft className="h-5 w-5 text-white" />
+                            <ArrowLeft className="h-3 w-3 text-white" />
                             <img
                                 src="https://cdnhomecare.ca/wp-content/uploads/2023/01/Alex-Mihailidis_headshot-1-1.jpg"
                                 alt="Profile"
-                                className="h-8 w-8 rounded-full ml-2"
+                                className="h-5 w-5 rounded-full ml-2"
                             />
-                            <h1 className='text-neutral-200 pl-2'>Alex Mihailidis</h1>
+                            <h1 className='text-neutral-200 pl-2 text-xs'>Alex</h1>
                         </div>
                         <div className="h-8 w-30 flex items-center justify-end gap-1">
-                            <Phone className="h-5 w-5 text-white" />
-                            <ChevronDown className="h-3 w-3 text-white" />
-                            <EllipsisVertical className="h-5 w-5 text-white" />
+                            <Phone className="h-3 w-3 text-white" />
+                            <ChevronDown className="h-2 w-2 text-white" />
+                            <EllipsisVertical className="h-3 w-3 text-white" />
                         </div>
 
                     </div>
