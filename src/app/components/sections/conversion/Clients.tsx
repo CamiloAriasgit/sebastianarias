@@ -85,7 +85,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
 
                 <div className="absolute bg-white/10 backdrop-blur-md bottom-0 left-0 right-0 h-40 p-2 rounded-4xl flex items-end justify-center gap-1 md:gap-2 m-2">
                     <div className='bg-white h-full rounded-3xl p-4 md:p-5 flex flex-1'>
-                        <h1>Hola, vengo de su web. Me interesó la propiedad en El Poblado y me gustaría agendar una visita. ¿Tienen disponibilidad hoy?</h1>
+                        <h1 className='text-neutral-700 leading-[1.3]'>Hola, vengo de su web. Me interesó la propiedad en El Poblado y me gustaría agendar una visita. ¿Tienen disponibilidad hoy?</h1>
 
                     </div>
                     <div className='bg-emerald-400 rounded-full flex items-center shrink-0 justify-center h-10 w-10'>
