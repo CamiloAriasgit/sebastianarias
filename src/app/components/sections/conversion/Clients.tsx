@@ -37,7 +37,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="w-full md:w-[500px] min-h-[350px] md:aspect-[1/1] relative overflow-hidden p-2 border"
+                className="w-full md:w-[500px] min-h-[350px] md:aspect-[1/1] relative overflow-hidden p-2"
             >
                 <div
                     className="absolute top-2 bottom-2 left-2 right-2 mx-5 rounded-xl flex flex-col bg-white bg-cover bg-center bg-no-repeat"
@@ -56,11 +56,11 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                         <div className='flex items-center'>
                             <ArrowLeft className="h-3 w-3" />
                             <img
-                                src="https://cdnhomecare.ca/wp-content/uploads/2023/01/Alex-Mihailidis_headshot-1-1.jpg"
+                                src="/images/conversion/HeadshotWp.png"
                                 alt="Profile"
                                 className="h-6 w-6 rounded-full ml-2"
                             />
-                            <h1 className='pl-2 text-xs'>Alex</h1>
+                            <h1 className='pl-2 text-xs'>Miguel Real Estate</h1>
                         </div>
                         <div className="h-8 w-30 flex items-center justify-end gap-1">
                             <Phone className="h-3 w-3" />
