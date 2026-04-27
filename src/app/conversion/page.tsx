@@ -8,6 +8,7 @@ import Service from "../components/sections/conversion/Service"
 import Search from '../components/sections/conversion/Search';
 import Legitimacy from '../components/sections/conversion/Legitimacy';
 import Clients from '../components/sections/conversion/Clients';
+import FAQ from '../components/sections/conversion/FAQ';
 
 export default function ConversionPage() {
     const [currentBg, setCurrentBg] = useState({
@@ -50,6 +51,7 @@ export default function ConversionPage() {
             <div className="snap-start w-full"><Legitimacy setBg={setCurrentBg} /></div>
             <div className="snap-start w-full"><Problem setBg={setCurrentBg} /></div>
             <div className="snap-start w-full"><Clients setBg={setCurrentBg}/></div>
+            <div className="snap-start w-full"><FAQ /></div>
         </main>
     );
 }

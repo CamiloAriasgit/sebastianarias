@@ -53,7 +53,6 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                         </div>
                     </div>
                     <div className='bg-white w-full flex items-center justify-between text-neutral-700 px-1'>
-                        {/* 1. Añadimos flex-1 y min-w-0 para que este div pueda encogerse si es necesario */}
                         <div className='flex items-center flex-1 min-w-0'>
                             <ArrowLeft className="h-3 w-3 shrink-0" />
                             <img
@@ -61,7 +60,6 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                                 alt="Profile"
                                 className="h-6 w-6 rounded-full ml-2 shrink-0"
                             />
-                            {/* 2. whitespace-nowrap evita los dos renglones y truncate pone "..." si no cabe */}
                             <h1 className='pl-2 text-xs font-medium truncate whitespace-nowrap'>
                                 Miguel Real Estate
                             </h1>
@@ -72,7 +70,6 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                             />
                         </div>
 
-                        {/* 3. Nos aseguramos de que los iconos no se encojan nunca */}
                         <div className="h-8 flex items-center justify-end gap-1 shrink-0 ml-2">
                             <Phone className="h-3 w-3" />
                             <ChevronDown className="h-2 w-2" />
