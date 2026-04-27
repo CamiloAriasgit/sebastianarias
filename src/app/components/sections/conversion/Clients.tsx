@@ -65,6 +65,11 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                             <h1 className='pl-2 text-xs font-medium truncate whitespace-nowrap'>
                                 Miguel Real Estate
                             </h1>
+                            <img
+                                src="https://img.freepik.com/premium-vector/blue-bold-instagram-verification-icon_525160-5705.jpg"
+                                alt="Verified Icon Blue"
+                                className="h-3 w-3 rounded-full ml-2 shrink-0"
+                            />
                         </div>
 
                         {/* 3. Nos aseguramos de que los iconos no se encojan nunca */}
