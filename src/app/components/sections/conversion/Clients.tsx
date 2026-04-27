@@ -53,21 +53,26 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                         </div>
                     </div>
                     <div className='bg-white w-full flex items-center justify-between text-neutral-700 px-1'>
-                        <div className='flex items-center'>
-                            <ArrowLeft className="h-3 w-3" />
+                        {/* 1. Añadimos flex-1 y min-w-0 para que este div pueda encogerse si es necesario */}
+                        <div className='flex items-center flex-1 min-w-0'>
+                            <ArrowLeft className="h-3 w-3 shrink-0" />
                             <img
                                 src="/images/conversion/HeadshotWp.png"
                                 alt="Profile"
-                                className="h-6 w-6 rounded-full ml-2"
+                                className="h-6 w-6 rounded-full ml-2 shrink-0"
                             />
-                            <h1 className='pl-2 text-xs'>Miguel Realtor</h1>
+                            {/* 2. whitespace-nowrap evita los dos renglones y truncate pone "..." si no cabe */}
+                            <h1 className='pl-2 text-xs font-medium truncate whitespace-nowrap'>
+                                Miguel Real Estate
+                            </h1>
                         </div>
-                        <div className="h-8 w-30 flex items-center justify-end gap-1">
+
+                        {/* 3. Nos aseguramos de que los iconos no se encojan nunca */}
+                        <div className="h-8 flex items-center justify-end gap-1 shrink-0 ml-2">
                             <Phone className="h-3 w-3" />
                             <ChevronDown className="h-2 w-2" />
                             <EllipsisVertical className="h-3 w-3" />
                         </div>
-
                     </div>
                     <div className="h-7 w-full flex items-center justify-center">
                         <div className="bg-white rounded-full py-[0.5px] px-[5px]">
