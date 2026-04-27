@@ -60,7 +60,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                                 alt="Profile"
                                 className="h-6 w-6 rounded-full ml-2"
                             />
-                            <h1 className='pl-2 text-xs'>Miguel Real Estate</h1>
+                            <h1 className='pl-2 text-xs'>Miguel Realtor</h1>
                         </div>
                         <div className="h-8 w-30 flex items-center justify-end gap-1">
                             <Phone className="h-3 w-3" />
