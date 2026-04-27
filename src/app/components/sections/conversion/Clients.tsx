@@ -79,11 +79,11 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 h-40 p-2  rounded-2xl flex items-end justify-center gap-1 md:gap-6 m-2 bg-blue-600">
-                    <div className='bg-white h-full rounded-3xl p-4 md:p-8 w-80 flex '>
+                    <div className='bg-white h-full rounded-3xl p-4 md:p-8 flex flex-1'>
                         <h1>Lorem ipsum dolor sit amet, consectetur elit. Voluptate optio? Eos molestias optio eum ea ab corrupti ipsam?</h1>
 
                     </div>
-                    <div className='bg-emerald-400 rounded-full flex items-center justify-center h-10 w-10'>
+                    <div className='bg-emerald-400 rounded-full flex items-center shrink-0 justify-center h-10 w-10'>
                         <Send className="h-5 w-5 text-white" />
                     </div>
                 </div>
