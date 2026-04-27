@@ -42,8 +42,8 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                /* Ajustamos el ancho en móvil (w-64) vs desktop (md:w-[400px]) */
-                className="w-64 md:w-[400px] aspect-[9/16] relative rounded-[2.5rem] md:rounded-[3rem] shadow-2xl border-[6px] md:border-[8px] border-black bg-zinc-900 overflow-visible"
+                /* Ajustamos el ancho en móvil (w-64) vs desktop (md:w-[400px]) w-64 md:w-[400px] aspect-[9/16] */
+                className="w-60 md:w-[350px] aspect-[8/16] relative rounded-[2.5rem] md:rounded-[3rem] shadow-2xl border-[6px] md:border-[8px] border-black bg-zinc-900 overflow-visible"
             >
                 {/* Pantalla interna */}
                 <div className="absolute inset-0 rounded-[2.2rem] md:rounded-[2.5rem] overflow-hidden bg-gradient-to-b from-zinc-800 via-black to-[#3a5b94]/80">
