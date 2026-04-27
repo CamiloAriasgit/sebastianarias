@@ -51,7 +51,7 @@ export default function ConversionPage() {
             <div className="snap-start w-full"><Legitimacy setBg={setCurrentBg} /></div>
             <div className="snap-start w-full"><Problem setBg={setCurrentBg} /></div>
             <div className="snap-start w-full"><Clients setBg={setCurrentBg}/></div>
-            <div className="snap-start w-full"><FAQ /></div>
+            <div className="snap-start w-full"><FAQ setBg={setCurrentBg}/></div>
         </main>
     );
 }
