@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { motion, AnimatePresence, useInView, Variants } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
 const faqs = [
@@ -28,45 +28,72 @@ interface FAQProps {
 
 export default function FAQ({ setBg }: FAQProps) {
     const [activeIdx, setActiveIdx] = useState<number | null>(null);
-
-    // 1. Configuración del observador de scroll
     const ref = useRef(null);
-    const isInView = useInView(ref, { amount: 0.4 }); // Se activa cuando el 40% es visible
+    const isInView = useInView(ref, { amount: 0.4 });
 
-    // 2. Colores de cierre (Negro profundo para autoridad)
     const colors = {
         from: "#080516",
         via: "#201f25",
         to: "#444540"
     };
 
-    // 3. Disparo del cambio de fondo al entrar en vista
     useEffect(() => {
         if (isInView) {
             setBg(colors);
         }
     }, [isInView, setBg]);
 
+    const containerVariants: Variants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const itemVariants: Variants = {
+        hidden: { opacity: 0, y: 15 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }
+        }
+    };
+
     return (
         <section
             ref={ref}
             className="min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-4xl mx-auto py-24"
         >
-            <div className="flex flex-col items-center text-center mb-16">
+            <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8 }}
+                className="flex flex-col items-center text-center mb-16"
+            >
                 <span className="bg-white/5 rounded-full px-3 py-1 text-white/80 text-xs mb-4 shadow-inner shadow-white/20">
                     Resolviendo dudas
                 </span>
                 <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-white leading-tight">
                     Consultas de Implementación
                 </h2>
-            </div>
+            </motion.div>
 
-            <div className="space-y-4">
+            <motion.div 
+                variants={containerVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                className="space-y-4"
+            >
                 {faqs.map((faq, idx) => {
                     const isOpen = activeIdx === idx;
                     return (
-                        <div
+                        <motion.div
                             key={idx}
+                            variants={itemVariants}
                             className="rounded-2xl border border-white/0 bg-white/5 backdrop-blur-md overflow-hidden transition-all duration-300 shadow-inner shadow-white/10"
                         >
                             <button
@@ -84,13 +111,13 @@ export default function FAQ({ setBg }: FAQProps) {
                                 </motion.div>
                             </button>
 
-                            <AnimatePresence>
+                            <AnimatePresence initial={false}>
                                 {isOpen && (
                                     <motion.div
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
-                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                        transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                                     >
                                         <div className="px-6 pb-6 text-neutral-300 font-light leading-relaxed text-base md:text-lg border-t border-white/5 pt-4">
                                             {faq.answer}
@@ -98,14 +125,19 @@ export default function FAQ({ setBg }: FAQProps) {
                                     </motion.div>
                                 )}
                             </AnimatePresence>
-                        </div>
+                        </motion.div>
                     );
                 })}
-            </div>
+            </motion.div>
 
-            <p className="mt-12 text-center text-white/40 text-sm italic">
+            <motion.p 
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : {}}
+                transition={{ delay: 1, duration: 1 }}
+                className="mt-12 text-center text-white/40 text-sm italic"
+            >
                 ¿Tienes una duda específica?<br />La resolvemos en la auditoría inicial.
-            </p>
+            </motion.p>
         </section>
     );
 }
