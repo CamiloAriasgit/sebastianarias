@@ -51,9 +51,12 @@ export default function Hero({ setBg }: { setBg: (colors: any) => void }) {
             <span className=" bg-white/5 rounded-full px-3 py-1 text-white/80 text-xs mb-4 shadow-inner shadow-white/20">
                 Conversion
             </span>
-            <h1 className="text-white text-4xl md:text-7xl tracking-tight max-w-4xl font-medium leading-[0.9]">
-                Tu negocio es real. Tu conversion web no.
+            <h1 className="text-white text-5xl md:text-7xl tracking-tight max-w-4xl font-medium leading-[0.9]">
+                Menos fricción.<br />Más cierres.
             </h1>
+            <p className="text-white/80 text-lg md:text-xl max-w-2xl font-light mx-auto pt-2">
+                Convertimos el interés en conversación instantánea
+            </p>
             <a
                 href={whatsappUrl}
                 target="_blank"
