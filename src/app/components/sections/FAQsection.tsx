@@ -43,7 +43,7 @@ export default function FAQSection() {
       <div className="mx-auto max-w-3xl">
 
         <div className="mb-7 flex flex-col items-center text-center sm:mb-10">
-          <span className='bg-gray-200/60 rounded-full px-4 py-1 mb-5 font-sans font-semibold text-neutral-900'>Para Negocios</span>
+          <span className='bg-gray-200/60 rounded-full px-4 py-1 mb-5 font-sans font-semibold text-neutral-900'>Resolviendo Dudas</span>
           <h2 className="font-sans text-4xl font-bold text-center tracking-tight text-neutral-900 sm:text-5xl leading-[0.9]">
             Preguntas antes <br /> de empezar
           </h2>
