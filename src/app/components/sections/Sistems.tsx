@@ -46,7 +46,7 @@ export default function ProcessSection() {
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
-        <section className="w-full bg-gray-200/60 px-6 py-24 sm:py-32">
+        <section className="w-full bg-gray-200 px-6 py-24 sm:py-32">
             <div className="mx-auto max-w-5xl">
 
                 <div className="flex flex-col items-center gap-8 sm:hidden">

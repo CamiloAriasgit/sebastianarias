@@ -9,7 +9,6 @@ export default function Footer() {
 
   const socialLinks = [
     { name: "LinkedIn", href: "https://www.linkedin.com/in/sebastian-arias-14646831a", icon: "/social/linkedin.png" },
-    { name: "Instagram", href: "https://www.instagram.com/sebastianariasbe?igsh=aHhwaWF4cnRnNjBm", icon: "/social/instagram.webp" },
     { name: "Facebook", href: "https://www.facebook.com/share/1KnkhR9p9R/", icon: "/social/facebook.png" },
   ];
 

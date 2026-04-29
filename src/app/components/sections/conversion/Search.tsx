@@ -63,7 +63,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     className="text-white text-2xl md:text-5xl tracking-tight max-w-xl font-medium leading-[1]"
                 >
                     Tu reputación offline es real. Pero para el mundo digital, eres un fantasma. <br />
-                    <span className='text-white/60'>Cada búsqueda que no termina en tu web es una venta que acaba en tu competencia.</span>
+                    <span className='text-white'>Cada búsqueda que no termina en tu web es una venta que acaba en tu competencia.</span>
                 </motion.h1>
             </motion.div>
 
