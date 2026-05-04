@@ -34,8 +34,6 @@ export default function ConversionPage() {
             />
             
             <Header />
-
-            <div className="fixed inset-0 -z-10 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
             <div className="snap-start w-full"><Hero setBg={setCurrentBg} /></div>
             <div className="snap-start w-full"><Service setBg={setCurrentBg} /></div>
             <div className="snap-start w-full"><Search setBg={setCurrentBg} /></div>
