@@ -20,15 +20,8 @@ export default function ConversionPage() {
     });
 
     return (
-        /**
-         * 1. h-screen y overflow-y-auto: Hacen que el main sea el contenedor de scroll.
-         * 2. snap-y snap-mandatory: Activan el efecto imán vertical.
-         * 3. scroll-smooth: Suaviza el movimiento.
-         */
         <main className="relative w-full h-screen overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth">
             
-            {/* Background Dinámico Fijo con Sangrado (Over-scan) */}
-            {/* Sigue siendo fixed, por lo que no se mueve con el snap de las secciones */}
             <motion.div
                 className="fixed -top-[10vh] left-0 -z-10 h-[120vh] w-full pointer-events-none"
                 animate={{
@@ -43,10 +36,6 @@ export default function ConversionPage() {
             <Header />
 
             <div className="fixed inset-0 -z-10 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-
-            {/* Envolvemos cada sección en un div con 'snap-start'. 
-                Esto le dice al navegador: "Detente exactamente aquí".
-            */}
             <div className="snap-start w-full"><Hero setBg={setCurrentBg} /></div>
             <div className="snap-start w-full"><Service setBg={setCurrentBg} /></div>
             <div className="snap-start w-full"><Search setBg={setCurrentBg} /></div>
