@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { useInView, motion, useScroll, useTransform, } from 'framer-motion';
 import { Variants } from 'framer-motion'; 
-import { ArrowRight } from "lucide-react";
+import Image from 'next/image'; // Importación necesaria
 
 export default function Introduction({ setBg }: { setBg: (colors: any) => void }) {
     const ref = useRef(null);
@@ -90,7 +90,6 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
                     </div>
                 </div>
 
-                {/* EL MENSAJE: Animación orgánica con física de muelle (Spring) */}
                 <motion.div 
                     initial={{ opacity: 0, y: -50, x: "-50%", scale: 0.9, filter: "blur(4px)" }}
                     animate={isInView 
@@ -98,18 +97,20 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
                         : { opacity: 0, y: -50, x: "-50%", scale: 0.9, filter: "blur(4px)" }
                     }
                     transition={{ 
-                        delay: 1.2, // Un poco más de delay para que el ojo ya esté en el teléfono
+                        delay: 1.2,
                         type: "spring",
                         stiffness: 260,
-                        damping: 20, // Controla el rebote (menor = más rebote)
+                        damping: 20,
                     }}
                     className="absolute top-1/2 left-1/2 w-80 md:w-120 p-3 md:p-4 bg-white rounded-xl md:rounded-2xl shadow-2xl shadow-black/50 ring-1 ring-black/5 z-10"
                 >
                     <div className="flex flex-col items-start gap-2 md:gap-3">
                         <div className="flex items-center gap-1">
-                            <img
-                                src="https://freepnglogo.com/images/all_img/1716574832whatsapp-icon-png.png"
+                            <Image
+                                src="/images/conversion/WhatsAppIcon.webp"
                                 alt="WhatsApp Icon"
+                                width={12}
+                                height={12}
                                 className="h-3 w-3"
                             />
                             <h1 className="text-[8px] font-medium text-neutral-600">WhatsApp</h1>
@@ -117,10 +118,12 @@ export default function Introduction({ setBg }: { setBg: (colors: any) => void }
                             <h1 className="text-[8px] font-medium text-neutral-600">ahora</h1>
                         </div>
                         <div className="flex gap-2">
-                            <img
-                                src="images/conversion/HeadshotProfile.png"
-                                className="w-8 h-8 rounded-full shadow ring-1 ring-black/10"
-                                alt="Headshot Sophia"
+                            <Image
+                                src="/images/conversion/HeadshotPic.webp"
+                                width={32}
+                                height={32}
+                                className="w-8 h-8 rounded-full shadow ring-1 ring-black/10 object-cover"
+                                alt="Sophia Profile"
                             />
                             <div className="flex flex-col gap-0.5 md:gap-1">
                                 <p className="text-[18px] md:text-xl font-bold text-neutral-900 leading-none">Sophia</p>

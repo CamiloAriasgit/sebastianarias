@@ -19,9 +19,7 @@ export default function Navbar({ mode = 'light' }: NavbarProps) {
 
         
 
-        <div className="flex flex-col justify-center text-sm font-sans font-bold leading-[0.9] pl-1">
-          <span>Sebastian</span>
-          <span>Arias</span>
+        <div className="h-10 w-10 rounded-full shadow-inner shadow-gray-500/50">
         </div>
 
         {/* CTA Evolucionado */}
@@ -30,24 +28,18 @@ export default function Navbar({ mode = 'light' }: NavbarProps) {
           target="_blank"
           rel="noopener noreferrer"
           className={`
-            group relative p-[2px] transition-all duration-300 active:scale-95
-            bg-[#F6F8FB] rounded-full
+            group relative
           `}
         >
           <div className={`
             relative flex items-center justify-center gap-2 rounded-full px-4 py-2 
-            text-sm font-bold tracking-tight transition-all
+            text-sm font-medium tracking-tight transition-all
             ${isDark
               ? "bg-neutral-950 text-white group-hover:bg-neutral-900"
-              : "bg-[#F6F8FB] text-neutral-900 group-hover:bg-white"
+              : "bg-neutral-900 text-neutral-100 group-hover:bg-neutral-800"
             }
           `}>
             <span>Empezar</span>
-            <Rocket
-              className={`h-4 w-4 transition-transform group-hover:rotate-12 ${isDark ? "text-indigo-400" : "text-indigo-500"
-                }`}
-              strokeWidth={2}
-            />
           </div>
         </a>
       </nav>

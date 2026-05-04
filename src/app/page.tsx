@@ -7,7 +7,7 @@ import Velocity from "./components/sections/Velocity";
 import ProcessSection from "./components/sections/ProcessSection";
 import FAQSection from "./components/sections/FAQsection";
 import FinalCTA from "./components/sections/FinalCTA";
-import Footer from "./components/sections/Footer";
+import Footer from "./components/ui/ConversionFooter";
 
 
 export default function Home() {
@@ -18,9 +18,9 @@ export default function Home() {
         <Hero />
         <Sistems/>
         <Solution/>
-        <SectionTecnica/>
+        {/*<SectionTecnica/>
         <Velocity/>
-        <ProcessSection/>
+        <ProcessSection/>*/}
         <FAQSection/>
         <FinalCTA/>
         <Footer/>
