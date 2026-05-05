@@ -80,27 +80,27 @@ export default function Metrics({ setBg }: { setBg: (colors: any) => void }) {
                     <div>
                         <h1>page_view</h1>
                         <div className='w-full h-3 bg-gray-100 rounded-full'>
-                            <div className='w-70 h-full bg-blue-500 rounded-full'></div>
+                            <div className='w-50 h-full bg-blue-500 rounded-full'></div>
                         </div>
                         <h1 className='pt-5'>user_engagement</h1>
                         <div className='w-full h-3 bg-gray-100 rounded-full'>
-                            <div className='w-50 h-full bg-blue-500 rounded-full'></div>
+                            <div className='w-35 h-full bg-blue-500 rounded-full'></div>
                         </div>
                         <h1 className='pt-5'>scroll</h1>
                         <div className='w-full h-3 bg-gray-100 rounded-full'>
-                            <div className='w-67 h-full bg-blue-500 rounded-full'></div>
+                            <div className='w-45 h-full bg-blue-500 rounded-full'></div>
                         </div>
                         <h1 className='pt-5'>clic_whatsapp</h1>
                         <div className='w-full h-3 bg-gray-100 rounded-full'>
-                            <div className='w-60 h-full bg-blue-500 rounded-full'></div>
+                            <div className='w-43 h-full bg-blue-500 rounded-full'></div>
                         </div>
                         <h1 className='pt-5 text-black/70'>user_engagement</h1>
                         <div className='w-full h-3 bg-gray-100/70 rounded-full'>
-                            <div className='w-50 h-full bg-blue-500/70 rounded-full'></div>
+                            <div className='w-30 h-full bg-blue-500/70 rounded-full'></div>
                         </div>
                         <h1 className='pt-5 text-black/50'>scroll</h1>
                         <div className='w-full h-3 bg-gray-100/50 rounded-full'>
-                            <div className='w-67 h-full bg-blue-500/50 rounded-full'></div>
+                            <div className='w-27 h-full bg-blue-500/50 rounded-full'></div>
                         </div>
                     </div>
                 </div>
