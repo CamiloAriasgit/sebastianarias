@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import { useInView, motion, Variants } from 'framer-motion';
-import { Search as SearchIcon } from "lucide-react";
 
 export default function Metrics({ setBg }: { setBg: (colors: any) => void }) {
     const ref = useRef(null);
@@ -18,7 +17,7 @@ export default function Metrics({ setBg }: { setBg: (colors: any) => void }) {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.2,
+                staggerChildren: 0.15, // Controla el tiempo entre cada barra
                 delayChildren: 0.1
             }
         }
@@ -31,10 +30,22 @@ export default function Metrics({ setBg }: { setBg: (colors: any) => void }) {
             y: 0,
             transition: {
                 duration: 0.8,
-                ease: [0.21, 0.47, 0.32, 0.98] as const
+                ease: [0.21, 0.47, 0.32, 0.98]
             }
         }
     };
+
+    // Nueva variante específica para el crecimiento de las barras
+    const barVariants = (targetWidth: string): Variants => ({
+        hidden: { width: "0%" },
+        visible: { 
+            width: targetWidth,
+            transition: {
+                duration: 1.2,
+                ease: [0.34, 1.56, 0.64, 1] // Efecto sutil de rebote (backOut)
+            }
+        }
+    });
 
     useEffect(() => {
         if (isInView) setBg(colors);
@@ -66,44 +77,46 @@ export default function Metrics({ setBg }: { setBg: (colors: any) => void }) {
                 animate={isInView ? "visible" : "hidden"}
                 className="w-full md:w-[500px] min-h-[500px] md:aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl p-2 bg-gray-200"
             >
-                {/* Iconos de herramientas */}
                 <div className='flex items-center -space-x-3 mb-2 px-2'>
                     <div className='rounded-full h-7 w-7 bg-neutral-100 border border-neutral-200 overflow-hidden flex items-center justify-center shadow-sm'>
-                        <img src="https://iconape.com/wp-content/png_logo_vector/google-tag-manager.png" alt="Edge" className="h-5 w-5" />
+                        <img src="https://iconape.com/wp-content/png_logo_vector/google-tag-manager.png" alt="GTM" className="h-5 w-5" />
                     </div>
                     <div className='rounded-full h-7 w-7 bg-neutral-100 border border-neutral-200 overflow-hidden flex items-center justify-center shadow-sm'>
-                        <img src="https://web-odyssey.com/wp-content/uploads/2024/09/google-analytics-icon.png" alt="Safari" className="h-5 w-5" />
+                        <img src="https://web-odyssey.com/wp-content/uploads/2024/09/google-analytics-icon.png" alt="GA4" className="h-5 w-5" />
                     </div>
                 </div>
 
-                <div className="absolute inset-0 p-6 md:p-8 rounded-lg flex flex-col gap-5 md:gap-6 mt-11 m-2 bg-gradient-to-b from-gray-200 to-blue-200">
+                <motion.div 
+                    variants={containerVariants} // Usamos el mismo stagger para las barras
+                    className="absolute inset-0 p-6 md:p-8 rounded-lg flex flex-col gap-5 md:gap-6 mt-11 m-2 bg-gradient-to-b from-gray-200 to-blue-200"
+                >
                     <div>
                         <h1>page_view</h1>
-                        <div className='w-full h-3 bg-gray-100 rounded-full'>
-                            <div className='w-50 h-full bg-blue-500 rounded-full'></div>
+                        <div className='w-full h-3 bg-gray-100 rounded-full overflow-hidden'>
+                            <motion.div variants={barVariants("50%")} className='h-full bg-blue-500 rounded-full'></motion.div>
                         </div>
                         <h1 className='pt-5'>user_engagement</h1>
-                        <div className='w-full h-3 bg-gray-100 rounded-full'>
-                            <div className='w-35 h-full bg-blue-500 rounded-full'></div>
+                        <div className='w-full h-3 bg-gray-100 rounded-full overflow-hidden'>
+                            <motion.div variants={barVariants("35%")} className='h-full bg-blue-500 rounded-full'></motion.div>
                         </div>
                         <h1 className='pt-5'>scroll</h1>
-                        <div className='w-full h-3 bg-gray-100 rounded-full'>
-                            <div className='w-45 h-full bg-blue-500 rounded-full'></div>
+                        <div className='w-full h-3 bg-gray-100 rounded-full overflow-hidden'>
+                            <motion.div variants={barVariants("45%")} className='h-full bg-blue-500 rounded-full'></motion.div>
                         </div>
                         <h1 className='pt-5'>clic_whatsapp</h1>
-                        <div className='w-full h-3 bg-gray-100 rounded-full'>
-                            <div className='w-43 h-full bg-blue-500 rounded-full'></div>
+                        <div className='w-full h-3 bg-gray-100 rounded-full overflow-hidden'>
+                            <motion.div variants={barVariants("43%")} className='h-full bg-blue-500 rounded-full'></motion.div>
                         </div>
                         <h1 className='pt-5 text-black/70'>sesion_start</h1>
-                        <div className='w-full h-3 bg-gray-100/70 rounded-full'>
-                            <div className='w-30 h-full bg-blue-500/70 rounded-full'></div>
+                        <div className='w-full h-3 bg-gray-100/70 rounded-full overflow-hidden'>
+                            <motion.div variants={barVariants("30%")} className='h-full bg-blue-500/70 rounded-full'></motion.div>
                         </div>
                         <h1 className='pt-5 text-black/50'>clic_store</h1>
-                        <div className='w-full h-3 bg-gray-100/50 rounded-full'>
-                            <div className='w-17 h-full bg-blue-500/50 rounded-full'></div>
+                        <div className='w-full h-3 bg-gray-100/50 rounded-full overflow-hidden'>
+                            <motion.div variants={barVariants("17%")} className='h-full bg-blue-500/50 rounded-full'></motion.div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </motion.div>
         </section>
     );
