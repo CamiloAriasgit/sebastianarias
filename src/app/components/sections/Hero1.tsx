@@ -8,7 +8,7 @@ import { Sparkles, Rocket } from "lucide-react";
 function StatusBadge() {
   return (
     <div className="animate-hero-fade-up bg-gray-100 flex items-center gap-2.5 rounded-full px-3.5 py-1.5 backdrop-blur-sm">
-      <span className="h-5 w-5 rounded-full shadow-inner shadow-white bg-indigo-100"></span>
+      <span className="h-5 w-5 rounded-full shadow-inner shadow-white bg-gradient-to-b from-indigo-100 via-indigo-200 to-indigo-300"></span>
       <span className="text-xs font-medium tracking-wide text-neutral-700">
         sebastianarias.com
       </span>

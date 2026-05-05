@@ -19,7 +19,7 @@ export default function Navbar({ mode = 'light' }: NavbarProps) {
 
         
 
-        <div className="h-10 w-10 rounded-full shadow-inner shadow-white">
+        <div className="h-10 w-10 rounded-full shadow-inner shadow-white ">
         </div>
 
         {/* CTA Evolucionado */}
