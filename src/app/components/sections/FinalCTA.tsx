@@ -24,12 +24,9 @@ export default function FinalCTA() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-[2px] bg-gradient-to-tr from-amber-500 via-indigo-500 to-red-600 rounded-full inline-block"
+              className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-white px-8 py-4 text-lg font-bold text-neutral-900 transition-all hover:bg-neutral-200 active:scale-95"
             >
-              <div className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-neutral-950 px-8 py-4 text-lg text-white transition-all hover:bg-neutral-900 active:scale-95">
-                <span>Iniciar proyecto</span>
-                <Rocket className="h-5 w-5" strokeWidth={2} />
-              </div>
+              <span>Empezar proyecto</span>
             </a>
 
             {/* BOTÓN 2: SER COLABORADOR (Interno) 
@@ -41,10 +38,6 @@ export default function FinalCTA() {
             </Link>*/}
 
           </div>
-
-          <p className="font-sans text-sm text-neutral-500">
-            Sin compromiso. Revisamos juntos qué solución encaja mejor.
-          </p>
         </motion.div>
       </div>
     </section>
