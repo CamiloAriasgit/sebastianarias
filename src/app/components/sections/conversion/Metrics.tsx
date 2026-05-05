@@ -94,13 +94,13 @@ export default function Metrics({ setBg }: { setBg: (colors: any) => void }) {
                         <div className='w-full h-3 bg-gray-100 rounded-full'>
                             <div className='w-43 h-full bg-blue-500 rounded-full'></div>
                         </div>
-                        <h1 className='pt-5 text-black/70'>user_engagement</h1>
+                        <h1 className='pt-5 text-black/70'>sesion_start</h1>
                         <div className='w-full h-3 bg-gray-100/70 rounded-full'>
                             <div className='w-30 h-full bg-blue-500/70 rounded-full'></div>
                         </div>
-                        <h1 className='pt-5 text-black/50'>scroll</h1>
+                        <h1 className='pt-5 text-black/50'>clic_store</h1>
                         <div className='w-full h-3 bg-gray-100/50 rounded-full'>
-                            <div className='w-27 h-full bg-blue-500/50 rounded-full'></div>
+                            <div className='w-17 h-full bg-blue-500/50 rounded-full'></div>
                         </div>
                     </div>
                 </div>
