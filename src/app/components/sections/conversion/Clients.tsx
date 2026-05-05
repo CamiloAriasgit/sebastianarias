@@ -59,7 +59,7 @@ export default function Search({ setBg }: { setBg: (colors: any) => void }) {
                     Elimina la duda.<br />
                     Acelera el cierre.
                 </motion.h1>
-                <motion.p variants={itemVariants} className="text-neutral-200 text-lg md:text-4xl tracking-tight max-w-xl font-light leading-[1.2] md:leading-[0.9]">
+                <motion.p variants={itemVariants} className="text-neutral-50 text-lg md:text-4xl tracking-tight max-w-xl font-light leading-[1.2] md:leading-[0.9]">
                     Convertimos el interés en conversación instantánea. Diseñamos puntos de contacto con mensajes predeterminados que eliminan la fricción del "primer saludo", permitiendo que tu cliente inicie la venta con un solo toque.
                 </motion.p>
             </motion.div>

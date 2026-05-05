@@ -10,6 +10,7 @@ import Legitimacy from '../components/sections/conversion/Legitimacy';
 import Clients from '../components/sections/conversion/Clients';
 import FAQ from '../components/sections/conversion/FAQ';
 import Pricing from '../components/sections/conversion/Pricing';
+import Metrics from '../components/sections/conversion/Metrics';
 import ConversionFooter from '../components/ui/ConversionFooter';
 
 export default function ConversionPage() {
@@ -40,6 +41,7 @@ export default function ConversionPage() {
             <div className="snap-start w-full"><Legitimacy setBg={setCurrentBg} /></div>
             <div className="snap-start w-full"><Problem setBg={setCurrentBg} /></div>
             <div className="snap-start w-full"><Clients setBg={setCurrentBg}/></div>
+            <div className="snap-start w-full"><Metrics setBg={setCurrentBg}/></div>
             <div className="snap-start w-full"><FAQ setBg={setCurrentBg}/></div>
             <div className="snap-start w-full"><Pricing setBg={setCurrentBg}/></div>
             <div className="snap-start w-full"><ConversionFooter /></div>
