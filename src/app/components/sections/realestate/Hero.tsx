@@ -6,33 +6,78 @@ import { Sparkles, Rocket, Wifi, Battery } from "lucide-react";
 
 function Mobile() {
   return (
-    // Usamos w-full para que ocupe el ancho del contenedor padre (que tiene el padding de la sección)
     <div className="w-full flex justify-center md:justify-end mb-8 md:mb-0">
-      {/* Eliminamos el w-[240px] y usamos w-full. 
-          Añadimos max-w-[320px] para que en desktop no pierda la proporción de celular */}
       <div className="relative w-full max-w-[320px] h-[400px] md:h-[500px] overflow-hidden">
-        
         <div className="w-full h-full bg-gradient-to-b from-neutral-700 via-transparent to-transparent rounded-[2rem] p-1">
-          
-          <div className="relative w-full h-full bg-gradient-to-b from-neutral-900 to-transparent rounded-[1.8rem] overflow-hidden">
+          <div className="relative w-full h-full bg-neutral-950 rounded-[1.8rem] overflow-hidden flex flex-col">
             
-            <div className="flex justify-between items-center px-6 pt-4">
-              <span className="text-[10px] font-bold text-neutral-400">9:41</span>
-              <div className="flex gap-1">
-                <div className="w-2 h-2 bg-neutral-300 rounded-full"></div>
-                <div className="w-2 h-2 bg-neutral-300 rounded-full"></div>
+            {/* Status Bar */}
+            <div className="flex justify-between items-center px-6 pt-5 pb-2">
+              <span className="text-[10px] font-bold text-neutral-500">9:41</span>
+              <div className="flex gap-1.5">
+                <div className="w-3 h-1.5 bg-neutral-700 rounded-full"></div>
+                <div className="w-1.5 h-1.5 bg-neutral-700 rounded-full"></div>
               </div>
             </div>
 
-            <div className="flex flex-col items-center justify-center h-full pb-20">
-               <div className="w-12 h-12 bg-neutral-500 rounded-2xl mb-4 animate-pulse"></div>
-               <div className="w-32 h-3 bg-neutral-500 rounded-full mb-2"></div>
-               <div className="w-24 h-2 bg-neutral-500 rounded-full"></div>
+            {/* Skeleton Interface */}
+            <div className="flex-1 px-4 py-2 flex flex-col gap-4">
+              {/* Header Skeleton */}
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-neutral-800 animate-pulse" />
+                <div className="space-y-2">
+                  <div className="w-20 h-2 bg-neutral-800 rounded-full" />
+                  <div className="w-12 h-1.5 bg-neutral-900 rounded-full" />
+                </div>
+              </div>
+
+              {/* Chart Grid Skeleton */}
+              <div className="p-3 border border-neutral-800 rounded-2xl bg-neutral-900/50">
+                <div className="flex items-end justify-between h-20 gap-1 px-2">
+                  {[40, 70, 45, 90, 65, 80, 30].map((height, i) => (
+                    <div 
+                      key={i} 
+                      className="w-full bg-blue-600/20 rounded-t-sm animate-pulse" 
+                      style={{ height: `${height}%`, animationDelay: `${i * 0.1}s` }}
+                    />
+                  ))}
+                </div>
+                <div className="mt-3 w-full h-2 bg-neutral-800 rounded-full" />
+              </div>
+
+              {/* Stats Cards */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="p-3 border border-neutral-800 rounded-2xl flex flex-col gap-2">
+                  <div className="w-4 h-4 rounded bg-blue-500/20" />
+                  <div className="w-full h-2 bg-neutral-800 rounded-full" />
+                </div>
+                <div className="p-3 border border-neutral-800 rounded-2xl flex flex-col gap-2">
+                  <div className="w-4 h-4 rounded bg-neutral-700" />
+                  <div className="w-full h-2 bg-neutral-800 rounded-full" />
+                </div>
+              </div>
+
+              {/* List Skeleton */}
+              <div className="space-y-3 pt-2">
+                {[1, 2, 3].map((item) => (
+                  <div key={item} className="flex justify-between items-center opacity-40">
+                    <div className="flex gap-2 items-center">
+                      <div className="w-6 h-6 rounded-lg bg-neutral-800" />
+                      <div className="w-16 h-1.5 bg-neutral-800 rounded-full" />
+                    </div>
+                    <div className="w-8 h-1.5 bg-neutral-900 rounded-full" />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Bottom Indicator */}
+            <div className="w-full flex justify-center pb-2">
+              <div className="w-16 h-1 bg-neutral-800 rounded-full" />
             </div>
 
           </div>
         </div>
-
       </div>
     </div>
   );
