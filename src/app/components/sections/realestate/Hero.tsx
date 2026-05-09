@@ -8,13 +8,13 @@ function Mobile() {
   return (
     <div className="w-full flex justify-center md:justify-end mb-8 md:mb-0">
       {/* Contenedor que corta el móvil a la mitad */}
-      <div className="relative border border-blue-500 h-[350px] md:h-[450px] w-[240px] md:w-[320px] overflow-hidden">
+      <div className="relative border-blue-50 h-[350px] md:h-[500px] w-[240px] md:w-[320px] overflow-hidden">
         
         {/* Cuerpo del Móvil */}
-        <div className="w-full aspect-[10/20] bg-gradient-to-b from-neutral-800 via-transparent to-transparent rounded-[2.5rem] p-2.5 shadow-2xl">
+        <div className="w-full aspect-[10/20] bg-gradient-to-b from-neutral-700 via-transparent to-transparent rounded-[2rem] p-1">
           
           {/* Pantalla Interna */}
-          <div className="relative w-full h-full bg-neutral-100 rounded-[1.8rem] overflow-hidden border border-neutral-200">
+          <div className="relative w-full h-full bg-gradient-to-b from-neutral-900 to-transparent rounded-[1.8rem] overflow-hidden">
             
             {/* Elementos decorativos internos simples */}
             <div className="flex justify-between items-center px-6 pt-4">
@@ -26,9 +26,9 @@ function Mobile() {
             </div>
 
             <div className="flex flex-col items-center justify-center h-full pb-20">
-               <div className="w-12 h-12 bg-neutral-800 rounded-2xl mb-4 animate-pulse"></div>
-               <div className="w-32 h-3 bg-neutral-800 rounded-full mb-2"></div>
-               <div className="w-24 h-2 bg-neutral-800 rounded-full"></div>
+               <div className="w-12 h-12 bg-neutral-500 rounded-2xl mb-4 animate-pulse"></div>
+               <div className="w-32 h-3 bg-neutral-500 rounded-full mb-2"></div>
+               <div className="w-24 h-2 bg-neutral-500 rounded-full"></div>
             </div>
 
           </div>
@@ -44,7 +44,7 @@ function Mobile() {
 function HeroHeading() {
   return (
     <div className="animate-hero-fade-up-delay-1 flex flex-col items-center md:items-start gap-4 sm:gap-6 w-full">
-      <h1 className="text-balance text-left text-4xl font-sans font-bold leading-[0.9] tracking-tight text-neutral-900 sm:text-6xl lg:text-7xl">
+      <h1 className="text-balance text-left text-4xl font-sans font-bold leading-[0.9] tracking-tight text-white sm:text-6xl lg:text-7xl">
         Sistemas web <br className="hidden sm:block" /> que escalan negocios.
       </h1>
     </div>
@@ -60,7 +60,7 @@ function HeroActions() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group w-full md:w-auto relative flex items-center justify-center overflow-hidden rounded-full bg-neutral-900 px-8 py-4 text-lg font-medium text-white hover:bg-neutral-800 transition-all active:scale-95"
+        className="group w-full md:w-auto relative flex items-center justify-center overflow-hidden rounded-full bg-blue-600 px-8 py-4 text-lg font-medium text-white hover:bg-neutral-800 transition-all active:scale-95"
       >
         <span>Empezar proyecto</span>
       </a>
@@ -70,7 +70,7 @@ function HeroActions() {
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] w-full flex-col-reverse md:flex-row items-center justify-start md:justify-center overflow-hidden bg-white px-6 md:px-20 lg:px-32 py-4 selection:bg-lime-400 selection:text-neutral-900">
+    <section className="relative flex min-h-[100svh] w-full flex-col-reverse md:flex-row items-center justify-start md:justify-center overflow-hidden bg-black px-6 md:px-20 lg:px-32 py-4 selection:bg-lime-400 selection:text-neutral-900">
       
       <div className="relative z-10 flex w-full flex-col items-center md:items-start gap-8 sm:gap-10">
         <HeroHeading />
