@@ -44,8 +44,8 @@ function Mobile() {
 function HeroHeading() {
   return (
     <div className="animate-hero-fade-up-delay-1 flex flex-col items-center md:items-start gap-4 sm:gap-6 w-full">
-      <h1 className="text-balance text-left text-4xl font-sans font-bold leading-[0.9] tracking-tight text-white sm:text-6xl lg:text-7xl">
-        Sistemas web <br className="hidden sm:block" /> que escalan negocios.
+      <h1 className="text-balance text-left text-4xl font-sans font-medium leading-[0.9] tracking-tight text-white sm:text-5xl lg:text-6xl">
+        Arquitectura digital para proyectos de élite.
       </h1>
     </div>
   );
