@@ -6,16 +6,16 @@ import { Sparkles, Rocket, Wifi, Battery } from "lucide-react";
 
 function Mobile() {
   return (
+    // Usamos w-full para que ocupe el ancho del contenedor padre (que tiene el padding de la sección)
     <div className="w-full flex justify-center md:justify-end mb-8 md:mb-0">
-      <div className="relative border-blue-50 h-[350px] md:h-[500px] w-[240px] md:w-[320px] overflow-hidden">
+      {/* Eliminamos el w-[240px] y usamos w-full. 
+          Añadimos max-w-[320px] para que en desktop no pierda la proporción de celular */}
+      <div className="relative w-full max-w-[320px] h-[400px] md:h-[500px] overflow-hidden">
         
-        {/* Cuerpo del Móvil */}
-        <div className="w-full aspect-[10/20] bg-gradient-to-b from-neutral-700 via-transparent to-transparent rounded-[2rem] p-1">
+        <div className="w-full h-full bg-gradient-to-b from-neutral-700 via-transparent to-transparent rounded-[2rem] p-1">
           
-          {/* Pantalla Interna */}
           <div className="relative w-full h-full bg-gradient-to-b from-neutral-900 to-transparent rounded-[1.8rem] overflow-hidden">
             
-            {/* Elementos decorativos internos simples */}
             <div className="flex justify-between items-center px-6 pt-4">
               <span className="text-[10px] font-bold text-neutral-400">9:41</span>
               <div className="flex gap-1">
@@ -33,8 +33,6 @@ function Mobile() {
           </div>
         </div>
 
-        {/* Gradiente transparente abajo (desapareciendo) 
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent to-70% z-10 pointer-events-none"></div>*/}
       </div>
     </div>
   );
