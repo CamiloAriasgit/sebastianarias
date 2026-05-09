@@ -7,8 +7,7 @@ import { Sparkles, Rocket, Wifi, Battery } from "lucide-react";
 function Mobile() {
   return (
     <div className="w-full flex justify-center md:justify-end mb-8 md:mb-0">
-      {/* Contenedor que corta el móvil a la mitad */}
-      <div className="relative border-blue-50 h-[350px] md:h-[500px] w-full md:w-[320px] overflow-hidden">
+      <div className="relative border-blue-50 h-[350px] md:h-[500px] w-[240px] md:w-[320px] overflow-hidden">
         
         {/* Cuerpo del Móvil */}
         <div className="w-full aspect-[10/20] bg-gradient-to-b from-neutral-700 via-transparent to-transparent rounded-[2rem] p-1">
