@@ -1,13 +1,13 @@
-import Hero from "./components/sections/Hero1";
+import Hero from "./components/sections/main/Hero1";
 import Header from "./components/ui/Header";
-import Sistems from "./components/sections/Sistems";
-import Solution from "./components/sections/Solution";
-import SectionTecnica from "./components/sections/SectionTecnica";
-import Velocity from "./components/sections/Velocity";
-import ProcessSection from "./components/sections/ProcessSection";
-import FAQSection from "./components/sections/FAQsection";
-import FinalCTA from "./components/sections/FinalCTA";
-import Footer from "./components/ui/ConversionFooter";
+import Sistems from "./components/sections/main/Sistems";
+import Solution from "./components/sections/main/Solution";
+import SectionTecnica from "./components/sections/main/SectionTecnica";
+import Velocity from "./components/sections/main/Velocity";
+import ProcessSection from "./components/sections/main/ProcessSection";
+import FAQSection from "./components/sections/main/FAQsection";
+import FinalCTA from "./components/sections/main/FinalCTA";
+import Footer from "./components/ui/conversion/ConversionFooter";
 
 
 export default function Home() {

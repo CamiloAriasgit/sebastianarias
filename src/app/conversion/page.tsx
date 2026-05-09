@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Header from "../components/ui/ConversionHeader";
+import Header from "../components/ui/conversion/ConversionHeader";
 import Hero from '../components/sections/conversion/Hero';
 import Problem from '../components/sections/conversion/ProblemMetrics';
 import Service from "../components/sections/conversion/Service"
@@ -11,7 +11,7 @@ import Clients from '../components/sections/conversion/Clients';
 import FAQ from '../components/sections/conversion/FAQ';
 import Pricing from '../components/sections/conversion/Pricing';
 import Metrics from '../components/sections/conversion/Metrics';
-import ConversionFooter from '../components/ui/ConversionFooter';
+import ConversionFooter from '../components/ui/conversion/ConversionFooter';
 
 export default function ConversionPage() {
     const [currentBg, setCurrentBg] = useState({
