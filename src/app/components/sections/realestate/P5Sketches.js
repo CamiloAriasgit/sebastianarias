@@ -5,14 +5,15 @@ const P5Sketches = () => {
     let t = 0;
 
     const setup = (p5, canvasParentRef) => {
-        p5.createCanvas(p5.windowWidth * 0.9, 350).parent(canvasParentRef);
+        // Canvas esbelto y Retina-ready
+        p5.createCanvas(p5.windowWidth * 0.9, 300).parent(canvasParentRef);
         p5.smooth();
     };
 
     const draw = (p5) => {
-        p5.background(0);
+        p5.background(0); // Onyx profundo
 
-        // 1. Grid Minimal (Fase A: Ingeniería)
+        // 1. Grid Minimal de Ingeniería (Base)
         p5.stroke(255, 12);
         p5.strokeWeight(0.5);
         for (let x = 0; x < p5.width; x += 60) p5.line(x, 0, x, p5.height);
@@ -20,53 +21,56 @@ const P5Sketches = () => {
 
         p5.translate(0, p5.height / 2);
 
-        // 2. Dibujamos las 3 ondas con sus etiquetas centradas
-        // Parametros: p5, tiempo, frecuencia, amplitud, etiqueta, opacidad
-        drawHarmonicWave(p5, t * 0.01, 0.006, 40, "page_view", 80);
-        drawHarmonicWave(p5, t * 0.02, 0.012, 60, "scroll_depth", 150);
-        drawHarmonicWave(p5, t * 0.03, 0.018, 90, "click_whatsapp", 255);
+        // 2. SISTEMA DE ONDAS PURAS (Sin ruido/vibración)
+        // Dibujamos las 3 líneas independientes y suaves.
+        
+        // --- ONDA 1: Page View (Lenta, anclada a la izquierda) ---
+        drawPureWave(p5, t * 0.01, 0.005, 40, "page_view", p5.width * 0.2, 80);
 
-        t += 0.8;
+        // --- ONDA 2: Scroll Depth (Media, anclada al centro) ---
+        drawPureWave(p5, t * 0.02, 0.01, 60, "scroll_depth", p5.width * 0.5, 150);
+
+        // --- ONDA 3: WhatsApp Click (Rápida, anclada a la derecha) ---
+        drawPureWave(p5, t * 0.03, 0.015, 80, "click_whatsapp", p5.width * 0.8, 255);
+
+        t += 1; // Velocidad de la animación
     };
 
-    const drawHarmonicWave = (p5, time, freq, amp, label, opacity) => {
+    // Función para dibujar una onda puramente matemática y su etiqueta
+    const drawPureWave = (p5, time, freq, amp, label, labelXOffset, opacity) => {
         p5.noFill();
         p5.stroke(255, opacity);
         p5.strokeWeight(1);
 
-        const centerX = p5.width / 2;
-        let centerY = 0;
+        let labelY = 0;
 
         p5.beginShape();
-        for (let x = 0; x < p5.width; x += 3) {
-            // Movimiento armonioso: Seno + Ruido de Perlin
-            let noiseVal = p5.noise(x * 0.005, time);
-            let y = p5.sin(x * freq + time) * (amp * noiseVal);
-            
+        for (let x = 0; x < p5.width; x += 2) {
+            // MATEMÁTICA PURA: Solo Seno, sin ruido. Esto elimina la vibración.
+            let y = p5.sin(x * freq + time) * amp;
             p5.vertex(x, y);
 
-            // Capturamos la posición exacta en el centro
-            if (x >= centerX && x < centerX + 4) {
-                centerY = y;
+            // Guardamos la altura de la onda en el punto de anclaje de la etiqueta
+            if (p5.abs(x - labelXOffset) < 1) {
+                labelY = y;
             }
         }
         p5.endShape();
 
-        // 3. ETIQUETAS CENTRADAS (Fase C: Conversión)
+        // 3. ETIQUETAS DE DATOS SEPARADAS (Phase C)
         p5.push();
-        p5.translate(centerX, centerY);
+        p5.translate(labelXOffset, labelY);
         
         // Punto de anclaje (Micro-data point)
         p5.fill(255, opacity);
         p5.noStroke();
-        p5.circle(0, 0, 4);
+        p5.circle(0, 0, 3);
 
-        // Texto técnico pegado al centro
+        // Texto técnico separado
         p5.textSize(8);
-        p5.textAlign(p5.CENTER);
+        p5.textAlign(p5.LEFT);
         p5.textStyle(p5.BOLD);
-        // Dibujamos el texto un poco arriba del punto para que no se pisen
-        p5.text(label.toUpperCase(), 0, -12); 
+        p5.text(label.toUpperCase(), 10, -10); // Un poco a la derecha y arriba del punto
         
         p5.pop();
     };
