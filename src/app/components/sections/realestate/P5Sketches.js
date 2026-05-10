@@ -2,40 +2,64 @@ import React from "react";
 import Sketch from "react-p5";
 
 const P5Sketches = () => {
-    let angle = 0;
+    let t = 0;
 
     const setup = (p5, canvasParentRef) => {
-        // Creamos el canvas con WEBGL para que sea 3D
-        p5.createCanvas(300, 350, p5.WEBGL).parent(canvasParentRef);
+        p5.createCanvas(500, 400).parent(canvasParentRef);
+        p5.smooth();
     };
 
-    // Ajustes específicos para que brille sin mockup
     const draw = (p5) => {
-        p5.background(0, 0);
-        p5.noFill();
+        p5.background(0); 
 
-        // Línea aún más fina para ese look "retina"
-        p5.strokeWeight(0.7);
-
-        p5.rotateY(angle);
-
-        for (let i = 0; i < 60; i++) { // Más líneas para más detalle
-            p5.push();
-
-            // Un degradado que se desvanece en los extremos
-            let alpha = p5.map(i, 0, 60, 200, 20);
-            p5.stroke(65, 105, 225, alpha);
-
-            // Torsión más orgánica
-            p5.rotateY(p5.sin(angle + i * 0.05) * 0.6);
-            p5.translate(0, i * 3 - 90, 0);
-
-            // Una forma que parece una estructura arquitectónica abstracta
-            p5.box(100 - i * 1.5, 1.5, 100 - i * 1.5);
-
-            p5.pop();
+        // 1. Cuadrícula técnica (Blueprint feel)
+        p5.stroke(255, 20); 
+        p5.strokeWeight(0.5);
+        for (let x = 0; x < p5.width; x += 30) {
+            p5.line(x, 0, x, p5.height);
         }
-        angle += 0.01; // Rotación casi imperceptible, muy elegante
+        for (let y = 0; y < p5.height; y += 30) {
+            p5.line(0, y, p5.width, y);
+        }
+
+        p5.translate(p5.width / 2, p5.height / 2);
+        
+        // 2. El Plano Arquitectónico
+        p5.stroke(255, 220); 
+        p5.noFill();
+        p5.strokeWeight(1.2);
+        p5.rectMode(p5.CENTER);
+
+        // Corregido: Variable sin espacio
+        let nExteriores = p5.noise(t * 0.01) * 15;
+        
+        // Dibujamos la estructura principal
+        p5.rect(0, 0, 260 + nExteriores, 160 + nExteriores, 2);
+
+        // Muros internos estáticos pero con estilo técnico
+        p5.strokeWeight(0.8);
+        p5.line(-130, 0, 0, 0);       // Muro horizontal medio
+        p5.line(40, -80, 40, 80);    // Muro vertical divisorio
+        p5.line(-40, -80, -40, -20); // Muro pequeño superior
+
+        // 3. Escaneo de Datos (Línea que recorre el plano)
+        let scannerY = p5.sin(t * 0.02) * 80;
+        p5.stroke(255, 100);
+        p5.strokeWeight(0.5);
+        p5.line(-130, scannerY, 130, scannerY);
+
+        // 4. Micro-coordenadas (Datos flotantes)
+        p5.fill(255, 150);
+        p5.noStroke();
+        p5.textSize(8);
+        for (let i = 0; i < 3; i++) {
+            let nx = p5.noise(i, t * 0.005) * 200 - 100;
+            let ny = p5.noise(i + 5, t * 0.005) * 160 - 80;
+            p5.text(`POS_ID: ${Math.abs(nx).toFixed(0)}`, nx, ny);
+            p5.rect(nx - 5, ny - 3, 2, 2); // Un pequeño "pixel" de sensor
+        }
+
+        t += 1;
     };
 
     return <Sketch setup={setup} draw={draw} />;

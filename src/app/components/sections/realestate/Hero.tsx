@@ -63,16 +63,16 @@ function HeroActions() {
 
 export default function Hero() {
     return (
-        <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-black px-6 py-0 selection:bg-blue-500 selection:text-white">
+        <section className="relative flex min-h-screen w-full flex-col md:flex-row-reverse md:px-30 items-center justify-end overflow-hidden bg-black px-6 selection:bg-blue-500 selection:text-white">
             
             {/* 1. Recurso Visual (El objeto de código) */}
-            <div className="relative z-10 w-full flex justify-center items-center mb-4 md:mb-8">
+            <div className="relative z-10 w-full flex justify-center items-center">
                 <div className="w-full max-w-[400px] h-[350px] flex justify-center items-center">
                     <P5Spire />
                 </div>
             </div>
 
-            <div className="relative z-10 flex w-full max-w-4xl flex-col items-center gap-8">
+            <div className="relative z-10 flex w-full max-w-4xl flex-col items-center gap-8 mb-5">
                 <HeroHeading />
                 <HeroActions />
             </div>            
