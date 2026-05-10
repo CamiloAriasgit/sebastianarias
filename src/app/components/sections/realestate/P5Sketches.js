@@ -5,65 +5,76 @@ const P5Sketches = () => {
     let t = 0;
 
     const setup = (p5, canvasParentRef) => {
-        // Un canvas más estilizado y esbelto
-        p5.createCanvas(window.innerWidth * 0.9, 300).parent(canvasParentRef);
+        // Ajuste dinámico al ancho del contenedor
+        p5.createCanvas(p5.windowWidth * 0.9, 350).parent(canvasParentRef);
         p5.smooth();
-        p5.noiseDetail(2, 0.2); // Ruido más suave para armonía máxima
     };
 
     const draw = (p5) => {
-        p5.background(0); // Onyx profundo
+        p5.background(0);
 
-        // 1. Grid Minimal de Ingeniería (Base)
-        p5.stroke(255, 10);
-        p5.strokeWeight(0.3);
+        // 1. Grid de fondo (Sutil y técnico)
+        p5.stroke(255, 15);
+        p5.strokeWeight(0.5);
         for (let x = 0; x < p5.width; x += 50) p5.line(x, 0, x, p5.height);
         for (let y = 0; y < p5.height; y += 50) p5.line(0, y, p5.width, y);
 
         p5.translate(0, p5.height / 2);
 
-        // 2. SISTEMA DE INTERFERENCIA ARMÓNICA (Las 3 Ondas)
+        // --- ONDA 1: PAGE_VIEW (La más lenta y constante) ---
+        drawVisualWave(p5, t * 0.01, 0.005, 30, "page_view", 100, 0.4);
+
+        // --- ONDA 2: SCROLL (Ritmo medio) ---
+        drawVisualWave(p5, t * 0.02, 0.01, 50, "scroll_depth", 250, 0.6);
+
+        // --- ONDA 3: CLICK_WHATSAPP (La más enérgica/Phase C) ---
+        drawVisualWave(p5, t * 0.03, 0.02, 70, "click_whatsapp", 400, 1.0);
+
+        t += 1;
+    };
+
+    // Función para dibujar cada onda con su etiqueta
+    const drawVisualWave = (p5, time, freq, amp, label, labelX, weight) => {
         p5.noFill();
-        p5.stroke(255, 180); // Blanco puro pero suave
-        p5.strokeWeight(1.2);
+        p5.stroke(255, 255 * (weight * 0.7)); // Diferente intensidad de blanco
+        p5.strokeWeight(weight);
 
         p5.beginShape();
-        for (let x = 0; x < p5.width; x += 2) {
-            // -- ONDA 1: Page View (Frecuencia Base Baja, Amplitud Suave) --
-            // Representa la entrada constante de tráfico.
-            let wave1 = p5.sin(x * 0.005 + t * 0.01) * 30;
+        let labelY = 0;
 
-            // -- ONDA 2: Scroll Depth (Frecuencia Media, Amplitud Variable) --
-            // Representa la profundidad de la navegación.
-            let wave2 = p5.sin(x * 0.01 + t * 0.02) * 50 * p5.noise(t * 0.005);
-
-            // -- ONDA 3: WhatsApp Click (Picos de Alta Frecuencia y Amplitud) --
-            // Solo ocurre en picos, representando la conversión.
-            let n = p5.noise(x * 0.05, t * 0.01);
-            let wave3 = n > 0.6 ? (n - 0.6) * -200 * p5.noise(t * 0.05) : 0;
-
-            // INTERFERENCIA: Sumamos las 3 ondas para crear la onda final compleja
-            let y = wave1 + wave2 + wave3;
-
+        for (let x = 0; x < p5.width; x += 5) {
+            // Combinación de Seno y Ruido para fluidez orgánica
+            let y = p5.sin(x * freq + time) * (amp * p5.noise(time * 0.5));
             p5.vertex(x, y);
 
-            // --- 3. DATOS DE CONVERSIÓN INTEGRADOS (Labels Técnicos) ---
-            // Solo dibujamos los labels técnicos en los picos de WhatsApp
-            if (wave3 < -100 && x % 100 === 0 && p5.frameCount % 2 === 0) {
-                p5.push();
-                p5.translate(x, y);
-                p5.fill(255, 220);
-                p5.noStroke();
-                p5.textSize(7);
-                p5.textAlign(p5.CENTER);
-                p5.text(`POS_ID: ${x}`, 0, 15);
-                p5.text(`LEAD: +${Math.abs(wave3).toFixed(0)}`, 0, 25);
-                p5.pop();
+            // Guardamos la altura de la onda en el punto donde queremos la etiqueta
+            if (p5.floor(x) === labelX) {
+                labelY = y;
             }
         }
         p5.endShape();
 
-        t += 1;
+        // Dibujar la etiqueta y el punto de anclaje
+        p5.push();
+        p5.translate(labelX, labelY);
+        
+        // Punto de datos
+        p5.fill(255);
+        p5.noStroke();
+        p5.circle(0, 0, 3);
+
+        // Línea conectora vertical sutil
+        p5.stroke(255, 50);
+        p5.line(0, 0, 10, -15);
+
+        // Texto de la etiqueta
+        p5.fill(255, 200);
+        p5.noStroke();
+        p5.textSize(9);
+        p5.textAlign(p5.LEFT);
+        p5.text(label.toUpperCase(), 15, -15);
+        
+        p5.pop();
     };
 
     return <Sketch setup={setup} draw={draw} />;
