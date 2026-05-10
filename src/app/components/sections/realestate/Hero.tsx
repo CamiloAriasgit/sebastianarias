@@ -47,7 +47,7 @@ function HeroActions() {
 
                 rel="noopener noreferrer"
 
-                className="group w-full md:w-auto relative flex items-center justify-center overflow-hidden rounded-full bg-blue-600 px-8 py-4 text-lg font-medium text-white hover:bg-neutral-800 transition-all active:scale-95"
+                className="group w-full md:w-auto relative flex items-center justify-center overflow-hidden rounded-full bg-blue-500 px-8 py-4 text-lg font-medium text-white hover:bg-neutral-800 transition-all active:scale-95"
 
             >
 
