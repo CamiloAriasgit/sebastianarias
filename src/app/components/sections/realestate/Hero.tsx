@@ -15,7 +15,7 @@ function HeroHeading() {
 
         <div className="animate-hero-fade-up-delay-1 flex flex-col items-center md:items-start gap-4 sm:gap-6 w-full">
 
-            <h1 className="text-balance text-left text-3xl font-sans font-medium leading-[1] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="text-balance text-left text-3xl font-sans font-medium leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
 
                 Desarrollo web para vender tu proyecto inmobiliario
             </h1>
