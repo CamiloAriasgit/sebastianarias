@@ -9,7 +9,7 @@ function Mobile() {
     return (
         <div className="w-full flex justify-center md:justify-end mb-8 md:mb-0">
             <div className="relative w-full max-w-[320px] h-[400px] md:h-[500px] overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-b from-neutral-700 via-transparent to-transparent rounded-[2rem] p-1">
+                <div className="w-full h-full bg-gradient-to-b from-neutral-700 via-transparent to-transparent rounded-[2rem] p-[0.1rem]">
                     <div className="relative w-full h-full bg-gradient-to-b from-neutral-950 via-neutral-950 to-transparent rounded-[1.8rem] overflow-hidden flex flex-col">
 
                         {/* Status Bar */}
@@ -105,7 +105,7 @@ function Mobile() {
 function HeroHeading() {
     return (
         <div className="animate-hero-fade-up-delay-1 flex flex-col items-center md:items-start gap-4 sm:gap-6 w-full">
-            <h1 className="text-balance text-left text-3xl font-sans font-medium leading-[0.9] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="text-balance text-center md:text-left text-3xl font-sans font-medium leading-[0.9] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Web de alto rendimiento para vender tu próximo proyecto
             </h1>
         </div>
