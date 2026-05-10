@@ -17,7 +17,7 @@ function HeroHeading() {
 
             <h1 className="text-balance text-left text-4xl font-sans font-medium leading-[0.9] tracking-tight text-white sm:text-5xl lg:text-6xl">
 
-                Webs de alto nivel para vender tu proyecto inmobiliario
+                Webs para vender proyectos inmobiliarios
 
             </h1>
 
