@@ -32,38 +32,47 @@ function Mobile() {
                                 </div>
                             </div>
 
-                            {/* Chart Grid Skeleton 
-                            <div className="p-3 border border-neutral-800 rounded-2xl bg-neutral-900/50">
-                                <div className="flex items-end justify-between h-20 gap-1 px-2">
-                                    {[40, 70, 45, 90, 65, 80, 30].map((height, i) => (
-                                        <div
-                                            key={i}
-                                            className="w-full bg-blue-600/20 rounded-t-sm animate-pulse"
-                                            style={{ height: `${height}%`, animationDelay: `${i * 0.1}s` }}
-                                        />
-                                    ))}
+                            <div className="relative rounded-2xl overflow-hidden group">
+                                <img
+                                    src="https://cabintrippers.com/wp-content/uploads/2021/12/Romantic-cabins-with-hot-tubs-in-Texas.webp"
+                                    alt="Real estate Airbnb project"
+                                    className="h-32 w-full object-cover rounded-2xl"
+                                />
+                                {/* Overlay Gradient */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-3">
+                                    <div className="flex justify-between items-end">
+                                        <div className="flex flex-col">
+                                            <span className="text-[8px] text-neutral-400 uppercase tracking-wider">Ubicación</span>
+                                            <span className="text-[10px] text-white font-medium">Austin, Texas</span>
+                                        </div>
+                                        <div className="flex flex-col text-right">
+                                            <span className="text-[8px] text-neutral-400 uppercase tracking-wider">Costo / Noche</span>
+                                            <span className="text-[10px] text-blue-400 font-bold">$240 USD</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="mt-3 w-full h-2 bg-neutral-800 rounded-full" />
-                            </div>*/}
-
-                            <div className="rounded-2xl bg-neutral-900/50">
-                                <img src="https://cabintrippers.com/wp-content/uploads/2021/12/Romantic-cabins-with-hot-tubs-in-Texas.webp" alt="Real estate project to invest" className="h-30 w-full object-cover rounded-2xl" />
                             </div>
 
                             {/* Stats Cards */}
                             <div className="grid grid-cols-2 gap-3">
-                                <div className="p-3 border border-neutral-800 rounded-xl flex flex-col gap-2">
-                                    <div className="w-4 h-4 rounded bg-blue-500/20" />
-                                    <div className="w-full h-2 bg-neutral-800 rounded-full" />
+                                <div className="p-2 bg-neutral-900/70 rounded-xl flex flex-col">
+                                    <h1 className="text-[10px] text-neutral-400 flex items-center gap-1">LTI</h1>
+                                    <div className="w-full h-8 flex justify-end pr-4">
+                                        <h1 className="text-neutral-400 font-bold text-2xl">0,4s</h1>
+                                    </div>
                                 </div>
-                                <div className="p-3 bg-neutral-950 rounded-xl items-end flex gap-2">
-                                    <div className="w-2 h-2 rounded bg-neutral-700" />
-                                    <div className="w-2 h-5 rounded bg-neutral-700" />
-                                    <div className="w-2 h-3 rounded bg-neutral-700" />
-                                    <div className="w-2 h-8 rounded bg-neutral-700" />
-                                    <div className="w-2 h-5 rounded bg-neutral-700" />
-                                    <div className="w-2 h-7 rounded bg-neutral-700" />
-                                    <div className="w-2 h-5 rounded bg-neutral-700" />
+                                <div className="p-2 bg-neutral-900/70 rounded-xl flex flex-col">
+                                    <h1 className="text-[10px] text-neutral-400 flex items-center gap-1"><span className="h-1 w-1 rounded-full bg-green-600 animate-pulse"></span>Trafic</h1>
+                                    <div className="flex gap-2 items-end">
+                                        <div className="w-2 h-2 rounded bg-neutral-700" />
+                                        <div className="w-2 h-5 rounded bg-neutral-700" />
+                                        <div className="w-2 h-3 rounded bg-neutral-700" />
+                                        <div className="w-2 h-8 rounded bg-neutral-700" />
+                                        <div className="w-2 h-5 rounded bg-neutral-700" />
+                                        <div className="w-2 h-7 rounded bg-neutral-700" />
+                                        <div className="w-2 h-5 rounded bg-neutral-700" />
+                                    </div>
+
                                 </div>
                             </div>
 
