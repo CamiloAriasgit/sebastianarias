@@ -7,8 +7,9 @@ import Image from "next/image";
 
 function Mobile() {
     return (
-        <div className="w-full flex justify-center md:justify-end mb-8 md:mb-0">
-            <div className="relative w-full max-w-[320px] h-[400px] md:h-[500px] overflow-hidden">
+        <div className="w-full flex justify-center md:justify-end mb-8 md:mb-0 md:mt">
+            {/* Aumentado max-w y h solo en md: para desktop */}
+            <div className="relative w-full max-w-[320px] md:max-w-[420px] h-[400px] md:h-[650px] overflow-hidden transition-all duration-500">
                 <div className="w-full h-full bg-gradient-to-b from-neutral-700 via-transparent to-transparent rounded-[2rem] p-[0.1rem]">
                     <div className="relative w-full h-full bg-gradient-to-b from-neutral-950 via-neutral-950 to-transparent rounded-[1.8rem] overflow-hidden flex flex-col">
 
@@ -27,7 +28,7 @@ function Mobile() {
                             <div className="flex items-center gap-3">
                                 <img src="/images/conversion/HeadshotWp.png" alt="Profile" className="h-10 w-10 rounded-full shrink-0" />
                                 <div className="-space-y-1">
-                                    <h1 className="font-normal text-neutral-300">John Doe</h1>
+                                    <h1 className="font-normal text-neutral-300 text-sm">John Doe</h1>
                                     <h2 className="text-[10px] text-neutral-500">Investor</h2>
                                 </div>
                             </div>
@@ -36,7 +37,7 @@ function Mobile() {
                                 <img
                                     src="https://cabintrippers.com/wp-content/uploads/2021/12/Romantic-cabins-with-hot-tubs-in-Texas.webp"
                                     alt="Real estate Airbnb project"
-                                    className="h-32 w-full object-cover rounded-2xl"
+                                    className="h-32 md:h-44 w-full object-cover rounded-2xl"
                                 />
                                 {/* Overlay Gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-3">
@@ -63,7 +64,7 @@ function Mobile() {
                                 </div>
                                 <div className="p-2 bg-neutral-900/70 rounded-xl flex flex-col">
                                     <h1 className="text-[10px] text-neutral-400 flex items-center gap-1"><span className="h-1 w-1 rounded-full bg-green-600 animate-pulse"></span>Trafic</h1>
-                                    <div className="flex gap-2 items-end">
+                                    <div className="flex gap-2 items-end justify-end">
                                         <div className="w-2 h-2 rounded bg-neutral-700" />
                                         <div className="w-2 h-5 rounded bg-neutral-700" />
                                         <div className="w-2 h-3 rounded bg-neutral-700" />
@@ -72,12 +73,11 @@ function Mobile() {
                                         <div className="w-2 h-7 rounded bg-neutral-700" />
                                         <div className="w-2 h-5 rounded bg-neutral-700" />
                                     </div>
-
                                 </div>
                             </div>
 
                             {/* List Skeleton */}
-                            <div className="space-y-3 pt-2">
+                            <div className="space-y-4 pt-2">
                                 {[1, 2, 3].map((item) => (
                                     <div key={item} className="flex justify-between items-center opacity-40">
                                         <div className="flex gap-2 items-center">
@@ -91,7 +91,7 @@ function Mobile() {
                         </div>
 
                         {/* Bottom Indicator */}
-                        <div className="w-full flex justify-center pb-2">
+                        <div className="w-full flex justify-center pb-2 mt-auto">
                             <div className="w-16 h-1 bg-neutral-800 rounded-full" />
                         </div>
 
@@ -104,9 +104,9 @@ function Mobile() {
 
 function HeroHeading() {
     return (
-        <div className="animate-hero-fade-up-delay-1 flex flex-col items-center md:items-start gap-4 sm:gap-6 w-full">
-            <h1 className="text-balance text-left text-2xl font-sans font-medium leading-[0.9] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Web de alto rendimiento para vender tu próximo proyecto
+        <div className="animate-hero-fade-up-delay-1 flex flex-col items-center md:items-start gap-4 sm:gap-6 w-full md:max-w-2xl">
+            <h1 className="text-balance text-left text-3xl font-sans font-medium leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Webs de alto nivel para vender tu proyecto
             </h1>
         </div>
     );
@@ -121,7 +121,7 @@ function HeroActions() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group w-full md:w-auto relative flex items-center justify-center overflow-hidden rounded-full bg-blue-600 px-8 py-4 text-lg font-medium text-white hover:bg-neutral-800 transition-all active:scale-95"
+                className="group w-full md:w-auto relative flex items-center justify-center overflow-hidden rounded-full bg-blue-600 px-8 py-4 text-lg font-medium text-white hover:bg-neutral-800 transition-all active:scale-95 shadow-lg shadow-blue-600/20"
             >
                 <span>Empezar proyecto</span>
             </a>
@@ -131,14 +131,14 @@ function HeroActions() {
 
 export default function Hero() {
     return (
-        <section className="relative flex min-h-[100svh] w-full flex-col-reverse md:flex-row items-center justify-start md:justify-center overflow-hidden bg-black px-6 md:px-20 lg:px-32 py-4 selection:bg-lime-400 selection:text-neutral-900">
+        <section className="relative flex min-h-[100svh] w-full flex-col-reverse md:flex-row items-center justify-start md:justify-center overflow-hidden bg-black px-6 md:px-16 lg:px-34 py-12 selection:bg-lime-400 selection:text-neutral-900">
 
-            <div className="relative z-10 flex w-full flex-col items-center md:items-start gap-8 sm:gap-10">
+            <div className="relative z-10 flex w-full flex-col items-center md:items-start gap-8 sm:gap-10 md:flex-1">
                 <HeroHeading />
                 <HeroActions />
             </div>
 
-            <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+            <div className="w-full md:flex-1 flex justify-center md:justify-end">
                 <Mobile />
             </div>
 
