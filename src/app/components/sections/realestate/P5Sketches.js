@@ -5,7 +5,6 @@ const P5Sketches = () => {
     let t = 0;
 
     const setup = (p5, canvasParentRef) => {
-        // Ajuste dinámico al ancho del contenedor
         p5.createCanvas(p5.windowWidth * 0.9, 350).parent(canvasParentRef);
         p5.smooth();
     };
@@ -13,66 +12,61 @@ const P5Sketches = () => {
     const draw = (p5) => {
         p5.background(0);
 
-        // 1. Grid de fondo (Sutil y técnico)
-        p5.stroke(255, 15);
+        // 1. Grid Minimal (Fase A: Ingeniería)
+        p5.stroke(255, 12);
         p5.strokeWeight(0.5);
-        for (let x = 0; x < p5.width; x += 50) p5.line(x, 0, x, p5.height);
-        for (let y = 0; y < p5.height; y += 50) p5.line(0, y, p5.width, y);
+        for (let x = 0; x < p5.width; x += 60) p5.line(x, 0, x, p5.height);
+        for (let y = 0; y < p5.height; y += 60) p5.line(0, y, p5.width, y);
 
         p5.translate(0, p5.height / 2);
 
-        // --- ONDA 1: PAGE_VIEW (La más lenta y constante) ---
-        drawVisualWave(p5, t * 0.01, 0.005, 30, "page_view", 100, 0.4);
+        // 2. Dibujamos las 3 ondas con sus etiquetas centradas
+        // Parametros: p5, tiempo, frecuencia, amplitud, etiqueta, opacidad
+        drawHarmonicWave(p5, t * 0.01, 0.006, 40, "page_view", 80);
+        drawHarmonicWave(p5, t * 0.02, 0.012, 60, "scroll_depth", 150);
+        drawHarmonicWave(p5, t * 0.03, 0.018, 90, "click_whatsapp", 255);
 
-        // --- ONDA 2: SCROLL (Ritmo medio) ---
-        drawVisualWave(p5, t * 0.02, 0.01, 50, "scroll_depth", 250, 0.6);
-
-        // --- ONDA 3: CLICK_WHATSAPP (La más enérgica/Phase C) ---
-        drawVisualWave(p5, t * 0.03, 0.02, 70, "click_whatsapp", 400, 1.0);
-
-        t += 1;
+        t += 0.8;
     };
 
-    // Función para dibujar cada onda con su etiqueta
-    const drawVisualWave = (p5, time, freq, amp, label, labelX, weight) => {
+    const drawHarmonicWave = (p5, time, freq, amp, label, opacity) => {
         p5.noFill();
-        p5.stroke(255, 255 * (weight * 0.7)); // Diferente intensidad de blanco
-        p5.strokeWeight(weight);
+        p5.stroke(255, opacity);
+        p5.strokeWeight(1);
+
+        const centerX = p5.width / 2;
+        let centerY = 0;
 
         p5.beginShape();
-        let labelY = 0;
-
-        for (let x = 0; x < p5.width; x += 5) {
-            // Combinación de Seno y Ruido para fluidez orgánica
-            let y = p5.sin(x * freq + time) * (amp * p5.noise(time * 0.5));
+        for (let x = 0; x < p5.width; x += 3) {
+            // Movimiento armonioso: Seno + Ruido de Perlin
+            let noiseVal = p5.noise(x * 0.005, time);
+            let y = p5.sin(x * freq + time) * (amp * noiseVal);
+            
             p5.vertex(x, y);
 
-            // Guardamos la altura de la onda en el punto donde queremos la etiqueta
-            if (p5.floor(x) === labelX) {
-                labelY = y;
+            // Capturamos la posición exacta en el centro
+            if (x >= centerX && x < centerX + 4) {
+                centerY = y;
             }
         }
         p5.endShape();
 
-        // Dibujar la etiqueta y el punto de anclaje
+        // 3. ETIQUETAS CENTRADAS (Fase C: Conversión)
         p5.push();
-        p5.translate(labelX, labelY);
+        p5.translate(centerX, centerY);
         
-        // Punto de datos
-        p5.fill(255);
+        // Punto de anclaje (Micro-data point)
+        p5.fill(255, opacity);
         p5.noStroke();
-        p5.circle(0, 0, 3);
+        p5.circle(0, 0, 4);
 
-        // Línea conectora vertical sutil
-        p5.stroke(255, 50);
-        p5.line(0, 0, 10, -15);
-
-        // Texto de la etiqueta
-        p5.fill(255, 200);
-        p5.noStroke();
-        p5.textSize(9);
-        p5.textAlign(p5.LEFT);
-        p5.text(label.toUpperCase(), 15, -15);
+        // Texto técnico pegado al centro
+        p5.textSize(8);
+        p5.textAlign(p5.CENTER);
+        p5.textStyle(p5.BOLD);
+        // Dibujamos el texto un poco arriba del punto para que no se pisen
+        p5.text(label.toUpperCase(), 0, -12); 
         
         p5.pop();
     };
