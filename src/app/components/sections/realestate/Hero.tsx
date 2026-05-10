@@ -103,30 +103,55 @@ function Mobile() {
 }
 
 function HeroHeading() {
+
     return (
-        <div className="animate-hero-fade-up-delay-1 flex flex-col items-center md:items-start gap-4 sm:gap-6 w-full md:max-w-2xl">
-            <h1 className="text-balance text-left text-3xl font-sans font-medium leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
+
+        <div className="animate-hero-fade-up-delay-1 flex flex-col items-center md:items-start gap-4 sm:gap-6 w-full">
+
+            <h1 className="text-balance text-left text-2xl font-sans font-medium leading-[0.9] tracking-tight text-white sm:text-5xl lg:text-6xl">
+
                 Webs de alto nivel para vender tu proyecto
+
             </h1>
+
         </div>
+
     );
+
 }
 
+
+
 function HeroActions() {
+
     const whatsappUrl = "https://wa.me/573235619283?text=Hola%20Sebastian%2C%20vengo%20de%20tu%20sitio%20web.%20Tengo%20una%20idea%20de%20proyecto%20y%20me%20gustar%C3%ADa%20discutir%20c%C3%B3mo%20podemos%20construir%20un%20sistema%20que%20escale%20mi%20negocio.";
 
+
+
     return (
+
         <div className="flex font-sans w-full justify-center md:justify-start">
+
             <a
+
                 href={whatsappUrl}
+
                 target="_blank"
+
                 rel="noopener noreferrer"
-                className="group w-full md:w-auto relative flex items-center justify-center overflow-hidden rounded-full bg-blue-600 px-8 py-4 text-lg font-medium text-white hover:bg-neutral-800 transition-all active:scale-95 shadow-lg shadow-blue-600/20"
+
+                className="group w-full md:w-auto relative flex items-center justify-center overflow-hidden rounded-full bg-blue-600 px-8 py-4 text-lg font-medium text-white hover:bg-neutral-800 transition-all active:scale-95"
+
             >
+
                 <span>Empezar proyecto</span>
+
             </a>
+
         </div>
+
     );
+
 }
 
 export default function Hero() {
