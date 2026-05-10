@@ -105,7 +105,7 @@ function Mobile() {
 function HeroHeading() {
     return (
         <div className="animate-hero-fade-up-delay-1 flex flex-col items-center md:items-start gap-4 sm:gap-6 w-full">
-            <h1 className="text-balance text-center md:text-left text-3xl font-sans font-medium leading-[0.9] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="text-balance text-left text-2xl font-sans font-medium leading-[0.9] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Web de alto rendimiento para vender tu próximo proyecto
             </h1>
         </div>
