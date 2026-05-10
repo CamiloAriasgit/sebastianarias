@@ -17,7 +17,7 @@ function HeroHeading() {
 
             <h1 className="text-balance text-left text-4xl font-sans font-medium leading-[0.9] tracking-tight text-white sm:text-5xl lg:text-6xl">
 
-                Webs de alto nivel para vender tu proyecto
+                Webs de alto nivel para vender tu proyecto inmobiliario
 
             </h1>
 
@@ -63,7 +63,7 @@ function HeroActions() {
 
 export default function Hero() {
     return (
-        <section className="relative flex min-h-screen w-full flex-col md:flex-row-reverse md:px-30 items-center justify-end overflow-hidden bg-black px-6 selection:bg-blue-500 selection:text-white">
+        <section className="relative flex min-h-[100svh] w-full flex-col md:flex-row-reverse md:px-30 items-center justify-end overflow-hidden bg-black px-6 selection:bg-blue-500 selection:text-white">
             
             {/* 1. Recurso Visual (El objeto de código) */}
             <div className="relative z-10 w-full flex justify-center items-center">
