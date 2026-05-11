@@ -55,7 +55,7 @@ export default function Introduction() {
                     variants={itemVariants}
                     className="text-white text-2xl md:text-6xl tracking-tight max-w-xl font-medium leading-[1.1]"
                 >
-                    Tu infraestructura debe trabajar para tu WhatsApp, no al revés.
+                    Tu infraestructura debe trabajar para tu <span className='bg-clip-text text-transparent bg-gradient-to-b from-white via-emerald-200 to-emerald-500'>WhatsApp</span>, no al revés.
                 </motion.h1>
             </motion.div>
 
@@ -89,7 +89,7 @@ export default function Introduction() {
                         stiffness: 260,
                         damping: 20,
                     }}
-                    className="absolute top-1/2 left-1/2 w-80 md:w-120 p-3 md:p-4 bg-neutral-800/50 backdrop-blur-md rounded-xl md:rounded-2xl shadow-2xl shadow-black/50 ring-1 ring-black/5 z-10"
+                    className="absolute top-1/2 left-1/2 w-80 md:w-120 p-3 md:p-4 bg-neutral-900 backdrop-blur-md rounded-xl md:rounded-2xl shadow-2xl shadow-black/50 ring-1 ring-black/5 z-10"
                 >
                         <div className="flex flex-col items-start gap-2 md:gap-3">
                             <div className="flex items-center gap-1">
