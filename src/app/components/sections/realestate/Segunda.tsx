@@ -55,7 +55,7 @@ export default function Introduction() {
                     variants={itemVariants}
                     className="text-white text-2xl md:text-6xl tracking-tight max-w-xl font-medium leading-[1.1]"
                 >
-                    Desplegamos webs de conversión de alta velocidad para proyectos que no pueden permitirse perder inversionistas.
+                    Aquí necesitamos un texto que pueda encajar perfectamente despues del hero.
                 </motion.h1>
             </motion.div>
 
@@ -89,7 +89,7 @@ export default function Introduction() {
                         stiffness: 260,
                         damping: 20,
                     }}
-                    className="absolute top-1/2 left-1/2 w-80 md:w-120 p-[1px] bg-gradient-to-br from-neutral-500 via-transparent to-neutral-600 rounded-xl md:rounded-2xl shadow-2xl shadow-black/50 ring-1 ring-black/5 z-10"
+                    className="absolute top-1/2 left-1/2 w-80 md:w-120 p-[1px] bg-gradient-to-br from-neutral-700 via-transparent to-neutral-700 rounded-xl md:rounded-2xl shadow-2xl shadow-black/50 ring-1 ring-black/5 z-10"
                 >
                     <div className='bg-neutral-900 p-3 md:p-4 flex rounded-xl'>
                         <div className="flex flex-col items-start gap-2 md:gap-3">
@@ -114,9 +114,9 @@ export default function Introduction() {
                                     alt="Sophia Profile"
                                 />
                                 <div className="flex flex-col gap-0.5 md:gap-1">
-                                    <p className="text-[18px] md:text-xl font-medium text-neutral-100 leading-none">Sophia</p>
+                                    <p className="text-[18px] md:text-xl font-medium text-neutral-100 leading-none">Nombre</p>
                                     <p className="text-[15px] md:text-lg text-neutral-400 leading-tight">
-                                        ¡Impresionante la web! No necesito más info, pásame el link de pago para empezar HOY MISMO.
+                                        ¡Holaaa! necesito un mensaje aquí para encajar oerfectamente ¿que se te ocurre? ayudame por favor.
                                     </p>
                                 </div>
                             </div>
