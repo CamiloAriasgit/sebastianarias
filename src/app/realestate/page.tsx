@@ -5,7 +5,7 @@ import Segunda from "../components/sections/realestate/Segunda";
 
 
 export default function Home() {
-  {/*return (
+    {/*return (
     <div className="">
       <main className="">
         <Header/>
@@ -15,13 +15,11 @@ export default function Home() {
     </div>
   );*/}
 
-  return (
+    return (
         <main className="relative w-full h-screen overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth">
-            
-          
+            <Header />
             <div className="snap-start w-full"><Hero /></div>
             <div className="snap-start w-full"><Segunda /></div>
-            
         </main>
     );
 }
