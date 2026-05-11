@@ -10,7 +10,7 @@ export default function Home() {
       <main className="">
         <Header/>
         <Hero />
-        <Segunda/>
+        <Segunda />
       </main>
     </div>
   );

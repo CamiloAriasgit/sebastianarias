@@ -4,7 +4,7 @@ import { useInView, motion, useScroll, useTransform, } from 'framer-motion';
 import { Variants } from 'framer-motion';
 import Image from 'next/image'; // Importación necesaria
 
-export default function Introduction({ setBg }: { setBg: (colors: any) => void }) {
+export default function Introduction() {
     const ref = useRef(null);
     const isInView = useInView(ref, { amount: 0.5 });
 
