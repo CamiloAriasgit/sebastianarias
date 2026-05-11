@@ -2,6 +2,7 @@ import Header from "../components/ui/conversion/ConversionHeader";
 import Footer from "../components/ui/conversion/ConversionHeader";
 import Hero from "../components/sections/realestate/Hero";
 import Segunda from "../components/sections/realestate/Segunda";
+import Tercera from "../components/sections/realestate/Tercera";
 
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
             <Header />
             <div className="snap-start w-full"><Hero /></div>
             <div className="snap-start w-full"><Segunda /></div>
+            <div className="snap-start w-full"><Tercera /></div>
         </main>
     );
 }
