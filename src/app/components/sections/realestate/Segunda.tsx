@@ -55,7 +55,7 @@ export default function Introduction() {
                     variants={itemVariants}
                     className="text-white text-2xl md:text-6xl tracking-tight max-w-xl font-medium leading-[1.1]"
                 >
-                    Aquí necesitamos un texto que pueda encajar perfectamente despues del hero.
+                    Tu infraestructura debe trabajar para tu WhatsApp, no al revés.
                 </motion.h1>
             </motion.div>
 
@@ -65,7 +65,7 @@ export default function Introduction() {
                 animate={isInView ? "visible" : "hidden"}
                 className="w-60 md:w-[350px] aspect-[8/16] relative rounded-[2.5rem] md:rounded-[3rem] shadow-2xl border-[6px] md:border-[8px] border-black bg-zinc-900 overflow-visible"
             >
-                <div className="absolute inset-0 rounded-[2.2rem] md:rounded-[2.5rem] overflow-hidden bg-gradient-to-b from-neutral-950 via-black to-neutral-950 shadow-inner shadow-white/10">
+                <div className="absolute inset-0 rounded-[2.2rem] md:rounded-[2.5rem] overflow-hidden bg-gradient-to-b from-neutral-950 via-black to-neutral-950 shadow-inner shadow-white/30">
                     <div className="absolute flex items-center justify-end top-2 left-1/2 -translate-x-1/2 w-16 md:w-20 h-3 md:h-4 bg-black rounded-full">
                         <div className="w-[4.5] h-[4.5] flex items-center justify-center bg-black rounded-full m-1 shadow-inner shadow-indigo-500/20">
                         </div>
@@ -89,9 +89,8 @@ export default function Introduction() {
                         stiffness: 260,
                         damping: 20,
                     }}
-                    className="absolute top-1/2 left-1/2 w-80 md:w-120 p-[1px] bg-gradient-to-br from-neutral-700 via-transparent to-neutral-700 rounded-xl md:rounded-2xl shadow-2xl shadow-black/50 ring-1 ring-black/5 z-10"
+                    className="absolute top-1/2 left-1/2 w-80 md:w-120 p-3 md:p-4 bg-neutral-800/50 backdrop-blur-md rounded-xl md:rounded-2xl shadow-2xl shadow-black/50 ring-1 ring-black/5 z-10"
                 >
-                    <div className='bg-neutral-900 p-3 md:p-4 flex rounded-xl'>
                         <div className="flex flex-col items-start gap-2 md:gap-3">
                             <div className="flex items-center gap-1">
                                 <Image
@@ -107,21 +106,20 @@ export default function Introduction() {
                             </div>
                             <div className="flex gap-2">
                                 <Image
-                                    src="/images/conversion/HeadshotPic.webp"
+                                    src="/images/conversion/HeadshotWp.png"
                                     width={32}
                                     height={32}
                                     className="w-8 h-8 rounded-full shadow ring-1 ring-black/10 object-cover"
                                     alt="Sophia Profile"
                                 />
                                 <div className="flex flex-col gap-0.5 md:gap-1">
-                                    <p className="text-[18px] md:text-xl font-medium text-neutral-100 leading-none">Nombre</p>
+                                    <p className="text-[18px] md:text-xl font-medium text-neutral-100 leading-none">Javier</p>
                                     <p className="text-[15px] md:text-lg text-neutral-400 leading-tight">
-                                        ¡Holaaa! necesito un mensaje aquí para encajar oerfectamente ¿que se te ocurre? ayudame por favor.
+                                        Hola, vi el proyecto en la web. Me interesa la unidad de 3 habitaciones. ¿Podemos agendar una visita mañana?
                                     </p>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </motion.div>
             </motion.div>
         </section>
