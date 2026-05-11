@@ -53,9 +53,9 @@ export default function Introduction() {
 
                 <motion.h1
                     variants={itemVariants}
-                    className="text-white text-2xl md:text-6xl tracking-tight max-w-xl font-medium leading-[1.1]"
+                    className="text-neutral-400 text-2xl md:text-6xl tracking-tight max-w-xl font-medium leading-[1.1]"
                 >
-                    Recibe a tus inversionistas directamente en WhatsApp.
+                    Recibe a tus inversionistas directamente en <span className='text-white'>WhatsApp</span>.
                 </motion.h1>
             </motion.div>
 
