@@ -65,7 +65,7 @@ export default function Introduction() {
                 animate={isInView ? "visible" : "hidden"}
                 className="w-60 md:w-[350px] aspect-[8/16] relative rounded-[2.5rem] md:rounded-[3rem] shadow-2xl border-[6px] md:border-[8px] border-black bg-zinc-900 overflow-visible"
             >
-                <div className="absolute inset-0 rounded-[2.2rem] md:rounded-[2.5rem] overflow-hidden bg-gradient-to-b from-neutral-950 via-black to-neutral-950">
+                <div className="absolute inset-0 rounded-[2.2rem] md:rounded-[2.5rem] overflow-hidden bg-gradient-to-b from-neutral-950 via-black to-neutral-950 shadow-inner shadow-white/10">
                     <div className="absolute flex items-center justify-end top-2 left-1/2 -translate-x-1/2 w-16 md:w-20 h-3 md:h-4 bg-black rounded-full">
                         <div className="w-[4.5] h-[4.5] flex items-center justify-center bg-black rounded-full m-1 shadow-inner shadow-indigo-500/20">
                         </div>
