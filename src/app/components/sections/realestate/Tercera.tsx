@@ -53,7 +53,7 @@ export default function Introduction() {
                     variants={itemVariants}
                     className="text-neutral-400 text-2xl md:text-6xl tracking-tight max-w-xl font-medium leading-[1.1]"
                 >
-                    Recibe a tus inversionistas directamente en <span className='text-white'>WhatsApp</span>.
+                    Aquí irá otro texto para mencionar el poder del <span className='text-white'>mensaje predeterminado</span>.
                 </motion.h1>
             </motion.div>
 
@@ -79,11 +79,11 @@ export default function Introduction() {
                     <div className='bg-neutral-800 w-full flex items-center justify-between text-neutral-200 px-1 py-1'>
                         <div className='flex items-center flex-1 min-w-0'>
                             <ArrowLeft className="h-3 w-3 shrink-0" />
-                            <img src="/images/conversion/HeadshotWp.png" alt="Profile" className="h-6 w-6 rounded-full ml-2 shrink-0" />
+                            <img src="/images/realestate/AgencyLogo.png" alt="Profile" className="h-6 w-6 rounded-full ml-2 shrink-0" />
                             <div className="flex flex-col">
                                 <div className="flex items-center">
                                     <h1 className='pl-2 text-xs truncate whitespace-nowrap'>
-                                        Miguel Real Estate
+                                        Terra Desarrollo
                                     </h1>
                                     <img src="https://static.vecteezy.com/system/resources/thumbnails/047/309/930/small_2x/verified-badge-profile-icon-png.png" alt="Verified" className="h-3 w-3 rounded-full ml-1 shrink-0" />
                                 </div>
@@ -136,9 +136,9 @@ export default function Introduction() {
                     className="absolute bg-white/10 backdrop-blur-md bottom-0 left-0 right-0 h-40 p-2 rounded-4xl flex items-end justify-center gap-1 md:gap-2 m-2"
                 >
                     <div className='bg-neutral-900 h-full flex items-center justify-center rounded-3xl p-4 md:p-5 flex flex-1'>
-                        <h1 className='text-neutral-400 leading-[1.3] text-sm md:text-lg'>Hola Miguel, vengo de su web. Me interesó la propiedad en El Poblado y me gustaría agendar una visita. ¿Tienen disponibilidad hoy?</h1>
+                        <h1 className='text-neutral-400 leading-[1.3] text-sm md:text-lg'>Hola, vengo de su web. Me interesó la propiedad en El Poblado y me gustaría agendar una visita. ¿Tienen disponibilidad hoy?</h1>
                     </div>
-                    <div className='bg-emerald-400 rounded-full flex items-center shrink-0 justify-center h-10 w-10 pt-1 pr-1'>
+                    <div className='bg-neutral-700 rounded-full flex items-center shrink-0 justify-center h-10 w-10 pt-1 pr-1'>
                         <img src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/send-white-icon.png" alt="Send Icon" className="h-6 w-6 shrink-0" />
                     </div>
                 </motion.div>
