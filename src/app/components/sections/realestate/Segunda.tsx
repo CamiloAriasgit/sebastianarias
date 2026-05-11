@@ -42,7 +42,7 @@ export default function Introduction() {
 
 
     return (
-        <section ref={ref} className="min-h-screen flex flex-col md:flex-row items-center md:justify-between gap-7 px-6 pt-20 md:pt-0 md:px-12 max-w-7xl mx-auto">
+        <section ref={ref} className="min-h-screen flex flex-col md:flex-row items-center justify-center md:justify-between gap-7 px-6 pt-20 md:pt-0 md:px-12 max-w-7xl mx-auto">
 
             <motion.div
                 variants={containerVariants}
