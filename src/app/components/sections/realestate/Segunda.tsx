@@ -89,34 +89,36 @@ export default function Introduction() {
                         stiffness: 260,
                         damping: 20,
                     }}
-                    className="absolute top-1/2 left-1/2 w-80 md:w-120 p-3 md:p-4 bg-white rounded-xl md:rounded-2xl shadow-2xl shadow-black/50 ring-1 ring-black/5 z-10"
+                    className="absolute top-1/2 left-1/2 w-80 md:w-120 p-[1px] bg-gradient-to-br from-neutral-500 via-transparent to-neutral-600 rounded-xl md:rounded-2xl shadow-2xl shadow-black/50 ring-1 ring-black/5 z-10"
                 >
-                    <div className="flex flex-col items-start gap-2 md:gap-3">
-                        <div className="flex items-center gap-1">
-                            <Image
-                                src="/images/conversion/WhatsAppIcon.webp"
-                                alt="WhatsApp Icon"
-                                width={12}
-                                height={12}
-                                className="h-3 w-3"
-                            />
-                            <h1 className="text-[8px] font-medium text-neutral-600">WhatsApp</h1>
-                            <span className="h-[2.5px] w-[2.5px] rounded-full bg-neutral-600"></span>
-                            <h1 className="text-[8px] font-medium text-neutral-600">ahora</h1>
-                        </div>
-                        <div className="flex gap-2">
-                            <Image
-                                src="/images/conversion/HeadshotPic.webp"
-                                width={32}
-                                height={32}
-                                className="w-8 h-8 rounded-full shadow ring-1 ring-black/10 object-cover"
-                                alt="Sophia Profile"
-                            />
-                            <div className="flex flex-col gap-0.5 md:gap-1">
-                                <p className="text-[18px] md:text-xl font-bold text-neutral-900 leading-none">Sophia</p>
-                                <p className="text-[15px] md:text-lg text-gray-600 leading-tight">
-                                    ¡Impresionante la web! No necesito más info, pásame el link de pago para empezar HOY MISMO.
-                                </p>
+                    <div className='bg-neutral-900 p-3 md:p-4 flex rounded-xl'>
+                        <div className="flex flex-col items-start gap-2 md:gap-3">
+                            <div className="flex items-center gap-1">
+                                <Image
+                                    src="/images/conversion/WhatsAppIcon.webp"
+                                    alt="WhatsApp Icon"
+                                    width={12}
+                                    height={12}
+                                    className="h-3 w-3"
+                                />
+                                <h1 className="text-[8px] text-neutral-200">WhatsApp</h1>
+                                <span className="h-[2.5px] w-[2.5px] rounded-full bg-neutral-200"></span>
+                                <h1 className="text-[8px] text-neutral-200">ahora</h1>
+                            </div>
+                            <div className="flex gap-2">
+                                <Image
+                                    src="/images/conversion/HeadshotPic.webp"
+                                    width={32}
+                                    height={32}
+                                    className="w-8 h-8 rounded-full shadow ring-1 ring-black/10 object-cover"
+                                    alt="Sophia Profile"
+                                />
+                                <div className="flex flex-col gap-0.5 md:gap-1">
+                                    <p className="text-[18px] md:text-xl font-medium text-neutral-100 leading-none">Sophia</p>
+                                    <p className="text-[15px] md:text-lg text-neutral-400 leading-tight">
+                                        ¡Impresionante la web! No necesito más info, pásame el link de pago para empezar HOY MISMO.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
