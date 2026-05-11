@@ -3,7 +3,6 @@
 import React from "react";
 import dynamic from 'next/dynamic';
 
-// Cargamos el objeto de código de forma dinámica para evitar errores de SSR
 const P5Spire = dynamic(() => import('../realestate/P5Sketches'), {
     ssr: false,
     loading: () => <div className="h-[350px] w-full animate-pulse bg-neutral-900/20 rounded-full" />
@@ -12,7 +11,7 @@ const P5Spire = dynamic(() => import('../realestate/P5Sketches'), {
 function HeroHeading() {
     return (
         <div className="animate-hero-fade-up-delay-1 flex flex-col items-start md:items-start gap-4 sm:gap-6 w-full -space-y-2">
-            <h1 className="text-start bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-yellow-500 to-purple-400 font-medium">Convierte clicks en clientes</h1>
+            <h1 className="text-start bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-yellow-300 to-purple-400 font-medium">Convierte clicks en clientes</h1>
             <h1 className="text-balance text-left text-3xl font-sans font-medium leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
                 Desarrollo web para vender tu proyecto inmobiliario
             </h1>
@@ -50,9 +49,7 @@ export default function Hero() {
     return (
         <section className="relative flex min-h-[100svh] w-full flex-col md:flex-row-reverse md:px-30 items-center justify-end overflow-hidden bg-black px-6 selection:bg-blue-500 selection:text-white">
 
-            {/* 1. Recurso Visual - Ajustado para crecer en desktop */}
             <div className="relative z-10 w-full flex justify-center items-center">
-                {/* Eliminamos el max-w-400 y dejamos que P5 controle el tamaño */}
                 <div className="w-full h-[350px] md:h-[500px] flex justify-center items-center">
                     <P5Spire />
                 </div>

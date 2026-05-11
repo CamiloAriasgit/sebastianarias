@@ -1,6 +1,8 @@
-import Hero from "../components/sections/realestate/Hero";
 import Header from "../components/ui/conversion/ConversionHeader";
 import Footer from "../components/ui/conversion/ConversionHeader";
+import Hero from "../components/sections/realestate/Hero";
+import Segunda from "../components/sections/realestate/Segunda";
+
 
 export default function Home() {
   return (
@@ -8,6 +10,7 @@ export default function Home() {
       <main className="">
         <Header/>
         <Hero />
+        <Segunda/>
       </main>
     </div>
   );
