@@ -55,7 +55,7 @@ export default function Introduction() {
                     variants={itemVariants}
                     className="text-white text-2xl md:text-6xl tracking-tight max-w-xl font-medium leading-[1.1]"
                 >
-                    Tu infraestructura debe trabajar para tu <span className='bg-clip-text text-transparent bg-gradient-to-b from-white via-emerald-200 to-emerald-500'>WhatsApp</span>, no al revés.
+                    Recibe a tus inversionistas directamente en <span className='bg-clip-text text-transparent bg-gradient-to-b from-white via-emerald-200 to-emerald-500'>WhatsApp</span>.
                 </motion.h1>
             </motion.div>
 
