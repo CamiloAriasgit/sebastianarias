@@ -133,7 +133,7 @@ export default function Introduction() {
                     initial={{ opacity: 0, y: 50 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.6, type: "spring", stiffness: 100, damping: 15 }}
-                    className="absolute bg-white/10 backdrop-blur-md bottom-0 left-0 right-0 h-40 p-2 rounded-4xl flex items-end justify-center gap-1 md:gap-2 m-2"
+                    className="absolute bg-white/10 backdrop-blur-xs bottom-0 left-0 right-0 h-40 p-2 rounded-4xl flex items-end justify-center gap-1 md:gap-2 m-2"
                 >
                     <div className='bg-neutral-900 h-full flex items-center justify-center rounded-3xl p-4 md:p-5 flex flex-1'>
                         <h1 className='text-neutral-400 leading-[1.3] text-sm md:text-lg'>Hola, vengo de su web. Me interesó la propiedad en El Poblado y me gustaría agendar una visita. ¿Tienen disponibilidad hoy?</h1>
