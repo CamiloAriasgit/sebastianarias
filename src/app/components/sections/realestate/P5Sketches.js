@@ -20,16 +20,9 @@ const P5Sketches = () => {
 
         p5.translate(0, p5.height / 2);
 
-        // 2. ONDAS PURAS SENOIDALES (Sin vibración/ruido)
-        // Ajustamos labelXOffset para que estén "un poquitico más juntos"
-        
-        // Onda 1: page_view (35% del ancho)
+        // 2. ONDAS PURAS SENOIDALES
         drawPureWave(p5, t * 0.01, 0.005, 40, "page_view", p5.width * 0.35, 80);
-
-        // Onda 2: scroll_depth (50% del ancho - Centro)
         drawPureWave(p5, t * 0.02, 0.01, 60, "scroll_depth", p5.width * 0.50, 150);
-
-        // Onda 3: click_whatsapp (65% del ancho)
         drawPureWave(p5, t * 0.03, 0.015, 80, "click_whatsapp", p5.width * 0.65, 255);
 
         t += 1;
@@ -37,24 +30,27 @@ const P5Sketches = () => {
 
     const drawPureWave = (p5, time, freq, amp, label, labelXOffset, opacity) => {
         p5.noFill();
-        p5.stroke(255, opacity);
         p5.strokeWeight(1);
 
         let labelY = 0;
 
-        p5.beginShape();
+        // Dibujamos punto por punto para aplicar el degradado en los extremos
         for (let x = 0; x < p5.width; x += 2) {
             let y = p5.sin(x * freq + time) * amp;
-            p5.vertex(x, y);
+            
+            // CÁLCULO DEL DEGRADADO:
+            // La opacidad cae a 0 cuando x se acerca a 0 o al ancho total (p5.width)
+            let edgeFade = p5.sin(p5.map(x, 0, p5.width, 0, p5.PI)); 
+            p5.stroke(255, opacity * edgeFade);
+            
+            p5.point(x, y);
 
-            // Captura de altura para la etiqueta
             if (p5.abs(x - labelXOffset) < 1.5) {
                 labelY = y;
             }
         }
-        p5.endShape();
 
-        // 3. ETIQUETAS TÉCNICAS (Agrupación centralizada)
+        // 3. ETIQUETAS TÉCNICAS
         p5.push();
         p5.translate(labelXOffset, labelY);
         
@@ -65,7 +61,6 @@ const P5Sketches = () => {
         p5.textSize(8);
         p5.textAlign(p5.LEFT);
         p5.textStyle(p5.BOLD);
-        // Desplazamos ligeramente el texto para que no toque el punto
         p5.text(label.toUpperCase(), 8, -8); 
         
         p5.pop();
