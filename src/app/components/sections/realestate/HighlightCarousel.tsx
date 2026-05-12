@@ -6,7 +6,7 @@ const HIGHLIGHTS = [
   {
     id: 1,
     title: "Arquitectura de datos propietaria. Medimos lo que otros ignoran.",
-    imageUrl: "URL_AQUÍ", // Formato sugerido 4:6
+    imageUrl: "URL_AQUÍ",
   },
   {
     id: 2,
@@ -34,25 +34,22 @@ export default function HighlightCarousel() {
         </h2>
       </div>
 
-      {/* Contenedor del Carrusel */}
       <div className="flex w-full overflow-x-auto pb-10 scrollbar-hide snap-x snap-mandatory px-6 md:px-30 gap-6">
         {HIGHLIGHTS.map((card) => (
           <div
             key={card.id}
-            className="relative flex-none w-[85vw] md:w-[400px] aspect-[4/6] md:aspect-[4/5] overflow-hidden rounded-[2rem] bg-black snap-center group"
+            // Eliminamos aspect-ratio. El ancho es fijo y el alto lo dictará la imagen.
+            className="relative flex-none w-[85vw] md:w-[400px] overflow-hidden rounded-[2rem] bg-black snap-center group"
           >
-            {/* Imagen de Fondo */}
-            <div 
-              className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-105"
-              style={{
-                backgroundImage: `url(${card.imageUrl})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }}
+            {/* Imagen Real: Al usar w-full h-auto, el div padre toma sus dimensiones exactas */}
+            <img 
+              src={card.imageUrl} 
+              alt={card.title}
+              className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
             />
             
-            {/* Contenido de la Tarjeta */}
-            <div className="relative z-20 p-8 flex flex-col h-full">
+            {/* Contenido de la Tarjeta - Posicionado absoluto para flotar sobre la imagen */}
+            <div className="absolute inset-0 z-20 p-8 flex flex-col">
               <h3 className="text-white text-2xl md:text-3xl font-medium leading-tight max-w-[250px]">
                 {card.title}
               </h3>
@@ -60,7 +57,6 @@ export default function HighlightCarousel() {
           </div>
         ))}
         
-        {/* Espaciador final para que la última card pueda centrarse */}
         <div className="flex-none w-6 md:w-30" />
       </div>
     </section>
