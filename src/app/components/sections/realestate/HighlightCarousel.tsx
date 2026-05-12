@@ -34,30 +34,35 @@ export default function HighlightCarousel() {
         </h2>
       </div>
 
-      <div className="flex w-full overflow-x-auto pb-10 scrollbar-hide snap-x snap-mandatory px-6 md:px-30 gap-6">
+      {/* 1. Cambiamos snap-center por snap-start para que la card se pegue a la izquierda
+          2. El padding derecho del contenedor (pr-20) asegura que la última card no se corte pegada al borde
+      */}
+      <div className="flex w-full overflow-x-auto pb-10 scrollbar-hide snap-x snap-mandatory px-6 md:px-30 gap-4 md:gap-6">
         {HIGHLIGHTS.map((card) => (
           <div
             key={card.id}
-            // Eliminamos aspect-ratio. El ancho es fijo y el alto lo dictará la imagen.
-            className="relative flex-none w-[85vw] md:w-[400px] overflow-hidden rounded-[2rem] bg-black snap-center group"
+            // MÓVIL: w-[75vw] permite ver el 25% de la siguiente card.
+            // DESKTOP: w-[350px] es un poco más esbelto para que quepan más en pantalla.
+            className="relative flex-none w-[75vw] md:w-[350px] overflow-hidden rounded-[2rem] bg-black snap-center group"
           >
-            {/* Imagen Real: Al usar w-full h-auto, el div padre toma sus dimensiones exactas */}
+            {/* Imagen Real */}
             <img 
               src={card.imageUrl} 
               alt={card.title}
               className="w-full h-auto block transition-transform duration-700"
             />
             
-            {/* Contenido de la Tarjeta - Posicionado absoluto para flotar sobre la imagen */}
-            <div className="absolute inset-0 z-20 p-8 flex flex-col">
-              <h3 className="text-white text-xl md:text-2xl font-medium leading-tight max-w-[250px]">
+            {/* Contenido de la Tarjeta */}
+            <div className="absolute inset-0 z-20 p-6 md:p-8 flex flex-col">
+              <h3 className="text-white text-lg md:text-xl font-medium leading-[1.2] max-w-[220px]">
                 {card.title}
               </h3>
             </div>
           </div>
         ))}
         
-        <div className="flex-none w-6 md:w-30" />
+        {/* Espaciador final para dar aire al terminar el scroll */}
+        <div className="flex-none w-10 md:w-30" />
       </div>
     </section>
   );
