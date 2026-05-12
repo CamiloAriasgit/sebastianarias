@@ -28,3 +28,18 @@ body {
   overscroll-behavior-y: none;
   background-color: #000000;
 }
+
+@layer utilities {
+  /* Esta es la clase que aplicaremos al contenedor */
+  .hide-scrollbar {
+    /* Firefox */
+    scrollbar-width: none;
+    /* IE y Edge */
+    -ms-overflow-style: none;
+  }
+
+  /* Chrome, Safari y Opera */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
