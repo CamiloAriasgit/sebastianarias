@@ -23,9 +23,6 @@ export default function Home() {
             <Header />
             <div className="snap-start w-full"><Hero /></div>
             <div className="snap-start w-full"><HighlightCarousel /></div>
-            <div className="snap-start w-full"><Tercera /></div>
-            <div className="snap-start w-full"><Segunda /></div>
-            <div className="snap-start w-full"><Medicion /></div>
         </main>
     );
 }
