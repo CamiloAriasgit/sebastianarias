@@ -6,12 +6,12 @@ const HIGHLIGHTS = [
   {
     id: 1,
     title: "Arquitectura de datos propietaria. Medimos lo que otros ignoran.",
-    imageUrl: "/images/realestate/DataPage.png",
+    imageUrl: "/images/realestate/DataWeb.png",
   },
   {
     id: 2,
     title: "Ingeniería de ventas. El camino más corto a tu WhatsApp.",
-    imageUrl: "/images/realestate/Mensaje.png",
+    imageUrl: "/images/realestate/MessageNotification.png",
   },
   {
     id: 3,
@@ -45,12 +45,12 @@ export default function HighlightCarousel() {
             <img 
               src={card.imageUrl} 
               alt={card.title}
-              className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-auto block transition-transform duration-700"
             />
             
             {/* Contenido de la Tarjeta - Posicionado absoluto para flotar sobre la imagen */}
             <div className="absolute inset-0 z-20 p-8 flex flex-col">
-              <h3 className="text-white text-xl md:text-3xl font-medium leading-tight max-w-[250px]">
+              <h3 className="text-white text-xl md:text-2xl font-medium leading-tight max-w-[250px]">
                 {card.title}
               </h3>
             </div>
