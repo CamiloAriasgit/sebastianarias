@@ -68,20 +68,20 @@ export default function Introduction() {
                 variants={itemVariants}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
-                className="w-full md:w-[500px] min-h-[500px] md:aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl p-2 bg-neutral-900"
+                className="w-full md:w-[500px] min-h-[500px] md:aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl p-2 bg-neutral-950"
             >
                 <div className='flex items-center -space-x-3 mb-2 px-2'>
-                    <div className='rounded-full h-7 w-7 bg-neutral-800 border border-neutral-700 overflow-hidden flex items-center justify-center shadow-sm'>
+                    <div className='rounded-full h-7 w-7 bg-neutral-900 border border-neutral-950 overflow-hidden flex items-center justify-center shadow-sm'>
                         <img src="https://iconape.com/wp-content/png_logo_vector/google-tag-manager.png" alt="GTM" className="h-5 w-5" />
                     </div>
-                    <div className='rounded-full h-7 w-7 bg-neutral-800 border border-neutral-700 overflow-hidden flex items-center justify-center shadow-sm'>
+                    <div className='rounded-full h-7 w-7 bg-neutral-900 border border-neutral-950 overflow-hidden flex items-center justify-center shadow-sm'>
                         <img src="https://web-odyssey.com/wp-content/uploads/2024/09/google-analytics-icon.png" alt="GA4" className="h-5 w-5" />
                     </div>
                 </div>
 
                 <motion.div
                     variants={containerVariants} // Usamos el mismo stagger para las barras
-                    className="absolute inset-0 p-6 md:p-8 rounded-lg flex flex-col gap-5 md:gap-6 mt-11 m-2 bg-neutral-900"
+                    className="absolute inset-0 p-6 md:p-8 rounded-lg flex flex-col gap-5 md:gap-6 mt-11 m-2 bg-neutral-950"
                 >
                     <div>
                         <h1 className='text-neutral-200'>page_view</h1>
