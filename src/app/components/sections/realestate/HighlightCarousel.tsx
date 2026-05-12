@@ -50,7 +50,7 @@ export default function HighlightCarousel() {
             
             {/* Contenido de la Tarjeta - Posicionado absoluto para flotar sobre la imagen */}
             <div className="absolute inset-0 z-20 p-8 flex flex-col">
-              <h3 className="text-white text-2xl md:text-3xl font-medium leading-tight max-w-[250px]">
+              <h3 className="text-white text-xl md:text-3xl font-medium leading-tight max-w-[250px]">
                 {card.title}
               </h3>
             </div>
