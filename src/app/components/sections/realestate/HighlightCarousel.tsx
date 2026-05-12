@@ -6,7 +6,7 @@ const HIGHLIGHTS = [
   {
     id: 1,
     title: "Arquitectura de datos propietaria. Medimos lo que otros ignoran.",
-    imageUrl: "URL_AQUÍ",
+    imageUrl: "/images/realestate/DataPage.png",
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const HIGHLIGHTS = [
   {
     id: 3,
     title: "Software prefabricado. Sin suscripciones. El código es tuyo.",
-    imageUrl: "URL_AQUÍ",
+    imageUrl: "/images/realestate/DataPage.png",
   },
   {
     id: 4,
