@@ -40,10 +40,7 @@ export default function AnalyticsSection() {
           />
           
           <div className="absolute inset-0 p-8 flex flex-col justify-start">
-            <h3 className="text-white text-xl md:text-2xl font-medium mb-4">
-              Auditoría Técnica de Tráfico
-            </h3>
-            <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-[400px]">
+            <p className="text-white text-sm md:text-2xl font-medium mb-4">
               Mantenga un registro independiente y objetivo de su tráfico. Aunque no cuente con herramientas de rastreo externas, la infraestructura de datos que implementamos le garantiza claridad sobre el volumen y la calidad de las visitas que recibe su activo digital en tiempo real.
             </p>
           </div>
