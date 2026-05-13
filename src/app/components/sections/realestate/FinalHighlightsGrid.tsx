@@ -31,14 +31,14 @@ const FINAL_CARDS = [
 
 export default function FinalHorizontalScroll() {
   return (
-    <section className="bg-black py-20 overflow-hidden">
+    <section className="bg-black flex flex-col justify-center min-h-screen overflow-hidden">
       {/* Contenedor con Negative Margin para ocultar la scrollbar física */}
       <div className="relative">
-        <div className="flex w-full overflow-x-auto pb-20 -mb-20 snap-x snap-mandatory px-6 md:px-30 gap-6 no-scrollbar">
+        <div className="flex w-full overflow-x-auto pb-20 -mb-20 snap-x snap-mandatory px-6 md:px-30 gap-6 hide-scrollbar">
           {FINAL_CARDS.map((card) => (
             <div
               key={card.id}
-              className="flex-none w-[80vw] md:w-[320px] snap-start flex flex-col"
+              className="flex-none w-[80vw] md:w-[320px] snap-center flex flex-col"
             >
               {/* Contenedor de Imagen */}
               <div className="relative overflow-hidden rounded-[2rem] bg-zinc-900 aspect-[4/5] mb-6">
