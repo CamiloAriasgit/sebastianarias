@@ -27,7 +27,7 @@ const HIGHLIGHTS = [
 
 export default function HighlightCarousel() {
   return (
-    <section className="bg-zinc-900 flex flex-col justify-center min-h-[100svh] pt-20">
+    <section className="bg-zinc-900 flex flex-col justify-center min-h-[100svh] md:pt-20">
       <div className="px-6 mb-12 md:px-30">
         <h2 className="text-3xl md:text-5xl font-medium text-white tracking-tight">
           Ingeniería que vende.
