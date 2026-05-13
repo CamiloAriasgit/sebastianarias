@@ -76,7 +76,7 @@ export default function FAQ() {
                         <motion.div
                             key={idx}
                             variants={itemVariants}
-                            className="rounded-2xl bg-neutral-900 backdrop-blur-md overflow-hidden transition-all duration-300"
+                            className="rounded-2xl bg-zinc-900 backdrop-blur-md overflow-hidden transition-all duration-300"
                         >
                             <button
                                 onClick={() => setActiveIdx(isOpen ? null : idx)}

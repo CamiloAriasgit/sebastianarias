@@ -34,7 +34,7 @@ export default function AnalyticsSection() {
         <div className="relative overflow-hidden rounded-[2rem] bg-black group">
           {/* Aquí va tu imagen: Misma dimensión que la anterior */}
           <img 
-            src="/images/realestate/UsersMap.png" 
+            src="/images/realestate/MetricsCard.png" 
             alt="Auditoría Técnica de Tráfico"
             className="w-full h-auto block"
           />
