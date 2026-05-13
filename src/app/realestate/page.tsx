@@ -6,6 +6,7 @@ import Tercera from "../components/sections/realestate/Tercera";
 import Medicion from "../components/sections/realestate/Medicion";
 import HighlightCarousel from "../components/sections/realestate/HighlightCarousel";
 import FAQ from "../components/sections/realestate/FAQ";
+import AnalyticsSection from "../components/sections/realestate/AnalyticsSection";
 
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
             <Header />
             <div className="snap-start w-full"><Hero /></div>
             <div className="snap-start w-full"><HighlightCarousel /></div>
+            <div className="snap-start w-full"><AnalyticsSection /></div>
             <div className="snap-start w-full"><FAQ /></div>
         </main>
     );
