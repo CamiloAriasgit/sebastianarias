@@ -7,7 +7,7 @@ const FINAL_CARDS = [
     id: 5,
     title: "Fricción cero en la navegación.",
     description: "Eliminamos cualquier obstáculo técnico que interrumpa el flujo del usuario. Una **experiencia fluida** garantiza que el interés del inversionista se mantenga intacto desde el primer clic hasta el **inicio del chat**.",
-    imageUrl: "/images/realestate/NotificationsWhatsapp.png",
+    imageUrl: "/images/realestate/NotificationsWhatsApp.png",
   },
   {
     id: 6,
