@@ -11,15 +11,12 @@ export default function AnalyticsSection() {
         </h2>
       </div>
 
-      {/* Grid: 1 columna en móvil, 2 columnas en desktop */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-6 md:px-30">
         
-        {/* Card 1: Diagnóstico de Interés Real */}
         <div className="relative overflow-hidden rounded-[2rem] bg-black group">
-          {/* Aquí va tu imagen: Asegúrate que mantenga la proporción de las cards anteriores */}
           <img 
             src="/images/realestate/UsersMap.png" 
-            alt="Diagnóstico de Interés Real"
+            alt="Mapa de actividad de usuarios desde diferentes ubicaciones geográficas"
             className="w-full h-auto block"
           />
           
@@ -30,12 +27,10 @@ export default function AnalyticsSection() {
           </div>
         </div>
 
-        {/* Card 2: Auditoría Técnica de Tráfico */}
         <div className="relative overflow-hidden rounded-[2rem] bg-black group">
-          {/* Aquí va tu imagen: Misma dimensión que la anterior */}
           <img 
             src="/images/realestate/MetricsCard.png" 
-            alt="Auditoría Técnica de Tráfico"
+            alt="Panel de metricas simplificado mostrando cliks, tráfico y scroll dentro de la página"
             className="w-full h-auto block"
           />
           
