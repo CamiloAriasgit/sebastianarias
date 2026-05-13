@@ -4,7 +4,7 @@ import React from "react";
 
 export default function AnalyticsSection() {
   return (
-    <section className="bg-zinc-900 py-20 overflow-hidden">
+    <section className="bg-black py-20 overflow-hidden">
       <div className="px-6 mb-12 md:px-30">
         <h2 className="text-4xl md:text-5xl font-medium text-white tracking-tight">
           Visibilidad total sobre el origen de sus leads.
@@ -18,7 +18,7 @@ export default function AnalyticsSection() {
         <div className="relative overflow-hidden rounded-[2rem] bg-black group">
           {/* Aquí va tu imagen: Asegúrate que mantenga la proporción de las cards anteriores */}
           <img 
-            src="/images/realestate/MessageNotification.png" 
+            src="/images/realestate/UsersMap.png" 
             alt="Diagnóstico de Interés Real"
             className="w-full h-auto block"
           />
@@ -34,7 +34,7 @@ export default function AnalyticsSection() {
         <div className="relative overflow-hidden rounded-[2rem] bg-black group">
           {/* Aquí va tu imagen: Misma dimensión que la anterior */}
           <img 
-            src="/images/realestate/MessageNotification.png" 
+            src="/images/realestate/UsersMap.png" 
             alt="Auditoría Técnica de Tráfico"
             className="w-full h-auto block"
           />
