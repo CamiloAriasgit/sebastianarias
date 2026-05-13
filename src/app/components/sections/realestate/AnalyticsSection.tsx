@@ -25,7 +25,7 @@ export default function AnalyticsSection() {
           
           <div className="absolute inset-0 p-8 flex flex-col justify-start">
             <p className="text-white text-sm md:text-2xl font-medium mb-4">
-              Entienda el comportamiento de sus visitas de forma inmediata. Nuestro sistema rastrea cada clic y nivel de lectura, permitiéndole identificar qué secciones de su proyecto generan mayor retención y en qué momento exacto el usuario decide iniciar el contacto.
+              Entienda el comportamiento de sus visitas de forma inmediata. <span className="text-neutral-400">Nuestro sistema rastrea cada clic y nivel de lectura, permitiéndole identificar qué secciones de su proyecto generan mayor retención y en qué momento exacto el usuario decide iniciar el contacto.</span>
             </p>
           </div>
         </div>
@@ -41,7 +41,7 @@ export default function AnalyticsSection() {
           
           <div className="absolute inset-0 p-8 flex flex-col justify-start">
             <p className="text-white text-sm md:text-2xl font-medium mb-4">
-              Mantenga un registro independiente y objetivo de su tráfico. Aunque no cuente con herramientas de rastreo externas, la infraestructura de datos que implementamos le garantiza claridad sobre el volumen y la calidad de las visitas que recibe su activo digital en tiempo real.
+              Mantenga un registro independiente y objetivo de su tráfico. <span className="text-neutral-400">Aunque no cuente con herramientas de rastreo externas, la infraestructura de datos que implementamos le garantiza claridad sobre el volumen y la calidad de las visitas que recibe su activo digital en tiempo real.</span>
             </p>
           </div>
         </div>
