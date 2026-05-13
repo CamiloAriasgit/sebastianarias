@@ -24,7 +24,7 @@ export default function AnalyticsSection() {
           />
           
           <div className="absolute inset-0 p-8 flex flex-col justify-start">
-            <p className="text-white text-xl md:text-2xl font-medium mb-4">
+            <p className="text-white text-sm md:text-2xl font-medium mb-4">
               Entienda el comportamiento de sus visitas de forma inmediata. Nuestro sistema rastrea cada clic y nivel de lectura, permitiéndole identificar qué secciones de su proyecto generan mayor retención y en qué momento exacto el usuario decide iniciar el contacto.
             </p>
           </div>
