@@ -7,25 +7,25 @@ const FINAL_CARDS = [
     id: 5,
     title: "Fricción cero en la navegación.",
     description: "Eliminamos cualquier obstáculo técnico que interrumpa el flujo del usuario. Una **experiencia fluida** garantiza que el interés del inversionista se mantenga intacto desde el primer clic hasta el **inicio del chat**.",
-    imageUrl: "/images/realestate/friccion-cero.png",
+    imageUrl: "https://www.apple.com/v/macbook-pro/ax/images/overview/macos/macos_live_translation__boribuw522he_large_2x.jpg",
   },
   {
     id: 6,
     title: "Experiencia de usuario inmersiva.",
     description: "No diseñamos interfaces, creamos **entornos de alta gama**. Una estética limpia y fluida que proyecta la misma **exclusividad y detalle** que los acabados de sus proyectos inmobiliarios.",
-    imageUrl: "/images/realestate/ux-inmersiva.png",
+    imageUrl: "https://www.apple.com/v/macbook-pro/ax/images/overview/macos/macos_liquid_glass__e9v21xvg0pme_large_2x.jpg",
   },
   {
     id: 7,
     title: "Arquitectura de crecimiento.",
     description: "Su sistema está listo para evolucionar. Ya sea que necesite integrar nuevos proyectos o escalar su operación, la **estructura modular** le permite crecer sin necesidad de **reconstruir desde cero**.",
-    imageUrl: "/images/realestate/arquitectura-crecimiento.png",
+    imageUrl: "https://www.apple.com/v/macbook-pro/ax/images/overview/macos/macos_shortcuts__bebaivi6z43m_large_2x.jpg",
   },
   {
     id: 8,
     title: "Claridad en la toma de decisiones.",
     description: "Diseñamos la interfaz para resaltar lo que realmente importa. Guiamos visualmente al cliente hacia los **datos clave** de su proyecto, facilitando una **decisión de compra** más rápida y fundamentada.",
-    imageUrl: "/images/realestate/claridad-decisiones.png",
+    imageUrl: "https://www.apple.com/v/macbook-pro/ax/images/overview/macos/spotlight_endframe__bbft03aow5xu_large_2x.jpg",
   },
 ];
 
