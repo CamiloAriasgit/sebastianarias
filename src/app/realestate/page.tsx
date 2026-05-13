@@ -5,6 +5,7 @@ import Segunda from "../components/sections/realestate/Segunda";
 import Tercera from "../components/sections/realestate/Tercera";
 import Medicion from "../components/sections/realestate/Medicion";
 import HighlightCarousel from "../components/sections/realestate/HighlightCarousel";
+import FAQ from "../components/sections/realestate/FAQ";
 
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
             <Header />
             <div className="snap-start w-full"><Hero /></div>
             <div className="snap-start w-full"><HighlightCarousel /></div>
+            <div className="snap-start w-full"><FAQ /></div>
         </main>
     );
 }
