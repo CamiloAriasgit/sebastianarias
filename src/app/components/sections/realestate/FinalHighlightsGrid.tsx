@@ -25,40 +25,48 @@ const FINAL_CARDS = [
     id: 8,
     title: "Claridad en la toma de decisiones.",
     description: "Diseñamos la interfaz para resaltar lo que realmente importa. Guiamos visualmente al cliente hacia los **datos clave** de su proyecto, facilitando una **decisión de compra** más rápida y fundamentada.",
+    imageUrl: "/images/realestate/claridad-decisiones.png",
   },
 ];
 
-export default function FinalHighlightsGrid() {
+export default function FinalHorizontalScroll() {
   return (
-    <section className="bg-black py-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-6 md:px-30">
-        {FINAL_CARDS.map((card) => (
-          <div key={card.id} className="flex flex-col">
-            {/* Contenedor de Imagen (Card) */}
-            <div className="relative overflow-hidden rounded-[2rem] bg-neutral-950 aspect-square md:aspect-[4/5] mb-6">
-              <img
-                src={card.imageUrl}
-                alt={card.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
+    <section className="bg-black py-20 overflow-hidden">
+      {/* Contenedor con Negative Margin para ocultar la scrollbar física */}
+      <div className="relative">
+        <div className="flex w-full overflow-x-auto pb-20 -mb-20 snap-x snap-mandatory px-6 md:px-30 gap-6 no-scrollbar">
+          {FINAL_CARDS.map((card) => (
+            <div
+              key={card.id}
+              className="flex-none w-[80vw] md:w-[320px] snap-start flex flex-col"
+            >
+              {/* Contenedor de Imagen */}
+              <div className="relative overflow-hidden rounded-[2rem] bg-zinc-900 aspect-[4/5] mb-6">
+                <img
+                  src={card.imageUrl}
+                  alt={card.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
-            {/* Bloque de Texto debajo de la Card */}
-            <div className="px-2">
-              <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
-                {/* 
-                  Aquí procesamos el texto para que las partes importantes 
-                  estén en blanco. He usado negritas en el objeto para simularlo.
-                */}
-                {card.description.split("**").map((part, index) => (
-                  <span key={index} className={index % 2 !== 0 ? "text-white" : ""}>
-                    {part}
-                  </span>
-                ))}
-              </p>
+              {/* Bloque de Texto debajo */}
+              <div className="px-1">
+                <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
+                  {card.description.split("**").map((part, index) => (
+                    <span
+                      key={index}
+                      className={index % 2 !== 0 ? "text-white font-medium" : ""}
+                    >
+                      {part}
+                    </span>
+                  ))}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+          {/* Espaciador final para que la última card no quede pegada al borde */}
+          <div className="flex-none w-6 md:w-30" />
+        </div>
       </div>
     </section>
   );
