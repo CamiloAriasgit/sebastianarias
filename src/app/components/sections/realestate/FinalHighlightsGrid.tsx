@@ -7,7 +7,7 @@ const FINAL_CARDS = [
     id: 5,
     title: "Fricción cero en la navegación.",
     description: "Eliminamos cualquier obstáculo técnico que interrumpa el flujo del usuario. Una **experiencia fluida** garantiza que el interés del inversionista se mantenga intacto desde el primer clic hasta el **inicio del chat**.",
-    imageUrl: "https://www.apple.com/v/macbook-pro/ax/images/overview/macos/macos_live_translation__boribuw522he_large_2x.jpg",
+    imageUrl: "/images/realestate/NotificationsWhatsapp.png",
   },
   {
     id: 6,
