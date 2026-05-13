@@ -15,7 +15,7 @@ const HIGHLIGHTS = [
   },
   {
     id: 3,
-    title: "Software prefabricado. Sin suscripciones. El código es tuyo.",
+    title: "Propiedad total. Sin suscripciones. El código es tuyo.",
     imageUrl: "/images/realestate/SecureCode.png",
   },
   {
@@ -27,10 +27,10 @@ const HIGHLIGHTS = [
 
 export default function HighlightCarousel() {
   return (
-    <section className="bg-zinc-900 py-20">
+    <section className="bg-zinc-900 min-h-[100svh] pt-20">
       <div className="px-6 mb-12 md:px-30">
-        <h2 className="text-4xl md:text-5xl font-medium text-white tracking-tight">
-          Get the highlights.
+        <h2 className="text-3xl md:text-5xl font-medium text-white tracking-tight">
+          Ingeniería que vende.
         </h2>
       </div>
 
