@@ -7,7 +7,7 @@ const FINAL_CARDS = [
     id: 5,
     title: "Fricción cero en la navegación.",
     description: "Eliminamos cualquier obstáculo técnico que interrumpa el flujo del usuario. Una **experiencia fluida** garantiza que el interés del inversionista se mantenga intacto desde el primer clic hasta el **inicio del chat**.",
-    imageUrl: "/images/realestate/NotificationsWhatsApp.png",
+    imageUrl: "/images/realestate/NotWhatsApp.png",
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ export default function FinalHorizontalScroll() {
 
               {/* Bloque de Texto debajo */}
               <div className="px-1">
-                <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
+                <p className="text-neutral-400 text-sm md:text-base">
                   {card.description.split("**").map((part, index) => (
                     <span
                       key={index}
