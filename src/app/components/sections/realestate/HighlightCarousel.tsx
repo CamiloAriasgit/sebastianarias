@@ -5,7 +5,7 @@ import React from "react";
 const HIGHLIGHTS = [
   {
     id: 1,
-    title: "Arquitectura de datos propietaria. Medimos lo que otros ignoran.",
+    title: "Arquitectura. Medimos lo que otros ignoran.",
     imageUrl: "/images/realestate/MetricWeb.png",
   },
   {
@@ -15,8 +15,8 @@ const HIGHLIGHTS = [
   },
   {
     id: 3,
-    title: "Propiedad total. Sin suscripciones. El código es tuyo.",
-    imageUrl: "/images/realestate/SecureCode.png",
+    title: "Infraestructura exclusiva. Mantenimiento seguro.",
+    imageUrl: "/images/realestate/SecureCode.png", // Tu visual del candado/código sigue encajando perfecto aquí como "blindaje"
   },
   {
     id: 4,

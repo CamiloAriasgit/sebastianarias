@@ -17,8 +17,8 @@ const faqs = [
         answer: "En el sector inmobiliario, el tiempo destruye el interés. Un formulario es una barrera que posterga la venta. Al conectar al inversionista directamente con su equipo mediante flujos de mensaje pre-configurados, reducimos el tiempo de respuesta a segundos, ganando la atención del cliente antes que la competencia."
     },
     {
-        question: "¿Qué recibo exactamente al finalizar la implementación?",
-        answer: "Usted recibe un activo digital propietario. Esto incluye el despliegue de su infraestructura de captura de datos, la configuración de eventos de conversión y una interfaz de alta fidelidad que proyecta el estándar de lujo de sus proyectos. Todo entregado bajo un modelo de propiedad total, sin dependencias de terceros."
+        question: "¿Cómo se gestiona la infraestructura y qué soporte incluye el sistema?",
+        answer: "Su proyecto opera sobre una infraestructura exclusiva de alto rendimiento diseñada específicamente para su marca. Para garantizar un flujo ininterrumpido de leads, nosotros nos encargamos de la optimización continua, la seguridad de datos 24/7 y la gestión del ciclo de vida del sitio por una tarifa operativa de $99 USD/mes. Si el proyecto se vende por completo, coordinamos el cierre seguro y la redirección estratégica del tráfico para proteger sus bases de datos."
     }
 ];
 
@@ -41,8 +41,8 @@ export default function FAQ() {
 
     const itemVariants: Variants = {
         hidden: { opacity: 0, y: 15 },
-        visible: { 
-            opacity: 1, 
+        visible: {
+            opacity: 1,
             y: 0,
             transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }
         }
@@ -53,7 +53,7 @@ export default function FAQ() {
             ref={ref}
             className="min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-4xl mx-auto py-24"
         >
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8 }}
@@ -64,7 +64,7 @@ export default function FAQ() {
                 </h2>
             </motion.div>
 
-            <motion.div 
+            <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
@@ -112,7 +112,7 @@ export default function FAQ() {
                 })}
             </motion.div>
 
-            <motion.p 
+            <motion.p
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ delay: 1, duration: 1 }}
