@@ -13,7 +13,7 @@ const FINAL_CARDS = [
     id: 6,
     title: "Experiencia de usuario inmersiva.",
     description: "No diseñamos interfaces, creamos **entornos de alta gama**. Una estética limpia y fluida que proyecta la misma **exclusividad y detalle** que los acabados de sus proyectos inmobiliarios.",
-    imageUrl: "https://www.apple.com/v/macbook-pro/ax/images/overview/macos/macos_liquid_glass__e9v21xvg0pme_large_2x.jpg",
+    imageUrl: "/images/realestate/HeroWebsite.png",
   },
   {
     id: 7,
