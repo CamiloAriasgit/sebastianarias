@@ -18,7 +18,7 @@ const faqs = [
     },
     {
         question: "¿Cómo se gestiona la infraestructura y qué soporte incluye el sistema?",
-        answer: "Su proyecto opera sobre una infraestructura exclusiva de alto rendimiento diseñada específicamente para su marca. Para garantizar un flujo ininterrumpido de leads, nosotros nos encargamos de la optimización continua, la seguridad de datos 24/7 y la gestión del ciclo de vida del sitio por una tarifa operativa de $99 USD/mes. Si el proyecto se vende por completo, coordinamos el cierre seguro y la redirección estratégica del tráfico para proteger sus bases de datos."
+        answer: "Su proyecto opera sobre una infraestructura exclusiva de alto rendimiento diseñada específicamente para su marca. Para garantizar un flujo ininterrumpido de leads, nosotros nos encargamos de la optimización continua, la seguridad de datos 24/7 y la gestión del ciclo de vida del sitio por una tarifa operativa desde $59 USD/mes. Si el proyecto se vende por completo, coordinamos el cierre seguro y la redirección estratégica del tráfico para proteger sus bases de datos."
     }
 ];
 

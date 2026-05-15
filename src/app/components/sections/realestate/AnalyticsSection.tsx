@@ -17,7 +17,7 @@ export default function AnalyticsSection() {
                     <img
                         src="/images/realestate/UsersMap.png"
                         alt="Mapa de actividad de usuarios desde diferentes ubicaciones geográficas"
-                        className="w-full h-auto block"
+                        className="w-full h-auto md:h-[750px] object-cover object-bottom block"
                     />
 
                     <div className="absolute inset-0 p-8 flex flex-col justify-start">
@@ -34,7 +34,7 @@ export default function AnalyticsSection() {
                     <img
                         src="/images/realestate/MetricsCard.png"
                         alt="Panel de metricas simplificado mostrando cliks, tráfico y scroll dentro de la página"
-                        className="w-full h-auto block"
+                        className="w-full h-auto md:h-[750px] object-cover object-bottom block"
                     />
 
                     <div className="absolute inset-0 p-8 flex flex-col justify-start">

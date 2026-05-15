@@ -19,13 +19,13 @@ const FINAL_CARDS = [
     id: 7,
     title: "Arquitectura de crecimiento.",
     description: "Su sistema está listo para evolucionar. Ya sea que necesite integrar nuevos proyectos o escalar su operación, la **estructura modular** le permite crecer sin necesidad de **reconstruir desde cero**.",
-    imageUrl: "https://www.apple.com/v/macbook-pro/ax/images/overview/macos/macos_shortcuts__bebaivi6z43m_large_2x.jpg",
+    imageUrl: "/images/realestate/WorkingImage.png",
   },
   {
     id: 8,
     title: "Claridad en la toma de decisiones.",
     description: "Diseñamos la interfaz para resaltar lo que realmente importa. Guiamos visualmente al cliente hacia los **datos clave** de su proyecto, facilitando una **decisión de compra** más rápida y fundamentada.",
-    imageUrl: "https://www.apple.com/v/macbook-pro/ax/images/overview/macos/spotlight_endframe__bbft03aow5xu_large_2x.jpg",
+    imageUrl: "/images/realestate/WorkingImage.png",
   },
 ];
 
