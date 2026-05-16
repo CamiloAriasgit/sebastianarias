@@ -1,30 +1,25 @@
-import Hero from "./components/sections/main/Hero1";
-import Header from "./components/ui/Header";
-import Sistems from "./components/sections/main/Sistems";
-import Solution from "./components/sections/main/Solution";
-import SectionTecnica from "./components/sections/main/SectionTecnica";
-import Velocity from "./components/sections/main/Velocity";
-import ProcessSection from "./components/sections/main/ProcessSection";
-import FAQSection from "./components/sections/main/FAQsection";
-import FinalCTA from "./components/sections/main/FinalCTA";
+import Header from "./components/ui/conversion/ConversionHeader";
 import Footer from "./components/ui/conversion/ConversionFooter";
+import Hero from "./components/sections/home/Hero";
+import HighlightCarousel from "./components/sections/realestate/HighlightCarousel";
+import FAQ from "./components/sections/realestate/FAQ";
+import AnalyticsSection from "./components/sections/realestate/AnalyticsSection";
+import FinalHighlightsGrid from "./components/sections/realestate/FinalHighlightsGrid";
+import Price from "./components/sections/realestate/Price";
 
 
 export default function Home() {
   return (
-    <div className="">
-      <main className="">
-        <Header/>
-        <Hero />
-        <Sistems/>
-        <Solution/>
-        {/*<SectionTecnica/>
-        <Velocity/>
-        <ProcessSection/>*/}
-        <FAQSection/>
-        <FinalCTA/>
-        <Footer/>
-      </main>
-    </div>
+    <main className="relative w-full h-screen overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth">
+      <Header />
+      <div className="snap-start w-full"><Hero /></div>
+      <div className="snap-start w-full"><HighlightCarousel /></div>
+      <div className="snap-start w-full"><AnalyticsSection /></div>
+      <div className="snap-start w-full"><FinalHighlightsGrid /></div>
+      <div className="snap-start w-full"><FAQ /></div>
+      <div className="snap-start w-full"><Price /></div>
+      <Footer />
+
+    </main>
   );
 }
