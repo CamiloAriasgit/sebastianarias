@@ -3,7 +3,7 @@
 import React from "react";
 import dynamic from 'next/dynamic';
 
-const P5Spire = dynamic(() => import('../realestate/P5Sketches'), {
+const P5Spire = dynamic(() => import('../home/P5Sketches'), {
     ssr: false,
     loading: () => <div className="h-[350px] w-full animate-pulse bg-neutral-900/20 rounded-full" />
 });
@@ -13,7 +13,7 @@ function HeroHeading() {
         <div className="animate-hero-fade-up-delay-1 flex flex-col items-start md:items-start gap-4 sm:gap-6 w-full -space-y-2">
             <h1 className="text-start bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-yellow-300 to-purple-400 font-medium">Convierte clicks en clientes</h1>
             <h1 className="text-balance text-left text-3xl font-sans font-medium leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
-                Desarrollo web para vender tu proyecto inmobiliario
+                Desarrollo web para el sector Real Estate
             </h1>
         </div>
     );

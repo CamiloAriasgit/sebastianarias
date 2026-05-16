@@ -29,9 +29,9 @@ const P5Sketches = () => {
         const isDesktop = p5.width > 700;
         const baseAmp = isDesktop ? 100 : 40; 
 
-        drawPureWave(p5, t * 0.01, 0.005, baseAmp, "page_view", p5.width * 0.35, 80);
-        drawPureWave(p5, t * 0.02, 0.01, baseAmp * 1.5, "scroll", p5.width * 0.50, 150);
-        drawPureWave(p5, t * 0.03, 0.015, baseAmp * 2, "click_whatsapp", p5.width * 0.65, 255);
+        drawPureWave(p5, t * 0.01, 0.005, baseAmp, "security", p5.width * 0.35, 80);
+        drawPureWave(p5, t * 0.02, 0.01, baseAmp * 1.5, "operation", p5.width * 0.50, 150);
+        drawPureWave(p5, t * 0.03, 0.015, baseAmp * 2, "conversion", p5.width * 0.65, 255);
 
         t += 1;
     };
