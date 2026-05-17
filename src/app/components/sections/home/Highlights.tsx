@@ -16,7 +16,7 @@ const HIGHLIGHTS = [
   {
     id: 3,
     title: "Blindaje e inventario. Resguardo absoluto de su patrimonio.",
-    imageUrl: "/images/home/FingerPrint.png", // Sugerencia visual: Un candado o un contenedor de base de datos estilizado (estilo Supabase/Apple)
+    imageUrl: "/images/home/Fingerprint.png", // Sugerencia visual: Un candado o un contenedor de base de datos estilizado (estilo Supabase/Apple)
   },
   {
     id: 4,
