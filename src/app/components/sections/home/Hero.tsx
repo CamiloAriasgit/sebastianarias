@@ -11,7 +11,7 @@ const P5Spire = dynamic(() => import('../home/P5Sketches'), {
 function HeroHeading() {
     return (
         <div className="animate-hero-fade-up-delay-1 flex flex-col items-start md:items-start gap-4 sm:gap-6 w-full -space-y-2">
-            <h1 className="text-start bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-yellow-300 to-purple-400 font-medium">Convierte clicks en clientes</h1>
+            <h1 className="text-start bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-yellow-300 to-purple-400 font-medium">Adiós fricción, Hola inversión</h1>
             <h1 className="text-balance text-left text-3xl font-sans font-medium leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
                 Desarrollo web para el sector Real Estate
             </h1>
