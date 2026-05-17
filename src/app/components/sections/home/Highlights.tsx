@@ -11,12 +11,12 @@ const HIGHLIGHTS = [
   {
     id: 2,
     title: "Estructura de datos. Todo clic es auditado en tiempo real.",
-    imageUrl: "/images/realestate/DataStructure.png", // Sugerencia visual: Un plano de nodos de red interconectados o flujos analíticos limpios
+    imageUrl: "/images/home/UsersPointsMap.png", // Sugerencia visual: Un plano de nodos de red interconectados o flujos analíticos limpios
   },
   {
     id: 3,
     title: "Blindaje e inventario. Resguardo absoluto de su patrimonio.",
-    imageUrl: "/images/realestate/LeadsShield.png", // Sugerencia visual: Un candado o un contenedor de base de datos estilizado (estilo Supabase/Apple)
+    imageUrl: "/images/home/FingerPrint.png", // Sugerencia visual: Un candado o un contenedor de base de datos estilizado (estilo Supabase/Apple)
   },
   {
     id: 4,
