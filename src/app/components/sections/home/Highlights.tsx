@@ -5,23 +5,23 @@ import React from "react";
 const HIGHLIGHTS = [
   {
     id: 1,
-    title: "Conversión de alta velocidad. El tráfico frío no espera.",
-    imageUrl: "/images/realestate/MessageNotification.png", // Sugerencia visual: Interfaz fluida con líneas de carga limpias tipo Apple
+    title: "Entornos inmersivos. La estética de sus proyectos en pantalla.",
+    imageUrl: "/images/home/LandingPageHero.png", // Sugerencia visual: Interfaz fluida con líneas de carga limpias tipo Apple
   },
   {
     id: 2,
-    title: "Estructura de datos. Todo clic es auditado en tiempo real.",
-    imageUrl: "/images/home/UsersPointsMap.png", // Sugerencia visual: Un plano de nodos de red interconectados o flujos analíticos limpios
+    title: "Velocidad nativa. La atención del inversor no espera.",
+    imageUrl: "/images/home/FastCode.png", // Sugerencia visual: Un plano de nodos de red interconectados o flujos analíticos limpios
   },
   {
     id: 3,
-    title: "Blindaje e inventario. Resguardo absoluto de su patrimonio.",
-    imageUrl: "/images/home/Fingerprint.png", // Sugerencia visual: Un candado o un contenedor de base de datos estilizado (estilo Supabase/Apple)
+    title: "Trazabilidad absoluta. Datos objetivos sobre su tráfico.",
+    imageUrl: "/images/home/UsersPointsMap.png", // Sugerencia visual: Un candado o un contenedor de base de datos estilizado (estilo Supabase/Apple)
   },
   {
     id: 4,
-    title: "Operación delegada. Nosotros cuidamos el motor.",
-    imageUrl: "/images/realestate/SystemMonitoring.png", // Sugerencia visual: Gráfico de rendimiento estable con curvas suaves y minimalistas
+    title: "Operación delegada. Monitoreo e infraestructura 24/7.",
+    imageUrl: "/images/home/Fingerprint.png", // Sugerencia visual: Gráfico de rendimiento estable con curvas suaves y minimalistas
   },
 ];
 
