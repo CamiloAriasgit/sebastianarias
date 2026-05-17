@@ -5,23 +5,23 @@ import React from "react";
 const HIGHLIGHTS = [
   {
     id: 1,
-    title: "Arquitectura. Medimos lo que otros ignoran.",
-    imageUrl: "/images/realestate/MetricWeb.png",
+    title: "Conversión de alta velocidad. El tráfico frío no espera.",
+    imageUrl: "/images/realestate/MessageNotification.png", // Sugerencia visual: Interfaz fluida con líneas de carga limpias tipo Apple
   },
   {
     id: 2,
-    title: "Ingeniería de ventas. El camino más corto a tu WhatsApp.",
-    imageUrl: "/images/realestate/MessageNotification.png",
+    title: "Estructura de datos. Todo clic es auditado en tiempo real.",
+    imageUrl: "/images/realestate/DataStructure.png", // Sugerencia visual: Un plano de nodos de red interconectados o flujos analíticos limpios
   },
   {
     id: 3,
-    title: "Infraestructura exclusiva. Mantenimiento seguro.",
-    imageUrl: "/images/realestate/SecureCode.png", // Tu visual del candado/código sigue encajando perfecto aquí como "blindaje"
+    title: "Blindaje e inventario. Resguardo absoluto de su patrimonio.",
+    imageUrl: "/images/realestate/LeadsShield.png", // Sugerencia visual: Un candado o un contenedor de base de datos estilizado (estilo Supabase/Apple)
   },
   {
     id: 4,
-    title: "Velocidad sub-segundo. La atención del inversor no espera.",
-    imageUrl: "/images/realestate/FastCode.png",
+    title: "Operación delegada. Nosotros cuidamos el motor.",
+    imageUrl: "/images/realestate/SystemMonitoring.png", // Sugerencia visual: Gráfico de rendimiento estable con curvas suaves y minimalistas
   },
 ];
 
