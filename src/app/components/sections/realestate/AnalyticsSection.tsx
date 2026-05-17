@@ -6,7 +6,7 @@ export default function AnalyticsSection() {
     return (
         <section className="bg-black py-20 overflow-hidden">
             <div className="px-6 mb-12 md:px-30">
-                <h2 className="text-3xl md:text-5xl font-medium text-white tracking-tight">
+                <h2 className="text-2xl md:text-5xl font-medium text-white tracking-tight">
                     Trazabilidad absoluta sobre el comportamiento de su activo.
                 </h2>
             </div>
