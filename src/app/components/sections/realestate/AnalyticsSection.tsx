@@ -22,9 +22,9 @@ export default function AnalyticsSection() {
 
                     <div className="absolute inset-0 p-8 flex flex-col justify-start">
                         <p className="text-white text-sm md:text-2xl font-medium max-w-[540px]">
-                            Audite la intención real de compra de sus visitas.{" "}
+                            Entornos digitales con estándares de alta costura.{" "}
                             <span className="text-neutral-400">
-                                Nuestro sistema no solo cuenta visitas; procesa la profundidad de scroll, el interés por tipología de apartamento y el comportamiento exacto antes del contacto, permitiéndole predecir la calidad de cada lead de forma objetiva.
+                                No adaptamos plantillas genéricas ni constructores lentos. Diseñamos interfaces a medida que proyectan la misma exclusividad, detalle y estatus que los acabados arquitectónicos de sus proyectos físicos.
                             </span>
                         </p>
                     </div>
@@ -39,9 +39,9 @@ export default function AnalyticsSection() {
 
                     <div className="absolute inset-0 p-8 flex flex-col justify-start">
                         <p className="text-white text-sm md:text-2xl font-medium max-w-[540px]">
-                            Monitoree la salud y disponibilidad de su plataforma.{" "}
+                            Sistemas independientes y arquitectura escalable.{" "}
                             <span className="text-neutral-400">
-                                La infraestructura operativa registra en tiempo real la velocidad de respuesta global, la seguridad de las peticiones y la estabilidad del sistema. Un canal de ventas de alto ticket que opera al 100% de su capacidad, 24/7.
+                                Desplegamos infraestructura corporativa libre de las limitaciones y comisiones de plataformas genéricas. Su sistema es un activo propio de su empresa, diseñado para evolucionar de forma modular a medida que su operación crece.
                             </span>
                         </p>
                     </div>
