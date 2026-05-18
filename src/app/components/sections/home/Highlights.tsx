@@ -6,7 +6,7 @@ const HIGHLIGHTS = [
   {
     id: 1,
     title: "Entornos inmersivos. La exclusividad de sus proyectos plasmada en código.", 
-    imageUrl: "/images/home/LandingPageHero.png",
+    imageUrl: "/images/home/MobileInterface.png",
   },
   {
     id: 2,
