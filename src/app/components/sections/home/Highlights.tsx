@@ -11,7 +11,7 @@ const HIGHLIGHTS = [
   {
     id: 2,
     title: "Velocidad nativa. La atención del inversor no espera.",
-    imageUrl: "/images/home/FastCode.png",
+    imageUrl: "/images/home/VelocityTime.png",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ export default function Highlight() {
     <section className="bg-zinc-900 flex flex-col justify-center min-h-screen md:pt-20">
       <div className="px-6 mb-12 md:px-30">
         <h2 className="text-2xl md:text-5xl font-medium text-white tracking-tight">
-          Infraestructura diseñada para elevar el estándar de sus proyectos.
+          Eleva el estándar de tus proyectos.
         </h2>
       </div>
 
