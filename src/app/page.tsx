@@ -1,25 +1,17 @@
-import Header from "./components/ui/conversion/ConversionHeader";
-import Footer from "./components/ui/conversion/ConversionFooter";
-import Hero from "./components/sections/home/Hero";
-import Highlight from "./components/sections/home/Highlights";
-import FAQ from "./components/sections/realestate/FAQ";
-import AnalyticsSection from "./components/sections/realestate/AnalyticsSection";
-import FinalHighlightsGrid from "./components/sections/realestate/FinalHighlightsGrid";
-import Price from "./components/sections/realestate/Price";
-
+// app/page.tsx
+import Hero from './components/sections/Hero'
 
 export default function Home() {
   return (
-    <main className="relative w-full h-screen overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth">
-      <Header />
-      <div className="snap-start w-full"><Hero /></div>
-      <div className="snap-start w-full"><Highlight /></div>
-      <div className="snap-start w-full"><AnalyticsSection /></div>
-      <div className="snap-start w-full"><FinalHighlightsGrid /></div>
-      <div className="snap-start w-full"><FAQ /></div>
-      <div className="snap-start w-full"><Price /></div>
-      <Footer />
-
+    <main>
+      <Hero />
+      {/* <Problem /> */}
+      {/* <Service /> */}
+      {/* <Process /> */}
+      {/* <Demo /> */}
+      {/* <Pricing /> */}
+      {/* <FAQ /> */}
+      {/* <CTAFinal /> */}
     </main>
-  );
+  )
 }

@@ -1,42 +1,40 @@
-import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { GoogleTagManager } from '@next/third-parties/google'; //
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// app/layout.tsx
+import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Sebastian Arias | Software Developer",
-  description: "Especialista en el T3 Stack: Next.js, Supabase, Tailwind y TypeScript.",
-};
-
-export const viewport: Viewport = {
-  themeColor: "#000000"
+  title: 'Sebastian Arias — Landing pages para proyectos inmobiliarios',
+  description: 'Diseñadas para convertir tráfico de pauta en leads reales. Con tracking, WhatsApp estratégico y estética premium.',
+  metadataBase: new URL('https://sebastianarias.com'),
+  openGraph: {
+    title: 'Sebastian Arias — Landing pages para proyectos inmobiliarios',
+    description: 'Diseñadas para convertir tráfico de pauta en leads reales.',
+    url: 'https://sebastianarias.com',
+    siteName: 'Sebastian Arias',
+    locale: 'es_CO',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sebastian Arias — Landing pages para proyectos inmobiliarios',
+    description: 'Diseñadas para convertir tráfico de pauta en leads reales.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html
-      lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-blue-100 selection:text-blue-900`}
-    >
-      <GoogleTagManager gtmId="GTM-P2SQSJ5W" />
-
-      <body className="font-sans text-slate-900">
+    <html lang="es" className="scroll-smooth">
+      <body className="antialiased">
         {children}
       </body>
     </html>
-  );
+  )
 }
