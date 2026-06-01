@@ -1,30 +1,25 @@
+
+// components/sections/Hero.tsx
 'use client'
 
 import { useEffect, useRef } from 'react'
 
 export default function Hero() {
-  const tagRef    = useRef<HTMLDivElement>(null)
-  const headRef   = useRef<HTMLHeadingElement>(null)
-  const subRef    = useRef<HTMLParagraphElement>(null)
-  const ctaRef    = useRef<HTMLDivElement>(null)
-  const metricsRef = useRef<HTMLDivElement>(null)
-  const lineRef   = useRef<HTMLDivElement>(null)
+  const headRef  = useRef<HTMLHeadingElement>(null)
+  const subRef   = useRef<HTMLParagraphElement>(null)
+  const ctaRef   = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const els = [
-      { ref: tagRef,     delay: 0   },
-      { ref: lineRef,    delay: 80  },
-      { ref: headRef,    delay: 160 },
-      { ref: subRef,     delay: 300 },
-      { ref: ctaRef,     delay: 420 },
-      { ref: metricsRef, delay: 560 },
+      { ref: headRef, delay: 0   },
+      { ref: subRef,  delay: 180 },
+      { ref: ctaRef,  delay: 320 },
     ]
-
     els.forEach(({ ref, delay }) => {
       if (!ref.current) return
       ref.current.style.opacity = '0'
-      ref.current.style.transform = 'translateY(18px)'
-      ref.current.style.transition = `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms`
+      ref.current.style.transform = 'translateY(20px)'
+      ref.current.style.transition = `opacity 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}ms`
       setTimeout(() => {
         if (!ref.current) return
         ref.current.style.opacity = '1'
@@ -38,15 +33,30 @@ export default function Hero() {
 
   return (
     <section
-      className="section-dark noise relative min-h-svh flex flex-col"
-      style={{ paddingTop: 'clamp(5rem, 10vw, 8rem)', paddingBottom: 'clamp(3rem, 6vw, 5rem)' }}
+      className="section-dark"
+      style={{
+        minHeight: '100svh',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
     >
-      {/* Nav mínima */}
-      <nav className="container-site absolute top-0 inset-x-0 mx-auto flex items-center justify-between py-6">
-        <span
-          className="text-small font-medium tracking-tight"
-          style={{ color: 'var(--color-text-primary)' }}
-        >
+      {/* Nav */}
+      <nav
+        className="container-site"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          paddingTop: '1.5rem',
+          paddingBottom: '1.5rem',
+        }}
+      >
+        <span style={{
+          fontSize: '0.875rem',
+          fontWeight: 500,
+          letterSpacing: '-0.01em',
+          color: 'var(--color-text-primary)',
+        }}>
           Sebastian Arias
         </span>
         
@@ -54,168 +64,138 @@ export default function Hero() {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-ghost text-small"
-          style={{ padding: '0.5rem 1rem' }}
+          style={{
+            fontSize: '0.8125rem',
+            fontWeight: 400,
+            color: 'var(--color-text-secondary)',
+            textDecoration: 'none',
+            transition: 'color 0.2s ease',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-text-primary)')}
+          onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-text-secondary)')}
         >
           Contacto
         </a>
       </nav>
 
-      {/* Contenido principal */}
-      <div className="container-site flex-1 flex flex-col justify-center">
-        <div style={{ maxWidth: '780px' }}>
-
-          {/* Tag */}
-          <div ref={tagRef}>
-            <span className="tag">Desarrollo web · Sector inmobiliario</span>
-          </div>
-
-          {/* Línea decorativa */}
-          <div
-            ref={lineRef}
-            style={{
-              width: '2px',
-              height: '3rem',
-              background: 'var(--color-accent)',
-              borderRadius: '1px',
-              margin: '1.75rem 0',
-            }}
-          />
-
-          {/* Headline */}
-          <h1
-            ref={headRef}
-            className="text-display"
-            style={{ color: 'var(--color-text-primary)' }}
-          >
-            Landing pages que<br />
-            venden proyectos{' '}
-            <span style={{ color: 'var(--color-accent)' }}>inmobiliarios.</span>
-          </h1>
-
-          {/* Subhead */}
-          <p
-            ref={subRef}
-            className="text-body"
-            style={{
-              color: 'var(--color-text-secondary)',
-              marginTop: '1.5rem',
-              maxWidth: '520px',
-            }}
-          >
-            Diseñadas para convertir el tráfico de pauta en leads reales.
-            Con tracking completo, WhatsApp estratégico y estética
-            que genera confianza desde el primer segundo.
-          </p>
-
-          {/* CTAs */}
-          <div
-            ref={ctaRef}
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '0.75rem',
-              marginTop: '2.5rem',
-            }}
-          >
-            
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary"
-            >
-              Agendar llamada
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-            
-            <a
-              href="#demo"
-              className="btn-ghost"
-            >
-              Ver demo
-            </a>
-          </div>
-
-        </div>
-
-        {/* Métricas */}
-        <div
-          ref={metricsRef}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, max-content)',
-            gap: '0 3rem',
-            marginTop: 'clamp(3.5rem, 7vw, 6rem)',
-            paddingTop: '2rem',
-            borderTop: '0.5px solid var(--color-border)',
-          }}
-        >
-          {[
-            { value: '14',   unit: 'días',  label: 'Tiempo de entrega' },
-            { value: '$800', unit: 'USD',   label: 'Precio de entrada' },
-            { value: '100%', unit: '',      label: 'Custom — sin plantillas' },
-          ].map(({ value, unit, label }) => (
-            <div key={label}>
-              <div
-                style={{
-                  fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
-                  fontWeight: 300,
-                  letterSpacing: '-0.03em',
-                  color: 'var(--color-text-primary)',
-                  lineHeight: 1,
-                }}
-              >
-                {value}
-                {unit && (
-                  <span
-                    className="text-label"
-                    style={{
-                      color: 'var(--color-accent)',
-                      marginLeft: '0.375rem',
-                      fontSize: '0.6875rem',
-                    }}
-                  >
-                    {unit}
-                  </span>
-                )}
-              </div>
-              <div
-                className="text-label"
-                style={{
-                  color: 'var(--color-text-muted)',
-                  marginTop: '0.375rem',
-                }}
-              >
-                {label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
+      {/* Contenido */}
       <div
         className="container-site"
         style={{
+          flex: 1,
           display: 'flex',
-          alignItems: 'center',
-          gap: '0.75rem',
-          marginTop: '3rem',
-          opacity: 0.35,
+          flexDirection: 'column',
+          justifyContent: 'center',
+          paddingTop: 'clamp(3rem, 8vw, 6rem)',
+          paddingBottom: 'clamp(3rem, 8vw, 6rem)',
         }}
       >
-        <div
+        {/* Headline */}
+        <h1
+          ref={headRef}
           style={{
-            width: '1px',
-            height: '2rem',
-            background: 'var(--color-text-primary)',
+            fontSize: 'clamp(2.6rem, 6.5vw, 5.5rem)',
+            fontWeight: 300,
+            lineHeight: 1.06,
+            letterSpacing: '-0.035em',
+            color: 'var(--color-text-primary)',
+            maxWidth: '14ch',
+            margin: 0,
           }}
-        />
+        >
+          Landing pages<br />
+          que venden<br />
+          proyectos<br />
+          inmobiliarios.
+        </h1>
+
+        {/* Subhead */}
+        <p
+          ref={subRef}
+          style={{
+            fontSize: 'clamp(0.9375rem, 1.5vw, 1.0625rem)',
+            fontWeight: 400,
+            lineHeight: 1.65,
+            color: 'var(--color-text-secondary)',
+            maxWidth: '42ch',
+            marginTop: 'clamp(1.5rem, 3vw, 2rem)',
+            marginBottom: 0,
+          }}
+        >
+          Diseñadas para convertir el tráfico de pauta
+          en leads reales. Tracking completo, WhatsApp
+          estratégico, entrega en 14 días.
+        </p>
+
+        {/* CTAs */}
+        <div
+          ref={ctaRef}
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            gap: '0.75rem',
+            marginTop: 'clamp(2rem, 4vw, 2.75rem)',
+          }}
+        >
+          
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+          >
+            Agendar llamada
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+              <path d="M2 6.5h9M7.5 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+
+          
+          <a
+            href="#demo"
+            style={{
+              fontSize: '0.875rem',
+              fontWeight: 400,
+              color: 'var(--color-text-secondary)',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.375rem',
+              transition: 'color 0.2s ease',
+              padding: '0.75rem 0',
+            }}
+            onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-text-primary)')}
+            onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-text-secondary)')}
+          >
+            Ver demo
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M6 2l4 4-4 4M2 6h8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      {/* Footer del hero — sector */}
+      <div
+        className="container-site"
+        style={{
+          paddingBottom: '2rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1.5rem',
+        }}
+      >
+        <span style={{
+          fontSize: '0.6875rem',
+          fontWeight: 400,
+          letterSpacing: '0.08em',
+          textTransform: 'uppercase',
+          color: 'var(--color-text-muted)',
+        }}>
+          Sector inmobiliario · Colombia y Latinoamérica
+        </span>
       </div>
     </section>
   )
 }
-
