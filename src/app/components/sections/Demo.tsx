@@ -21,7 +21,6 @@ export default function Demo() {
       },
       { threshold: 0.1 }
     )
-
     ;[headRef.current, previewRef.current].forEach((el, i) => {
       if (!el) return
       el.style.opacity = '0'
@@ -29,200 +28,73 @@ export default function Demo() {
       el.style.transition = `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 140}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 140}ms`
       observer.observe(el)
     })
-
     return () => observer.disconnect()
   }, [])
 
   return (
     <section
       id="demo"
-      className="section-dark"
-      style={{
-        minHeight: '100svh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        paddingBlock: 'clamp(4rem, 9vw, 8rem)',
-      }}
+      className="bg-[var(--color-bg)] min-h-svh flex flex-col justify-center"
+      style={{ paddingBlock: 'var(--section-py)' }}
     >
       <div className="container-site">
-
-        {/* Cabecera */}
         <div
           ref={headRef}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: 'clamp(1rem, 4vw, 4rem)',
-            alignItems: 'end',
-            marginBottom: 'clamp(2.5rem, 5vw, 4rem)',
-          }}
+          className="grid gap-[clamp(1rem,4vw,4rem)] items-end mb-[clamp(2.5rem,5vw,4rem)]"
+          style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}
         >
           <div>
-            <p
-              style={{
-                fontSize: '0.6875rem',
-                fontWeight: 500,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                marginBottom: '1.25rem',
-              }}
-            >
-              Demo
-            </p>
-            <h2
-              style={{
-                fontSize: 'clamp(1.75rem, 4vw, 3.25rem)',
-                fontWeight: 300,
-                lineHeight: 1.1,
-                letterSpacing: '-0.03em',
-                color: 'var(--color-text-primary)',
-                margin: 0,
-              }}
-            >
-              Así se ve<br />
+            <p className="text-label text-[var(--color-text-muted)] mb-5">Demo</p>
+            <h2 className="text-display-md text-[var(--color-text-primary)] m-0">
+              Así se ve
               en la práctica.
             </h2>
           </div>
-
-          <p
-            style={{
-              fontSize: '0.9375rem',
-              lineHeight: 1.7,
-              color: 'var(--color-text-secondary)',
-              margin: 0,
-              maxWidth: '38ch',
-            }}
-          >
+          <p className="text-[0.9375rem] leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[38ch]">
             Una landing construida para convertir.
             Diseño, tracking y WhatsApp estratégico
             funcionando desde el primer día.
           </p>
         </div>
 
-        {/* Preview */}
         <div ref={previewRef}>
           <a
             href="#"
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              display: 'block',
-              textDecoration: 'none',
-              position: 'relative',
-              borderRadius: '10px',
-              overflow: 'hidden',
-              border: '0.5px solid var(--color-border)',
-              transition: 'border-color 0.3s ease',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.borderColor = 'var(--color-border-hi)'
-              const overlay = e.currentTarget.querySelector('.demo-overlay') as HTMLElement
-              if (overlay) overlay.style.opacity = '1'
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.borderColor = 'var(--color-border)'
-              const overlay = e.currentTarget.querySelector('.demo-overlay') as HTMLElement
-              if (overlay) overlay.style.opacity = '0'
-            }}
+            className="block no-underline relative rounded-[10px] overflow-hidden border border-[var(--color-border)] hover:border-[var(--color-border-hi)] transition-colors duration-300 group"
           >
             {/* Placeholder */}
-            <div
-              style={{
-                width: '100%',
-                aspectRatio: '16 / 9',
-                background: 'var(--color-surface)',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative',
-              }}
-            >
-              <div style={{
-                width: '100%',
-                maxWidth: '480px',
-                padding: '0 2rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.75rem',
-                opacity: 0.25,
-              }}>
-                <div style={{ height: '2px', width: '3rem', background: 'var(--color-text-primary)', borderRadius: '1px' }} />
-                <div style={{ height: '12px', width: '75%', background: 'var(--color-text-primary)', borderRadius: '2px' }} />
-                <div style={{ height: '12px', width: '55%', background: 'var(--color-text-primary)', borderRadius: '2px' }} />
-                <div style={{ height: '1px', width: '100%', background: 'var(--color-border-hi)', margin: '0.5rem 0' }} />
-                <div style={{ height: '8px', width: '90%', background: 'var(--color-text-secondary)', borderRadius: '2px' }} />
-                <div style={{ height: '8px', width: '70%', background: 'var(--color-text-secondary)', borderRadius: '2px' }} />
-                <div style={{ height: '8px', width: '80%', background: 'var(--color-text-secondary)', borderRadius: '2px' }} />
-                <div style={{ height: '1px', width: '100%', background: 'var(--color-border)', margin: '0.25rem 0' }} />
-                <div style={{ height: '32px', width: '9rem', background: 'var(--color-surface-hi)', borderRadius: '5px', border: '0.5px solid var(--color-border-hi)' }} />
+            <div className="w-full bg-[var(--color-surface)] relative flex items-center justify-center" style={{ aspectRatio: '16/9' }}>
+              <div className="flex flex-col gap-3 w-full max-w-[480px] px-8 opacity-25">
+                <div className="h-0.5 w-12 bg-[var(--color-text-primary)] rounded" />
+                <div className="h-3 w-3/4 bg-[var(--color-text-primary)] rounded" />
+                <div className="h-3 w-1/2 bg-[var(--color-text-primary)] rounded" />
+                <div className="h-px w-full bg-[var(--color-border-hi)] my-2" />
+                <div className="h-2 w-11/12 bg-[var(--color-text-secondary)] rounded" />
+                <div className="h-2 w-3/4 bg-[var(--color-text-secondary)] rounded" />
+                <div className="h-2 w-4/5 bg-[var(--color-text-secondary)] rounded" />
+                <div className="h-px w-full bg-[var(--color-border)] my-1" />
+                <div className="h-8 w-36 bg-[var(--color-surface-hi)] rounded-md border border-[var(--color-border-hi)]" />
               </div>
-
-              <p
-                style={{
-                  fontSize: '0.75rem',
-                  color: 'var(--color-text-muted)',
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  position: 'absolute',
-                  bottom: '1.25rem',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  whiteSpace: 'nowrap',
-                }}
-              >
+              <p className="text-label text-[var(--color-text-muted)] absolute bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap">
                 Demo disponible próximamente
               </p>
             </div>
 
-            {/* Overlay hover */}
-            <div
-              className="demo-overlay"
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'rgba(10,10,10,0.5)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                opacity: 0,
-                transition: 'opacity 0.3s ease',
-                backdropFilter: 'blur(2px)',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  background: 'var(--color-text-primary)',
-                  color: 'var(--color-bg)',
-                  padding: '0.75rem 1.25rem',
-                  borderRadius: '6px',
-                  fontSize: '0.875rem',
-                  fontWeight: 500,
-                }}
-              >
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-[#0a0a0a]/50 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="flex items-center gap-2 bg-[var(--color-text-primary)] text-[var(--color-bg)] px-5 py-3 rounded-md text-sm font-medium">
                 Ver demo
                 <ArrowUpRight size={15} strokeWidth={2} />
               </div>
             </div>
           </a>
 
-          <p
-            style={{
-              fontSize: '0.75rem',
-              color: 'var(--color-text-muted)',
-              marginTop: '1rem',
-              letterSpacing: '0.02em',
-            }}
-          >
+          <p className="text-xs text-[var(--color-text-muted)] mt-4 tracking-wide">
             Proyecto ficticio · Muestra del estándar de entrega
           </p>
         </div>
-
       </div>
     </section>
   )

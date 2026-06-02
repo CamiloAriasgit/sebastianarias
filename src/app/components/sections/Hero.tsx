@@ -13,7 +13,7 @@ export default function Hero() {
 
   useEffect(() => {
     const els = [
-      { ref: lineOneRef, delay: 0    },
+      { ref: lineOneRef, delay: 0   },
       { ref: lineTwoRef, delay: 120 },
       { ref: footerRef,  delay: 280 },
     ]
@@ -32,43 +32,16 @@ export default function Hero() {
 
   return (
     <section
-      className="section-dark"
-      style={{
-        height: '100svh',
-        display: 'grid',
-        gridTemplateRows: '1fr auto',
-        paddingTop: '3.5rem',
-      }}
+      className="bg-[var(--color-bg)] h-svh grid pt-14"
+      style={{ gridTemplateRows: '1fr auto' }}
     >
       {/* Headline */}
-      <div
-        className="container-site"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-        }}
-      >
-        <h1
-          style={{
-            fontWeight: 300,
-            lineHeight: 1.0,
-            letterSpacing: '-0.04em',
-            color: 'var(--color-text-primary)',
-            margin: 0,
-            fontSize: 'clamp(3rem, 10.5vw, 11rem)',
-          }}
-        >
-          <span ref={lineOneRef} style={{ display: 'block' }}>
+      <div className="container-site flex flex-col justify-center">
+        <h1 className="text-display text-[var(--color-text-primary)] m-0">
+          <span ref={lineOneRef} className="block">
             Landing pages
           </span>
-          <span
-            ref={lineTwoRef}
-            style={{
-              display: 'block',
-              color: 'var(--color-text-muted)',
-            }}
-          >
+          <span ref={lineTwoRef} className="block text-[var(--color-text-muted)]">
             que convierten.
           </span>
         </h1>
@@ -77,39 +50,20 @@ export default function Hero() {
       {/* Footer anclado */}
       <div
         ref={footerRef}
-        className="container-site"
-        style={{
-          paddingBottom: '2rem',
-          paddingTop: '1.25rem',
-          borderTop: '0.5px solid var(--color-border)',
-          display: 'flex',
-          alignItems: 'end',
-          justifyContent: 'space-between',
-          gap: '2rem',
-          flexWrap: 'wrap',
-        }}
+        className="container-site pb-8 pt-5 border-t border-[var(--color-border)] flex items-end justify-between flex-wrap gap-8"
       >
-        <p
-          style={{
-            fontSize: '0.875rem',
-            lineHeight: 1.65,
-            color: 'var(--color-text-secondary)',
-            margin: 0,
-            maxWidth: '38ch',
-          }}
-        >
+        <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[38ch]">
           Diseñadas para proyectos inmobiliarios en preventa.
           Tráfico de pauta convertido en leads reales,
           con tracking y WhatsApp estratégico.
         </p>
-
         <a
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-primary btn-primary-hero"
-          style={{ flexShrink: 0 }}
+          className="btn-primary btn-primary-hero shrink-0"
         >
+        
           Agendar llamada
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
             <path d="M2 6.5h9M7.5 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>

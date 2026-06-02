@@ -22,81 +22,46 @@ export default function CTAFinal() {
       },
       { threshold: 0.2 }
     )
-
     if (innerRef.current) {
       innerRef.current.style.opacity = '0'
       innerRef.current.style.transform = 'translateY(20px)'
-      innerRef.current.style.transition =
-        'opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)'
+      innerRef.current.style.transition = 'opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1)'
       observer.observe(innerRef.current)
     }
-
     return () => observer.disconnect()
   }, [])
 
   return (
     <section
-      className="section-light"
-      style={{ paddingBlock: 'clamp(5rem, 11vw, 10rem)' }}
+      className="bg-[var(--color-bg)]"
+      style={{ paddingBlock: 'clamp(5rem,11vw,10rem)' }}
     >
       <div className="container-site">
         <div
           ref={innerRef}
-          style={{
-            borderTop: '0.5px solid var(--color-light-border)',
-            paddingTop: 'clamp(3rem, 6vw, 5rem)',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: 'clamp(2rem, 5vw, 5rem)',
-            alignItems: 'end',
-          }}
+          className="border-t border-[var(--color-border)] pt-[clamp(3rem,6vw,5rem)] grid gap-[clamp(2rem,5vw,5rem)] items-end"
+          style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}
         >
-          {/* Headline */}
           <h2
-            style={{
-              fontSize: 'clamp(2rem, 5vw, 4rem)',
-              fontWeight: 300,
-              lineHeight: 1.08,
-              letterSpacing: '-0.035em',
-              color: 'var(--color-light-text)',
-              margin: 0,
-            }}
+            className="text-[var(--color-text-primary)] m-0"
+            style={{ fontSize: 'clamp(2rem,5vw,4rem)', fontWeight: 300, lineHeight: 1.08, letterSpacing: '-0.035em' }}
           >
             Tu próximo proyecto
             merece una landing
             que{' '}
-            <span style={{ color: 'var(--color-accent-dark)' }}>
-              convierta.
-            </span>
+            <span style={{ color: 'var(--color-accent)' }}>convierta.</span>
           </h2>
 
-          {/* Derecha — sub + CTA */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              gap: '1.75rem',
-            }}
-          >
-            <p
-              style={{
-                fontSize: '0.9375rem',
-                lineHeight: 1.7,
-                color: 'var(--color-light-muted)',
-                margin: 0,
-                maxWidth: '36ch',
-              }}
-            >
+          <div className="flex flex-col items-start gap-7">
+            <p className="text-[0.9375rem] leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[36ch]">
               El tráfico ya lo tienes.
               Lo que sigue es no desperdiciarlo.
             </p>
-
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className="btn-primary btn-primary-hero"
             >
               Hablar por WhatsApp
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
@@ -107,32 +72,11 @@ export default function CTAFinal() {
         </div>
 
         {/* Footer */}
-        <div
-          style={{
-            marginTop: 'clamp(3rem, 6vw, 5rem)',
-            paddingTop: '1.5rem',
-            borderTop: '0.5px solid var(--color-light-border)',
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '1rem',
-          }}
-        >
-          <span style={{
-            fontSize: '0.8125rem',
-            fontWeight: 500,
-            letterSpacing: '-0.01em',
-            color: 'var(--color-light-text)',
-          }}>
+        <div className="mt-[clamp(3rem,6vw,5rem)] pt-6 border-t border-[var(--color-border)] flex flex-wrap items-center justify-between gap-4">
+          <span className="text-[0.8125rem] font-medium tracking-tight text-[var(--color-text-primary)]">
             Sebastian Arias
           </span>
-
-          <span style={{
-            fontSize: '0.75rem',
-            color: 'var(--color-light-muted)',
-            letterSpacing: '0.02em',
-          }}>
+          <span className="text-xs text-[var(--color-text-muted)] tracking-wide">
             © {new Date().getFullYear()} · Colombia
           </span>
         </div>

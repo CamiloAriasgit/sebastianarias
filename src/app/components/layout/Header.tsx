@@ -17,54 +17,21 @@ export default function Header() {
 
   return (
     <header
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 50,
-        transition: 'background 0.4s ease, border-color 0.4s ease',
-        background: scrolled ? 'rgba(10,10,10,0.85)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled
-          ? '0.5px solid var(--color-border)'
-          : '0.5px solid transparent',
-      }}
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-[#0a0a0a]/80 backdrop-blur-md border-b border-[var(--color-border)]'
+          : 'bg-transparent border-b border-transparent'
+      }`}
     >
-      <div
-        className="container-site"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          height: '3.5rem',
-        }}
-      >
-        <span
-          style={{
-            fontSize: '0.875rem',
-            fontWeight: 500,
-            letterSpacing: '-0.01em',
-            color: 'var(--color-text-primary)',
-          }}
-        >
+      <div className="container-site flex items-center justify-between h-14">
+        <span className="text-sm font-medium tracking-tight text-[var(--color-text-primary)]">
           Sebastian Arias
         </span>
-
         <a
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            fontSize: '0.8125rem',
-            fontWeight: 400,
-            color: 'var(--color-text-secondary)',
-            textDecoration: 'none',
-            transition: 'color 0.2s ease',
-          }}
-          onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-text-primary)')}
-          onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-text-secondary)')}
+          className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-200 no-underline"
         >
           Contacto
         </a>
