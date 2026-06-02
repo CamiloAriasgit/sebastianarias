@@ -2,6 +2,7 @@
 import Header from './components/layout/Header'
 import Hero from './components/sections/Hero'
 import Problem from './components/sections/Problem'
+import Service from './components/sections/Service'
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
       <main>
         <Hero />
         <Problem />
-        {/* <Service /> */}
+        <Service /> 
         {/* <Process /> */}
         {/* <Demo /> */}
         {/* <Pricing /> */}
