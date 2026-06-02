@@ -6,7 +6,7 @@ import Service from './components/sections/Service'
 import Process from './components/sections/Process'
 import Demo from './components/sections/Demo'
 import Pricing from './components/sections/Pricing'
-// import FAQ from './components/sections/FAQ'
+import FAQ from './components/sections/FAQ'
 // import CTAFinal from './components/sections/CTAFinal'
 
 export default function Home() {
@@ -20,7 +20,7 @@ export default function Home() {
         <Process />
         <Demo />
         <Pricing />
-        {/* <FAQ /> */}
+        <FAQ />
         {/* <CTAFinal /> */}
       </main>
     </>
