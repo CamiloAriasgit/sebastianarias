@@ -107,7 +107,7 @@ export default function Hero() {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-primary"
+          className="btn-primary btn-primary-hero"
           style={{ flexShrink: 0 }}
         >
           Agendar llamada
