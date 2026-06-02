@@ -4,7 +4,7 @@ import Hero from './components/sections/Hero'
 import Problem from './components/sections/Problem'
 import Service from './components/sections/Service'
 import Process from './components/sections/Process'
-// import Demo from './components/sections/Demo'
+import Demo from './components/sections/Demo'
 // import Pricing from './components/sections/Pricing'
 // import FAQ from './components/sections/FAQ'
 // import CTAFinal from './components/sections/CTAFinal'
@@ -18,7 +18,7 @@ export default function Home() {
         <Problem />
         <Service /> 
         <Process />
-        {/* <Demo /> */}
+        <Demo />
         {/* <Pricing /> */}
         {/* <FAQ /> */}
         {/* <CTAFinal /> */}
