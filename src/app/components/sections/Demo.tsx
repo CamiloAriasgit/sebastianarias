@@ -37,7 +37,13 @@ export default function Demo() {
     <section
       id="demo"
       className="section-dark"
-      style={{ paddingBlock: 'clamp(4rem, 9vw, 8rem)' }}
+      style={{
+        minHeight: '100svh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        paddingBlock: 'clamp(4rem, 9vw, 8rem)',
+      }}
     >
       <div className="container-site">
 
@@ -89,9 +95,9 @@ export default function Demo() {
               maxWidth: '38ch',
             }}
           >
-            Landing ficticia construida como muestra del servicio.
-            Sin cliente real detrás — solo el estándar
-            de lo que se entrega.
+            Una landing construida para convertir.
+            Diseño, tracking y WhatsApp estratégico
+            funcionando desde el primer día.
           </p>
         </div>
 
@@ -121,7 +127,7 @@ export default function Demo() {
               if (overlay) overlay.style.opacity = '0'
             }}
           >
-            {/* Placeholder — reemplazar con <img> cuando exista el screenshot */}
+            {/* Placeholder */}
             <div
               style={{
                 width: '100%',
@@ -131,10 +137,9 @@ export default function Demo() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '0.75rem',
+                position: 'relative',
               }}
             >
-              {/* Simulación minimalista de una landing */}
               <div style={{
                 width: '100%',
                 maxWidth: '480px',
@@ -206,7 +211,6 @@ export default function Demo() {
             </div>
           </a>
 
-          {/* Nota bajo el preview */}
           <p
             style={{
               fontSize: '0.75rem',
@@ -223,4 +227,3 @@ export default function Demo() {
     </section>
   )
 }
-
