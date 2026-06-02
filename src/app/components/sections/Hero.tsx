@@ -37,10 +37,10 @@ export default function Hero() {
         height: '100svh',
         display: 'grid',
         gridTemplateRows: '1fr auto',
-        paddingTop: '3.5rem', /* altura del header fixed */
+        paddingTop: '3.5rem',
       }}
     >
-      {/* Centro — headline ocupa el ancho */}
+      {/* Headline */}
       <div
         className="container-site"
         style={{
@@ -56,11 +56,6 @@ export default function Hero() {
             letterSpacing: '-0.04em',
             color: 'var(--color-text-primary)',
             margin: 0,
-            /*
-              font-size fluido: ocupa el ancho disponible
-              sin importar el viewport. Ajusta el multiplicador
-              si quiere más o menos presencia.
-            */
             fontSize: 'clamp(3rem, 10.5vw, 11rem)',
           }}
         >
@@ -79,71 +74,47 @@ export default function Hero() {
         </h1>
       </div>
 
-      {/* Footer del hero — anclado al fondo */}
+      {/* Footer anclado */}
       <div
         ref={footerRef}
         className="container-site"
         style={{
           paddingBottom: '2rem',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          alignItems: 'end',
-          gap: '1rem',
-          borderTop: '0.5px solid var(--color-border)',
           paddingTop: '1.25rem',
+          borderTop: '0.5px solid var(--color-border)',
+          display: 'flex',
+          alignItems: 'end',
+          justifyContent: 'space-between',
+          gap: '2rem',
+          flexWrap: 'wrap',
         }}
       >
-        {/* Izquierda — descripción + CTA */}
-        <div>
-          <p
-            style={{
-              fontSize: '0.875rem',
-              lineHeight: 1.65,
-              color: 'var(--color-text-secondary)',
-              margin: '0 0 1.25rem',
-              maxWidth: '38ch',
-            }}
-          >
-            Diseñadas para proyectos inmobiliarios en preventa.
-            Tráfico de pauta convertido en leads reales,
-            con tracking y WhatsApp estratégico.
-          </p>
+        <p
+          style={{
+            fontSize: '0.875rem',
+            lineHeight: 1.65,
+            color: 'var(--color-text-secondary)',
+            margin: 0,
+            maxWidth: '38ch',
+          }}
+        >
+          Diseñadas para proyectos inmobiliarios en preventa.
+          Tráfico de pauta convertido en leads reales,
+          con tracking y WhatsApp estratégico.
+        </p>
 
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary"
-          >
-            Agendar llamada
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-              <path d="M2 6.5h9M7.5 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
-        </div>
-
-        {/* Derecha — ver demo */}
-        <div style={{ textAlign: 'right' }}>
-          <a
-            href="#demo"
-            style={{
-              fontSize: '0.8125rem',
-              color: 'var(--color-text-muted)',
-              textDecoration: 'none',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.375rem',
-              transition: 'color 0.2s ease',
-            }}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-text-primary)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-text-muted)')}
-          >
-            Ver demo
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M6 2l4 4-4 4M2 6h8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
-        </div>
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-primary"
+          style={{ flexShrink: 0 }}
+        >
+          Agendar llamada
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <path d="M2 6.5h9M7.5 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
       </div>
     </section>
   )
