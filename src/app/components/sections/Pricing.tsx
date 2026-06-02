@@ -151,7 +151,7 @@ export default function Pricing() {
                             style={{
                                 background: plan.highlighted
                                     ? 'var(--color-light-text)'
-                                    : 'var(--color-light-bg)',
+                                    : 'var(--color-light-surface)',
                                 padding: 'clamp(1.5rem, 3vw, 2rem)',
                                 display: 'flex',
                                 flexDirection: 'column',
