@@ -33,7 +33,7 @@ export default function CTAFinal() {
 
   return (
     <section
-      className="bg-[var(--color-bg)]"
+      className="bg-[var(--color-bg)] min-h-svh flex flex-col justify-center"
       style={{ paddingBlock: 'clamp(5rem,11vw,10rem)' }}
     >
       <div className="container-site">
