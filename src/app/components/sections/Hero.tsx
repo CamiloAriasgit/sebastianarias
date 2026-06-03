@@ -22,7 +22,7 @@ const NOTIFICATIONS = [
   {
     id: 3,
     name: 'Andrés Castillo',
-    preview: '¿Aún hay unidades disponibles en el piso 8? Vi los planos y me convencieron.',
+    preview: '¿Aún hay unidades en el piso 8? Vi los planos y me convencieron.',
     time: '3 min',
   },
 ]
@@ -35,7 +35,6 @@ export default function Hero() {
   const notifRefs  = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
-    // Headline + footer
     const textEls = [
       { ref: lineOneRef, delay: 0   },
       { ref: lineTwoRef, delay: 120 },
@@ -53,7 +52,6 @@ export default function Hero() {
       }, 60)
     })
 
-    // Teléfono
     if (phoneRef.current) {
       phoneRef.current.style.opacity = '0'
       phoneRef.current.style.transform = 'translateY(28px)'
@@ -65,7 +63,6 @@ export default function Hero() {
       }, 60)
     }
 
-    // Notificaciones en cascada
     notifRefs.current.forEach((el, i) => {
       if (!el) return
       el.style.opacity = '0'
@@ -80,20 +77,22 @@ export default function Hero() {
     })
   }, [])
 
+  // En móvil solo 1 notif, en desktop las 3
+  const visibleNotifs = NOTIFICATIONS
+
   return (
     <section
       className="bg-[var(--color-bg)] h-svh grid pt-14"
       style={{ gridTemplateRows: '1fr auto' }}
     >
       <div className="container-site flex flex-col justify-center">
-        <div
-          className="grid items-center"
-          style={{
-            gridTemplateColumns: 'minmax(0,1.1fr) minmax(0,0.9fr)',
-            gap: 'clamp(2rem, 5vw, 5rem)',
-          }}
+
+        {/* Layout: columna en móvil, dos columnas en desktop */}
+        <div className="flex flex-col md:grid md:items-center gap-8 md:gap-[clamp(2rem,5vw,5rem)]"
+          style={{ gridTemplateColumns: '1.15fr 0.85fr' }}
         >
-          {/* Izquierda — headline */}
+
+          {/* Headline */}
           <h1 className="m-0" style={{
             fontSize: 'var(--text-display)',
             fontWeight: 300,
@@ -111,103 +110,106 @@ export default function Hero() {
             </span>
           </h1>
 
-          {/* Derecha — teléfono con notificaciones */}
+          {/* Teléfono — medio frame con fade */}
           <div
             ref={phoneRef}
             className="flex justify-center md:justify-end"
           >
-            {/* Frame del teléfono */}
-            <div
-              className="relative"
-              style={{
-                width: 'clamp(220px, 28vw, 300px)',
-                aspectRatio: '9/19.5',
-                borderRadius: '2.5rem',
-                background: 'linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 100%)',
-                border: '1px solid var(--color-border-hi)',
-                padding: '3rem 0.75rem 1.5rem',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-                gap: '0.5rem',
-                boxShadow: '0 0 0 0.5px var(--color-border), 0 32px 64px rgba(0,0,0,0.5)',
-                overflow: 'hidden',
-              }}
-            >
-              {/* Notch */}
+            <div className="relative" style={{ width: 'clamp(200px, 26vw, 280px)' }}>
+
+              {/* Frame del teléfono — solo la mitad superior visible */}
               <div
-                className="absolute top-3 left-1/2 -translate-x-1/2 bg-[var(--color-bg)] rounded-full"
-                style={{ width: '72px', height: '10px' }}
-              />
+                style={{
+                  borderRadius: '2.25rem 2.25rem 0 0',
+                  background: 'linear-gradient(160deg, #1c1c1e 0%, #0f0f0f 100%)',
+                  border: '1px solid var(--color-border-hi)',
+                  borderBottom: 'none',
+                  padding: '2.5rem 0.75rem 1.5rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.5rem',
+                  boxShadow: '0 0 0 0.5px var(--color-border), 0 24px 48px rgba(0,0,0,0.4)',
+                  overflow: 'hidden',
+                  position: 'relative',
+                }}
+              >
+                {/* Notch */}
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 bg-[var(--color-bg)] rounded-full"
+                  style={{ width: '68px', height: '9px' }}
+                />
 
-              {/* Hora */}
-              <div className="text-center mt-1 mb-3">
-                <p className="text-[var(--color-text-primary)] m-0 leading-none font-light"
-                  style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', letterSpacing: '-0.03em' }}
-                >
-                  9:41
-                </p>
-                <p className="text-[var(--color-text-muted)] m-0 mt-1"
-                  style={{ fontSize: '0.625rem', letterSpacing: '0.06em' }}
-                >
-                  LUNES, 3 DE JUNIO
-                </p>
-              </div>
-
-              {/* Notificaciones */}
-              <div className="flex flex-col gap-2 px-0.5">
-                {NOTIFICATIONS.map((n, i) => (
-                  <div
-                    key={n.id}
-                    ref={el => { notifRefs.current[i] = el }}
-                    className="rounded-2xl px-3 py-2.5"
-                    style={{
-                      background: 'rgba(255,255,255,0.05)',
-                      border: '0.5px solid rgba(255,255,255,0.07)',
-                      backdropFilter: 'blur(12px)',
-                    }}
+                {/* Hora */}
+                <div className="text-center mb-2">
+                  <p className="text-[var(--color-text-primary)] m-0 leading-none font-light"
+                    style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2rem)', letterSpacing: '-0.03em' }}
                   >
-                    {/* Header notif */}
-                    <div className="flex items-center justify-between mb-1.5">
-                      <div className="flex items-center gap-1.5">
-                        {/* Ícono WhatsApp */}
-                        <div
-                          className="w-4 h-4 rounded-md flex items-center justify-center shrink-0"
-                          style={{ background: '#25d366' }}
-                        >
-                          <svg width="9" height="9" viewBox="0 0 24 24" fill="white">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
-                          </svg>
+                    9:41
+                  </p>
+                  <p className="text-[var(--color-text-muted)] m-0 mt-1"
+                    style={{ fontSize: '0.5625rem', letterSpacing: '0.06em' }}
+                  >
+                    LUNES, 3 DE JUNIO
+                  </p>
+                </div>
+
+                {/* Notificaciones — 1 en móvil, 3 en desktop */}
+                <div className="flex flex-col gap-2 px-0.5">
+                  {visibleNotifs.map((n, i) => (
+                    <div
+                      key={n.id}
+                      ref={el => { notifRefs.current[i] = el }}
+                      className={`rounded-2xl px-3 py-2.5 ${i >= 1 ? 'hidden md:block' : ''}`}
+                      style={{
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '0.5px solid rgba(255,255,255,0.07)',
+                        backdropFilter: 'blur(12px)',
+                      }}
+                    >
+                      <div className="flex items-center justify-between mb-1.5">
+                        <div className="flex items-center gap-1.5">
+                          <div className="w-4 h-4 rounded-md flex items-center justify-center shrink-0"
+                            style={{ background: '#25d366' }}
+                          >
+                            <svg width="9" height="9" viewBox="0 0 24 24" fill="white">
+                              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+                            </svg>
+                          </div>
+                          <span style={{ fontSize: '0.5625rem', fontWeight: 500, color: 'var(--color-text-secondary)', letterSpacing: '0.02em' }}>
+                            WhatsApp
+                          </span>
                         </div>
-                        <span style={{ fontSize: '0.5625rem', fontWeight: 500, color: 'var(--color-text-secondary)', letterSpacing: '0.02em' }}>
-                          WhatsApp
+                        <span style={{ fontSize: '0.5rem', color: 'var(--color-text-muted)' }}>
+                          {n.time}
                         </span>
                       </div>
-                      <span style={{ fontSize: '0.5rem', color: 'var(--color-text-muted)' }}>
-                        {n.time}
-                      </span>
+                      <p style={{ fontSize: '0.625rem', fontWeight: 500, color: 'var(--color-text-primary)', margin: '0 0 2px' }}>
+                        {n.name}
+                      </p>
+                      <p style={{ fontSize: '0.5625rem', color: 'var(--color-text-secondary)', margin: 0, lineHeight: 1.5, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                        {n.preview}
+                      </p>
                     </div>
+                  ))}
+                </div>
 
-                    {/* Contenido */}
-                    <p style={{ fontSize: '0.625rem', fontWeight: 500, color: 'var(--color-text-primary)', margin: '0 0 2px', letterSpacing: '0.01em' }}>
-                      {n.name}
-                    </p>
-                    <p style={{ fontSize: '0.5625rem', color: 'var(--color-text-secondary)', margin: 0, lineHeight: 1.5, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                      {n.preview}
-                    </p>
-                  </div>
-                ))}
+                {/* Degradado inferior — dentro del frame */}
+                <div
+                  className="absolute bottom-0 inset-x-0 pointer-events-none"
+                  style={{
+                    height: '60%',
+                    background: 'linear-gradient(to bottom, transparent, #0a0a0a)',
+                  }}
+                />
               </div>
-
             </div>
           </div>
         </div>
       </div>
 
-      {/* Footer anclado */}
+      {/* Footer — borde solo en desktop */}
       <div
         ref={footerRef}
-        className="container-site pb-8 pt-5 border-t border-[var(--color-border)] flex items-end justify-between flex-wrap gap-8"
+        className="container-site pb-8 pt-5 md:border-t md:border-[var(--color-border)] flex items-end justify-between flex-wrap gap-8"
       >
         <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[38ch]">
           Diseñadas para proyectos inmobiliarios en preventa.
