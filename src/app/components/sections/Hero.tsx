@@ -1,4 +1,3 @@
-// components/sections/Hero.tsx
 'use client'
 
 import { useEffect, useRef } from 'react'
@@ -93,17 +92,15 @@ export default function Hero() {
         >
 
           {/* Headline */}
-          <h1 className="m-0" style={{
-            fontSize: 'var(--text-display)',
+          <h1 className="m-0 text-5xl md:text-8xl" style={{
             fontWeight: 300,
             lineHeight: 1.0,
             letterSpacing: '-0.04em',
           }}>
             <span ref={lineOneRef} className="block text-[var(--color-text-primary)]">
-              Landing
-            </span>
-            <span className="block text-[var(--color-text-primary)]">
-              pages
+              <span className="inline md:block">Landing</span>
+              {" "}
+              <span className="inline md:block">pages</span>
             </span>
             <span ref={lineTwoRef} className="block text-[var(--color-text-muted)]">
               que cierran.
@@ -113,12 +110,13 @@ export default function Hero() {
           {/* Teléfono — medio frame con fade */}
           <div
             ref={phoneRef}
-            className="flex justify-center md:justify-end"
+            className="flex justify-center md:justify-end w-full"
           >
-            <div className="relative" style={{ width: 'clamp(200px, 26vw, 280px)' }}>
+            <div className="relative w-full max-w-[280px]">
 
               {/* Frame del teléfono — solo la mitad superior visible */}
               <div
+                className="w-full"
                 style={{
                   borderRadius: '2.25rem 2.25rem 0 0',
                   background: 'linear-gradient(160deg, #1c1c1e 0%, #0f0f0f 100%)',
