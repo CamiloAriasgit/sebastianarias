@@ -117,17 +117,17 @@ export default function Hero() {
 
               {/* Frame del teléfono — solo la mitad superior visible */}
               <div
-                className="w-full h-[320px] md:h-auto flex justify-center"
+                className="w-full h-[310px] md:h-auto flex justify-center"
                 style={{
                   borderRadius: '2.25rem 2.25rem 0 0',
                   background: 'linear-gradient(160deg, #1c1c1e 0%, #0f0f0f 100%)',
-                  border: '1px solid var(--color-border-hi)',
+                  //border: '1px solid var(--color-border-hi)',
                   borderBottom: 'none',
                   padding: '2.5rem 0.75rem 1.5rem',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '0.5rem',
-                  boxShadow: '0 0 0 0.5px var(--color-border), 0 24px 48px rgba(0,0,0,0.4)',
+                  //boxShadow: '0 0 0 0.5px var(--color-border), 0 24px 48px rgba(0,0,0,0.4)',
                   overflow: 'hidden',
                   position: 'relative',
                 }}
@@ -160,7 +160,7 @@ export default function Hero() {
                       className={`rounded-2xl px-3 py-2.5 ${i >= 1 ? 'hidden md:block' : ''}`}
                       style={{
                         background: 'rgba(255,255,255,0.05)',
-                        border: '0.5px solid rgba(255,255,255,0.07)',
+                        //border: '0.5px solid rgba(255,255,255,0.07)',
                         backdropFilter: 'blur(12px)',
                       }}
                     >
