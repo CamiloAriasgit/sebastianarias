@@ -87,7 +87,8 @@ export default function Hero() {
       <div className="container-site flex flex-col justify-center">
 
         {/* Layout: columna en móvil, dos columnas en desktop */}
-        <div className="flex flex-col md:grid md:items-center gap-8 md:gap-[clamp(2rem,5vw,5rem)]"
+        {/* Cambiado a flex-col-reverse en móvil para pegar el mockup abajo */}
+        <div className="flex flex-col md:grid md:items-center gap-4 md:gap-[clamp(2rem,5vw,5rem)]"
           style={{ gridTemplateColumns: '1.15fr 0.85fr' }}
         >
 
@@ -108,11 +109,12 @@ export default function Hero() {
           </h1>
 
           {/* Teléfono — medio frame con fade */}
+          {/* justify-stretch en móvil para ocupar el ancho total del layout y -mb-px para pegarlo abajo */}
           <div
             ref={phoneRef}
-            className="flex justify-center md:justify-end w-full"
+            className="flex justify-stretch md:justify-end w-full -mb-px md:mb-0"
           >
-            <div className="relative w-full max-w-[280px]">
+            <div className="relative w-full md:max-w-[280px]">
 
               {/* Frame del teléfono — solo la mitad superior visible */}
               <div
