@@ -117,7 +117,7 @@ export default function Hero() {
 
               {/* Frame del teléfono — solo la mitad superior visible */}
               <div
-                className="w-full h-[320px] md:h-auto"
+                className="w-full h-[320px] md:h-auto flex justify-center"
                 style={{
                   borderRadius: '2.25rem 2.25rem 0 0',
                   background: 'linear-gradient(160deg, #1c1c1e 0%, #0f0f0f 100%)',
