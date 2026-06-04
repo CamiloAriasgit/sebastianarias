@@ -84,10 +84,9 @@ export default function Hero() {
       className="bg-[var(--color-bg)] h-svh grid pt-14"
       style={{ gridTemplateRows: '1fr auto' }}
     >
-      <div className="container-site flex flex-col justify-center">
+      <div className="container-site flex flex-col justify-end md:justify-center">
 
         {/* Layout: columna en móvil, dos columnas en desktop */}
-        {/* Cambiado a flex-col-reverse en móvil para pegar el mockup abajo */}
         <div className="flex flex-col md:grid md:items-center gap-4 md:gap-[clamp(2rem,5vw,5rem)]"
           style={{ gridTemplateColumns: '1.15fr 0.85fr' }}
         >
