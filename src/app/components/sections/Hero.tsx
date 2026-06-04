@@ -117,7 +117,7 @@ export default function Hero() {
 
               {/* Frame del teléfono — solo la mitad superior visible */}
               <div
-                className="w-full"
+                className="w-full h-[260px] md:h-auto"
                 style={{
                   borderRadius: '2.25rem 2.25rem 0 0',
                   background: 'linear-gradient(160deg, #1c1c1e 0%, #0f0f0f 100%)',
@@ -177,7 +177,7 @@ export default function Hero() {
                             WhatsApp
                           </span>
                         </div>
-                        <span style={{ fontSize: '0.5rem', color: 'var(--color-text-muted)' }}>
+                        <span style={{ fontSize: '0.50rem', color: 'var(--color-text-muted)' }}>
                           {n.time}
                         </span>
                       </div>
