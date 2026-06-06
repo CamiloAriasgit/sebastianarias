@@ -26,20 +26,64 @@ const NOTIFICATIONS = [
   },
 ]
 
+const WaIcon = ({ size = 9 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+  </svg>
+)
+
+type Notif = typeof NOTIFICATIONS[0]
+
+const NotifCard = ({
+  n,
+  notifRef,
+  className = '',
+}: {
+  n: Notif
+  notifRef?: (el: HTMLDivElement | null) => void
+  className?: string
+}) => (
+  <div
+    ref={notifRef}
+    className={`rounded-2xl px-3 py-2.5 bg-white/[0.06] backdrop-blur-md  border-white/[0.08] ${className}`}
+  >
+    <div className="flex items-center justify-between mb-1.5">
+      <div className="flex items-center gap-1.5">
+        <div className="w-4 h-4 rounded-md flex items-center justify-center shrink-0 bg-[#25d366]">
+          <WaIcon />
+        </div>
+        <span className="text-[0.5625rem] font-medium text-[var(--color-text-secondary)] tracking-wide">
+          WhatsApp
+        </span>
+      </div>
+      <span className="text-[0.5rem] text-[var(--color-text-muted)]">{n.time}</span>
+    </div>
+    <p className="text-[0.6875rem] font-medium text-[var(--color-text-primary)] m-0 mb-0.5">
+      {n.name}
+    </p>
+    <p
+      className="text-[0.5625rem] text-[var(--color-text-secondary)] m-0 leading-relaxed"
+      style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}
+    >
+      {n.preview}
+    </p>
+  </div>
+)
+
 export default function Hero() {
   const lineOneRef = useRef<HTMLSpanElement>(null)
   const lineTwoRef = useRef<HTMLSpanElement>(null)
   const footerRef  = useRef<HTMLDivElement>(null)
-  const phoneRef   = useRef<HTMLDivElement>(null)
+  const notifsRef  = useRef<HTMLDivElement>(null)
   const notifRefs  = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
-    const textEls = [
+    // Headline + footer
+    ;[
       { ref: lineOneRef, delay: 0   },
       { ref: lineTwoRef, delay: 120 },
       { ref: footerRef,  delay: 260 },
-    ]
-    textEls.forEach(({ ref, delay }) => {
+    ].forEach(({ ref, delay }) => {
       if (!ref.current) return
       ref.current.style.opacity = '0'
       ref.current.style.transform = 'translateY(16px)'
@@ -51,23 +95,25 @@ export default function Hero() {
       }, 60)
     })
 
-    if (phoneRef.current) {
-      phoneRef.current.style.opacity = '0'
-      phoneRef.current.style.transform = 'translateY(28px)'
-      phoneRef.current.style.transition = 'opacity 1s cubic-bezier(0.16,1,0.3,1) 380ms, transform 1s cubic-bezier(0.16,1,0.3,1) 380ms'
+    // Contenedor de notifs
+    if (notifsRef.current) {
+      notifsRef.current.style.opacity = '0'
+      notifsRef.current.style.transform = 'translateY(20px)'
+      notifsRef.current.style.transition = 'opacity 0.9s cubic-bezier(0.16,1,0.3,1) 340ms, transform 0.9s cubic-bezier(0.16,1,0.3,1) 340ms'
       setTimeout(() => {
-        if (!phoneRef.current) return
-        phoneRef.current.style.opacity = '1'
-        phoneRef.current.style.transform = 'translateY(0)'
+        if (!notifsRef.current) return
+        notifsRef.current.style.opacity = '1'
+        notifsRef.current.style.transform = 'translateY(0)'
       }, 60)
     }
 
+    // Notifs en cascada
     notifRefs.current.forEach((el, i) => {
       if (!el) return
       el.style.opacity = '0'
-      el.style.transform = 'translateY(8px) scale(0.97)'
-      const delay = 800 + i * 400
-      el.style.transition = `opacity 0.5s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.5s cubic-bezier(0.16,1,0.3,1) ${delay}ms`
+      el.style.transform = 'translateY(10px) scale(0.98)'
+      const delay = 700 + i * 350
+      el.style.transition = `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms`
       setTimeout(() => {
         if (!el) return
         el.style.opacity = '1'
@@ -76,210 +122,70 @@ export default function Hero() {
     })
   }, [])
 
-  const NotifCard = ({ n, i, mobileOnly = false, desktopOnly = false }: {
-    n: typeof NOTIFICATIONS[0]
-    i: number
-    mobileOnly?: boolean
-    desktopOnly?: boolean
-  }) => (
-    <div
-      ref={el => { notifRefs.current[i] = el }}
-      className={`rounded-2xl px-3 py-2.5 ${mobileOnly ? 'md:hidden' : ''} ${desktopOnly ? 'hidden md:block' : ''}`}
-      style={{
-        background: 'rgba(255,255,255,0.06)',
-        backdropFilter: 'blur(12px)',
-        border: '0.5px solid rgba(255,255,255,0.08)',
-      }}
-    >
-      <div className="flex items-center justify-between mb-1.5">
-        <div className="flex items-center gap-1.5">
-          <div className="w-4 h-4 rounded-md flex items-center justify-center shrink-0"
-            style={{ background: '#25d366' }}
-          >
-            <svg width="9" height="9" viewBox="0 0 24 24" fill="white">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
-            </svg>
-          </div>
-          <span className="text-[0.5625rem] md:text-[0.5625rem] font-medium text-[var(--color-text-secondary)]" style={{ letterSpacing: '0.02em' }}>
-            WhatsApp
-          </span>
-        </div>
-        <span className="text-[0.625rem] md:text-[0.5rem] text-[var(--color-text-muted)]">
-          {n.time}
-        </span>
-      </div>
-      <p className="text-[0.6875rem] md:text-[0.625rem] font-medium text-[var(--color-text-primary)] m-0 mb-0.5">
-        {n.name}
-      </p>
-      <p className="text-[0.625rem] md:text-[0.5625rem] text-[var(--color-text-secondary)] m-0 leading-relaxed"
-        style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}
-      >
-        {n.preview}
-      </p>
-    </div>
-  )
-
   return (
     <section
       className="bg-[var(--color-bg)] h-svh grid pt-14"
       style={{ gridTemplateRows: '1fr auto' }}
     >
-      <div className="container-site flex flex-col justify-end md:justify-center">
+      <div className="container-site flex flex-col justify-center">
         <div
-          className="flex flex-col md:grid md:items-center gap-4 md:gap-[clamp(2rem,5vw,5rem)]"
-          style={{ gridTemplateColumns: '1.15fr 0.85fr' }}
+          className="grid items-center gap-8 md:gap-[clamp(2rem,5vw,4rem)]"
+          style={{ gridTemplateColumns: '1fr 1fr' }}
         >
-          {/* Headline */}
-          <h1 className="m-0 text-5xl md:text-8xl lg:text-9xl" style={{
-            fontWeight: 300,
-            lineHeight: 1.0,
-            letterSpacing: '-0.04em',
-          }}>
-            <span ref={lineOneRef} className="block text-[var(--color-text-primary)]">
-              Landing pages
+
+          {/* Izquierda — headline */}
+          <h1
+            className="m-0"
+            style={{
+              fontSize: 'clamp(3rem, 8.5vw, 9.5rem)',
+              fontWeight: 300,
+              lineHeight: 1.0,
+              letterSpacing: '-0.04em',
+            }}
+          >
+            <span ref={lineOneRef} className="block text-[var(--color-text-primary)] whitespace-nowrap">
+              El lead
             </span>
-            <span ref={lineTwoRef} className="block text-[var(--color-text-muted)]">
-              que cierran.
+            <span ref={lineTwoRef} className="block text-[var(--color-text-muted)] whitespace-nowrap">
+              ya viene.
             </span>
           </h1>
 
-          {/* Teléfono */}
-          <div ref={phoneRef} className="flex justify-center md:justify-end w-full -mb-px md:mb-0">
+          {/* Derecha — notificaciones flotando, sin frame */}
+          <div
+            ref={notifsRef}
+            className="hidden md:flex flex-col gap-2.5 justify-center"
+          >
+            {NOTIFICATIONS.map((n, i) => (
+              <NotifCard
+                key={n.id}
+                n={n}
+                notifRef={el => { notifRefs.current[i] = el }}
+                className={i === 1 ? 'ml-4' : i === 2 ? 'ml-2' : ''}
+              />
+            ))}
 
-            {/* En móvil: frame centrado + notif que sobresale */}
-            <div className="relative md:hidden" style={{ width: '260px' }}>
-              {/* Frame */}
-              <div
-                style={{
-                  borderRadius: '2.25rem 2.25rem 0 0',
-                  background: 'linear-gradient(160deg, #1c1c1e 0%, #0f0f0f 100%)',
-                  borderBottom: 'none',
-                  padding: '2.5rem 0.875rem 1.5rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.5rem',
-                  overflow: 'visible',
-                  position: 'relative',
-                  height: '260px',
-                }}
-              >
-                {/* Notch */}
-                <div className="absolute top-3 left-1/2 -translate-x-1/2 bg-[var(--color-bg)] rounded-full"
-                  style={{ width: '68px', height: '9px' }}
-                />
-                {/* Hora */}
-                <div className="text-center mb-1">
-                  <p className="text-[var(--color-text-primary)] m-0 leading-none font-light text-2xl"
-                    style={{ letterSpacing: '-0.03em' }}
-                  >
-                    9:41
-                  </p>
-                  <p className="text-[var(--color-text-muted)] m-0 mt-1 text-[0.625rem]"
-                    style={{ letterSpacing: '0.06em' }}
-                  >
-                    LUNES, 3 DE JUNIO
-                  </p>
-                </div>
-
-                {/* Notif dentro del frame */}
-                <div className="px-0.5">
-                  <NotifCard n={NOTIFICATIONS[0]} i={0} />
-                </div>
-
-                {/* Degradado */}
-                <div className="absolute bottom-0 inset-x-0 pointer-events-none rounded-b-none"
-                  style={{ height: '55%', background: 'linear-gradient(to bottom, transparent, #0a0a0a)' }}
-                />
-              </div>
-
-              {/* Notif que sobresale del frame — solo móvil */}
-              <div
-                ref={el => { notifRefs.current[1] = el }}
-                className="absolute -bottom-2 -right-4 w-[110%]"
-                style={{
-                  background: 'rgba(255,255,255,0.06)',
-                  backdropFilter: 'blur(12px)',
-                  border: '0.5px solid rgba(255,255,255,0.08)',
-                  borderRadius: '1rem',
-                  padding: '0.625rem 0.75rem',
-                  zIndex: 10,
-                }}
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-3.5 h-3.5 rounded-md flex items-center justify-center shrink-0"
-                      style={{ background: '#25d366' }}
-                    >
-                      <svg width="8" height="8" viewBox="0 0 24 24" fill="white">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
-                      </svg>
-                    </div>
-                    <span className="text-[0.5625rem] font-medium text-[var(--color-text-secondary)]">WhatsApp</span>
-                  </div>
-                  <span className="text-[0.5rem] text-[var(--color-text-muted)]">1 min</span>
-                </div>
-                <p className="text-[0.6875rem] font-medium text-[var(--color-text-primary)] m-0 mb-0.5">
-                  {NOTIFICATIONS[1].name}
-                </p>
-                <p className="text-[0.625rem] text-[var(--color-text-secondary)] m-0 leading-relaxed"
-                  style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}
-                >
-                  {NOTIFICATIONS[1].preview}
-                </p>
-              </div>
-            </div>
-
-            {/* En desktop: frame completo proporcional */}
-            <div className="hidden md:block relative" style={{ width: 'clamp(200px, 26vw, 280px)' }}>
-              <div
-                style={{
-                  borderRadius: '2.25rem 2.25rem 0 0',
-                  background: 'linear-gradient(160deg, #1c1c1e 0%, #0f0f0f 100%)',
-                  border: '1px solid var(--color-border-hi)',
-                  borderBottom: 'none',
-                  padding: '2.5rem 0.75rem 1.5rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.5rem',
-                  overflow: 'hidden',
-                  position: 'relative',
-                  boxShadow: '0 0 0 0.5px var(--color-border), 0 24px 48px rgba(0,0,0,0.4)',
-                }}
-              >
-                <div className="absolute top-3 left-1/2 -translate-x-1/2 bg-[var(--color-bg)] rounded-full"
-                  style={{ width: '68px', height: '9px' }}
-                />
-                <div className="text-center mb-2">
-                  <p className="text-[var(--color-text-primary)] m-0 leading-none font-light"
-                    style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2rem)', letterSpacing: '-0.03em' }}
-                  >
-                    9:41
-                  </p>
-                  <p className="text-[var(--color-text-muted)] m-0 mt-1"
-                    style={{ fontSize: '0.5625rem', letterSpacing: '0.06em' }}
-                  >
-                    LUNES, 3 DE JUNIO
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2 px-0.5">
-                  {NOTIFICATIONS.map((n, i) => (
-                    <NotifCard key={n.id} n={n} i={i} />
-                  ))}
-                </div>
-                <div className="absolute bottom-0 inset-x-0 pointer-events-none"
-                  style={{ height: '55%', background: 'linear-gradient(to bottom, transparent, #0a0a0a)' }}
-                />
-              </div>
-            </div>
-
+            {/* Indicador sutil de que hay más */}
+            <p className="text-[0.625rem] text-[var(--color-text-muted)] m-0 mt-1 ml-1 tracking-wide">
+              3 mensajes nuevos · Proyecto Reserva del Bosque
+            </p>
           </div>
+
+          {/* Móvil — una sola notif debajo del headline */}
+          <div className="md:hidden col-span-full">
+            <NotifCard
+              n={NOTIFICATIONS[0]}
+              notifRef={el => { notifRefs.current[0] = el }}
+            />
+          </div>
+
         </div>
       </div>
 
       {/* Footer */}
       <div
         ref={footerRef}
-        className="container-site pb-8 pt-5 md:border-t md:border-[var(--color-border)] flex items-end justify-between flex-wrap gap-8"
+        className="container-site pb-8 pt-5 border-t border-[var(--color-border)] flex items-end justify-between flex-wrap gap-8"
       >
         <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[38ch]">
           Diseñadas para proyectos inmobiliarios en preventa.
