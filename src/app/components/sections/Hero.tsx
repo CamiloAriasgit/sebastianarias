@@ -183,8 +183,8 @@ export default function Hero() {
                 n={n}
                 notifRef={el => { notifRefs.current[i] = el }}
                 className={
-                  i === 0 ? 'mr-8' :
-                  i === 2 ? 'ml-8' :
+                  i === 0 ? 'mx-8' :
+                  i === 2 ? 'mx-8' :
                   ''
                 }
               />
