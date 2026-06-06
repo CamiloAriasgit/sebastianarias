@@ -45,7 +45,7 @@ const NotifCard = ({
 }) => (
   <div
     ref={notifRef}
-    className={`rounded-2xl px-3 py-2.5 bg-white/[0.06] backdrop-blur-md  border-white/[0.08] ${className}`}
+    className={`rounded-2xl px-3 py-2.5 bg-white/[0.06] backdrop-blur-md border border-white/[0.08] ${className}`}
   >
     <div className="flex items-center justify-between mb-1.5">
       <div className="flex items-center gap-1.5">
@@ -73,16 +73,17 @@ const NotifCard = ({
 export default function Hero() {
   const lineOneRef = useRef<HTMLSpanElement>(null)
   const lineTwoRef = useRef<HTMLSpanElement>(null)
+  const lineThreeRef = useRef<HTMLSpanElement>(null)
   const footerRef  = useRef<HTMLDivElement>(null)
   const notifsRef  = useRef<HTMLDivElement>(null)
   const notifRefs  = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
-    // Headline + footer
     ;[
-      { ref: lineOneRef, delay: 0   },
-      { ref: lineTwoRef, delay: 120 },
-      { ref: footerRef,  delay: 260 },
+      { ref: lineOneRef,   delay: 0   },
+      { ref: lineTwoRef,   delay: 100 },
+      { ref: lineThreeRef, delay: 200 },
+      { ref: footerRef,    delay: 320 },
     ].forEach(({ ref, delay }) => {
       if (!ref.current) return
       ref.current.style.opacity = '0'
@@ -95,11 +96,11 @@ export default function Hero() {
       }, 60)
     })
 
-    // Contenedor de notifs
     if (notifsRef.current) {
       notifsRef.current.style.opacity = '0'
       notifsRef.current.style.transform = 'translateY(20px)'
-      notifsRef.current.style.transition = 'opacity 0.9s cubic-bezier(0.16,1,0.3,1) 340ms, transform 0.9s cubic-bezier(0.16,1,0.3,1) 340ms'
+      notifsRef.current.style.transition =
+        'opacity 0.9s cubic-bezier(0.16,1,0.3,1) 360ms, transform 0.9s cubic-bezier(0.16,1,0.3,1) 360ms'
       setTimeout(() => {
         if (!notifsRef.current) return
         notifsRef.current.style.opacity = '1'
@@ -107,7 +108,6 @@ export default function Hero() {
       }, 60)
     }
 
-    // Notifs en cascada
     notifRefs.current.forEach((el, i) => {
       if (!el) return
       el.style.opacity = '0'
@@ -135,23 +135,26 @@ export default function Hero() {
 
           {/* Izquierda — headline */}
           <h1
-            className="m-0"
+            className="m-0 col-span-2 md:col-span-1"
             style={{
-              fontSize: 'clamp(3rem, 8.5vw, 9.5rem)',
+              fontSize: 'clamp(2.75rem, 7.5vw, 8.5rem)',
               fontWeight: 300,
               lineHeight: 1.0,
               letterSpacing: '-0.04em',
             }}
           >
             <span ref={lineOneRef} className="block text-[var(--color-text-primary)] whitespace-nowrap">
-              El lead
+              Landing pages
             </span>
-            <span ref={lineTwoRef} className="block text-[var(--color-text-muted)] whitespace-nowrap">
-              ya viene.
+            <span ref={lineTwoRef} className="block text-[var(--color-text-primary)] whitespace-nowrap">
+              para proyectos
+            </span>
+            <span ref={lineThreeRef} className="block text-[var(--color-text-muted)] whitespace-nowrap">
+              inmobiliarios.
             </span>
           </h1>
 
-          {/* Derecha — notificaciones flotando, sin frame */}
+          {/* Derecha — notificaciones flotando */}
           <div
             ref={notifsRef}
             className="hidden md:flex flex-col gap-2.5 justify-center"
@@ -161,22 +164,31 @@ export default function Hero() {
                 key={n.id}
                 n={n}
                 notifRef={el => { notifRefs.current[i] = el }}
-                className={i === 1 ? 'ml-4' : i === 2 ? 'ml-2' : ''}
+                className={i === 1 ? 'ml-6' : i === 2 ? 'ml-3' : ''}
               />
             ))}
-
-            {/* Indicador sutil de que hay más */}
             <p className="text-[0.625rem] text-[var(--color-text-muted)] m-0 mt-1 ml-1 tracking-wide">
               3 mensajes nuevos · Proyecto Reserva del Bosque
             </p>
           </div>
 
-          {/* Móvil — una sola notif debajo del headline */}
-          <div className="md:hidden col-span-full">
-            <NotifCard
-              n={NOTIFICATIONS[0]}
-              notifRef={el => { notifRefs.current[0] = el }}
-            />
+          {/* Móvil — 3 notifs, la del medio más ancha */}
+          <div
+            ref={notifsRef}
+            className="md:hidden col-span-2 flex flex-col gap-2 mt-2"
+          >
+            {NOTIFICATIONS.map((n, i) => (
+              <NotifCard
+                key={n.id}
+                n={n}
+                notifRef={el => { notifRefs.current[i] = el }}
+                className={
+                  i === 0 ? 'mr-8' :
+                  i === 2 ? 'ml-8' :
+                  ''
+                }
+              />
+            ))}
           </div>
 
         </div>
@@ -185,12 +197,11 @@ export default function Hero() {
       {/* Footer */}
       <div
         ref={footerRef}
-        className="container-site pb-8 pt-5 border-t border-[var(--color-border)] flex items-end justify-between flex-wrap gap-8"
+        className="container-site pb-8 pt-5 md:border-t md:border-[var(--color-border)] flex items-end justify-between flex-wrap gap-8"
       >
-        <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[38ch]">
-          Diseñadas para proyectos inmobiliarios en preventa.
-          Tráfico de pauta convertido en leads reales,
-          con tracking y WhatsApp estratégico.
+        <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[44ch]">
+          Convertimos el tráfico de tu pauta en compradores
+          reales contactando por WhatsApp.
         </p>
         <a
           href={WHATSAPP_URL}
