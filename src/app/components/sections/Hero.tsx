@@ -45,7 +45,7 @@ const NotifCard = ({
 }) => (
   <div
     ref={notifRef}
-    className={`rounded-2xl px-3 py-2.5 bg-white/[0.06] backdrop-blur-md border border-white/[0.08] ${className}`}
+    className={`rounded-2xl px-3 py-2.5 bg-white/[0.06] backdrop-blur-md  border-white/[0.08] ${className}`}
   >
     <div className="flex items-center justify-between mb-1.5">
       <div className="flex items-center gap-1.5">
@@ -183,8 +183,8 @@ export default function Hero() {
                 n={n}
                 notifRef={el => { notifRefs.current[i] = el }}
                 className={
-                  i === 0 ? 'mx-8' :
-                  i === 2 ? 'mx-8' :
+                  i === 0 ? 'mx-4' :
+                  i === 2 ? 'mx-4' :
                   ''
                 }
               />
