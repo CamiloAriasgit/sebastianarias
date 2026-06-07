@@ -235,7 +235,7 @@ export default function Hero() {
           className="grid items-center gap-8 md:gap-[clamp(2rem,5vw,4rem)]"
           style={{ gridTemplateColumns: '1fr 1fr' }}
         >
-          <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
+          <div className="col-span-2 md:col-span-1 flex flex-col gap-8 md:gap-4">
             <h1
               className="m-0"
               style={{
@@ -264,7 +264,7 @@ export default function Hero() {
               reales contactando por WhatsApp.
             </p>
 
-            <div className="md:hidden mt-2">
+            <div className="md:hidden">
               <NotifStack visible={stackVisible} />
             </div>
           </div>
