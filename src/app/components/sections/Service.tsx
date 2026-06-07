@@ -9,7 +9,7 @@ const FEATURES = [
   { title: 'GTM + GA4.', body: 'Cada clic, cada scroll, cada intención de contacto queda registrada. La pauta se optimiza con datos reales.' },
   { title: 'Velocidad real.', body: 'Construido en Next.js y desplegado en Vercel. Core Web Vitals en verde. El lead no espera.' },
   { title: 'Entrega en 14 días.', body: 'Proceso definido desde el briefing hasta la publicación. Sin sorpresas, sin retrasos innecesarios.' },
-  { title: 'Soporte continuo.', body: 'El proyecto vive en nuestra infraestructura. Cambios, ajustes y monitoreo incluidos en la mensualidad.' },
+  { title: 'Soporte continuo.', body: 'El sitio evoluciona con el proyecto. Si el copy necesita ajustarse o el comportamiento del tráfico pide un cambio, está cubierto.' },
 ]
 
 export default function Service() {
