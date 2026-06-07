@@ -26,56 +26,47 @@ const NOTIFICATIONS = [
   },
 ]
 
-const WaIcon = ({ size = 9 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="white">
+const WaIcon = () => (
+  <svg width="10" height="10" viewBox="0 0 24 24" fill="white">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
   </svg>
 )
 
-type Notif = typeof NOTIFICATIONS[0]
-
-// Estado final de cada posición en el stack
-// índice 0 = fondo, 2 = frente
-const STACK_FINAL = [
-  { scale: 0.88, translateY: -56, zIndex: 10, mx: 'mx-8' },
-  { scale: 0.94, translateY: -28, zIndex: 20, mx: 'mx-4' },
-  { scale: 1,    translateY: 0,   zIndex: 30, mx: ''     },
+// Posición 2 = frente, 1 = medio, 0 = fondo
+const STACK = [
+  { scale: 0.88, translateY: -56, zIndex: 10, marginX: 32 }, // fondo
+  { scale: 0.94, translateY: -28, zIndex: 20, marginX: 16 }, // medio
+  { scale: 1,    translateY: 0,   zIndex: 30, marginX: 0  }, // frente
 ]
 
-// Tiempos fijos ordenados por la posición en el stack:
-// índice 0 (fondo) -> '3 min', índice 1 (medio) -> '1 min', índice 2 (frente) -> 'ahora'
 const TIME_BY_POSITION = ['3 min', '1 min', 'ahora']
 
-const NotifCard = ({
-  n,
-  displayTime,
-  cardRef,
-}: {
-  n: Notif
-  displayTime: string
-  cardRef?: (el: HTMLDivElement | null) => void
-}) => (
+type Notif = typeof NOTIFICATIONS[0]
+
+const NotifCard = ({ n, time }: { n: Notif; time: string }) => (
   <div
-    ref={cardRef}
-    className="rounded-2xl px-3 py-2.5 border border-white/[0.09]"
-    style={{ background: 'rgba(28,28,30,0.95)', backdropFilter: 'blur(12px)' }}
+    className="rounded-2xl px-4 py-3 border border-white/[0.05]"
+    style={{ 
+      background: 'rgba(28, 28, 30, 0.65)', 
+      backdropFilter: 'blur(20px) saturate(190%) cubic-bezier(0.16, 1, 0.3, 1)' 
+    }}
   >
-    <div className="flex items-center justify-between mb-1.5">
-      <div className="flex items-center gap-1.5">
-        <div className="w-4 h-4 rounded-md flex items-center justify-center shrink-0 bg-[#25d366]">
+    <div className="flex items-center justify-between mb-2">
+      <div className="flex items-center gap-2">
+        <div className="w-[18px] h-[18px] rounded-md flex items-center justify-center shrink-0 bg-[#25d366]">
           <WaIcon />
         </div>
-        <span className="text-[0.5625rem] font-medium text-[var(--color-text-secondary)] tracking-wide">
+        <span className="text-xs font-medium text-[var(--color-text-secondary)] tracking-wide">
           WhatsApp
         </span>
       </div>
-      <span className="text-[0.5rem] text-[var(--color-text-muted)]">{displayTime}</span>
+      <span className="text-[0.625rem] text-[var(--color-text-muted)]">{time}</span>
     </div>
-    <p className="text-[0.6875rem] font-medium text-[var(--color-text-primary)] m-0 mb-0.5">
+    <p className="text-sm font-medium text-[var(--color-text-primary)] m-0 mb-1">
       {n.name}
     </p>
     <p
-      className="text-[0.5625rem] text-[var(--color-text-secondary)] m-0 leading-relaxed"
+      className="text-xs text-[var(--color-text-secondary)] m-0 leading-relaxed"
       style={{
         display: '-webkit-box',
         WebkitLineClamp: 2,
@@ -90,123 +81,104 @@ const NotifCard = ({
 
 const NotifStack = ({ visible }: { visible: boolean }) => {
   const wrapperRefs = useRef<(HTMLDivElement | null)[]>([])
-  
-  // Guardamos las posiciones actuales del stack para cada índice del array original (0, 1, 2)
-  // Inicialmente mapean 1:1 con su orden de entrada
-  const [positions, setPositions] = useState<number[]>([0, 1, 2])
   const positionsRef = useRef<number[]>([0, 1, 2])
+  const [positions, setPositions] = useState<number[]>([0, 1, 2])
+
+  const applyPosition = (el: HTMLDivElement, pos: number, animate: boolean) => {
+    const cfg = STACK[pos]
+    if (animate) {
+      el.style.transition = 'transform 0.7s cubic-bezier(0.16,1,0.3,1)'
+    } else {
+      el.style.transition = 'none'
+    }
+    el.style.transform = `translateY(${cfg.translateY}px) scale(${cfg.scale})`
+    el.style.zIndex = String(cfg.zIndex)
+    el.style.left = `${cfg.marginX}px`
+    el.style.right = `${cfg.marginX}px`
+  }
 
   useEffect(() => {
     if (!visible) return
 
-    // Estado inicial — todos fuera de vista abajo, sin escala aún
-    wrapperRefs.current.forEach((el) => {
+    // Estado inicial
+    wrapperRefs.current.forEach(el => {
       if (!el) return
-      el.style.transform = 'translateY(48px) scale(1)'
       el.style.opacity = '0'
+      el.style.transform = 'translateY(48px) scale(1)'
+      el.style.transition = 'none'
     })
 
-    // Cada card entra desde abajo en cascada
+    // Entrada en cascada
     NOTIFICATIONS.forEach((_, i) => {
-      const delay = 700 + i * 380
-
       setTimeout(() => {
-        const current = wrapperRefs.current[i]
-        if (current) {
-          current.style.transition =
-            'transform 0.65s cubic-bezier(0.16,1,0.3,1), opacity 0.5s cubic-bezier(0.16,1,0.3,1)'
-          current.style.transform = `translateY(${STACK_FINAL[2].translateY}px) scale(${STACK_FINAL[2].scale})`
-          current.style.opacity = '1'
+        const cur = wrapperRefs.current[i]
+        if (cur) {
+          cur.style.transition = 'transform 0.65s cubic-bezier(0.16,1,0.3,1), opacity 0.5s cubic-bezier(0.16,1,0.3,1)'
+          applyPosition(cur, 2, false)
+          cur.style.opacity = '1'
         }
-
         const prev = wrapperRefs.current[i - 1]
-        if (prev) {
-          prev.style.transition =
-            'transform 0.65s cubic-bezier(0.16,1,0.3,1), opacity 0.5s cubic-bezier(0.16,1,0.3,1)'
-          prev.style.transform = `translateY(${STACK_FINAL[1].translateY}px) scale(${STACK_FINAL[1].scale})`
-        }
+        if (prev) applyPosition(prev, 1, true)
 
         const oldest = wrapperRefs.current[i - 2]
-        if (oldest) {
-          oldest.style.transition =
-            'transform 0.65s cubic-bezier(0.16,1,0.3,1), opacity 0.5s cubic-bezier(0.16,1,0.3,1)'
-          oldest.style.transform = `translateY(${STACK_FINAL[0].translateY}px) scale(${STACK_FINAL[0].scale})`
-        }
-      }, delay)
+        if (oldest) applyPosition(oldest, 0, true)
+      }, 700 + i * 380)
     })
 
-    // Disparar el bucle infinito pausado tras terminar la animación inicial (~2500ms)
-    let intervalId: NodeJS.Timeout
-    const startLoopTimeout = setTimeout(() => {
+    // Loop de rotación
+    let intervalId: ReturnType<typeof setInterval>
+    const loopStart = setTimeout(() => {
       intervalId = setInterval(() => {
-        // Rotación del stack: el de atrás (posición 0) pasa adelante (posición 2)
-        // Las demás posiciones bajan un nivel.
-        const nextPositions = positionsRef.current.map((pos) => {
-          if (pos === 0) return 2 // Fondo pasa al frente
-          if (pos === 1) return 0 // Medio pasa al fondo
-          return 1                // Frente pasa al medio
-        })
+        const next = positionsRef.current.map(pos =>
+          pos === 0 ? 2 : pos === 1 ? 0 : 1
+        )
+        positionsRef.current = next
+        setPositions([...next])
 
-        positionsRef.current = nextPositions
-        setPositions(nextPositions)
-
-        // Aplicamos la animación dinámica basada en el nuevo orden de posiciones
         NOTIFICATIONS.forEach((_, i) => {
           const el = wrapperRefs.current[i]
-          const currentPos = nextPositions[i]
           if (!el) return
+          const newPos = next[i]
 
-          // Si pasa del fondo al frente (0 -> 2), lo movemos primero hacia abajo y atrás
-          if (currentPos === 2) {
-            el.style.transition = 'none' // Desactivar transición para el movimiento instantáneo
-            el.style.transform = `translateY(${STACK_FINAL[0].translateY + 20}px) scale(${STACK_FINAL[0].scale - 0.05})` // Abajo y más pequeño
-            el.style.zIndex = `${STACK_FINAL[0].zIndex - 5}` // Por debajo del fondo
-            
-            // Luego, después de un breve retraso, lo animamos hacia el frente
+          if (newPos === 2) {
+            // Este pasa del fondo al frente — sale por debajo primero
+            el.style.transition = 'none'
+            el.style.transform = `translateY(40px) scale(0.85)`
+            el.style.zIndex = '5'
             setTimeout(() => {
-              el.style.transition = 'transform 0.75s cubic-bezier(0.16,1,0.3,1), z-index 0s'
-              el.style.zIndex = `${STACK_FINAL[currentPos].zIndex}`
-              el.style.transform = `translateY(${STACK_FINAL[currentPos].translateY}px) scale(${STACK_FINAL[currentPos].scale})`
-            }, 50) // Pequeño retraso para que se apliquen los estilos iniciales
-
+              if (!el) return
+              applyPosition(el, 2, true)
+            }, 30)
           } else {
-            // Transición normal para las demás posiciones
-            el.style.transition = 'transform 0.75s cubic-bezier(0.16,1,0.3,1)'
-            el.style.zIndex = `${STACK_FINAL[currentPos].zIndex}`
-            el.style.transform = `translateY(${STACK_FINAL[currentPos].translateY}px) scale(${STACK_FINAL[currentPos].scale})`
+            applyPosition(el, newPos, true)
           }
         })
-      }, 3500) // Tiempo de pausa entre ciclos del bucle continuo
+      }, 3500)
     }, 2500)
 
     return () => {
-      clearTimeout(startLoopTimeout)
+      clearTimeout(loopStart)
       clearInterval(intervalId)
     }
   }, [visible])
 
   return (
     <div className="relative w-full" style={{ height: '140px' }}>
-      {NOTIFICATIONS.map((n, i) => {
-        const currentPos = positions[i]
-        const displayTime = TIME_BY_POSITION[currentPos] ?? n.time
-
-        return (
-          <div
-            key={n.id}
-            ref={el => { wrapperRefs.current[i] = el }}
-            className={`absolute inset-x-0 ${STACK_FINAL[currentPos]?.mx ?? STACK_FINAL[2].mx}`}
-            style={{
-              bottom: 0,
-              zIndex: STACK_FINAL[currentPos]?.zIndex ?? (i + 1),
-              transformOrigin: 'bottom center',
-              transition: 'transform 0.75s cubic-bezier(0.16,1,0.3,1)' // Transición predeterminada
-            }}
-          >
-            <NotifCard n={n} displayTime={displayTime} />
-          </div>
-        )
-      })}
+      {NOTIFICATIONS.map((n, i) => (
+        <div
+          key={n.id}
+          ref={el => { wrapperRefs.current[i] = el }}
+          className="absolute"
+          style={{
+            bottom: 0,
+            left: STACK[positions[i]].marginX,
+            right: STACK[positions[i]].marginX,
+            transformOrigin: 'bottom center',
+          }}
+        >
+          <NotifCard n={n} time={TIME_BY_POSITION[positions[i]]} />
+        </div>
+      ))}
     </div>
   )
 }
@@ -264,7 +236,6 @@ export default function Hero() {
           className="grid items-center gap-8 md:gap-[clamp(2rem,5vw,4rem)]"
           style={{ gridTemplateColumns: '1fr 1fr' }}
         >
-          {/* Izquierda — headline + párrafo en móvil */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <h1
               className="m-0"
@@ -299,20 +270,18 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Derecha — stack desktop */}
           <div
             ref={desktopNotif}
             className="hidden md:flex flex-col justify-center"
           >
             <NotifStack visible={stackVisible} />
             <p className="text-[0.625rem] text-[var(--color-text-muted)] m-0 mt-8 ml-1 tracking-wide">
-              3 mensajes nuevos · Proyecto Reserva del Bosque
+              Mensajes entrantes · Proyecto Reserva del Bosque
             </p>
           </div>
         </div>
       </div>
 
-      {/* Footer */}
       <div
         ref={footerRef}
         className="container-site pb-8 pt-5 md:border-t md:border-[var(--color-border)] flex items-end justify-between flex-wrap gap-8"
