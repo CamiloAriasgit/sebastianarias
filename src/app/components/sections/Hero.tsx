@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 const WHATSAPP_URL =
-  'https://wa.me/573003607632?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
+  'https://wa.me/57TUNUMERO?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
 
 const NOTIFICATIONS = [
   {
@@ -34,10 +34,12 @@ const WaIcon = ({ size = 9 }: { size?: number }) => (
 
 type Notif = typeof NOTIFICATIONS[0]
 
+// Estado final de cada posición en el stack
+// índice 0 = fondo, 2 = frente
 const STACK_FINAL = [
-  { scale: 0.88, translateY: -104, zIndex: 10, mx: 'mx-8' },
-  { scale: 0.94, translateY: -52,  zIndex: 20, mx: 'mx-4' },
-  { scale: 1,    translateY: 0,    zIndex: 30, mx: ''     },
+  { scale: 0.88, translateY: -56, zIndex: 10, mx: 'mx-8' },
+  { scale: 0.94, translateY: -28, zIndex: 20, mx: 'mx-4' },
+  { scale: 1,    translateY: 0,   zIndex: 30, mx: ''     },
 ]
 
 const NotifCard = ({
@@ -57,21 +59,17 @@ const NotifCard = ({
         <div className="w-4 h-4 rounded-md flex items-center justify-center shrink-0 bg-[#25d366]">
           <WaIcon />
         </div>
-        {/* CAMBIO: Fuente un poco más grande (De 0.5625rem a 0.6875rem) */}
-        <span className="text-[0.6875rem] font-medium text-[var(--color-text-secondary)] tracking-wide">
+        <span className="text-[0.5625rem] font-medium text-[var(--color-text-secondary)] tracking-wide">
           WhatsApp
         </span>
       </div>
-      {/* CAMBIO: Fuente un poco más grande (De 0.5rem a 0.625rem) */}
-      <span className="text-[0.625rem] text-[var(--color-text-muted)]">{n.time}</span>
+      <span className="text-[0.5rem] text-[var(--color-text-muted)]">{n.time}</span>
     </div>
-    {/* CAMBIO: Fuente un poco más grande (De 0.6875rem a 0.8125rem). font-medium intacto */}
-    <p className="text-[0.8125rem] font-medium text-[var(--color-text-primary)] m-0 mb-0.5">
+    <p className="text-[0.6875rem] font-medium text-[var(--color-text-primary)] m-0 mb-0.5">
       {n.name}
     </p>
-    {/* CAMBIO: Fuente un poco más grande (De 0.5625rem a 0.6875rem) */}
     <p
-      className="text-[0.6875rem] text-[var(--color-text-secondary)] m-0 leading-relaxed"
+      className="text-[0.5625rem] text-[var(--color-text-secondary)] m-0 leading-relaxed"
       style={{
         display: '-webkit-box',
         WebkitLineClamp: 2,
@@ -90,17 +88,20 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
   useEffect(() => {
     if (!visible) return
 
+    // Estado inicial — todos fuera de vista abajo, sin escala aún
     wrapperRefs.current.forEach((el) => {
       if (!el) return
       el.style.transform = 'translateY(48px) scale(1)'
       el.style.opacity = '0'
     })
 
+    // Cada card entra desde abajo en cascada
+    // Al entrar empuja los anteriores a su posición de stack
     NOTIFICATIONS.forEach((_, i) => {
-      // CAMBIO CLAVE: Multiplicador de tiempo aumentado a 1500ms exactos
-      const delay = 700 + i * 1500
+      const delay = 700 + i * 380
 
       setTimeout(() => {
+        // El card actual entra al frente (posición 2 del stack)
         const current = wrapperRefs.current[i]
         if (current) {
           current.style.transition =
@@ -109,6 +110,7 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
           current.style.opacity = '1'
         }
 
+        // El card anterior sube a posición media (índice 1)
         const prev = wrapperRefs.current[i - 1]
         if (prev) {
           prev.style.transition =
@@ -116,6 +118,7 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
           prev.style.transform = `translateY(${STACK_FINAL[1].translateY}px) scale(${STACK_FINAL[1].scale})`
         }
 
+        // El card más antiguo sube a posición fondo (índice 0)
         const oldest = wrapperRefs.current[i - 2]
         if (oldest) {
           oldest.style.transition =
@@ -127,12 +130,12 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
   }, [visible])
 
   return (
-    <div className="relative w-full" style={{ height: '190px' }}>
+    <div className="relative w-full" style={{ height: '140px' }}>
       {NOTIFICATIONS.map((n, i) => (
         <div
           key={n.id}
           ref={el => { wrapperRefs.current[i] = el }}
-          className={`absolute inset-x-0 ${STACK_FINAL[i].mx}`}
+          className={`absolute inset-x-0 ${STACK_FINAL[2].mx}`}
           style={{
             bottom: 0,
             zIndex: i + 1,
@@ -199,6 +202,7 @@ export default function Hero() {
           className="grid items-center gap-8 md:gap-[clamp(2rem,5vw,4rem)]"
           style={{ gridTemplateColumns: '1fr 1fr' }}
         >
+          {/* Izquierda — headline + párrafo en móvil */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <h1
               className="m-0"
@@ -233,18 +237,20 @@ export default function Hero() {
             </div>
           </div>
 
+          {/* Derecha — stack desktop */}
           <div
             ref={desktopNotif}
             className="hidden md:flex flex-col justify-center"
           >
             <NotifStack visible={stackVisible} />
-            <p className="text-[0.625rem] text-[var(--color-text-muted)] m-0 mt-12 ml-1 tracking-wide">
+            <p className="text-[0.625rem] text-[var(--color-text-muted)] m-0 mt-8 ml-1 tracking-wide">
               3 mensajes nuevos · Proyecto Reserva del Bosque
             </p>
           </div>
         </div>
       </div>
 
+      {/* Footer */}
       <div
         ref={footerRef}
         className="container-site pb-8 pt-5 md:border-t md:border-[var(--color-border)] flex items-end justify-between flex-wrap gap-8"
