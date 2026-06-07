@@ -34,11 +34,10 @@ const WaIcon = ({ size = 9 }: { size?: number }) => (
 
 type Notif = typeof NOTIFICATIONS[0]
 
-// Estado final de cada posición en el stack
-// índice 0 = fondo, 2 = frente
+// CAMBIO CLAVE: Se incrementó la distancia vertical (translateY) de las tarjetas traseras
 const STACK_FINAL = [
-  { scale: 0.88, translateY: -56, zIndex: 10, mx: 'mx-8' },
-  { scale: 0.94, translateY: -28, zIndex: 20, mx: 'mx-4' },
+  { scale: 0.88, translateY: -56, zIndex: 10, mx: 'mx-8' }, // Antes: -24
+  { scale: 0.94, translateY: -28, zIndex: 20, mx: 'mx-4' }, // Antes: -14
   { scale: 1,    translateY: 0,   zIndex: 30, mx: ''     },
 ]
 
@@ -88,20 +87,16 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
   useEffect(() => {
     if (!visible) return
 
-    // Estado inicial — todos fuera de vista abajo, sin escala aún
     wrapperRefs.current.forEach((el) => {
       if (!el) return
       el.style.transform = 'translateY(48px) scale(1)'
       el.style.opacity = '0'
     })
 
-    // Cada card entra desde abajo en cascada
-    // Al entrar empuja los anteriores a su posición de stack
     NOTIFICATIONS.forEach((_, i) => {
       const delay = 700 + i * 380
 
       setTimeout(() => {
-        // El card actual entra al frente (posición 2 del stack)
         const current = wrapperRefs.current[i]
         if (current) {
           current.style.transition =
@@ -110,7 +105,6 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
           current.style.opacity = '1'
         }
 
-        // El card anterior sube a posición media (índice 1)
         const prev = wrapperRefs.current[i - 1]
         if (prev) {
           prev.style.transition =
@@ -118,7 +112,6 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
           prev.style.transform = `translateY(${STACK_FINAL[1].translateY}px) scale(${STACK_FINAL[1].scale})`
         }
 
-        // El card más antiguo sube a posición fondo (índice 0)
         const oldest = wrapperRefs.current[i - 2]
         if (oldest) {
           oldest.style.transition =
@@ -130,12 +123,13 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
   }, [visible])
 
   return (
+    // CAMBIO CLAVE: Se amplió la altura del contenedor de 110px a 140px para albergar el desplazamiento más alto
     <div className="relative w-full" style={{ height: '140px' }}>
       {NOTIFICATIONS.map((n, i) => (
         <div
           key={n.id}
           ref={el => { wrapperRefs.current[i] = el }}
-          className={`absolute inset-x-0 ${STACK_FINAL[2].mx}`}
+          className={`absolute inset-x-0 ${STACK_FINAL[i].mx}`}
           style={{
             bottom: 0,
             zIndex: i + 1,
@@ -226,7 +220,7 @@ export default function Hero() {
 
             <p
               ref={paraRef}
-              className="md:hidden text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 mb-5 max-w-[38ch]"
+              className="md:hidden text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[38ch]"
             >
               Convertimos el tráfico de tu pauta en compradores
               reales contactando por WhatsApp.
