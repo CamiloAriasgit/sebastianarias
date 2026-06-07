@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 const WHATSAPP_URL =
-  'https://wa.me/57TUNUMERO?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
+  'https://wa.me/573003607632?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
 
 const NOTIFICATIONS = [
   {
@@ -226,7 +226,7 @@ export default function Hero() {
 
             <p
               ref={paraRef}
-              className="md:hidden text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[38ch]"
+              className="md:hidden text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 mb-5 max-w-[38ch]"
             >
               Convertimos el tráfico de tu pauta en compradores
               reales contactando por WhatsApp.
