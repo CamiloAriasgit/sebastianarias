@@ -235,7 +235,7 @@ export default function Hero() {
           className="grid items-center gap-8 md:gap-[clamp(2rem,5vw,4rem)]"
           style={{ gridTemplateColumns: '1fr 1fr' }}
         >
-          <div className="col-span-2 md:col-span-1 flex flex-col gap-8 md:gap-4">
+          <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <h1
               className="m-0"
               style={{
@@ -258,13 +258,13 @@ export default function Hero() {
 
             <p
               ref={paraRef}
-              className="md:hidden text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[38ch]"
+              className="md:hidden text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 mb-4 md:mb-0 max-w-[38ch]"
             >
               Convertimos el tráfico de tu pauta en compradores
               reales contactando por WhatsApp.
             </p>
 
-            <div className="md:hidden">
+            <div className="md:hidden mt-4 md:mt-0">
               <NotifStack visible={stackVisible} />
             </div>
           </div>
