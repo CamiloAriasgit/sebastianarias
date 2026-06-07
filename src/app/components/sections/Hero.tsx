@@ -258,13 +258,13 @@ export default function Hero() {
 
             <p
               ref={paraRef}
-              className="md:hidden text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 mb-4 md:mb-0 max-w-[38ch]"
+              className="md:hidden text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 mb-8 md:mb-0 max-w-[38ch]"
             >
               Convertimos el tráfico de tu pauta en compradores
               reales contactando por WhatsApp.
             </p>
 
-            <div className="md:hidden mt-4 md:mt-0">
+            <div className="md:hidden mt-8 md:mt-0">
               <NotifStack visible={stackVisible} />
             </div>
           </div>
