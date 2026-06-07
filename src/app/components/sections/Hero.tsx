@@ -5,12 +5,13 @@ import { useEffect, useRef, useState } from 'react'
 const WHATSAPP_URL =
   'https://wa.me/57TUNUMERO?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
 
+// Se reordena el array para que coincida con el orden de aparición exacto de tu petición
 const NOTIFICATIONS = [
   {
-    id: 1,
-    name: 'Carlos Mendoza',
-    preview: 'Buenas, vi el proyecto Reserva del Bosque. ¿Cuándo puedo agendar una visita?',
-    time: 'ahora',
+    id: 3,
+    name: 'Andrés Castillo',
+    preview: '¿Aún hay unidades en el piso 8? Vi los planos y me convencieron.',
+    time: '3 min',
   },
   {
     id: 2,
@@ -19,10 +20,10 @@ const NOTIFICATIONS = [
     time: '1 min',
   },
   {
-    id: 3,
-    name: 'Andrés Castillo',
-    preview: '¿Aún hay unidades en el piso 8? Vi los planos y me convencieron.',
-    time: '3 min',
+    id: 1,
+    name: 'Carlos Mendoza',
+    preview: 'Buenas, vi el proyecto Reserva del Bosque. ¿Cuándo puedo agendar una visita?',
+    time: 'ahora',
   },
 ]
 
@@ -34,12 +35,11 @@ const WaIcon = ({ size = 9 }: { size?: number }) => (
 
 type Notif = typeof NOTIFICATIONS[0]
 
-// Configuración de escala y offset por posición en el stack
-// índice 0 = frente, 2 = fondo
+// Ajuste de configuración para formar la pirámide física (el último en llegar abajo es el más ancho)
 const STACK_CONFIG = [
-  { scale: 1,     translateY: 0,   opacity: 1,    zIndex: 30, widthClass: '' },
-  { scale: 0.94,  translateY: -14, opacity: 0.7,  zIndex: 20, widthClass: 'mx-4' },
-  { scale: 0.88,  translateY: -24, opacity: 0.4,  zIndex: 10, widthClass: 'mx-8' },
+  { scale: 0.88,  translateY: -28, opacity: 0.5,  zIndex: 10, widthClass: 'mx-8' }, // Andrés (Al final queda arriba y encogido)
+  { scale: 0.94,  translateY: -14, opacity: 0.8,  zIndex: 20, widthClass: 'mx-4' }, // Valeria (Al final queda en el medio)
+  { scale: 1,     translateY: 0,   opacity: 1,    zIndex: 30, widthClass: '' },     // Carlos (Al final queda abajo, ancho completo)
 ]
 
 const NotifCard = ({
@@ -86,7 +86,6 @@ const NotifCard = ({
   </div>
 )
 
-// Stack apilado — desktop y móvil comparten lógica, solo cambia el contenedor
 const NotifStack = ({ visible }: { visible: boolean }) => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -94,13 +93,15 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
     if (!visible) return
     cardRefs.current.forEach((el, i) => {
       if (!el) return
-      // Estado inicial — todos abajo y transparentes
+      
+      // Estado inicial idéntico: aparecen desde abajo a ancho completo de manera escalonada cronológicamente
       el.style.opacity = '0'
-      el.style.transform = `translateY(20px) scale(${STACK_CONFIG[i].scale})`
-      el.style.transition = `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${600 + i * 300}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${600 + i * 300}ms`
+      el.style.transform = `translateY(30px) scale(1)`
+      el.style.transition = `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${600 + i * 450}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${600 + i * 450}ms`
 
       setTimeout(() => {
         if (!el) return
+        // Transición hacia su posición final en la pirámide (encogiéndose y subiendo de forma sincronizada)
         el.style.opacity = String(STACK_CONFIG[i].opacity)
         el.style.transform = `translateY(${STACK_CONFIG[i].translateY}px) scale(${STACK_CONFIG[i].scale})`
       }, 60)
@@ -108,12 +109,9 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
   }, [visible])
 
   return (
-    // El stack usa position relative con altura fija para que las cards
-    // absolutas no colapsen el contenedor
-    <div className="relative w-full" style={{ height: '88px' }}>
-      {/* Renderizamos en orden inverso para que el z-index funcione bien */}
-      {[...NOTIFICATIONS].reverse().map((n, reversedI) => {
-        const i = NOTIFICATIONS.length - 1 - reversedI
+    <div className="relative w-full" style={{ height: '94px' }}>
+      {/* Se renderiza respetando el orden correcto de superposición de capas */}
+      {NOTIFICATIONS.map((n, i) => {
         const cfg = STACK_CONFIG[i]
         return (
           <div
@@ -124,6 +122,7 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
               zIndex: cfg.zIndex,
               bottom: 0,
               transformOrigin: 'bottom center',
+              transitionProperty: 'opacity, transform',
             }}
           >
             <NotifCard n={n} />
@@ -162,7 +161,6 @@ export default function Hero() {
       }, 60)
     })
 
-    // Desktop notifs container
     if (desktopNotif.current) {
       desktopNotif.current.style.opacity = '0'
       desktopNotif.current.style.transform = 'translateY(20px)'
@@ -175,7 +173,6 @@ export default function Hero() {
       }, 60)
     }
 
-    // Activa el stack después de que el contenedor entra
     setTimeout(() => setStackVisible(true), 400)
   }, [])
 
@@ -189,8 +186,6 @@ export default function Hero() {
           className="grid items-center gap-8 md:gap-[clamp(2rem,5vw,4rem)]"
           style={{ gridTemplateColumns: '1fr 1fr' }}
         >
-
-          {/* Izquierda — headline + párrafo en móvil también */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <h1
               className="m-0"
@@ -212,7 +207,6 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Párrafo — visible en móvil junto al h1, oculto en desktop (vive en footer) */}
             <p
               ref={paraRef}
               className="md:hidden text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[38ch]"
@@ -221,13 +215,11 @@ export default function Hero() {
               reales contactando por WhatsApp.
             </p>
 
-            {/* Stack de notifs en móvil */}
             <div className="md:hidden mt-2">
               <NotifStack visible={stackVisible} />
             </div>
           </div>
 
-          {/* Derecha — stack de notifs en desktop */}
           <div
             ref={desktopNotif}
             className="hidden md:flex flex-col justify-center"
@@ -237,16 +229,13 @@ export default function Hero() {
               3 mensajes nuevos · Proyecto Reserva del Bosque
             </p>
           </div>
-
         </div>
       </div>
 
-      {/* Footer */}
       <div
         ref={footerRef}
         className="container-site pb-8 pt-5 md:border-t md:border-[var(--color-border)] flex items-end justify-between flex-wrap gap-8"
       >
-        {/* Párrafo en desktop — oculto en móvil */}
         <p className="hidden md:block text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[44ch]">
           Convertimos el tráfico de tu pauta en compradores
           reales contactando por WhatsApp.
