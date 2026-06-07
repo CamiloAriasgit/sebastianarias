@@ -34,10 +34,9 @@ const WaIcon = ({ size = 9 }: { size?: number }) => (
 
 type Notif = typeof NOTIFICATIONS[0]
 
-// CAMBIO CLAVE: Se incrementó la distancia vertical (translateY) de las tarjetas traseras
 const STACK_FINAL = [
-  { scale: 0.88, translateY: -104, zIndex: 10, mx: 'mx-8' }, // Antes: -80
-  { scale: 0.94, translateY: -52,  zIndex: 20, mx: 'mx-4' }, // Antes: -40
+  { scale: 0.88, translateY: -104, zIndex: 10, mx: 'mx-8' },
+  { scale: 0.94, translateY: -52,  zIndex: 20, mx: 'mx-4' },
   { scale: 1,    translateY: 0,    zIndex: 30, mx: ''     },
 ]
 
@@ -58,17 +57,21 @@ const NotifCard = ({
         <div className="w-4 h-4 rounded-md flex items-center justify-center shrink-0 bg-[#25d366]">
           <WaIcon />
         </div>
-        <span className="text-[0.5625rem] font-medium text-[var(--color-text-secondary)] tracking-wide">
+        {/* CAMBIO: Fuente un poco más grande (De 0.5625rem a 0.6875rem) */}
+        <span className="text-[0.6875rem] font-medium text-[var(--color-text-secondary)] tracking-wide">
           WhatsApp
         </span>
       </div>
-      <span className="text-[0.5rem] text-[var(--color-text-muted)]">{n.time}</span>
+      {/* CAMBIO: Fuente un poco más grande (De 0.5rem a 0.625rem) */}
+      <span className="text-[0.625rem] text-[var(--color-text-muted)]">{n.time}</span>
     </div>
-    <p className="text-[0.6875rem] font-medium text-[var(--color-text-primary)] m-0 mb-0.5">
+    {/* CAMBIO: Fuente un poco más grande (De 0.6875rem a 0.8125rem). font-medium intacto */}
+    <p className="text-[0.8125rem] font-medium text-[var(--color-text-primary)] m-0 mb-0.5">
       {n.name}
     </p>
+    {/* CAMBIO: Fuente un poco más grande (De 0.5625rem a 0.6875rem) */}
     <p
-      className="text-[0.5625rem] text-[var(--color-text-secondary)] m-0 leading-relaxed"
+      className="text-[0.6875rem] text-[var(--color-text-secondary)] m-0 leading-relaxed"
       style={{
         display: '-webkit-box',
         WebkitLineClamp: 2,
@@ -94,7 +97,8 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
     })
 
     NOTIFICATIONS.forEach((_, i) => {
-      const delay = 700 + i * 380
+      // CAMBIO CLAVE: Multiplicador de tiempo aumentado a 1500ms exactos
+      const delay = 700 + i * 1500
 
       setTimeout(() => {
         const current = wrapperRefs.current[i]
@@ -123,7 +127,6 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
   }, [visible])
 
   return (
-    // CAMBIO CLAVE: Se amplió la altura del contenedor de 110px a 140px para albergar el desplazamiento más alto
     <div className="relative w-full" style={{ height: '190px' }}>
       {NOTIFICATIONS.map((n, i) => (
         <div
@@ -196,7 +199,6 @@ export default function Hero() {
           className="grid items-center gap-8 md:gap-[clamp(2rem,5vw,4rem)]"
           style={{ gridTemplateColumns: '1fr 1fr' }}
         >
-          {/* Izquierda — headline + párrafo en móvil */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <h1
               className="m-0"
@@ -231,20 +233,18 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Derecha — stack desktop */}
           <div
             ref={desktopNotif}
             className="hidden md:flex flex-col justify-center"
           >
             <NotifStack visible={stackVisible} />
-            <p className="text-[0.625rem] text-[var(--color-text-muted)] m-0 mt-8 ml-1 tracking-wide">
+            <p className="text-[0.625rem] text-[var(--color-text-muted)] m-0 mt-12 ml-1 tracking-wide">
               3 mensajes nuevos · Proyecto Reserva del Bosque
             </p>
           </div>
         </div>
       </div>
 
-      {/* Footer */}
       <div
         ref={footerRef}
         className="container-site pb-8 pt-5 md:border-t md:border-[var(--color-border)] flex items-end justify-between flex-wrap gap-8"
