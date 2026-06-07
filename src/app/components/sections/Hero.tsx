@@ -42,11 +42,17 @@ const STACK_FINAL = [
   { scale: 1,    translateY: 0,   zIndex: 30, mx: ''     },
 ]
 
+// Tiempos fijos ordenados por la posición en el stack:
+// índice 0 (fondo) -> '3 min', índice 1 (medio) -> '1 min', índice 2 (frente) -> 'ahora'
+const TIME_BY_POSITION = ['3 min', '1 min', 'ahora']
+
 const NotifCard = ({
   n,
+  displayTime,
   cardRef,
 }: {
   n: Notif
+  displayTime: string
   cardRef?: (el: HTMLDivElement | null) => void
 }) => (
   <div
@@ -63,7 +69,7 @@ const NotifCard = ({
           WhatsApp
         </span>
       </div>
-      <span className="text-[0.5rem] text-[var(--color-text-muted)]">{n.time}</span>
+      <span className="text-[0.5rem] text-[var(--color-text-muted)]">{displayTime}</span>
     </div>
     <p className="text-[0.6875rem] font-medium text-[var(--color-text-primary)] m-0 mb-0.5">
       {n.name}
@@ -84,6 +90,11 @@ const NotifCard = ({
 
 const NotifStack = ({ visible }: { visible: boolean }) => {
   const wrapperRefs = useRef<(HTMLDivElement | null)[]>([])
+  
+  // Guardamos las posiciones actuales del stack para cada índice del array original (0, 1, 2)
+  // Inicialmente mapean 1:1 con su orden de entrada
+  const [positions, setPositions] = useState<number[]>([0, 1, 2])
+  const positionsRef = useRef<number[]>([0, 1, 2])
 
   useEffect(() => {
     if (!visible) return
@@ -96,12 +107,10 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
     })
 
     // Cada card entra desde abajo en cascada
-    // Al entrar empuja los anteriores a su posición de stack
     NOTIFICATIONS.forEach((_, i) => {
       const delay = 700 + i * 380
 
       setTimeout(() => {
-        // El card actual entra al frente (posición 2 del stack)
         const current = wrapperRefs.current[i]
         if (current) {
           current.style.transition =
@@ -110,7 +119,6 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
           current.style.opacity = '1'
         }
 
-        // El card anterior sube a posición media (índice 1)
         const prev = wrapperRefs.current[i - 1]
         if (prev) {
           prev.style.transition =
@@ -118,7 +126,6 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
           prev.style.transform = `translateY(${STACK_FINAL[1].translateY}px) scale(${STACK_FINAL[1].scale})`
         }
 
-        // El card más antiguo sube a posición fondo (índice 0)
         const oldest = wrapperRefs.current[i - 2]
         if (oldest) {
           oldest.style.transition =
@@ -127,24 +134,68 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
         }
       }, delay)
     })
+
+    // Disparar el bucle infinito pausado tras terminar la animación inicial (~2500ms)
+    let intervalId: NodeJS.Timeout
+    const startLoopTimeout = setTimeout(() => {
+      intervalId = setInterval(() => {
+        // Rotación del stack: el de atrás (posición 0) pasa adelante (posición 2)
+        // Las demás posiciones bajan un nivel.
+        const nextPositions = positionsRef.current.map((pos) => {
+          if (pos === 0) return 2 // Fondo pasa al frente
+          if (pos === 1) return 0 // Medio pasa al fondo
+          return 1                // Frente pasa al medio
+        })
+
+        positionsRef.current = nextPositions
+        setPositions(nextPositions)
+
+        // Aplicamos la animación dinámica basada en el nuevo orden de posiciones
+        NOTIFICATIONS.forEach((_, i) => {
+          const el = wrapperRefs.current[i]
+          const currentPos = nextPositions[i]
+          if (!el) return
+
+          // Si pasa del fondo al frente (0 -> 2), hacemos una transición suave pero notable
+          if (currentPos === 2) {
+            el.style.transition = 'transform 0.75s cubic-bezier(0.16,1,0.3,1), z-index 0s'
+          } else {
+            el.style.transition = 'transform 0.75s cubic-bezier(0.16,1,0.3,1)'
+          }
+
+          el.style.zIndex = `${STACK_FINAL[currentPos].zIndex}`
+          el.style.transform = `translateY(${STACK_FINAL[currentPos].translateY}px) scale(${STACK_FINAL[currentPos].scale})`
+        })
+      }, 3500) // Tiempo de pausa entre ciclos del bucle continuo
+    }, 2500)
+
+    return () => {
+      clearTimeout(startLoopTimeout)
+      clearInterval(intervalId)
+    }
   }, [visible])
 
   return (
     <div className="relative w-full" style={{ height: '140px' }}>
-      {NOTIFICATIONS.map((n, i) => (
-        <div
-          key={n.id}
-          ref={el => { wrapperRefs.current[i] = el }}
-          className={`absolute inset-x-0 ${STACK_FINAL[2].mx}`}
-          style={{
-            bottom: 0,
-            zIndex: i + 1,
-            transformOrigin: 'bottom center',
-          }}
-        >
-          <NotifCard n={n} />
-        </div>
-      ))}
+      {NOTIFICATIONS.map((n, i) => {
+        const currentPos = positions[i]
+        const displayTime = TIME_BY_POSITION[currentPos] ?? n.time
+
+        return (
+          <div
+            key={n.id}
+            ref={el => { wrapperRefs.current[i] = el }}
+            className={`absolute inset-x-0 ${STACK_FINAL[currentPos]?.mx ?? STACK_FINAL[2].mx}`}
+            style={{
+              bottom: 0,
+              zIndex: STACK_FINAL[currentPos]?.zIndex ?? (i + 1),
+              transformOrigin: 'bottom center',
+            }}
+          >
+            <NotifCard n={n} displayTime={displayTime} />
+          </div>
+        )
+      })}
     </div>
   )
 }
