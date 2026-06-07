@@ -36,8 +36,8 @@ type Notif = typeof NOTIFICATIONS[0]
 
 // CAMBIO CLAVE: Se incrementó la distancia vertical (translateY) de las tarjetas traseras
 const STACK_FINAL = [
-  { scale: 0.88, translateY: -56, zIndex: 10, mx: 'mx-8' }, // Antes: -24
-  { scale: 0.94, translateY: -28, zIndex: 20, mx: 'mx-4' }, // Antes: -14
+  { scale: 0.88, translateY: -80, zIndex: 10, mx: 'mx-8' }, // Antes: -56
+  { scale: 0.94, translateY: -40, zIndex: 20, mx: 'mx-4' }, // Antes: -28
   { scale: 1,    translateY: 0,   zIndex: 30, mx: ''     },
 ]
 
@@ -124,7 +124,7 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
 
   return (
     // CAMBIO CLAVE: Se amplió la altura del contenedor de 110px a 140px para albergar el desplazamiento más alto
-    <div className="relative w-full" style={{ height: '140px' }}>
+    <div className="relative w-full" style={{ height: '165px' }}>
       {NOTIFICATIONS.map((n, i) => (
         <div
           key={n.id}
