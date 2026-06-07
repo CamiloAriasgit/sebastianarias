@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from 'react'
 const WHATSAPP_URL =
   'https://wa.me/57TUNUMERO?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
 
-// Se reordena el array para que Andrés aparezca primero (índice 0) y Carlos al final (la base)
 const NOTIFICATIONS = [
   {
     id: 3,
@@ -35,29 +34,25 @@ const WaIcon = ({ size = 9 }: { size?: number }) => (
 
 type Notif = typeof NOTIFICATIONS[0]
 
-// AJUSTE: Configuración de escala y offset por posición en el stack
-// índice 0 = frente, 2 = fondo. Opacidad incrementada para fondo.
-const STACK_CONFIG = [
-  { scale: 1,      translateY: 0,   opacity: 1,   zIndex: 30, widthClass: '' },
-  { scale: 0.94,  translateY: -14, opacity: 0.9, zIndex: 20, widthClass: 'mx-4' }, // Opacidad aumentada de 0.7 a 0.9
-  { scale: 0.88,  translateY: -24, opacity: 0.8, zIndex: 10, widthClass: 'mx-8' }, // Opacidad aumentada de 0.4 a 0.8
+// Estado final de cada posición en el stack
+// índice 0 = fondo, 2 = frente
+const STACK_FINAL = [
+  { scale: 0.88, translateY: -56, zIndex: 10, mx: 'mx-8' },
+  { scale: 0.94, translateY: -28, zIndex: 20, mx: 'mx-4' },
+  { scale: 1,    translateY: 0,   zIndex: 30, mx: ''     },
 ]
 
 const NotifCard = ({
   n,
-  style,
-  className = '',
   cardRef,
 }: {
   n: Notif
-  style?: React.CSSProperties
-  className?: string
   cardRef?: (el: HTMLDivElement | null) => void
 }) => (
   <div
     ref={cardRef}
-    className={`rounded-2xl px-3 py-2.5 bg-white/[0.07] backdrop-blur-md border border-white/[0.09] ${className}`}
-    style={style}
+    className="rounded-2xl px-3 py-2.5 border border-white/[0.09]"
+    style={{ background: 'rgba(28,28,30,0.95)', backdropFilter: 'blur(12px)' }}
   >
     <div className="flex items-center justify-between mb-1.5">
       <div className="flex items-center gap-1.5">
@@ -88,91 +83,68 @@ const NotifCard = ({
 )
 
 const NotifStack = ({ visible }: { visible: boolean }) => {
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+  const wrapperRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
     if (!visible) return
 
-    const cardAndres = cardRefs.current[0]
-    const cardValeria = cardRefs.current[1]
-    const cardCarlos = cardRefs.current[2]
+    // Estado inicial — todos fuera de vista abajo, sin escala aún
+    wrapperRefs.current.forEach((el) => {
+      if (!el) return
+      el.style.transform = 'translateY(48px) scale(1)'
+      el.style.opacity = '0'
+    })
 
-    // Estado inicial de la animación secuencial
-    if (cardAndres) {
-      cardAndres.style.opacity = '0'
-      cardAndres.style.transform = 'translateY(20px) scale(1)'
-      cardAndres.style.transition = 'opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1)'
-    }
-    if (cardValeria) {
-      cardValeria.style.opacity = '0'
-      cardValeria.style.transform = 'translateY(20px) scale(1)'
-      cardValeria.style.transition = 'opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1)'
-    }
-    if (cardCarlos) {
-      cardCarlos.style.opacity = '0'
-      cardCarlos.style.transform = 'translateY(20px) scale(1)'
-      cardCarlos.style.transition = 'opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1)'
-    }
+    // Cada card entra desde abajo en cascada
+    // Al entrar empuja los anteriores a su posición de stack
+    NOTIFICATIONS.forEach((_, i) => {
+      const delay = 700 + i * 380
 
-    // Paso 1: Aparece Andrés ocupando todo el ancho
-    setTimeout(() => {
-      if (cardAndres) {
-        cardAndres.style.opacity = '1'
-        cardAndres.style.transform = 'translateY(0px) scale(1)'
-      }
-    }, 600)
+      setTimeout(() => {
+        // El card actual entra al frente (posición 2 del stack)
+        const current = wrapperRefs.current[i]
+        if (current) {
+          current.style.transition =
+            'transform 0.65s cubic-bezier(0.16,1,0.3,1), opacity 0.5s cubic-bezier(0.16,1,0.3,1)'
+          current.style.transform = `translateY(${STACK_FINAL[2].translateY}px) scale(${STACK_FINAL[2].scale})`
+          current.style.opacity = '1'
+        }
 
-    // Paso 2: Andrés sube y se encoge un poco, al mismo tiempo aparece Valeria con todo el ancho
-    setTimeout(() => {
-      if (cardAndres) {
-        cardAndres.style.transform = 'translateY(-14px) scale(0.94)'
-        cardAndres.style.opacity = '0.9' // AJUSTE: Opacidad aumentada
-      }
-      if (cardValeria) {
-        cardValeria.style.opacity = '1'
-        cardValeria.style.transform = 'translateY(0px) scale(1)'
-      }
-    }, 1600)
+        // El card anterior sube a posición media (índice 1)
+        const prev = wrapperRefs.current[i - 1]
+        if (prev) {
+          prev.style.transition =
+            'transform 0.65s cubic-bezier(0.16,1,0.3,1), opacity 0.5s cubic-bezier(0.16,1,0.3,1)'
+          prev.style.transform = `translateY(${STACK_FINAL[1].translateY}px) scale(${STACK_FINAL[1].scale})`
+        }
 
-    // Paso 3: Andrés sube otro poco y se encoge más, Valeria sube y se encoge, y Carlos aparece con todo el ancho en la base
-    setTimeout(() => {
-      if (cardAndres) {
-        cardAndres.style.transform = 'translateY(-24px) scale(0.88)'
-        cardAndres.style.opacity = '0.8' // AJUSTE: Opacidad aumentada (coincide con STACK_CONFIG[2])
-      }
-      if (cardValeria) {
-        cardValeria.style.transform = 'translateY(-14px) scale(0.94)'
-        cardValeria.style.opacity = '0.9' // AJUSTE: Opacidad aumentada (coincide con STACK_CONFIG[1])
-      }
-      if (cardCarlos) {
-        cardCarlos.style.opacity = '1'
-        cardCarlos.style.transform = 'translateY(0px) scale(1)'
-      }
-    }, 2600)
-
+        // El card más antiguo sube a posición fondo (índice 0)
+        const oldest = wrapperRefs.current[i - 2]
+        if (oldest) {
+          oldest.style.transition =
+            'transform 0.65s cubic-bezier(0.16,1,0.3,1), opacity 0.5s cubic-bezier(0.16,1,0.3,1)'
+          oldest.style.transform = `translateY(${STACK_FINAL[0].translateY}px) scale(${STACK_FINAL[0].scale})`
+        }
+      }, delay)
+    })
   }, [visible])
 
   return (
-    // Se expande la altura fija para soportar el desplazamiento vertical del stack piramidal sin colapsar
-    <div className="relative w-full" style={{ height: '110px' }}>
-      {NOTIFICATIONS.map((n, i) => {
-        // zIndex inverso para que el primer mensaje (Andrés) quede al fondo al final, y Carlos al frente
-        const zIndex = (NOTIFICATIONS.length - i) * 10 
-        return (
-          <div
-            key={n.id}
-            ref={el => { cardRefs.current[i] = el }}
-            className="absolute inset-x-0"
-            style={{
-              zIndex: zIndex,
-              bottom: 0,
-              transformOrigin: 'bottom center',
-            }}
-          >
-            <NotifCard n={n} />
-          </div>
-        )
-      })}
+    <div className="relative w-full" style={{ height: '140px' }}>
+      {NOTIFICATIONS.map((n, i) => (
+        <div
+          key={n.id}
+          ref={el => { wrapperRefs.current[i] = el }}
+          className={`absolute inset-x-0 ${STACK_FINAL[2].mx}`}
+          style={{
+            bottom: 0,
+            zIndex: i + 1,
+            transformOrigin: 'bottom center',
+          }}
+        >
+          <NotifCard n={n} />
+        </div>
+      ))}
     </div>
   )
 }
@@ -230,8 +202,7 @@ export default function Hero() {
           className="grid items-center gap-8 md:gap-[clamp(2rem,5vw,4rem)]"
           style={{ gridTemplateColumns: '1fr 1fr' }}
         >
-
-          {/* Izquierda — headline + párrafo en móvil también */}
+          {/* Izquierda — headline + párrafo en móvil */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <h1
               className="m-0"
@@ -253,7 +224,6 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Párrafo — visible en móvil junto al h1, oculto en desktop (vive en footer) */}
             <p
               ref={paraRef}
               className="md:hidden text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[38ch]"
@@ -262,23 +232,21 @@ export default function Hero() {
               reales contactando por WhatsApp.
             </p>
 
-            {/* Stack de notifs en móvil */}
             <div className="md:hidden mt-2">
               <NotifStack visible={stackVisible} />
             </div>
           </div>
 
-          {/* Derecha — stack de notifs en desktop */}
+          {/* Derecha — stack desktop */}
           <div
             ref={desktopNotif}
             className="hidden md:flex flex-col justify-center"
           >
             <NotifStack visible={stackVisible} />
-            <p className="text-[0.625rem] text-[var(--color-text-muted)] m-0 mt-6 ml-1 tracking-wide">
+            <p className="text-[0.625rem] text-[var(--color-text-muted)] m-0 mt-8 ml-1 tracking-wide">
               3 mensajes nuevos · Proyecto Reserva del Bosque
             </p>
           </div>
-
         </div>
       </div>
 
@@ -287,7 +255,6 @@ export default function Hero() {
         ref={footerRef}
         className="container-site pb-8 pt-5 md:border-t md:border-[var(--color-border)] flex items-end justify-between flex-wrap gap-8"
       >
-        {/* Párrafo en desktop — oculto en móvil */}
         <p className="hidden md:block text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[44ch]">
           Convertimos el tráfico de tu pauta en compradores
           reales contactando por WhatsApp.
