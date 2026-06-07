@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const WHATSAPP_URL =
   'https://wa.me/57TUNUMERO?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
@@ -34,18 +34,29 @@ const WaIcon = ({ size = 9 }: { size?: number }) => (
 
 type Notif = typeof NOTIFICATIONS[0]
 
+// Configuración de escala y offset por posición en el stack
+// índice 0 = frente, 2 = fondo
+const STACK_CONFIG = [
+  { scale: 1,     translateY: 0,   opacity: 1,    zIndex: 30, widthClass: '' },
+  { scale: 0.94,  translateY: -14, opacity: 0.7,  zIndex: 20, widthClass: 'mx-4' },
+  { scale: 0.88,  translateY: -24, opacity: 0.4,  zIndex: 10, widthClass: 'mx-8' },
+]
+
 const NotifCard = ({
   n,
-  notifRef,
+  style,
   className = '',
+  cardRef,
 }: {
   n: Notif
-  notifRef?: (el: HTMLDivElement | null) => void
+  style?: React.CSSProperties
   className?: string
+  cardRef?: (el: HTMLDivElement | null) => void
 }) => (
   <div
-    ref={notifRef}
-    className={`rounded-2xl px-3 py-2.5 bg-white/[0.06] backdrop-blur-md  border-white/[0.08] ${className}`}
+    ref={cardRef}
+    className={`rounded-2xl px-3 py-2.5 bg-white/[0.07] backdrop-blur-md border border-white/[0.09] ${className}`}
+    style={style}
   >
     <div className="flex items-center justify-between mb-1.5">
       <div className="flex items-center gap-1.5">
@@ -63,31 +74,86 @@ const NotifCard = ({
     </p>
     <p
       className="text-[0.5625rem] text-[var(--color-text-secondary)] m-0 leading-relaxed"
-      style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}
+      style={{
+        display: '-webkit-box',
+        WebkitLineClamp: 2,
+        WebkitBoxOrient: 'vertical',
+        overflow: 'hidden',
+      }}
     >
       {n.preview}
     </p>
   </div>
 )
 
+// Stack apilado — desktop y móvil comparten lógica, solo cambia el contenedor
+const NotifStack = ({ visible }: { visible: boolean }) => {
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    if (!visible) return
+    cardRefs.current.forEach((el, i) => {
+      if (!el) return
+      // Estado inicial — todos abajo y transparentes
+      el.style.opacity = '0'
+      el.style.transform = `translateY(20px) scale(${STACK_CONFIG[i].scale})`
+      el.style.transition = `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${600 + i * 300}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${600 + i * 300}ms`
+
+      setTimeout(() => {
+        if (!el) return
+        el.style.opacity = String(STACK_CONFIG[i].opacity)
+        el.style.transform = `translateY(${STACK_CONFIG[i].translateY}px) scale(${STACK_CONFIG[i].scale})`
+      }, 60)
+    })
+  }, [visible])
+
+  return (
+    // El stack usa position relative con altura fija para que las cards
+    // absolutas no colapsen el contenedor
+    <div className="relative w-full" style={{ height: '88px' }}>
+      {/* Renderizamos en orden inverso para que el z-index funcione bien */}
+      {[...NOTIFICATIONS].reverse().map((n, reversedI) => {
+        const i = NOTIFICATIONS.length - 1 - reversedI
+        const cfg = STACK_CONFIG[i]
+        return (
+          <div
+            key={n.id}
+            ref={el => { cardRefs.current[i] = el }}
+            className={`absolute inset-x-0 ${cfg.widthClass}`}
+            style={{
+              zIndex: cfg.zIndex,
+              bottom: 0,
+              transformOrigin: 'bottom center',
+            }}
+          >
+            <NotifCard n={n} />
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 export default function Hero() {
-  const lineOneRef = useRef<HTMLSpanElement>(null)
-  const lineTwoRef = useRef<HTMLSpanElement>(null)
+  const lineOneRef   = useRef<HTMLSpanElement>(null)
+  const lineTwoRef   = useRef<HTMLSpanElement>(null)
   const lineThreeRef = useRef<HTMLSpanElement>(null)
-  const footerRef  = useRef<HTMLDivElement>(null)
-  const notifsRef  = useRef<HTMLDivElement>(null)
-  const notifRefs  = useRef<(HTMLDivElement | null)[]>([])
+  const paraRef      = useRef<HTMLParagraphElement>(null)
+  const footerRef    = useRef<HTMLDivElement>(null)
+  const desktopNotif = useRef<HTMLDivElement>(null)
+  const [stackVisible, setStackVisible] = useState(false)
 
   useEffect(() => {
     ;[
       { ref: lineOneRef,   delay: 0   },
       { ref: lineTwoRef,   delay: 100 },
       { ref: lineThreeRef, delay: 200 },
-      { ref: footerRef,    delay: 320 },
+      { ref: paraRef,      delay: 280 },
+      { ref: footerRef,    delay: 340 },
     ].forEach(({ ref, delay }) => {
       if (!ref.current) return
       ref.current.style.opacity = '0'
-      ref.current.style.transform = 'translateY(16px)'
+      ref.current.style.transform = 'translateY(14px)'
       ref.current.style.transition = `opacity 0.9s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.9s cubic-bezier(0.16,1,0.3,1) ${delay}ms`
       setTimeout(() => {
         if (!ref.current) return
@@ -96,30 +162,21 @@ export default function Hero() {
       }, 60)
     })
 
-    if (notifsRef.current) {
-      notifsRef.current.style.opacity = '0'
-      notifsRef.current.style.transform = 'translateY(20px)'
-      notifsRef.current.style.transition =
-        'opacity 0.9s cubic-bezier(0.16,1,0.3,1) 360ms, transform 0.9s cubic-bezier(0.16,1,0.3,1) 360ms'
+    // Desktop notifs container
+    if (desktopNotif.current) {
+      desktopNotif.current.style.opacity = '0'
+      desktopNotif.current.style.transform = 'translateY(20px)'
+      desktopNotif.current.style.transition =
+        'opacity 0.9s cubic-bezier(0.16,1,0.3,1) 380ms, transform 0.9s cubic-bezier(0.16,1,0.3,1) 380ms'
       setTimeout(() => {
-        if (!notifsRef.current) return
-        notifsRef.current.style.opacity = '1'
-        notifsRef.current.style.transform = 'translateY(0)'
+        if (!desktopNotif.current) return
+        desktopNotif.current.style.opacity = '1'
+        desktopNotif.current.style.transform = 'translateY(0)'
       }, 60)
     }
 
-    notifRefs.current.forEach((el, i) => {
-      if (!el) return
-      el.style.opacity = '0'
-      el.style.transform = 'translateY(10px) scale(0.98)'
-      const delay = 700 + i * 350
-      el.style.transition = `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms`
-      setTimeout(() => {
-        if (!el) return
-        el.style.opacity = '1'
-        el.style.transform = 'translateY(0) scale(1)'
-      }, 60)
-    })
+    // Activa el stack después de que el contenedor entra
+    setTimeout(() => setStackVisible(true), 400)
   }, [])
 
   return (
@@ -133,62 +190,52 @@ export default function Hero() {
           style={{ gridTemplateColumns: '1fr 1fr' }}
         >
 
-          {/* Izquierda — headline */}
-          <h1
-            className="m-0 col-span-2 md:col-span-1"
-            style={{
-              fontSize: 'clamp(2.75rem, 7.5vw, 8.5rem)',
-              fontWeight: 300,
-              lineHeight: 1.0,
-              letterSpacing: '-0.04em',
-            }}
-          >
-            <span ref={lineOneRef} className="block text-[var(--color-text-primary)] whitespace-nowrap">
-              Landing pages
-            </span>
-            <span ref={lineTwoRef} className="block text-[var(--color-text-primary)] whitespace-nowrap">
-              para proyectos
-            </span>
-            <span ref={lineThreeRef} className="block text-[var(--color-text-muted)] whitespace-nowrap">
-              inmobiliarios.
-            </span>
-          </h1>
+          {/* Izquierda — headline + párrafo en móvil también */}
+          <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
+            <h1
+              className="m-0"
+              style={{
+                fontSize: 'clamp(2.5rem, 6.5vw, 7.5rem)',
+                fontWeight: 300,
+                lineHeight: 1.02,
+                letterSpacing: '-0.04em',
+              }}
+            >
+              <span ref={lineOneRef} className="block text-[var(--color-text-primary)] whitespace-nowrap">
+                Landing pages
+              </span>
+              <span ref={lineTwoRef} className="block text-[var(--color-text-primary)] whitespace-nowrap">
+                para proyectos
+              </span>
+              <span ref={lineThreeRef} className="block text-[var(--color-text-muted)] whitespace-nowrap">
+                inmobiliarios.
+              </span>
+            </h1>
 
-          {/* Derecha — notificaciones flotando */}
-          <div
-            ref={notifsRef}
-            className="hidden md:flex flex-col gap-2.5 justify-center"
-          >
-            {NOTIFICATIONS.map((n, i) => (
-              <NotifCard
-                key={n.id}
-                n={n}
-                notifRef={el => { notifRefs.current[i] = el }}
-                className={i === 1 ? 'ml-6' : i === 2 ? 'ml-3' : ''}
-              />
-            ))}
-            <p className="text-[0.625rem] text-[var(--color-text-muted)] m-0 mt-1 ml-1 tracking-wide">
-              3 mensajes nuevos · Proyecto Reserva del Bosque
+            {/* Párrafo — visible en móvil junto al h1, oculto en desktop (vive en footer) */}
+            <p
+              ref={paraRef}
+              className="md:hidden text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[38ch]"
+            >
+              Convertimos el tráfico de tu pauta en compradores
+              reales contactando por WhatsApp.
             </p>
+
+            {/* Stack de notifs en móvil */}
+            <div className="md:hidden mt-2">
+              <NotifStack visible={stackVisible} />
+            </div>
           </div>
 
-          {/* Móvil — 3 notifs, la del medio más ancha */}
+          {/* Derecha — stack de notifs en desktop */}
           <div
-            ref={notifsRef}
-            className="md:hidden col-span-2 flex flex-col gap-2 mt-2"
+            ref={desktopNotif}
+            className="hidden md:flex flex-col justify-center"
           >
-            {NOTIFICATIONS.map((n, i) => (
-              <NotifCard
-                key={n.id}
-                n={n}
-                notifRef={el => { notifRefs.current[i] = el }}
-                className={
-                  i === 0 ? 'mx-4' :
-                  i === 2 ? 'mx-4' :
-                  ''
-                }
-              />
-            ))}
+            <NotifStack visible={stackVisible} />
+            <p className="text-[0.625rem] text-[var(--color-text-muted)] m-0 mt-6 ml-1 tracking-wide">
+              3 mensajes nuevos · Proyecto Reserva del Bosque
+            </p>
           </div>
 
         </div>
@@ -199,7 +246,8 @@ export default function Hero() {
         ref={footerRef}
         className="container-site pb-8 pt-5 md:border-t md:border-[var(--color-border)] flex items-end justify-between flex-wrap gap-8"
       >
-        <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[44ch]">
+        {/* Párrafo en desktop — oculto en móvil */}
+        <p className="hidden md:block text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[44ch]">
           Convertimos el tráfico de tu pauta en compradores
           reales contactando por WhatsApp.
         </p>
