@@ -156,15 +156,25 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
           const currentPos = nextPositions[i]
           if (!el) return
 
-          // Si pasa del fondo al frente (0 -> 2), hacemos una transición suave pero notable
+          // Si pasa del fondo al frente (0 -> 2), lo movemos primero hacia abajo y atrás
           if (currentPos === 2) {
-            el.style.transition = 'transform 0.75s cubic-bezier(0.16,1,0.3,1), z-index 0s'
-          } else {
-            el.style.transition = 'transform 0.75s cubic-bezier(0.16,1,0.3,1)'
-          }
+            el.style.transition = 'none' // Desactivar transición para el movimiento instantáneo
+            el.style.transform = `translateY(${STACK_FINAL[0].translateY + 20}px) scale(${STACK_FINAL[0].scale - 0.05})` // Abajo y más pequeño
+            el.style.zIndex = `${STACK_FINAL[0].zIndex - 5}` // Por debajo del fondo
+            
+            // Luego, después de un breve retraso, lo animamos hacia el frente
+            setTimeout(() => {
+              el.style.transition = 'transform 0.75s cubic-bezier(0.16,1,0.3,1), z-index 0s'
+              el.style.zIndex = `${STACK_FINAL[currentPos].zIndex}`
+              el.style.transform = `translateY(${STACK_FINAL[currentPos].translateY}px) scale(${STACK_FINAL[currentPos].scale})`
+            }, 50) // Pequeño retraso para que se apliquen los estilos iniciales
 
-          el.style.zIndex = `${STACK_FINAL[currentPos].zIndex}`
-          el.style.transform = `translateY(${STACK_FINAL[currentPos].translateY}px) scale(${STACK_FINAL[currentPos].scale})`
+          } else {
+            // Transición normal para las demás posiciones
+            el.style.transition = 'transform 0.75s cubic-bezier(0.16,1,0.3,1)'
+            el.style.zIndex = `${STACK_FINAL[currentPos].zIndex}`
+            el.style.transform = `translateY(${STACK_FINAL[currentPos].translateY}px) scale(${STACK_FINAL[currentPos].scale})`
+          }
         })
       }, 3500) // Tiempo de pausa entre ciclos del bucle continuo
     }, 2500)
@@ -190,6 +200,7 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
               bottom: 0,
               zIndex: STACK_FINAL[currentPos]?.zIndex ?? (i + 1),
               transformOrigin: 'bottom center',
+              transition: 'transform 0.75s cubic-bezier(0.16,1,0.3,1)' // Transición predeterminada
             }}
           >
             <NotifCard n={n} displayTime={displayTime} />
