@@ -8,6 +8,7 @@ import Demo from './components/sections/Demo'
 import Pricing from './components/sections/Pricing'
 import FAQ from './components/sections/FAQ'
 import CTAFinal from './components/sections/CTAFinal'
+import Footer from './components/layout/Footer'
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Pricing />
         <FAQ />
         <CTAFinal />
+        <Footer />
       </main>
     </>
   )

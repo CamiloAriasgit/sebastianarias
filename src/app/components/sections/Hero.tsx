@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 const WHATSAPP_URL =
-  'https://wa.me/573003607632?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
+  'https://wa.me/573235619283?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
 
 const NOTIFICATIONS = [
   {
@@ -52,7 +52,7 @@ const NotifCard = ({ n, time }: { n: Notif; time: string }) => (
   >
     <div className="flex items-center justify-between mb-2">
       <div className="flex items-center gap-2">
-        <div className="w-[18px] h-[18px] rounded-md flex items-center justify-center shrink-0 bg-[#25d366]">
+        <div className="w-[18px] h-[18px] rounded-full flex items-center justify-center shrink-0 bg-[#25d366]">
           <WaIcon />
         </div>
         <span className="text-xs font-medium text-[var(--color-text-secondary)] tracking-wide">
@@ -239,7 +239,7 @@ export default function Hero() {
             <h1
               className="m-0"
               style={{
-                fontSize: 'clamp(2.5rem, 6.5vw, 7.5rem)',
+                fontSize: 'clamp(2.5rem, 5vw, 6rem)',
                 fontWeight: 300,
                 lineHeight: 1.02,
                 letterSpacing: '-0.04em',
@@ -274,7 +274,7 @@ export default function Hero() {
             className="hidden md:flex flex-col justify-center"
           >
             <NotifStack visible={stackVisible} />
-            <p className="text-[0.625rem] text-[var(--color-text-muted)] m-0 mt-8 ml-1 tracking-wide">
+            <p className="text-[0.625rem] text-[var(--color-text-muted)] text-center m-0 mt-8 ml-1 tracking-wide">
               Mensajes entrantes · Proyecto Reserva del Bosque
             </p>
           </div>
@@ -295,7 +295,7 @@ export default function Hero() {
           rel="noopener noreferrer"
           className="btn-primary btn-primary-hero shrink-0"
         >
-          Agendar llamada
+          Empezar ahora
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
             <path d="M2 6.5h9M7.5 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
