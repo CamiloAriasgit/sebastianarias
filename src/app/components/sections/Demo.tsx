@@ -75,7 +75,7 @@ export default function Demo() {
               {/* Degradado oscuro tenue inferior para el texto */}
               <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none" />
 
-              <p className="text-label text-[var(--color-text-primary)] font-light absolute bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap z-10">
+              <p className="text-label text-[var(--color-text-primary)] font-medium absolute bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap z-10">
                 DEMO DISPONIBLE PRÓXIMAMENTE
               </p>
             </div>
