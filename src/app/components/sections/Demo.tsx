@@ -64,21 +64,19 @@ export default function Demo() {
             rel="noopener noreferrer"
             className="block no-underline relative rounded-[10px] overflow-hidden border border-[var(--color-border)] hover:border-[var(--color-border-hi)] transition-colors duration-300 group"
           >
-            {/* Placeholder */}
-            <div className="w-full bg-[var(--color-surface)] relative flex items-center justify-center" style={{ aspectRatio: '16/9' }}>
-              <div className="flex flex-col gap-3 w-full max-w-[480px] px-8 opacity-25">
-                <div className="h-0.5 w-12 bg-[var(--color-text-primary)] rounded" />
-                <div className="h-3 w-3/4 bg-[var(--color-text-primary)] rounded" />
-                <div className="h-3 w-1/2 bg-[var(--color-text-primary)] rounded" />
-                <div className="h-px w-full bg-[var(--color-border-hi)] my-2" />
-                <div className="h-2 w-11/12 bg-[var(--color-text-secondary)] rounded" />
-                <div className="h-2 w-3/4 bg-[var(--color-text-secondary)] rounded" />
-                <div className="h-2 w-4/5 bg-[var(--color-text-secondary)] rounded" />
-                <div className="h-px w-full bg-[var(--color-border)] my-1" />
-                <div className="h-8 w-36 bg-[var(--color-surface-hi)] rounded-md border border-[var(--color-border-hi)]" />
-              </div>
-              <p className="text-label text-[var(--color-text-muted)] absolute bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                Demo disponible próximamente
+            {/* Imagen de fondo */}
+            <div className="w-full relative flex items-center justify-center">
+              <img 
+                src="/images/demo-preview.webp" 
+                alt="Vista previa de la Demo" 
+                className="w-full h-auto block"
+              />
+              
+              {/* Degradado oscuro tenue inferior para el texto */}
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none" />
+
+              <p className="text-label text-[var(--color-text-muted)] absolute bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap z-10">
+                DEMO DISPONIBLE PRÓXIMAMENTE
               </p>
             </div>
 
