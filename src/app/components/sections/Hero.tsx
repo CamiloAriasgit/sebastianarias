@@ -52,7 +52,7 @@ type Notif = typeof NOTIFICATIONS[0]
 
 const NotifCard = ({ n, time }: { n: Notif; time: string }) => (
   <div
-    className="rounded-2xl px-4 py-3 border border-white/[0.03] shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
+    className="rounded-2xl px-4 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
     style={{ 
       background: 'rgba(24, 24, 27, 0.96)', // Un tono neutral/zinc mate ultra sólido que no se rompe en ningún navegador
     }}

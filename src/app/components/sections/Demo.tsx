@@ -62,7 +62,7 @@ export default function Demo() {
             href="#"
             target="_blank"
             rel="noopener noreferrer"
-            className="block no-underline relative rounded-[10px] overflow-hidden border border-[var(--color-border)] hover:border-[var(--color-border-hi)] transition-colors duration-300 group"
+            className="block no-underline relative rounded-[10px] overflow-hidden transition-colors duration-300 group"
           >
             {/* Imagen de fondo */}
             <div className="w-full relative flex items-center justify-center">
@@ -75,7 +75,7 @@ export default function Demo() {
               {/* Degradado oscuro tenue inferior para el texto */}
               <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none" />
 
-              <p className="text-label text-[var(--color-text-primary)] font-medium absolute bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap z-10">
+              <p className="text-label text-[var(--color-text-primary)] font-medium absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap z-10">
                 DEMO DISPONIBLE PRÓXIMAMENTE
               </p>
             </div>
