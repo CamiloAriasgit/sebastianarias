@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react'
 
 const PROBLEMS = [
   { number: '01', title: 'Carga lento.', body: 'Cada segundo de espera es un lead que se fue. El tráfico de pauta no perdona páginas lentas.' },
-  { number: '02', title: 'No genera confianza.', body: 'Una página genérica le dice al comprador que el proyecto tampoco es serio. El diseño es el primer filtro.' },
+  { number: '02', title: 'No genera confianza.', body: 'Una página genérica le dice al inversionista que el proyecto tampoco es serio. El diseño es el primer filtro.' },
   { number: '03', title: 'El WhatsApp está escondido.', body: 'Si el botón no está donde el usuario lo espera, en el momento en que lo necesita, el contacto no ocurre.' },
   { number: '04', title: 'Nadie sabe qué está fallando.', body: 'Sin tracking real no hay datos. Sin datos no hay decisiones. La pauta se optimiza a ciegas.' },
 ]

@@ -267,7 +267,7 @@ export default function Hero() {
               ref={paraRef}
               className="md:hidden text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 mb-8 md:mb-0 max-w-[38ch]"
             >
-              Convertimos el tráfico de tu pauta en compradores
+              Convertimos el tráfico de tu pauta en inversionistas
               reales contactando por WhatsApp.
             </p>
 
