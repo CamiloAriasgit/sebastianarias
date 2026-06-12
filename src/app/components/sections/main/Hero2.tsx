@@ -51,9 +51,9 @@ type Notif = typeof NOTIFICATIONS[0]
 
 const NotifCard = ({ n, time }: { n: Notif; time: string }) => (
     <div
-        className="rounded-2xl px-4 py-3 shadow-[0_8px_40px_rgba(0,0,0,0.1)] border border-zinc-200 backdrop-blur-md"
+        className="rounded-2xl px-4 py-3 shadow-[0_8px_40px_rgba(0,0,0,0.6)] backdrop-blur-md"
         style={{
-            background: 'rgba(255, 255, 255, 0.75)', // Fondo claro translúcido
+            background: 'rgba(15, 15, 17, 0.85)', // Volvemos al fondo dark original
         }}
     >
         <div className="flex items-center justify-between mb-2">
@@ -61,17 +61,17 @@ const NotifCard = ({ n, time }: { n: Notif; time: string }) => (
                 <div className="w-[18px] h-[18px] rounded-md flex items-center justify-center shrink-0 bg-[#25d366]">
                     <WaIcon />
                 </div>
-                <span className="text-xs font-medium text-zinc-600 tracking-wide">
+                <span className="text-xs font-medium text-zinc-400 tracking-wide">
                     WhatsApp
                 </span>
             </div>
             <span className="text-[0.625rem] text-zinc-500">{time}</span>
         </div>
-        <p className="text-sm font-medium text-zinc-950 m-0 mb-1 text-left">
+        <p className="text-sm font-medium text-zinc-100 m-0 mb-1 text-left">
             {n.name}
         </p>
         <p
-            className="text-xs text-zinc-700 m-0 leading-relaxed text-left"
+            className="text-xs text-zinc-400 m-0 leading-relaxed text-left"
             style={{
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
@@ -205,28 +205,29 @@ export default function Hero() {
     }, [])
 
     return (
-        <section className="relative w-full h-svh flex items-center justify-center pt-14 bg-white overflow-hidden">
+        <section className="relative w-full h-svh flex items-center justify-center pt-14 bg-[#0a0a0c] overflow-hidden">
             
-            {/* --- FONDO MESH GRADIENT (Gemini 3.5 Inspired) --- */}
-            {/* Usamos múltiples radial-gradients superpuestos y borrosos */}
+            {/* --- MESH GRADIENT DE FONDO --- */}
+            {/* Colores suaves inspirados en Gemini, con desfoque alto en la parte superior/centro */}
             <div 
-                className="absolute inset-0 z-0 opacity-60 blur-[100px]"
+                className="absolute inset-0 z-0 opacity-40 blur-[130px] pointer-events-none"
                 style={{
                     backgroundImage: `
-                        radial-gradient(circle at 15% 15%, #4285F4 0%, transparent 40%),
-                        radial-gradient(circle at 85% 20%, #DB4437 0%, transparent 35%),
-                        radial-gradient(circle at 50% 50%, #F4B400 0%, transparent 50%),
-                        radial-gradient(circle at 20% 80%, #0F9D58 0%, transparent 40%),
-                        radial-gradient(circle at 80% 85%, #4285F4 0%, transparent 40%)
+                        radial-gradient(circle at 20% 10%, #4285F4 0%, transparent 45%),
+                        radial-gradient(circle at 80% 15%, #DB4437 0%, transparent 40%),
+                        radial-gradient(circle at 50% 30%, #F4B400 0%, transparent 50%),
+                        radial-gradient(circle at 35% 25%, #0F9D58 0%, transparent 35%)
                     `
                 }}
             />
-            
+
+            {/* --- Gradiente de desvanecimiento hacia Negro Puro abajo --- */}
+            <div className="absolute bottom-0 left-0 right-0 h-[50vh] bg-gradient-to-t from-[#000000] via-[#000000]/90 to-transparent pointer-events-none z-10" />
 
             {/* --- Contenido Principal --- */}
             <div className="relative z-20 container-site w-full max-w-3xl px-4 flex flex-col items-center justify-center text-center gap-6">
                 <h1
-                    className="m-0 block text-zinc-950 font-light tracking-tight drop-shadow-sm" // Texto oscuro
+                    className="m-0 block text-zinc-100 font-light tracking-tight drop-shadow-sm" // Letra blanca de nuevo
                     style={{
                         fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
                         lineHeight: 1.05,
@@ -237,7 +238,7 @@ export default function Hero() {
 
                 <p
                     ref={paraRef}
-                    className="text-sm md:text-base leading-relaxed text-zinc-700 m-0 max-w-[45ch]" // Texto intermedio
+                    className="text-sm md:text-base leading-relaxed text-zinc-400 m-0 max-w-[45ch]" // Subtítulo original
                 >
                     Convertimos el tráfico de tu pauta en inversionistas reales contactando por WhatsApp.
                 </p>
@@ -246,7 +247,7 @@ export default function Hero() {
                     href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex bg-black justify-center items-center gap-2 py-2.5 w-44 rounded-full text-white shadow-lg shadow-black/10 transition-all duration-300 hover:scale-105 hover:bg-zinc-800" // Botón negro
+                    className="flex bg-white justify-center items-center gap-2 py-2.5 w-44 rounded-full text-black font-medium shadow-lg shadow-white/10 transition-all duration-300 hover:scale-105 hover:bg-zinc-100" // Botón blanco original
                 >
                     Empezar ahora
                     <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
