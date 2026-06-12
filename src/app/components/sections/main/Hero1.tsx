@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image' // <--- Importamos el componente de Next.js
 
 const WHATSAPP_URL =
     'https://wa.me/573235619283?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
@@ -52,9 +51,9 @@ type Notif = typeof NOTIFICATIONS[0]
 
 const NotifCard = ({ n, time }: { n: Notif; time: string }) => (
     <div
-        className="rounded-2xl px-4 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
+        className="rounded-2xl px-4 py-3 shadow-[0_8px_40px_rgba(0,0,0,0.1)] backdrop-blur-md"
         style={{
-            background: 'rgba(24, 24, 27, 0.96)',
+            background: 'rgba(255, 255, 255, 0.75)',
         }}
     >
         <div className="flex items-center justify-between mb-2">
@@ -62,22 +61,23 @@ const NotifCard = ({ n, time }: { n: Notif; time: string }) => (
                 <div className="w-[18px] h-[18px] rounded-md flex items-center justify-center shrink-0 bg-[#25d366]">
                     <WaIcon />
                 </div>
-                <span className="text-xs font-medium text-[var(--color-text-secondary)] tracking-wide">
+                <span className="text-xs font-medium text-zinc-600 tracking-wide">
                     WhatsApp
                 </span>
             </div>
-            <span className="text-[0.625rem] text-[var(--color-text-muted)]">{time}</span>
+            <span className="text-[0.625rem] text-zinc-500">{time}</span>
         </div>
-        <p className="text-sm font-medium text-[var(--color-text-primary)] text-start m-0 mb-1">
+        <p className="text-sm font-medium text-zinc-950 m-0 mb-1 text-left">
             {n.name}
         </p>
         <p
-            className="text-xs text-[var(--color-text-secondary)] m-0 leading-relaxed text-2xl text-start"
+            className="text-xs text-zinc-700 m-0 leading-relaxed text-left"
             style={{
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
                 WebkitBoxOrient: 'vertical',
                 overflow: 'hidden',
+                textAlign: 'left'
             }}
         >
             {n.preview}
@@ -207,38 +207,34 @@ export default function Hero() {
     return (
         <section className="relative w-full h-svh flex items-center justify-center pt-14 bg-white overflow-hidden">
             
-            {/* --- COMPONENTE DE IMAGEN DE NEXT.JS --- */}
-            <Image
-                src="/images/bg-pri.hero.png" // Asegúrate de que esté en la carpeta public/
-                alt="Hero Background"
-                fill
-                priority // <--- Clave para que cargue súper rápido al ser la imagen principal
-                className="object-cover object-center z-0"
-            />
-
-            {/* --- Superposición de Gradiente Negro Sutil en la parte inferior --- */}
-            <div
-                className="absolute inset-x-0 bottom-0 z-10 h-[40vh] pointer-events-none"
+            {/* --- FONDO MESH GRADIENT (Gemini 3.5 Inspired - Reemplazado por tonos Azules) --- */}
+            {/* Usamos múltiples radial-gradients superpuestos y borrosos con tonos azules */}
+            <div 
+                className="absolute inset-0 z-0 opacity-60 blur-[100px]"
                 style={{
-                    background: `linear-gradient(
-            to top, 
-            rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 0.7) 20%,
-            rgba(0, 0, 0, 0.4) 45%,
-            rgba(0, 0, 0, 0.15) 70%,
-            rgba(0, 0, 0, 0.05) 85%,
-            rgba(0, 0, 0, 0.4) 45%,
-            rgba(0, 0, 0, 0.15) 70%,
-            rgba(0, 0, 0, 0.05) 85%,
-            rgba(0, 0, 0, 0) 100%
-        )`
+                    backgroundImage: `
+                        radial-gradient(circle at 15% 15%, #4285F4 0%, transparent 99%),
+                        radial-gradient(circle at 85% 20%, #2196F3 0%, transparent 99%),
+                        radial-gradient(circle at 50% 50%, #1976D2 0%, transparent 50%),
+                        radial-gradient(circle at 20% 80%, #03A9F4 0%, transparent 90%),
+                        radial-gradient(circle at 80% 85%, #0D47A1 0%, transparent 90%)
+                    `
                 }}
             />
+            
+
+            {/* --- Superposición de Gradiente Negro Sutil en la parte inferior --- 
+                className="absolute inset-x-0 bottom-0 z-10 h-[40vh] pointer-events-none"
+                style={{
+                    background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)'
+                }}
+            />*/}
+            
 
             {/* --- Contenido Principal --- */}
             <div className="relative z-20 container-site w-full max-w-3xl px-4 flex flex-col items-center justify-center text-center gap-6">
                 <h1
-                    className="m-0 block text-white font-light tracking-tight drop-shadow-sm"
+                    className="m-0 block text-zinc-950 font-light tracking-tight drop-shadow-sm"
                     style={{
                         fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
                         lineHeight: 1.05,
@@ -249,7 +245,7 @@ export default function Hero() {
 
                 <p
                     ref={paraRef}
-                    className="text-sm md:text-base leading-relaxed text-neutral-100 m-0 max-w-[45ch]"
+                    className="text-sm md:text-base leading-relaxed text-zinc-700 m-0 max-w-[45ch]"
                 >
                     Convertimos el tráfico de tu pauta en inversionistas reales contactando por WhatsApp.
                 </p>
@@ -258,7 +254,7 @@ export default function Hero() {
                     href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex bg-white justify-center items-center gap-2 py-2.5 w-44 rounded-full text-black shadow-lg shadow-black/10 transition-all duration-300 hover:scale-105 hover:bg-zinc-800"
+                    className="flex bg-black justify-center items-center gap-2 py-2.5 w-44 rounded-full text-white font-medium shadow-lg shadow-black/10 transition-all duration-300 hover:scale-105 hover:bg-zinc-800"
                 >
                     Empezar ahora
                     <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
