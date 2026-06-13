@@ -106,24 +106,20 @@ export default function CTAFinal() {
         </div>
       </div>
 
-      {/* Contenedor del halo "Aurora Boreal" dinámico en la base */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[160%] max-w-[1400px] h-[30vh] pointer-events-none select-none translate-y-[20%] z-0 opacity-99">
         
-        {/* Capa 1: Azul Eléctrico (Ondulación asimétrica base) */}
         <div 
-          className="aurora-layer bg-white" 
+          className="aurora-layer bg-white/0" 
           style={{ animation: 'aurora-1 22s ease-in-out infinite' }}
         />
         
-        {/* Capa 2: Brillo Blanco (Crea el efecto cortina de luz/haz reflectivo) */}
         <div 
-          className="aurora-layer bg-blue-500" 
+          className="aurora-layer bg-blue-600" 
           style={{ animation: 'aurora-2 14s ease-in-out infinite alternate', animationDelay: '-4s' }}
         />
 
-        {/* Capa 3: Azul Profundo Magnético (Estabilidad e irregularidad de fondo) */}
         <div 
-          className="aurora-layer bg-blue-500" 
+          className="aurora-layer bg-blue-600" 
           style={{ animation: 'aurora-3 28s ease-in-out infinite', top: '10%' }}
         />
       </div>
