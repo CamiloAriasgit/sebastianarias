@@ -24,14 +24,20 @@ export default function Header() {
       }`}
     >
       <div className="container-site flex items-center justify-between h-14">
-        <span className="text-sm font-medium tracking-tight text-[var(--color-text-primary)]">
+        <span
+          className={`text-sm font-medium tracking-tight transition-colors duration-300 ${
+            scrolled ? 'text-[var(--color-text-primary)]' : 'text-black'
+          }`}
+        >
           Sebastian Arias
         </span>
         <a
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-200 no-underline"
+          className={`text-sm hover:text-[var(--color-text-primary)] transition-colors duration-300 no-underline ${
+            scrolled ? 'text-[var(--color-text-secondary)]' : 'text-black'
+          }`}
         >
           Contacto
         </a>
