@@ -223,7 +223,7 @@ export default function Hero() {
             />
             
 
-            {/* --- Superposición de Gradiente Negro Sutil en la parte inferior --- 
+            {/* --- Superposición de Gradiente Negro Sutil en la parte inferior ---
                 className="absolute inset-x-0 bottom-0 z-10 h-[40vh] pointer-events-none"
                 style={{
                     background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)'
@@ -236,11 +236,11 @@ export default function Hero() {
                 <h1
                     className="m-0 block text-zinc-950 font-light tracking-tight drop-shadow-sm"
                     style={{
-                        fontSize: 'clamp(2rem, 5vw, 4.5rem)',
+                        fontSize: 'clamp(2rem, 4vw, 4.5rem)',
                         lineHeight: 1.05,
                     }}
                 >
-                    Landing page para proyectos inmobiliarios
+                    Landing pages para proyectos inmobiliarios
                 </h1>
 
                 <p
