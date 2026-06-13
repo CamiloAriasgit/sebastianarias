@@ -43,27 +43,28 @@ export default function CTAFinal() {
       {/* Estilos para la animación de la aurora (puedes mover esto a tu global.css) */}
       <style jsx global>{`
         @keyframes aurora-1 {
-          0%, 100% { transform: translate(-10%, 20%) scale(1); opacity: 0.5; }
-          30% { transform: translate(15%, -10%) scale(1.2); opacity: 0.8; }
-          60% { transform: translate(-5%, 5%) scale(0.9); opacity: 0.6; }
+          0%, 100% { transform: translate(-15%, 10%) scaleX(1.3) scaleY(0.8) skewX(-10deg); opacity: 0.4; }
+          33% { transform: translate(10%, -5%) scaleX(0.9) scaleY(1.1) skewX(15deg); opacity: 0.7; }
+          66% { transform: translate(-5%, 15%) scaleX(1.4) scaleY(0.7) skewX(-5deg); opacity: 0.5; }
         }
         @keyframes aurora-2 {
-          0%, 100% { transform: translate(10%, -15%) scale(1.1); opacity: 0.6; }
-          40% { transform: translate(-20%, 10%) scale(0.8); opacity: 0.4; }
-          70% { transform: translate(5%, -5%) scale(1.3); opacity: 0.7; }
+          0%, 100% { transform: translate(15%, -5%) scaleX(0.8) scaleY(1.2) skewX(20deg); opacity: 0.3; }
+          40% { transform: translate(-25%, 10%) scaleX(1.3) scaleY(0.7) skewX(-15deg); opacity: 0.6; }
+          70% { transform: translate(5%, -10%) scaleX(1.1) scaleY(1.0) skewX(8deg); opacity: 0.4; }
         }
         @keyframes aurora-3 {
-          0%, 100% { transform: translate(0%, 0%) scale(1); opacity: 0.4; }
-          50% { transform: translate(10%, 15%) scale(1.1); opacity: 0.7; }
+          0%, 100% { transform: translate(-5%, 15%) scaleX(1.1) scaleY(0.9) skewX(-5deg); opacity: 0.5; }
+          50% { transform: translate(15%, -10%) scaleX(1.4) scaleY(0.6) skewX(12deg); opacity: 0.8; }
         }
 
         .aurora-layer {
           position: absolute;
-          width: 150%;
-          height: 150%;
-          border-radius: 50%;
-          filter: blur(80px);
-          mix-blend-mode: screen; /* Clave para el efecto de luz vibrante */
+          width: 140%;
+          height: 100%;
+          border-radius: 100% 80% 90% 70% / 40% 50% 30% 60%;
+          filter: blur(100px);
+          mix-blend-mode: screen;
+          transform-origin: center bottom;
         }
       `}</style>
 
@@ -106,24 +107,24 @@ export default function CTAFinal() {
       </div>
 
       {/* Contenedor del halo "Aurora Boreal" dinámico en la base */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[160%] max-w-[1200px] h-[60vh] pointer-events-none select-none translate-y-[30%] z-0 opacity-80">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[160%] max-w-[1400px] h-[30vh] pointer-events-none select-none translate-y-[20%] z-0 opacity-90">
         
-        {/* Capa 1: Azul Vibrante Principal (Lenta y grande) */}
+        {/* Capa 1: Azul Eléctrico (Ondulación asimétrica base) */}
         <div 
-          className="aurora-layer bg-blue-500/40" 
-          style={{ animation: 'aurora-1 25s ease-in-out infinite' }}
+          className="aurora-layer bg-blue-600/35" 
+          style={{ animation: 'aurora-1 22s ease-in-out infinite' }}
         />
         
-        {/* Capa 2: Cian Eléctrico (Más rápida y asimétrica) */}
+        {/* Capa 2: Brillo Blanco (Crea el efecto cortina de luz/haz reflectivo) */}
         <div 
-          className="aurora-layer bg-cyan-400/30" 
-          style={{ animation: 'aurora-2 10s ease-in-out infinite alternate', animationDelay: '-5s' }}
+          className="aurora-layer bg-white/25" 
+          style={{ animation: 'aurora-2 14s ease-in-out infinite alternate', animationDelay: '-4s' }}
         />
 
-        {/* Capa 3: Azul Profundo Base (Sutil y constante) */}
+        {/* Capa 3: Azul Profundo Magnético (Estabilidad e irregularidad de fondo) */}
         <div 
-          className="aurora-layer bg-blue-700/20" 
-          style={{ animation: 'aurora-3 30s linear infinite', top: '20%' }}
+          className="aurora-layer bg-blue-800/30" 
+          style={{ animation: 'aurora-3 28s ease-in-out infinite', top: '10%' }}
         />
       </div>
     </section>
