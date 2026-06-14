@@ -1,7 +1,7 @@
 // app/page.tsx
 import Header from './components/layout/Header'
 import Hero from './components/sections/main/Hero1'
-import Problem from './components/sections/Problem'
+import Problem from './components/sections/main/Problem'
 import Service from './components/sections/Service'
 import Process from './components/sections/Process'
 import Demo from './components/sections/Demo'

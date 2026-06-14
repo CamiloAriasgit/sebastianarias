@@ -107,7 +107,7 @@ export default function Pricing() {
                 <div className="flex items-baseline gap-1.5 mb-3">
                   <span
                     className={`font-light leading-none text-[clamp(2rem,4vw,2.75rem)] tracking-[-0.04em] ${
-                      plan.highlighted ? 'bg-gradient-to-b from-gray-300 via-gray-400 text-transparent bg-clip-text' : 'text-[var(--color-light-text)]'
+                      plan.highlighted ? 'bg-gradient-to-b from-gray-500 via-gray-100 to-gray-600 text-transparent bg-clip-text' : 'text-[var(--color-light-text)]'
                     }`}
                   >
                     {plan.price}
@@ -141,7 +141,7 @@ export default function Pricing() {
               {/* Divisor */}
               <div
                 className={`h-px w-full ${
-                  plan.highlighted ? 'bg-[rgba(245,245,240,0.1)]' : 'bg-[var(--color-light-border)]'
+                  plan.highlighted ? 'bg-[rgba(245,245,240,0.1)]' : 'bg-neutral-300'
                 }`}
               />
 
