@@ -21,7 +21,7 @@ const PLANS = [
     price: '$1.500',
     monthly: '$90',
     description: 'El punto dulce. Diseño completo, tracking avanzado y copy orientado a convertir.',
-    features: ['Hasta 8 secciones','Diseño a medida','WhatsApp estratégico','GTM + GA4 + eventos custom','Formulario de leads','Animaciones completas','Orientación de copywriting','2 revisiones','Entrega en 14 días'],
+    features: ['Hasta 8 secciones','Diseño a medida','WhatsApp strategic','GTM + GA4 + eventos custom','Formulario de leads','Animaciones completas','Orientación de copywriting','2 revisiones','Entrega en 14 días'],
     highlighted: true,
   },
   {
@@ -54,9 +54,7 @@ export default function Pricing() {
 
     ;[headRef.current, ...cardRefs.current].forEach((el, i) => {
       if (!el) return
-      // Inicializamos los estados de la animación con Tailwind
       el.classList.add('opacity-0', 'translate-y-5', 'transition-all', 'duration-[700ms]', 'cubic-bezier-[0.16,1,0.3,1]')
-      // Añadimos el delay custom por código para mantener la sincronía del índice
       el.style.transitionDelay = `${i * 80}ms`
       observer.observe(el)
     })
@@ -65,26 +63,29 @@ export default function Pricing() {
   }, [])
 
   return (
-    <section className="bg-[var(--color-light-bg)] py-[var(--section-py)]">
+    <section className="bg-gray-100 py-20 md:py-32">
+      {/* Recuperamos tu contenedor original con su ancho exacto */}
       <div className="container-site">
-        <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)]">
-          <p className="text-label text-[var(--color-light-muted)] mb-5">Planes</p>
-          <h2 className="text-[var(--color-light-text)] m-0 mb-3 max-w-[22ch] text-[clamp(1.75rem,4vw,3.25rem)] font-light leading-[1.1] tracking-[-0.03em]">
+        <div ref={headRef} className="mb-12 md:mb-20">
+          <p className="text-xs uppercase tracking-wider font-semibold text-neutral-400 mb-5">Planes</p>
+          <h2 className="text-neutral-900 m-0 mb-3 max-w-[22ch] text-[clamp(1.75rem,4vw,3.25rem)] font-light leading-[1.1] tracking-[-0.03em]">
             Elige el nivel que necesita tu proyecto.
           </h2>
-          <p className="text-sm text-[var(--color-light-muted)] m-0">
+          <p className="text-sm text-neutral-500 m-0">
             Todos los planes incluyen hosting, despliegue y soporte mensual.
           </p>
         </div>
 
-        {/* Cards */}
-        <div className="grid rounded-xl overflow-hidden grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-px bg-[var(--color-light-border)]">
+        {/* Cards independientes y redondeadas */}
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-6">
           {PLANS.map((plan, i) => (
             <div
               key={plan.name}
               ref={el => { cardRefs.current[i] = el }}
-              className={`flex flex-col gap-6 p-[clamp(1.5rem,3vw,2rem)] ${
-                plan.highlighted ? 'bg-[var(--color-light-text)]' : 'bg-neutral-200'
+              className={`flex flex-col gap-6 p-6 md:p-8 rounded-4xl ${
+                plan.highlighted 
+                  ? 'bg-neutral-900 ' 
+                  : 'bg-white'
               }`}
             >
               {/* Header */}
@@ -92,13 +93,13 @@ export default function Pricing() {
                 <div className="flex items-baseline justify-between mb-2">
                   <span
                     className={`text-sm font-medium ${
-                      plan.highlighted ? 'text-[rgba(245,245,240,0.6)]' : 'text-[var(--color-light-muted)]'
+                      plan.highlighted ? 'text-neutral-400' : 'text-neutral-500'
                     }`}
                   >
                     {plan.name}
                   </span>
                   {plan.highlighted && (
-                    <span className="text-label text-[rgba(245,245,240,0.4)]">
+                    <span className="text-xs uppercase tracking-wider font-semibold text-neutral-500">
                       Recomendado
                     </span>
                   )}
@@ -107,14 +108,16 @@ export default function Pricing() {
                 <div className="flex items-baseline gap-1.5 mb-3">
                   <span
                     className={`font-light leading-none text-[clamp(2rem,4vw,2.75rem)] tracking-[-0.04em] ${
-                      plan.highlighted ? 'bg-gradient-to-b from-gray-500 via-gray-100 to-gray-600 text-transparent bg-clip-text' : 'text-[var(--color-light-text)]'
+                      plan.highlighted 
+                        ? 'bg-gradient-to-b from-neutral-400 via-neutral-100 to-neutral-500 text-transparent bg-clip-text' 
+                        : 'text-neutral-900'
                     }`}
                   >
                     {plan.price}
                   </span>
                   <span
                     className={`text-xs ${
-                      plan.highlighted ? 'text-[rgba(245,245,240,0.4)]' : 'text-[var(--color-light-muted)]'
+                      plan.highlighted ? 'text-neutral-500' : 'text-neutral-400'
                     }`}
                   >
                     USD
@@ -123,7 +126,7 @@ export default function Pricing() {
 
                 <p
                   className={`text-[0.8125rem] leading-relaxed mb-2 ${
-                    plan.highlighted ? 'text-[rgba(245,245,240,0.6)]' : 'text-[var(--color-light-muted)]'
+                    plan.highlighted ? 'text-neutral-400' : 'text-neutral-500'
                   }`}
                 >
                   {plan.description}
@@ -131,7 +134,7 @@ export default function Pricing() {
 
                 <p
                   className={`text-xs m-0 ${
-                    plan.highlighted ? 'text-[rgba(245,245,240,0.35)]' : 'text-[var(--color-light-muted)]'
+                    plan.highlighted ? 'text-neutral-500' : 'text-neutral-400'
                   }`}
                 >
                   + {plan.monthly} USD / mes
@@ -141,7 +144,7 @@ export default function Pricing() {
               {/* Divisor */}
               <div
                 className={`h-px w-full ${
-                  plan.highlighted ? 'bg-[rgba(245,245,240,0.1)]' : 'bg-neutral-300'
+                  plan.highlighted ? 'bg-neutral-800' : 'bg-neutral-200'
                 }`}
               />
 
@@ -151,14 +154,14 @@ export default function Pricing() {
                   <li
                     key={feature}
                     className={`flex items-center gap-2.5 text-[0.8125rem] ${
-                      plan.highlighted ? 'text-[rgba(245,245,240,0.75)]' : 'text-[var(--color-light-text)]'
+                      plan.highlighted ? 'text-neutral-300' : 'text-neutral-900'
                     }`}
                   >
                     <Check
                       size={13}
                       strokeWidth={1.5}
                       className={`shrink-0 ${
-                        plan.highlighted ? 'text-[rgba(245,245,240,0.4)]' : 'text-[var(--color-light-muted)]'
+                        plan.highlighted ? 'text-neutral-500' : 'text-neutral-400'
                       }`}
                     />
                     {feature}
@@ -166,15 +169,15 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              {/* CTA */}
+              {/* CTA - Botones Redondos (rounded-full) */}
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center justify-center gap-2 py-3 rounded-md text-sm font-medium no-underline transition-opacity duration-200 hover:opacity-75 text-[var(--color-light-text)] ${
+                className={`flex items-center justify-center gap-2 py-3 rounded-full text-sm font-medium no-underline transition-opacity duration-200 hover:opacity-75 ${
                   plan.highlighted 
-                    ? 'bg-[var(--color-light-bg)] border-none' 
-                    : 'bg-transparent border-[0.5px] border-black'
+                    ? 'bg-neutral-50 text-neutral-900' 
+                    : 'bg-transparent text-neutral-900 border border-neutral-900'
                 }`}
               >
                 Empezar
@@ -183,13 +186,13 @@ export default function Pricing() {
           ))}
         </div>
 
-        <p className="text-[0.8125rem] text-[var(--color-light-muted)] mt-6 text-center">
+        <p className="text-[0.8125rem] text-neutral-400 mt-6 text-center">
           ¿Tu proyecto tiene requerimientos específicos?{' '}
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[var(--color-light-text)] no-underline border-b border-[var(--color-light-border)] pb-px"
+            className="text-neutral-900 no-underline border-b border-neutral-200 pb-px"
           >
             Conversemos.
           </a>
