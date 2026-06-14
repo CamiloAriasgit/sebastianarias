@@ -54,7 +54,7 @@ export default function Problem() {
             <div
               key={p.number}
               ref={el => { itemRefs.current[i] = el }}
-              className="pt-6 border-t border-neutral-800"
+              className="pt-6 border-t border-neutral-900"
             >
               <span className="text-label text-neutral-700 block mb-3">
                 {p.number}
