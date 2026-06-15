@@ -105,9 +105,9 @@ export default function Service() {
                 </div>
 
                 <div className="relative w-full">
-                    
+
                     <div className="sticky top-[12vh] md:top-[15vh] h-[75vh] md:h-[70vh] flex flex-col md:flex-row items-center justify-center md:justify-between gap-8 md:gap-[clamp(2rem,6vw,5rem)] pointer-events-none">
-                        
+
                         {/* Bloque de Imagen Única (Proporción 1:1) */}
                         <div className="w-full md:flex-1 order-1 md:order-2 relative aspect-square max-w-[480px]">
                             {FEATURES.map((f, i) => (
@@ -133,7 +133,7 @@ export default function Service() {
                         </div>
 
                         {/* Bloque de Texto Único */}
-                        <div className="w-full md:flex-1 order-2 md:order-1 max-w-[480px] relative h-[140px] md:h-[180px] text-center md:text-left">
+                        <div className="w-full md:flex-1 order-2 md:order-1 max-w-[480px] relative h-[140px] md:h-[180px]">
                             {FEATURES.map((f, i) => (
                                 <div
                                     key={`text-${f.title}`}
@@ -144,10 +144,10 @@ export default function Service() {
                                         pointerEvents: activeIndex === i ? 'auto' : 'none'
                                     }}
                                 >
-                                    <h3 className="text-[1.125rem] md:text-[1.25rem] font-medium tracking-tight text-[var(--color-text-primary)] m-0 mb-2 md:mb-3">
+                                    <h3 className="text-[1.125rem] md:text-[1.25rem] font-medium tracking-tight text-white m-0 mb-2 md:mb-3">
                                         {f.title}
                                     </h3>
-                                    <p className="text-[0.875rem] md:text-[0.9375rem] leading-relaxed text-[var(--color-text-secondary)] m-0 balance">
+                                    <p className="text-[0.875rem] md:text-[0.9375rem] leading-relaxed text-neutral-200 m-0 balance">
                                         {f.body}
                                     </p>
                                 </div>
