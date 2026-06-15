@@ -12,7 +12,7 @@ const FEATURES = [
     {
         title: 'WhatsApp estratégico.',
         body: 'El botón está donde el comprador lo necesita, con el mensaje correcto predefinido. El contacto ocurre sin fricción.',
-        image: '/images/image-service.webp'
+        image: '/images/whatsapp-button.png'
     },
     {
         title: 'GTM + GA4.',
@@ -100,8 +100,9 @@ export default function Service() {
                             <div
                                 key={f.title}
                                 ref={el => { itemRefs.current[i] = el }}
-                                className={`flex flex-col md:items-center gap-[clamp(2rem,6vw,5rem)] ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'
-                                    }`}
+                                className={`flex flex-col md:items-center gap-[clamp(2rem,6vw,5rem)] ${
+                                    isEven ? 'md:flex-row' : 'md:flex-row-reverse'
+                                }`}
                             >
                                 {/* Bloque de Texto */}
                                 <div className="flex-1 max-w-[480px]">
@@ -113,14 +114,16 @@ export default function Service() {
                                     </p>
                                 </div>
 
-                                {/* Contenedor de Imagen (Estilo Apple, bordes suaves y sutiles) */}
-                                <div className="flex-1 w-full aspect-[16/10] relative bg-[var(--color-surface)] rounded-2xl overflow-hidden border border-[var(--color-border)]">
+                                {/* Contenedor Autoadaptable al Proporción Original de la Imagen */}
+                                <div className="flex-1 w-full bg-[var(--color-surface)] rounded-2xl overflow-hidden border border-[var(--color-border)] self-start md:self-auto">
                                     <Image
                                         src={f.image}
                                         alt={f.title}
-                                        fill
+                                        width={0}
+                                        height={0}
                                         sizes="(max-width: 768px) 100vw, 50vw"
-                                        className="object-cover object-center"
+                                        style={{ width: '100%', height: 'auto', display: 'block' }}
+                                        className="object-contain"
                                         quality={90}
                                     />
                                 </div>
