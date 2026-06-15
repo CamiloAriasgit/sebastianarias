@@ -7,7 +7,7 @@ const FEATURES = [
     {
         title: 'Diseño a medida.',
         body: 'Sin plantillas. Cada landing refleja la identidad del proyecto — tipografía, paleta y composición definidas desde cero.',
-        image: '/images/image-service.webp'
+        image: '/images/frontend-dev-interface.png'
     },
     {
         title: 'WhatsApp estratégico.',
@@ -73,7 +73,6 @@ export default function Service() {
             style={{ paddingBlock: 'var(--section-py)' }}
         >
             <div className="container-site">
-                {/* Cabecera Centrada (1 Columna) */}
                 <div
                     ref={headRef}
                     className="flex flex-col items-center text-center gap-4 mb-[clamp(4rem,8vw,8rem)]"
