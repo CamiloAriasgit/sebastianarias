@@ -1,8 +1,7 @@
-// components/sections/Demo.tsx
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Info } from 'lucide-react'
 
 export default function Demo() {
   const headRef    = useRef<HTMLDivElement>(null)
@@ -46,7 +45,7 @@ export default function Demo() {
           <div>
             <p className="text-label text-[var(--color-text-muted)] mb-5">Demo</p>
             <h2 className="text-display-md text-[var(--color-text-primary)] m-0">
-              Así se ve
+              Así se ve<br />
               en la práctica.
             </h2>
           </div>
@@ -72,12 +71,11 @@ export default function Demo() {
                 className="w-full h-auto block"
               />
               
-              {/* Degradado oscuro tenue inferior para el texto */}
-              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none" />
-
-              <p className="text-label text-[var(--color-text-primary)] font-medium absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap z-10">
-                DEMO DISPONIBLE PRÓXIMAMENTE
-              </p>
+              {/* Rectángulo Negro en la Esquina Inferior Derecha (Estilo High-End) */}
+              <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-black text-white px-3 py-1.5 rounded-md text-[10px] font-medium tracking-wider z-10 border border-white/10 select-none">
+                <Info size={12} className="opacity-90" />
+                <span>PRÓXIMAMENTE</span>
+              </div>
             </div>
 
             {/* Overlay */}
