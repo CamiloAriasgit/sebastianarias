@@ -33,7 +33,7 @@ export default function Demo() {
   return (
     <section
       id="demo"
-      className="bg-[var(--color-bg)] min-h-svh flex flex-col justify-center"
+      className="bg-black min-h-svh flex flex-col justify-center"
       style={{ paddingBlock: 'var(--section-py)' }}
     >
       <div className="container-site">
