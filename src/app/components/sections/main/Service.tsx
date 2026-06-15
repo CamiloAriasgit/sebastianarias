@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 
 const FEATURES = [
@@ -38,33 +38,47 @@ const FEATURES = [
 
 export default function Service() {
     const headRef = useRef<HTMLDivElement>(null)
-    const itemRefs = useRef<(HTMLDivElement | null)[]>([])
+    const triggerRefs = useRef<(HTMLDivElement | null)[]>([])
+    const [activeIndex, setActiveIndex] = useState(0)
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return
+        const headObserver = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
                     const el = entry.target as HTMLElement
                     el.style.opacity = '1'
                     el.style.transform = 'translateY(0)'
-                    observer.unobserve(el)
-                })
+                    headObserver.unobserve(el)
+                }
             },
             { threshold: 0.1 }
         )
 
-        if (headRef.current) observer.observe(headRef.current)
+        if (headRef.current) headObserver.observe(headRef.current)
 
-        itemRefs.current.forEach((el, i) => {
-            if (!el) return
-            el.style.opacity = '0'
-            el.style.transform = 'translateY(30px)'
-            el.style.transition = `opacity 0.9s cubic-bezier(0.16,1,0.3,1) ${i * 50}ms, transform 0.9s cubic-bezier(0.16,1,0.3,1) ${i * 50}ms`
-            observer.observe(el)
+        const featureObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const index = Number(entry.target.getAttribute('data-index'))
+                        setActiveIndex(index)
+                    }
+                })
+            },
+            {
+                rootMargin: '-40% 0px -40% 0px',
+                threshold: 0.1
+            }
+        )
+
+        triggerRefs.current.forEach((el) => {
+            if (el) featureObserver.observe(el)
         })
 
-        return () => observer.disconnect()
+        return () => {
+            headObserver.disconnect()
+            featureObserver.disconnect()
+        }
     }, [])
 
     return (
@@ -75,7 +89,7 @@ export default function Service() {
             <div className="container-site">
                 <div
                     ref={headRef}
-                    className="flex flex-col items-center text-center gap-4 mb-[clamp(4rem,8vw,8rem)]"
+                    className="flex flex-col items-center text-center gap-4 mb-[clamp(3rem,6vw,8rem)]"
                     style={{
                         opacity: 0,
                         transform: 'translateY(20px)',
@@ -90,45 +104,69 @@ export default function Service() {
                     </p>
                 </div>
 
-                {/* Estructura en Zig-Zag */}
-                <div className="flex flex-col gap-[clamp(4rem,10vw,12rem)]">
-                    {FEATURES.map((f, i) => {
-                        const isEven = i % 2 === 0
-
-                        return (
-                            <div
-                                key={f.title}
-                                ref={el => { itemRefs.current[i] = el }}
-                                className={`flex flex-col md:items-center gap-[clamp(2rem,6vw,5rem)] ${
-                                    isEven ? 'md:flex-row' : 'md:flex-row-reverse'
-                                }`}
-                            >
-                                {/* Bloque de Texto */}
-                                <div className="flex-1 max-w-[480px]">
-                                    <h3 className="text-[1.25rem] font-medium tracking-tight text-[var(--color-text-primary)] m-0 mb-3">
-                                        {f.title}
-                                    </h3>
-                                    <p className="text-[0.9375rem] leading-relaxed text-[var(--color-text-secondary)] m-0 balance">
-                                        {f.body}
-                                    </p>
-                                </div>
-
-                                {/* Contenedor Autoadaptable al Proporción Original de la Imagen */}
-                                <div className="flex-1 w-full bg-[var(--color-surface)] rounded-2xl overflow-hidden border border-[var(--color-border)] self-start md:self-auto">
+                <div className="relative w-full">
+                    
+                    <div className="sticky top-[12vh] md:top-[15vh] h-[75vh] md:h-[70vh] flex flex-col md:flex-row items-center justify-center md:justify-between gap-8 md:gap-[clamp(2rem,6vw,5rem)] pointer-events-none">
+                        
+                        {/* Bloque de Imagen Única (Proporción 1:1) */}
+                        <div className="w-full md:flex-1 order-1 md:order-2 relative aspect-square max-w-[480px]">
+                            {FEATURES.map((f, i) => (
+                                <div
+                                    key={`image-${f.title}`}
+                                    className="absolute inset-0 transition-opacity duration-700 ease-in-out rounded-2xl overflow-hidden"
+                                    style={{
+                                        opacity: activeIndex === i ? 1 : 0,
+                                        pointerEvents: activeIndex === i ? 'auto' : 'none'
+                                    }}
+                                >
                                     <Image
                                         src={f.image}
                                         alt={f.title}
-                                        width={0}
-                                        height={0}
-                                        sizes="(max-width: 768px) 100vw, 50vw"
-                                        style={{ width: '100%', height: 'auto', display: 'block' }}
-                                        className="object-contain"
+                                        fill
+                                        sizes="(max-width: 768px) 90vw, 50vw"
+                                        className="object-cover"
                                         quality={90}
+                                        priority={i === 0}
                                     />
                                 </div>
-                            </div>
-                        )
-                    })}
+                            ))}
+                        </div>
+
+                        {/* Bloque de Texto Único */}
+                        <div className="w-full md:flex-1 order-2 md:order-1 max-w-[480px] relative h-[140px] md:h-[180px] text-center md:text-left">
+                            {FEATURES.map((f, i) => (
+                                <div
+                                    key={`text-${f.title}`}
+                                    className="absolute inset-0 flex flex-col justify-center transition-all duration-700 ease-in-out"
+                                    style={{
+                                        opacity: activeIndex === i ? 1 : 0,
+                                        transform: activeIndex === i ? 'translateY(0)' : 'translateY(8px)',
+                                        pointerEvents: activeIndex === i ? 'auto' : 'none'
+                                    }}
+                                >
+                                    <h3 className="text-[1.125rem] md:text-[1.25rem] font-medium tracking-tight text-[var(--color-text-primary)] m-0 mb-2 md:mb-3">
+                                        {f.title}
+                                    </h3>
+                                    <p className="text-[0.875rem] md:text-[0.9375rem] leading-relaxed text-[var(--color-text-secondary)] m-0 balance">
+                                        {f.body}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Triggers invisibles para el scroll */}
+                    <div className="relative z-10 pointer-events-none">
+                        {FEATURES.map((f, i) => (
+                            <div
+                                key={`trigger-${f.title}`}
+                                ref={el => { triggerRefs.current[i] = el }}
+                                data-index={i}
+                                className="h-[50vh] md:h-[80vh] first:mt-[-40vh] md:first:mt-[-50vh]"
+                            />
+                        ))}
+                    </div>
+
                 </div>
             </div>
         </section>
