@@ -4,36 +4,36 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 
 const FEATURES = [
-    {
-        title: 'Diseño a medida.',
-        body: 'Sin plantillas. Cada landing refleja la identidad del proyecto — tipografía, paleta y composición definidas desde cero.',
-        image: '/images/frontend-dev-interface.png'
-    },
-    {
-        title: 'WhatsApp estratégico.',
-        body: 'El botón está donde el comprador lo necesita, con el mensaje correcto predefinido. El contacto ocurre sin fricción.',
-        image: '/images/whatsapp-button.png'
-    },
-    {
-        title: 'GTM + GA4.',
-        body: 'Cada clic, cada scroll, cada intención de contacto queda registrada. La pauta se optimiza con datos reales.',
-        image: '/images/image-service.webp'
-    },
-    {
-        title: 'Velocidad real.',
-        body: 'Construido en Next.js y desplegado en Vercel. Core Web Vitals en verde. El lead no espera.',
-        image: '/images/image-service.webp'
-    },
-    {
-        title: 'Entrega en 14 días.',
-        body: 'Proceso definido desde el briefing hasta la publicación. Sin sorpresas, sin retrasos innecesarios.',
-        image: '/images/image-service.webp'
-    },
-    {
-        title: 'Soporte continuo.',
-        body: 'El sitio evoluciona con el proyecto. Si el copy necesita ajustarse o el comportamiento del tráfico pide un cambio, está cubierto.',
-        image: '/images/image-service.webp'
-    },
+  {
+    title: 'Estética de producto, no de agencia.',
+    body: 'El diseño sigue los estándares visuales que definen las marcas digitales de alto nivel hoy — tipografía con criterio, espaciado generoso, jerarquía clara. No reinventamos la rueda: aplicamos lo que ya funciona, adaptado a la identidad de tu proyecto.',
+    image: '/images/frontend-dev-interface.png',
+  },
+  {
+    title: 'WhatsApp estratégico.',
+    body: 'El botón no es un accesorio — es el punto de conversión. Está ubicado donde el inversionista lo necesita, en el momento en que decide, con un mensaje predefinido que reduce la fricción al mínimo. El contacto ocurre solo.',
+    image: '/images/whatsapp-button.png',
+  },
+  {
+    title: 'GTM + GA4.',
+    body: 'Cada clic, cada scroll, cada intención de contacto queda registrada como un evento real. Tu equipo de pauta deja de optimizar a ciegas y empieza a tomar decisiones con datos. La inversión en anuncios rinde más desde el primer mes.',
+    image: '/images/image-service.webp',
+  },
+  {
+    title: 'Velocidad real.',
+    body: 'Construido en Next.js y desplegado en Vercel. Core Web Vitals en verde en móvil y desktop. Cada segundo de carga que se elimina es un inversionista que no se va antes de leer el primer párrafo.',
+    image: '/images/image-service.webp',
+  },
+  {
+    title: 'Entrega en 14 días.',
+    body: 'El proceso está definido desde el briefing hasta la publicación: estructura, diseño, desarrollo, integraciones y revisiones. Sin fases abiertas ni retrasos indefinidos. En dos semanas el proyecto está activo y recibiendo tráfico.',
+    image: '/images/image-service.webp',
+  },
+  {
+    title: 'Soporte continuo.',
+    body: 'El sitio evoluciona con el proyecto. Si el copy necesita ajustarse después de ver el comportamiento inicial del tráfico, o si una sección deja de funcionar, está cubierto. No es mantenimiento reactivo — es acompañamiento activo.',
+    image: '/images/image-service.webp',
+  },
 ]
 
 export default function Service() {
