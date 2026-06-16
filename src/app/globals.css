@@ -32,15 +32,39 @@
 
   /* Espaciado de sección */
   --section-py: clamp(5rem, 10vw, 9rem);
+
+  /* ─────────────── TIPOGRAFÍAS CORREGIDAS PARA V4 ─────────────── */
+  /* Tamaños base (fluidos con clamp) */
+  --font-size-display: clamp(2.75rem, 10.5vw, 11rem);
+  --font-size-display-md: clamp(1.75rem, 4vw, 3.25rem);
+  --font-size-label: 0.6875rem;
+
+  /* Interlineados específicos vinculados al nombre del tamaño */
+  --line-height-display: 1.0;
+  --line-height-display-md: 1.1;
+
+  /* Espaciados específicos vinculados al nombre del tamaño */
+  --letter-spacing-display: -0.04em;
+  --letter-spacing-display-md: -0.03em;
+  --letter-spacing-label: 0.1em;
+
+  /* ─────────────── ANIMACIONES ─────────────── */
+  --animate-gradient-slow: gradient-xy 15s ease infinite;
+
+  @keyframes gradient-xy {
+    0%, 100% {
+      background-size: 400% 400%;
+      background-position: left center;
+    }
+    50% {
+      background-size: 200% 200%;
+      background-position: right center;
+    }
+  }
 }
 
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
-
-  :root {
-    --text-display: clamp(2.75rem, 10.5vw, 11rem);
-    --text-display-md: clamp(1.75rem, 4vw, 3.25rem);
-  }
 
   html {
     scroll-behavior: smooth;
@@ -71,35 +95,12 @@
 }
 
 @layer components {
-
   /* Contenedor */
   .container-site {
     width: 100%;
     max-width: 1120px;
     margin-inline: auto;
     padding-inline: clamp(1.25rem, 5vw, 3rem);
-  }
-
-  /* Tipografía */
-  .text-display {
-    font-size: clamp(2.75rem, 10.5vw, 11rem);
-    font-weight: 300;
-    line-height: 1.0;
-    letter-spacing: -0.04em;
-  }
-
-  .text-display-md {
-    font-size: clamp(1.75rem, 4vw, 3.25rem);
-    font-weight: 300;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-  }
-
-  .text-label {
-    font-size: 0.6875rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
   }
 
   /* Botones */

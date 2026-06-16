@@ -46,9 +46,8 @@ export default function Process() {
     >
       <div className="container-site">
         <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)]">
-          <p className="text-label text-[var(--color-text-muted)] mb-5">El proceso</p>
           <h2 className="text-display-md text-[var(--color-text-primary)] m-0 max-w-[22ch]">
-            De briefing a publicado.
+            De briefing a publicado. <br />
             Sin fricciones.
           </h2>
         </div>
