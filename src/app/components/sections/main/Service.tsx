@@ -17,7 +17,7 @@ const FEATURES = [
   {
     title: 'GTM + GA4.',
     body: 'Cada clic, cada scroll, cada intención de contacto queda registrada como un evento real. Tu equipo de pauta deja de optimizar a ciegas y empieza a tomar decisiones con datos. La inversión en anuncios rinde más desde el primer mes.',
-    image: '/images/image-service.webp',
+    image: '/images/ga4-metrics-simple-interface.png',
   },
   {
     title: 'Velocidad real.',
