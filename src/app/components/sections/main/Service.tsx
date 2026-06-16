@@ -22,7 +22,7 @@ const FEATURES = [
   {
     title: 'Velocidad real.',
     body: 'Construido en Next.js y desplegado en Vercel. Core Web Vitals en verde en móvil y desktop. Cada segundo de carga que se elimina es un inversionista que no se va antes de leer el primer párrafo.',
-    image: '/images/image-service.webp',
+    image: '/images/page-speed.png',
   },
   {
     title: 'Entrega en 14 días.',

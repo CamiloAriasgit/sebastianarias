@@ -13,12 +13,10 @@
   --color-border:      #1e1e1e;
   --color-border-hi:   #2a2a2a;
 
-  /* Texto */
   --color-text-primary:   #f0f0ed;
   --color-text-secondary: #777777;
   --color-text-muted:     #3d3d3d;
 
-  /* Light — solo Pricing */
   --color-light-bg:      #f5f5f0;
   --color-light-surface: #ece8e0;
   --color-light-border:  #dddad2;
