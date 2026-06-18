@@ -32,7 +32,7 @@ const FEATURES = [
   {
     title: 'Soporte continuo.',
     body: 'El sitio evoluciona con el proyecto. Si el copy necesita ajustarse después de ver el comportamiento inicial del tráfico, o si una sección deja de funcionar, está cubierto. No es mantenimiento reactivo — es acompañamiento activo.',
-    image: '/images/image-service.webp',
+    image: '/images/edit-feature.png',
   },
 ]
 
