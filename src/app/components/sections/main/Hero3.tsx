@@ -1,95 +1,269 @@
 'use client'
 
-import React from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-export default function HeroAmbient() {
-  return (
-    <section 
-      className="relative w-full overflow-hidden bg-white dark:bg-zinc-950"
-      style={{ minHeight: '80vh' }}
+const WHATSAPP_URL =
+    'https://wa.me/573235619283?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
+
+const NOTIFICATIONS = [
+    {
+        id: 3,
+        name: 'Andrés Castillo',
+        preview: '¿Aún hay unidades en el piso 8? Vi los planos y me convencieron.',
+        time: '3 min',
+    },
+    {
+        id: 2,
+        name: 'Valeria Ríos',
+        preview: 'Hola, me interesa el de 2 hab. ¿Tienen sala de ventas este fin de semana?',
+        time: '1 min',
+    },
+    {
+        id: 1,
+        name: 'Carlos Mendoza',
+        preview: 'Buenas, vi el proyecto Reserva del Bosque. ¿Cuándo puedo agendar una visita?',
+        time: 'ahora',
+    },
+]
+
+const WaIcon = () => (
+    <svg
+        viewBox="0 0 30.667 30.667"
+        width="12"
+        height="12"
+        fill="white"
     >
-      {/* --- CONTENEDOR DEL VÍDEO AMBIENTAL (CÓDIGO REPLICADO) --- */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 -z-10 overflow-hidden"
-        style={{
-          // Se posiciona hacia arriba ignorando el espacio del header (ajusta -64px según tu navbar)
-          top: '-64px', 
-          height: '1200px',
-          // Color de respaldo inteligente (Light / Dark)
-          backgroundColor: 'var(--ambient-bg, #D5E8FC)',
-          // Máscara de desvanecimiento progresivo hacia abajo (fade out a los 1200px)
-          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0px, rgba(0,0,0,1) 480px, rgba(0,0,0,0) 1200px)',
-          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0px, rgba(0,0,0,1) 480px, rgba(0,0,0,0) 1200px)',
-          maskRepeat: 'no-repeat',
-          WebkitMaskRepeat: 'no-repeat',
-          maskSize: '100% 100%',
-          WebkitMaskSize: '100% 100%',
-        }}
-      >
-        {/* Inyección de variables de color dinámicas para el fondo de respaldo */}
-        <style jsx global>{`
-          :root { --ambient-bg: #D5E8FC; }
-          .dark { --ambient-bg: #213C95; }
-        `}</style>
+        <path
+            d="M30.667,14.939c0,8.25-6.74,14.938-15.056,14.938c-2.639,0-5.118-0.675-7.276-1.857L0,30.667l2.717-8.017 c-1.37-2.25-2.159-4.892-2.159-7.712C0.559,6.688,7.297,0,15.613,0C23.928,0.002,30.667,6.689,30.667,14.939z M15.61,2.382 c-6.979,0-12.656,5.634-12.656,12.56c0,2.748,0.896,5.292,2.411,7.362l-1.58,4.663l4.862-1.545c2,1.312,4.393,2.076,6.963,2.076 c6.979,0,12.658-5.633,12.658-12.559C28.27,8.016,22.59,2.382,15.61,2.382z M23.214,18.38c-0.094-0.151-0.34-0.243-0.708-0.427 c-0.367-0.184-2.184-1.069-2.521-1.189c-0.34-0.123-0.586-0.185-0.832,0.182c-0.243,0.367-0.951,1.191-1.168,1.437 c-0.215,0.245-0.43,0.276-0.799,0.095c-0.369-0.186-1.559-0.57-2.969-1.817c-1.097-0.972-1.838-2.169-2.052-2.536 c-0.217-0.366-0.022-0.564,0.161-0.746c0.165-0.165,0.369-0.428,0.554-0.643c0.185-0.213,0.246-0.364,0.369-0.609 c0.121-0.245,0.06-0.458-0.031-0.643c-0.092-0.184-0.829-1.984-1.138-2.717c-0.307-0.732-0.614-0.611-0.83-0.611 c-0.215,0-0.461-0.03-0.707-0.03S9.897,8.215,9.56,8.582s-1.291,1.252-1.291,3.054c0,1.804,1.321,3.543,1.506,3.787 c0.186,0.243,2.554,4.062,6.305,5.528c3.753,1.465,3.753,0.976,4.429,0.914c0.678-0.062,2.184-0.885,2.49-1.739 C23.307,19.268,23.307,18.533,23.214,18.38z"
+        />
+    </svg>
+)
 
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 opacity-100 transition-opacity duration-1000 ease-in-out">
-            <video
-              crossOrigin="anonymous"
-              playsInline
-              autoPlay
-              loop
-              muted
-              className="absolute inset-0 size-full min-w-full object-cover"
-            >
-              <source src="/public/hero-ambient.mp4" type="video/mp4" />
-              Tu navegador no es compatible con la etiqueta de vídeo.
-            </video>
-          </div>
+const STACK = [
+    { scale: 0.88, translateY: -56, zIndex: 10, marginX: 32 },
+    { scale: 0.94, translateY: -28, zIndex: 20, marginX: 16 },
+    { scale: 1, translateY: 0, zIndex: 30, marginX: 0 },
+]
+
+const TIME_BY_POSITION = ['3 min', '1 min', 'ahora']
+
+type Notif = typeof NOTIFICATIONS[0]
+
+const NotifCard = ({ n, time }: { n: Notif; time: string }) => (
+    <div
+        className="rounded-2xl px-4 py-3 bg-neutral-900 shadow-[0_8px_40px_rgba(0,0,0,0.1)] backdrop-blur-md"
+    >
+        <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+                <div className="w-[18px] h-[18px] rounded-md flex items-center justify-center shrink-0 bg-[#25d366]">
+                    <WaIcon />
+                </div>
+                <span className="text-xs text-neutral-500 tracking-wide">
+                    WhatsApp
+                </span>
+            </div>
+            <span className="text-[0.625rem] text-neutral-500">{time}</span>
         </div>
-      </div>
-
-      {/* --- CONTENIDO PRINCIPAL (EDITORIAL / MINIMALISTA) --- */}
-      <div className="relative z-10 mx-auto max-w-4xl px-6 pt-32 pb-24 text-center md:pt-44 md:pb-36">
-        <span className="inline-block rounded-full bg-zinc-900/5 px-3 py-1 text-xs font-medium tracking-tight text-zinc-600 backdrop-blur-md dark:bg-white/10 dark:text-zinc-300">
-          Presentando Prism Inteligente
-        </span>
-        
-        <h1 className="mt-6 block font-light tracking-tight text-zinc-900 dark:text-white"
-            style={{ fontSize: 'clamp(2.5rem, 6vw, 4.8rem)', lineHeight: 1.05 }}>
-          Rediseña la forma <br /> en que construyes software.
-        </h1>
-
-        <p className="mx-auto mt-8 max-w-[46ch] text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-base">
-          Una infraestructura integrada con inteligencia nativa para interfaces de alta conversión. Menos configuración, más impacto visual.
+        <p className="text-sm font-medium text-neutral-100 m-0 mb-1 text-left">
+            {n.name}
         </p>
+        <p
+            className="text-xs text-neutral-400 m-0 leading-relaxed text-left"
+            style={{
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                textAlign: 'left'
+            }}
+        >
+            {n.preview}
+        </p>
+    </div>
+)
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="#"
-            className="flex h-[2.5rem] items-center justify-center rounded-full bg-zinc-900 px-5 text-sm font-medium text-white transition-all duration-200 hover:bg-zinc-800 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-zinc-900 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100"
-          >
-            Comenzar a redactar
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="11" 
-              fill="none" 
-              viewBox="0 0 11 12" 
-              className="ml-1.5 -translate-y-[1px] transition-transform duration-200 group-hover:translate-x-0.5"
-            >
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.3" d="M1.71 4.5h6.07m0 0v6.07m0-6.07-7 7" />
-            </svg>
-          </a>
-          
-          <a
-            href="#"
-            className="flex h-[2.5rem] items-center justify-center rounded-full border border-zinc-200 bg-white/40 px-5 text-sm font-medium text-zinc-900 backdrop-blur-sm transition-all duration-200 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-950/40 dark:text-zinc-300 dark:hover:bg-zinc-900"
-          >
-            Ver documentación
-          </a>
+const NotifStack = ({ visible }: { visible: boolean }) => {
+    const wrapperRefs = useRef<(HTMLDivElement | null)[]>([])
+    const positionsRef = useRef<number[]>([0, 1, 2])
+    const [positions, setPositions] = useState<number[]>([0, 1, 2])
+
+    const applyPosition = (el: HTMLDivElement, pos: number, animate: boolean) => {
+        const cfg = STACK[pos]
+        if (animate) {
+            el.style.transition = 'transform 0.7s cubic-bezier(0.16,1,0.3,1)'
+        } else {
+            el.style.transition = 'none'
+        }
+        el.style.transform = `translateY(${cfg.translateY}px) scale(${cfg.scale})`
+        el.style.zIndex = String(cfg.zIndex)
+        el.style.left = `${cfg.marginX}px`
+        el.style.right = `${cfg.marginX}px`
+    }
+
+    useEffect(() => {
+        if (!visible) return
+
+        wrapperRefs.current.forEach(el => {
+            if (!el) return
+            el.style.opacity = '0'
+            el.style.transform = 'translateY(48px) scale(1)'
+            el.style.transition = 'none'
+        })
+
+        NOTIFICATIONS.forEach((_, i) => {
+            setTimeout(() => {
+                const cur = wrapperRefs.current[i]
+                if (cur) {
+                    cur.style.transition = 'transform 0.65s cubic-bezier(0.16,1,0.3,1), opacity 0.5s cubic-bezier(0.16,1,0.3,1)'
+                    applyPosition(cur, 2, false)
+                    cur.style.opacity = '1'
+                }
+                const prev = wrapperRefs.current[i - 1]
+                if (prev) applyPosition(prev, 1, true)
+
+                const oldest = wrapperRefs.current[i - 2]
+                if (oldest) applyPosition(oldest, 0, true)
+            }, 700 + i * 380)
+        })
+
+        let intervalId: ReturnType<typeof setInterval>
+        const loopStart = setTimeout(() => {
+            intervalId = setInterval(() => {
+                const next = positionsRef.current.map(pos =>
+                    pos === 0 ? 2 : pos === 1 ? 0 : 1
+                )
+                positionsRef.current = next
+                setPositions([...next])
+
+                NOTIFICATIONS.forEach((_, i) => {
+                    const el = wrapperRefs.current[i]
+                    if (!el) return
+                    const newPos = next[i]
+
+                    if (newPos === 2) {
+                        el.style.transition = 'none'
+                        el.style.transform = `translateY(40px) scale(0.85)`
+                        el.style.zIndex = '5'
+                        setTimeout(() => {
+                            if (!el) return
+                            applyPosition(el, 2, true)
+                        }, 30)
+                    } else {
+                        applyPosition(el, newPos, true)
+                    }
+                })
+            }, 3500)
+        }, 2500)
+
+        return () => {
+            clearTimeout(loopStart)
+            clearInterval(intervalId)
+        }
+    }, [visible])
+
+    return (
+        <div className="relative w-full max-w-[400px] mx-auto" style={{ height: '140px' }}>
+            {NOTIFICATIONS.map((n, i) => (
+                <div
+                    key={n.id}
+                    ref={el => { wrapperRefs.current[i] = el }}
+                    className="absolute"
+                    style={{
+                        bottom: 0,
+                        left: STACK[positions[i]].marginX,
+                        right: STACK[positions[i]].marginX,
+                        transformOrigin: 'bottom center',
+                    }}
+                >
+                    <NotifCard n={n} time={TIME_BY_POSITION[positions[i]]} />
+                </div>
+            ))}
         </div>
-      </div>
-    </section>
-  )
+    )
+}
+
+export default function Hero() {
+    const paraRef = useRef<HTMLParagraphElement>(null)
+    const [stackVisible, setStackVisible] = useState(false)
+
+    useEffect(() => {
+        if (paraRef.current) {
+            paraRef.current.style.opacity = '0'
+            paraRef.current.style.transform = 'translateY(14px)'
+            paraRef.current.style.transition = 'opacity 0.9s cubic-bezier(0.16,1,0.3,1) 280ms, transform 0.9s cubic-bezier(0.16,1,0.3,1) 280ms'
+            setTimeout(() => {
+                if (!paraRef.current) return
+                paraRef.current.style.opacity = '1'
+                paraRef.current.style.transform = 'translateY(0)'
+            }, 60)
+        }
+
+        setTimeout(() => setStackVisible(true), 400)
+    }, [])
+
+    return (
+        <section className="relative w-full h-svh flex items-center justify-center pt-14 bg-black overflow-hidden">
+            
+            {/* --- FONDO MESH GRADIENT (Gemini 3.5 Inspired - Reemplazado por tonos Azules) --- */}
+            {/* Usamos múltiples radial-gradients superpuestos y borrosos con tonos azules */}
+            <div 
+                className="absolute inset-0 z-0 opacity-60 blur-[100px]"
+                style={{
+                    backgroundImage: `
+                        radial-gradient(circle at 15% 15%, #000000 0%, transparent 99%),
+                        radial-gradient(circle at 85% 20%, #000000 0%, transparent 99%),
+                        radial-gradient(circle at 50% 50%, #000000 0%, transparent 50%),
+                        radial-gradient(circle at 20% 80%, #000000 0%, transparent 90%),
+                        radial-gradient(circle at 80% 85%, #000000 0%, transparent 90%)
+                    `
+                }}
+            />
+            
+
+            {/* --- Superposición de Gradiente Negro Sutil en la parte inferior ---
+            <div
+                className="absolute inset-x-0 bottom-0 z-10 h-[40vh] pointer-events-none"
+                style={{
+                    background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)'
+                }}
+            />*/}
+            
+
+            {/* --- Contenido Principal --- */}
+            <div className="relative z-20 container-site w-full max-w-3xl px-4 flex flex-col items-center justify-center text-center gap-6">
+                <h1
+                    className="m-0 block text-white font-light tracking-tight drop-shadow-sm"
+                    style={{
+                        fontSize: 'clamp(2rem, 4vw, 4.5rem)',
+                        lineHeight: 1.05,
+                    }}
+                >
+                    Landing pages para proyectos inmobiliarios
+                </h1>
+
+                <p
+                    ref={paraRef}
+                    className="text-sm md:text-base leading-relaxed text-neutral-300 m-0 max-w-[45ch]"
+                >
+                    Convertimos el tráfico de tu pauta en inversionistas reales contactando por WhatsApp.
+                </p>
+
+                <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex bg-white justify-center items-center gap-2 py-2.5 w-44 rounded-full text-black shadow-lg shadow-black/10 transition-all duration-300 hover:bg-neutral-200"
+                >
+                    Agendar llamada
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
+                        <path d="M2 6.5h9M7.5 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                </a>
+
+                <div className="w-full mt-8">
+                    <NotifStack visible={stackVisible} />
+                </div>
+            </div>
+        </section>
+    )
 }

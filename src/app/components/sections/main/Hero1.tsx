@@ -224,6 +224,7 @@ export default function Hero() {
             
 
             {/* --- Superposición de Gradiente Negro Sutil en la parte inferior ---
+            <div
                 className="absolute inset-x-0 bottom-0 z-10 h-[40vh] pointer-events-none"
                 style={{
                     background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)'
