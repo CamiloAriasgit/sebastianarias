@@ -7,7 +7,7 @@ const FEATURES = [
   {
     title: 'Estética de producto, no de agencia.',
     body: 'El diseño sigue los estándares visuales que definen las marcas digitales de alto nivel hoy — tipografía con criterio, espaciado generoso, jerarquía clara. No reinventamos la rueda: aplicamos lo que ya funciona, adaptado a la identidad de tu proyecto.',
-    image: '/images/frontend-dev-interface.png',
+    image: '/images/code-and-interface.png',
   },
   {
     title: 'WhatsApp estratégico.',
@@ -17,7 +17,7 @@ const FEATURES = [
   {
     title: 'GTM + GA4.',
     body: 'Cada clic, cada scroll, cada intención de contacto queda registrada como un evento real. Tu equipo de pauta deja de optimizar a ciegas y empieza a tomar decisiones con datos. La inversión en anuncios rinde más desde el primer mes.',
-    image: '/images/ga4-metrics-simple-interface.png',
+    image: '/images/ga4-metrics.png',
   },
   {
     title: 'Velocidad real.',
