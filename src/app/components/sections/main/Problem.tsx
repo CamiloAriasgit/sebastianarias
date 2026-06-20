@@ -62,7 +62,7 @@ export default function Problem() {
               <h3 className="text-[1.0625rem] font-medium tracking-tight text-white m-0 mb-2">
                 {p.title}
               </h3>
-              <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] m-0">
+              <p className="text-sm leading-relaxed text-neutral-400 m-0">
                 {p.body}
               </p>
             </div>
