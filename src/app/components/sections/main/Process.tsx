@@ -112,7 +112,7 @@ export default function Process() {
                   initial={{ rotate: -10, scale: 0.8 }}
                   animate={{ rotate: 0, scale: 1 }}
                   transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                  className="mb-6 p-4 rounded-full bg-[var(--color-border)] text-[var(--color-text-primary)]"
+                  className="mb-6 p-4 rounded-full bg-black text-[var(--color-text-primary)]"
                 >
                   <ActiveIcon className="w-8 h-8" />
                 </motion.div>
@@ -146,7 +146,7 @@ export default function Process() {
               animate={{ y: 0, opacity: 1, scale: 1 }}
               exit={{ y: 80, opacity: 0, scale: 0.9 }}
               transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-              className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-black/80 backdrop-blur-md border border-[var(--color-border)] rounded-full shadow-[0_12px_40px_-12px_rgba(0,0,0,0.7)] w-full md:w-auto max-w-full gap-1"
+              className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-neutral-900 rounded-full shadow-[0_12px_40px_-12px_rgba(0,0,0,0.7)] w-full md:w-auto max-w-full gap-1"
             >
               {STEPS.map((step, i) => {
                 const StepIcon = step.icon
