@@ -37,7 +37,7 @@ export default function CTAFinal() {
 
   return (
     <section
-      className="bg-black min-h-[100vh] flex flex-col justify-center relative overflow-hidden"
+      className="bg-neutral-900 min-h-[100vh] flex flex-col justify-center relative overflow-hidden"
       style={{ paddingBlock: 'clamp(5rem, 12vw, 11rem)' }}
     >
       {/* Estilos para la animación de la aurora (puedes mover esto a tu global.css) */}

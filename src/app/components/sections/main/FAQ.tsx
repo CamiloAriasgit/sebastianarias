@@ -42,7 +42,7 @@ export default function FAQ() {
 
   return (
     <section
-      className="bg-black"
+      className="bg-neutral-900"
       style={{ paddingBlock: 'var(--section-py)' }}
     >
       <div className="container-site">
@@ -51,14 +51,10 @@ export default function FAQ() {
           className="grid gap-[clamp(1rem,4vw,4rem)] items-end mb-[clamp(3rem,5vw,4rem)]"
           style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}
         >
-          <h2 className="text-display-md text-[var(--color-text-primary)] m-0">
+          <h2 className="text-display-md text-white m-0">
             Preguntas
             frecuentes.
           </h2>
-          <p className="text-[0.9375rem] leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[38ch]">
-            ¿Algo más? Escríbenos directamente
-            y lo resolvemos en la misma conversación.
-          </p>
         </div>
 
         <div className="border-t border-[var(--color-border)]">
@@ -76,7 +72,7 @@ export default function FAQ() {
                   className="text-[0.9375rem] tracking-tight transition-colors duration-200"
                   style={{
                     fontWeight: open === i ? 500 : 400,
-                    color: open === i ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
+                    color: open === i ? 'white' : 'var(--color-text-secondary)',
                   }}
                 >
                   {faq.q}
@@ -102,6 +98,10 @@ export default function FAQ() {
             </div>
           ))}
         </div>
+        <p className="text-[0.9375rem] leading-relaxed text-center text-[var(--color-text-secondary)] pt-10 m-0 max-w-[38ch]">
+            ¿Algo más? Escríbenos directamente
+            y lo resolvemos en la misma conversación.
+          </p>
       </div>
     </section>
   )

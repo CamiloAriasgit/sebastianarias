@@ -83,7 +83,7 @@ export default function Service() {
 
     return (
         <section
-            className="bg-black"
+            className="bg-neutral-900"
             style={{ paddingBlock: 'var(--section-py)' }}
         >
             <div className="container-site">

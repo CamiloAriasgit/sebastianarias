@@ -33,7 +33,7 @@ export default function Demo() {
   return (
     <section
       id="demo"
-      className="bg-black min-h-svh flex flex-col justify-center"
+      className="bg-neutral-900 min-h-svh flex flex-col justify-center"
       style={{ paddingBlock: 'var(--section-py)' }}
     >
       <div className="container-site">
@@ -72,7 +72,7 @@ export default function Demo() {
               />
               
               {/* Rectángulo Negro en la Esquina Inferior Derecha (Estilo High-End) */}
-              <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-black text-white px-3 py-1.5 rounded-md text-[10px] font-medium tracking-wider z-10 border border-white/10 select-none">
+              <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-black text-white px-3 py-1.5 rounded-md text-[10px] font-medium tracking-wider z-10 border border-black select-none">
                 <Info size={12} className="opacity-90" />
                 <span>PRÓXIMAMENTE</span>
               </div>
