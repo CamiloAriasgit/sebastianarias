@@ -42,7 +42,7 @@ export default function Problem() {
   }, [])
 
   return (
-    <section className="bg-black py-[var(--section-py)]">
+    <section className="bg-neutral-900 py-[var(--section-py)]">
       <div className="container-site">
         {/* Título centrado */}
         <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] text-center flex flex-col items-center">
@@ -86,7 +86,7 @@ export default function Problem() {
             las otras tres pasan inadvertidas. */}
         <div
           ref={el => { itemRefs.current[3] = el }}
-          className="relative mt-14 md:mt-16 rounded-2xl bg-neutral-900 border border-neutral-900 px-7 py-9 md:px-10 md:py-10 overflow-hidden"
+          className="relative mt-14 md:mt-16 rounded-2xl bg-neutral-800 px-7 py-9 md:px-10 md:py-10 overflow-hidden"
         >
           {/* Patrón de puntos tenue: sugiere una grilla de datos que debería existir y no existe */}
           <div
