@@ -106,7 +106,7 @@ export default function Process() {
             se cumple en cada paso siguiente.
           */}
           <div
-            className="relative w-full max-w-2xl rounded-[28px] border border-neutral-800 bg-neutral-950/40 px-8 py-12 md:px-12 md:py-14 overflow-hidden"
+            className="relative w-full max-w-2xl rounded-[28px] bg-neutral-950 px-8 py-12 md:px-12 md:py-14 overflow-hidden"
             style={{ minHeight: 340 }}
           >
             {/* Marca de progreso integrada al marco, no al contenido */}
@@ -136,7 +136,7 @@ export default function Process() {
                     initial={{ rotate: -10, scale: 0.8 }}
                     animate={{ rotate: 0, scale: 1 }}
                     transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                    className="mb-6 p-4 rounded-full bg-black border border-neutral-800 text-white"
+                    className="mb-6 p-4 rounded-full bg-neutral-900 text-white"
                   >
                     <ActiveIcon className="w-7 h-7" />
                   </motion.div>
