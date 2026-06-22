@@ -1,11 +1,22 @@
-// components/sections/Pricing.tsx
 'use client'
 
 import { useEffect, useRef } from 'react'
 import { Check } from 'lucide-react'
 
-const WHATSAPP_URL =
-  'https://wa.me/573235619283?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
+const BASE_WHATSAPP_NUMBER = '573235619283'
+
+// Función para generar los enlaces dinámicos con el texto correctamente codificado
+const getWhatsAppLink = (planName?: string, isCustomRequest = false) => {
+  let message = ''
+  
+  if (isCustomRequest) {
+    message = 'Hola, mi proyecto tiene requerimientos específicos y me gustaría que conversemos para armar algo a la medida.'
+  } else {
+    message = `Hola, quiero saber más sobre el servicio de landing pages para mi proyecto inmobiliario. Estoy interesado en el Plan ${planName}.`
+  }
+
+  return `https://wa.me/${BASE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
+}
 
 const PLANS = [
   {
@@ -63,11 +74,11 @@ export default function Pricing() {
   }, [])
 
   return (
-    <section className="bg-gray-100 py-20 md:py-32">
+    <section className="bg-gray-200 py-20 md:py-32">
       {/* Recuperamos tu contenedor original con su ancho exacto */}
       <div className="container-site">
         <div ref={headRef} className="mb-12 md:mb-20">
-          <p className="text-xs uppercase tracking-wider font-semibold text-neutral-400 mb-5">Planes</p>
+          <p className="text-xs uppercase tracking-wider text-neutral-400 mb-5">Planes</p>
           <h2 className="text-neutral-900 m-0 mb-3 max-w-[22ch] text-[clamp(1.75rem,4vw,3.25rem)] font-light leading-[1.1] tracking-[-0.03em]">
             Elige el nivel que necesita tu proyecto.
           </h2>
@@ -99,7 +110,7 @@ export default function Pricing() {
                     {plan.name}
                   </span>
                   {plan.highlighted && (
-                    <span className="text-xs uppercase tracking-wider font-semibold text-neutral-500">
+                    <span className="text-xs uppercase tracking-wider text-neutral-500">
                       Recomendado
                     </span>
                   )}
@@ -171,7 +182,7 @@ export default function Pricing() {
 
               {/* CTA - Botones Redondos (rounded-full) */}
               <a
-                href={WHATSAPP_URL}
+                href={getWhatsAppLink(plan.name)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`flex items-center justify-center gap-2 py-3 rounded-full text-sm font-medium no-underline transition-opacity duration-200 hover:opacity-75 ${
@@ -189,7 +200,7 @@ export default function Pricing() {
         <p className="text-[0.8125rem] text-neutral-400 mt-6 text-center">
           ¿Tu proyecto tiene requerimientos específicos?{' '}
           <a
-            href={WHATSAPP_URL}
+            href={getWhatsAppLink(undefined, true)}
             target="_blank"
             rel="noopener noreferrer"
             className="text-neutral-900 no-underline border-b border-neutral-200 pb-px"

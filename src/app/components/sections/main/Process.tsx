@@ -122,13 +122,13 @@ export default function Process() {
                 </p>
                 
                 <h3
-                  className="text-[var(--color-text-primary)] m-0 mb-4"
+                  className="text-white m-0 mb-4"
                   style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 300, letterSpacing: '-0.025em', lineHeight: 1.15 }}
                 >
                   {STEPS[active].title}
                 </h3>
                 
-                <p className="text-[0.9375rem] leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[42ch]">
+                <p className="text-[0.9375rem] leading-relaxed text-neutral-200 m-0 max-w-[42ch]">
                   {STEPS[active].body}
                 </p>
               </motion.div>

@@ -66,7 +66,7 @@ export default function Demo() {
             {/* Imagen de fondo */}
             <div className="w-full relative flex items-center justify-center">
               <img 
-                src="/images/demo-preview.webp" 
+                src="/images/demo-image.png" 
                 alt="Vista previa de la Demo" 
                 className="w-full h-auto block"
               />
