@@ -3,15 +3,19 @@
 
 import { useEffect, useRef } from 'react'
 
-const PROBLEMS = [
-  { number: '01', title: 'Carga lento.', body: 'Cada segundo de espera es un lead que se fue. El tráfico de pauta no perdona páginas lentas.' },
-  { number: '02', title: 'No genera confianza.', body: 'Una página genérica le dice al inversionista que el proyecto tampoco es serio. El diseño es el primer filtro.' },
-  { number: '03', title: 'El WhatsApp está escondido.', body: 'Si el botón no está donde el usuario lo espera, en el momento en que lo necesita, el contacto no ocurre.' },
-  { number: '04', title: 'Nadie sabe qué está fallando.', body: 'Sin tracking real no hay datos. Sin datos no hay decisiones. La pauta se optimiza a ciegas.' },
+const LEAKS = [
+  { title: 'Carga lento.', body: 'Cada segundo de espera es un lead que se fue. El tráfico de pauta no perdona páginas lentas.' },
+  { title: 'No genera confianza.', body: 'Una página genérica le dice al inversionista que el proyecto tampoco es serio. El diseño es el primer filtro.' },
+  { title: 'El WhatsApp está escondido.', body: 'Si el botón no está donde el usuario lo espera, en el momento en que lo necesita, el contacto no ocurre.' },
 ]
 
+const BLIND_SPOT = {
+  title: 'Nadie sabe qué está fallando.',
+  body: 'Sin tracking real no hay datos. Sin datos no hay decisiones. La pauta se optimiza a ciegas.',
+}
+
 export default function Problem() {
-  const headRef  = useRef<HTMLDivElement>(null)
+  const headRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
@@ -48,17 +52,24 @@ export default function Problem() {
           </h2>
         </div>
 
-        {/* Grid: 1 col en móvil, 2 cols exactas en desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-[clamp(1.5rem,4vw,3rem)]">
-          {PROBLEMS.map((p, i) => (
+        {/* 3 fugas puntuales del embudo, lado a lado */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-[clamp(1.5rem,4vw,2.5rem)] gap-y-10">
+          {LEAKS.map((p, i) => (
             <div
-              key={p.number}
+              key={p.title}
               ref={el => { itemRefs.current[i] = el }}
-              className="pt-6 border-t border-neutral-900"
+              className="flex flex-col"
             >
-              <span className="text-label text-neutral-700 block mb-3">
-                {p.number}
-              </span>
+              {/* Barra de fuga: llena a la izquierda, se vacía hacia la derecha.
+                  Sustituye al número 01/02/03 — no son pasos, son fugas,
+                  y la barra muestra "lo que se pierde" en vez de "en qué orden". */}
+              <div className="h-px w-full bg-neutral-900 relative mb-5 overflow-hidden">
+                <div
+                  className="absolute inset-y-0 left-0 bg-neutral-500"
+                  style={{ width: '38%' }}
+                />
+              </div>
+
               <h3 className="text-[1.0625rem] font-medium tracking-tight text-white m-0 mb-2">
                 {p.title}
               </h3>
@@ -67,6 +78,34 @@ export default function Problem() {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* El punto ciego: envuelve a las 3 fugas anteriores.
+            Ancho completo, fondo distinto, sin barra — porque la ausencia
+            de medición no es "una fuga más", es la razón por la que
+            las otras tres pasan inadvertidas. */}
+        <div
+          ref={el => { itemRefs.current[3] = el }}
+          className="relative mt-14 md:mt-16 rounded-2xl bg-neutral-900 border border-neutral-900 px-7 py-9 md:px-10 md:py-10 overflow-hidden"
+        >
+          {/* Patrón de puntos tenue: sugiere una grilla de datos que debería existir y no existe */}
+          <div
+            className="absolute inset-0 opacity-[0.07] pointer-events-none"
+            style={{
+              backgroundImage: 'radial-gradient(circle, var(--color-text-secondary, #737373) 1px, transparent 1px)',
+              backgroundSize: '18px 18px',
+            }}
+          />
+
+          <div className="relative flex flex-col md:flex-row md:items-center gap-5 md:gap-10">
+            <h3 className="text-[1.1875rem] md:text-[1.375rem] font-medium tracking-tight text-white m-0 md:max-w-[18ch]">
+              {BLIND_SPOT.title}
+            </h3>
+            <div className="hidden md:block w-px self-stretch bg-neutral-800" />
+            <p className="text-sm leading-relaxed text-neutral-400 m-0 max-w-[48ch]">
+              {BLIND_SPOT.body}
+            </p>
+          </div>
         </div>
       </div>
     </section>
