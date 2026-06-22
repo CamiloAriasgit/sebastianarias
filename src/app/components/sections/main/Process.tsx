@@ -85,7 +85,7 @@ export default function Process() {
   return (
     <section
       ref={sectionRef}
-      className="bg-black relative"
+      className="bg-neutral-900 relative"
       style={{ paddingBlock: 'var(--section-py)' }}
     >
       <div className="container-site">
@@ -106,13 +106,13 @@ export default function Process() {
             se cumple en cada paso siguiente.
           */}
           <div
-            className="relative w-full max-w-2xl rounded-[28px] bg-neutral-950 px-8 py-12 md:px-12 md:py-14 overflow-hidden"
+            className="relative w-full max-w-2xl rounded-[28px] bg-neutral-800/50 px-8 py-12 md:px-12 md:py-14 overflow-hidden"
             style={{ minHeight: 340 }}
           >
             {/* Marca de progreso integrada al marco, no al contenido */}
             <div className="absolute top-0 left-0 right-0 h-px bg-neutral-800">
               <motion.div
-                className="h-full bg-white"
+                className="h-full bg-neutral-300"
                 initial={false}
                 animate={{ width: `${((active + 1) / STEPS.length) * 100}%` }}
                 transition={{ type: 'spring', stiffness: 200, damping: 30 }}
@@ -136,7 +136,7 @@ export default function Process() {
                     initial={{ rotate: -10, scale: 0.8 }}
                     animate={{ rotate: 0, scale: 1 }}
                     transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                    className="mb-6 p-4 rounded-full bg-neutral-900 text-white"
+                    className="mb-6 p-4 rounded-full bg-neutral-800 text-white"
                   >
                     <ActiveIcon className="w-7 h-7" />
                   </motion.div>
@@ -171,7 +171,7 @@ export default function Process() {
               animate={{ y: 0, opacity: 1, scale: 1 }}
               exit={{ y: 80, opacity: 0, scale: 0.9 }}
               transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-              className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-neutral-900 rounded-full shadow-[0_12px_40px_-12px_rgba(0,0,0,0.7)] w-full md:w-auto max-w-full gap-1"
+              className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-neutral-800 rounded-full shadow-[0_12px_40px_-12px_rgba(0,0,0,0.7)] w-full md:w-auto max-w-full gap-1"
             >
               {STEPS.map((step, i) => {
                 const StepIcon = step.icon
