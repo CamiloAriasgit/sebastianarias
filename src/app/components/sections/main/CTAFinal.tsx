@@ -71,7 +71,7 @@ export default function CTAFinal() {
       <div className="container-site relative z-10">
 
         {/* Headline grande — como el hero */}
-        <div ref={headRef} className="flex flex-col items-center text-center gap-6 pb-40 md:pb-0">
+        <div ref={headRef} className="flex flex-col items-center text-center gap-6 pb-30 md:pb-0">
           <h2
             className="m-0"
             style={{
