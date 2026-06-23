@@ -205,7 +205,7 @@ export default function Hero() {
     }, [])
 
     return (
-        <section className="relative w-full h-svh flex items-center justify-center pt-14 bg-white overflow-hidden">
+        <section className="relative w-full padding-block py-40 md:py-30 bg-white overflow-hidden">
             
             {/* --- FONDO MESH GRADIENT (Gemini 3.5 Inspired - Reemplazado por tonos Azules) --- */}
             {/* Usamos múltiples radial-gradients superpuestos y borrosos con tonos azules */}

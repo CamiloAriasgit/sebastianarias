@@ -30,13 +30,13 @@ export default function Demo() {
     return () => observer.disconnect()
   }, [])
 
-  return (
-    <section
-      id="demo"
-      className="bg-neutral-900 min-h-svh flex flex-col justify-center"
-      style={{ paddingBlock: 'var(--section-py)' }}
-    >
-      <div className="container-site">
+return (
+  <section
+    id="demo"
+    className="bg-neutral-900" // Quitamos min-h-svh, flex, flex-col y justify-center
+    style={{ paddingBlock: 'var(--section-py)' }}
+  >
+    <div className="container-site">
         <div
           ref={headRef}
           className="grid gap-[clamp(1rem,4vw,4rem)] items-end mb-[clamp(2.5rem,5vw,4rem)]"
