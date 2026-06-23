@@ -35,11 +35,11 @@ export default function CTAFinal() {
     return () => observer.disconnect()
   }, [])
 
-  return (
-    <section
-      className="bg-neutral-900 min-h-[100vh] flex flex-col justify-center relative overflow-hidden"
-      style={{ paddingBlock: 'clamp(5rem, 12vw, 11rem)' }}
-    >
+ return (
+  <section
+    className="bg-neutral-900 relative overflow-hidden"
+    style={{ paddingBlock: 'clamp(6rem, 15vw, 14rem)' }} 
+  >
       {/* Estilos para la animación de la aurora (puedes mover esto a tu global.css) */}
       <style jsx global>{`
         @keyframes aurora-1 {
@@ -71,7 +71,7 @@ export default function CTAFinal() {
       <div className="container-site relative z-10">
 
         {/* Headline grande — como el hero */}
-        <div ref={headRef} className="flex flex-col items-center text-center gap-6">
+        <div ref={headRef} className="flex flex-col items-center text-center gap-6 pb-40 md:pb-0">
           <h2
             className="m-0"
             style={{

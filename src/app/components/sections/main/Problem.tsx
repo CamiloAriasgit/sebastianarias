@@ -44,7 +44,6 @@ export default function Problem() {
   return (
     <section className="bg-neutral-900 py-[var(--section-py)]">
       <div className="container-site">
-        {/* Título centrado */}
         <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] text-center flex flex-col items-center">
           <h2 className="text-display-md text-white m-0 max-w-[30ch]">
             La mayoría de landings inmobiliarias no convierten.
@@ -52,7 +51,6 @@ export default function Problem() {
           </h2>
         </div>
 
-        {/* 3 fugas puntuales del embudo, lado a lado */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-[clamp(1.5rem,4vw,2.5rem)] gap-y-10">
           {LEAKS.map((p, i) => (
             <div
@@ -60,9 +58,7 @@ export default function Problem() {
               ref={el => { itemRefs.current[i] = el }}
               className="flex flex-col"
             >
-              {/* Barra de fuga: llena a la izquierda, se vacía hacia la derecha.
-                  Sustituye al número 01/02/03 — no son pasos, son fugas,
-                  y la barra muestra "lo que se pierde" en vez de "en qué orden". */}
+
               <div className="h-px w-full bg-neutral-900 relative mb-5 overflow-hidden">
                 <div
                   className="absolute inset-y-0 left-0 bg-neutral-500"
@@ -79,16 +75,10 @@ export default function Problem() {
             </div>
           ))}
         </div>
-
-        {/* El punto ciego: envuelve a las 3 fugas anteriores.
-            Ancho completo, fondo distinto, sin barra — porque la ausencia
-            de medición no es "una fuga más", es la razón por la que
-            las otras tres pasan inadvertidas. */}
         <div
           ref={el => { itemRefs.current[3] = el }}
           className="relative mt-14 md:mt-16 rounded-2xl bg-neutral-800 px-7 py-9 md:px-10 md:py-10 overflow-hidden"
         >
-          {/* Patrón de puntos tenue: sugiere una grilla de datos que debería existir y no existe */}
           <div
             className="absolute inset-0 opacity-[0.07] pointer-events-none"
             style={{
