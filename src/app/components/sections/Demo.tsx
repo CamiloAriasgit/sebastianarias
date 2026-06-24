@@ -57,7 +57,7 @@ return (
 
         <div ref={previewRef}>
           <a
-            href="https://www.demo.sebastianarias.com/"
+            href="#demo"
             target="_blank"
             rel="noopener noreferrer"
             className="block no-underline relative rounded-[10px] overflow-hidden transition-colors duration-300 group"

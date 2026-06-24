@@ -40,7 +40,6 @@ export default function Service() {
     const headRef = useRef<HTMLDivElement>(null)
     const triggerRefs = useRef<(HTMLDivElement | null)[]>([])
     const [activeIndex, setActiveIndex] = useState(0)
-    const [showScrollIndicator, setShowScrollIndicator] = useState(true)
 
     useEffect(() => {
         const headObserver = new IntersectionObserver(
@@ -63,9 +62,6 @@ export default function Service() {
                     if (entry.isIntersecting) {
                         const index = Number(entry.target.getAttribute('data-index'))
                         setActiveIndex(index)
-                        if (index >= 1) {
-                            setShowScrollIndicator(false)
-                        }
                     }
                 })
             },
@@ -87,7 +83,7 @@ export default function Service() {
 
     return (
         <section
-            className="bg-neutral-900 relative"
+            className="bg-neutral-900"
             style={{ paddingBlock: 'var(--section-py)' }}
         >
             <div className="container-site">
@@ -110,7 +106,7 @@ export default function Service() {
 
                 <div className="relative w-full">
 
-                    <div className="sticky top-[12vh] md:top-[15vh] h-[75vh] md:h-[70vh] flex flex-col md:flex-row items-center justify-center md:justify-between gap-8 md:gap-[clamp(2rem,6vw,5rem)] pointer-events-none">
+                    <div className="sticky top-[12vh] md:top-[15vh] h-[75vh] md:h-[70vh] flex flex-col md:flex-row items-center justify-center md:justify-between gap-8 md:gap-[clamp(2rem,6vw,5rem)] pointer-events-none relative">
 
                         {/* Bloque de Imagen Única (Proporción 1:1) */}
                         <div className="w-full md:flex-1 order-1 md:order-2 relative aspect-square max-w-[480px]">
@@ -157,6 +153,18 @@ export default function Service() {
                                 </div>
                             ))}
                         </div>
+
+                        {/* Indicador de scroll: visible solo en la primera card, desaparece al revelar la segunda */}
+                        <div
+                            className="absolute bottom-[clamp(0.5rem,3vh,2rem)] left-1/2 md:left-[clamp(1rem,3vw,2rem)] -translate-x-1/2 md:translate-x-0 flex flex-col items-center gap-1 transition-opacity duration-500 ease-in-out"
+                            style={{
+                                opacity: activeIndex === 0 ? 1 : 0,
+                            }}
+                            aria-hidden="true"
+                        >
+                            <span className="scroll-hint-dot" />
+                        </div>
+
                     </div>
 
                     {/* Triggers invisibles para el scroll */}
@@ -174,31 +182,32 @@ export default function Service() {
                 </div>
             </div>
 
-            {showScrollIndicator && (
-                <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none flex flex-col items-center gap-2">
-                    <div className="w-8 h-8 border-2 border-white rounded-full flex items-center justify-center animate-scroll-icon">
-                        <div className="w-2 h-2 bg-white rounded-full"></div>
-                    </div>
-                </div>
-            )}
-            <style jsx global>{`
-              @keyframes scroll-icon {
-                0% {
-                  opacity: 0;
-                  transform: translateY(10px);
+            <style jsx>{`
+                .scroll-hint-dot {
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    border: 1.5px solid rgba(255, 255, 255, 0.6);
+                    background: transparent;
+                    animation: scroll-hint-rise 1.8s ease-in-out infinite;
                 }
-                50% {
-                  opacity: 1;
-                  transform: translateY(0);
+
+                @keyframes scroll-hint-rise {
+                    0% {
+                        transform: translateY(0);
+                        opacity: 0;
+                    }
+                    25% {
+                        opacity: 1;
+                    }
+                    75% {
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(-14px);
+                        opacity: 0;
+                    }
                 }
-                100% {
-                  opacity: 0;
-                  transform: translateY(-10px);
-                }
-              }
-              .animate-scroll-icon {
-                animation: scroll-icon 1.5s infinite;
-              }
             `}</style>
         </section>
     )
