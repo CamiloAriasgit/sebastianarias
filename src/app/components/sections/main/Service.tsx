@@ -40,6 +40,7 @@ export default function Service() {
     const headRef = useRef<HTMLDivElement>(null)
     const triggerRefs = useRef<(HTMLDivElement | null)[]>([])
     const [activeIndex, setActiveIndex] = useState(0)
+    const [showScrollIndicator, setShowScrollIndicator] = useState(true)
 
     useEffect(() => {
         const headObserver = new IntersectionObserver(
@@ -62,6 +63,9 @@ export default function Service() {
                     if (entry.isIntersecting) {
                         const index = Number(entry.target.getAttribute('data-index'))
                         setActiveIndex(index)
+                        if (index >= 1) {
+                            setShowScrollIndicator(false)
+                        }
                     }
                 })
             },
@@ -83,7 +87,7 @@ export default function Service() {
 
     return (
         <section
-            className="bg-neutral-900"
+            className="bg-neutral-900 relative"
             style={{ paddingBlock: 'var(--section-py)' }}
         >
             <div className="container-site">
@@ -169,6 +173,33 @@ export default function Service() {
 
                 </div>
             </div>
+
+            {showScrollIndicator && (
+                <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 pointer-events-none flex flex-col items-center gap-2">
+                    <div className="w-8 h-8 border-2 border-white rounded-full flex items-center justify-center animate-scroll-icon">
+                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                </div>
+            )}
+            <style jsx global>{`
+              @keyframes scroll-icon {
+                0% {
+                  opacity: 0;
+                  transform: translateY(10px);
+                }
+                50% {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+                100% {
+                  opacity: 0;
+                  transform: translateY(-10px);
+                }
+              }
+              .animate-scroll-icon {
+                animation: scroll-icon 1.5s infinite;
+              }
+            `}</style>
         </section>
     )
 }
