@@ -78,7 +78,6 @@ export default function Pricing() {
       {/* Recuperamos tu contenedor original con su ancho exacto */}
       <div className="container-site">
         <div ref={headRef} className="mb-12 md:mb-20">
-          <p className="text-xs uppercase tracking-wider text-neutral-400 mb-5">Planes</p>
           <h2 className="text-neutral-900 m-0 mb-3 max-w-[22ch] text-[clamp(1.75rem,4vw,3.25rem)] font-light leading-[1.1] tracking-[-0.03em]">
             Elige el nivel que necesita tu proyecto.
           </h2>

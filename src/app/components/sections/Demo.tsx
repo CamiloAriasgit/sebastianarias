@@ -43,7 +43,6 @@ return (
           style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}
         >
           <div>
-            <p className="text-label text-[var(--color-text-muted)] mb-5">Demo</p>
             <h2 className="text-display-md text-[var(--color-text-primary)] m-0">
               Así se ve<br />
               en la práctica.
