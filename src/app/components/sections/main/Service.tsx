@@ -25,9 +25,9 @@ const FEATURES = [
         image: '/images/page-speed.png',
     },
     {
-        title: 'Entrega en 14 días.',
+        title: 'Entrega en 10-14 días, una vez recibido el contenido.',
         body: 'El proceso está definido desde el briefing hasta la publicación: estructura, diseño, desarrollo, integraciones y revisiones. Sin fases abiertas ni retrasos indefinidos. En dos semanas el proyecto está activo y recibiendo tráfico.',
-        image: '/images/image-service.webp',
+        image: '/images/calendar-icon.png',
     },
     {
         title: 'Soporte continuo.',
