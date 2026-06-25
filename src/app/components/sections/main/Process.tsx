@@ -34,7 +34,7 @@ const STEPS: Step[] = [
     {
         number: '03',
         title: 'Diseño y desarrollo',
-        body: 'Se construye sobre Next.js con animaciones, tipografía y paleta alineadas a la marca del proyecto. Sin plantillas.',
+        body: 'Se construye sobre Next.js con animaciones, tipografía y paleta alineadas a la marca del proyecto. Carga extremadamente veloz.',
         icon: Palette
     },
     {
