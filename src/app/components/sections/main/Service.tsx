@@ -186,7 +186,7 @@ export default function Service() {
             <style jsx global>{`
                 @keyframes scroll-hint-rise {
                     0% {
-                        transform: translateY(80);
+                        transform: translateY(120);
                         opacity: 0;
                     }
                     20% {
@@ -196,7 +196,7 @@ export default function Service() {
                         opacity: 1;
                     }
                     100% {
-                        transform: translateY(10px);
+                        transform: translateY(40px);
                         opacity: 0;
                     }
                 }
