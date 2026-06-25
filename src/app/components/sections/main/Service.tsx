@@ -162,7 +162,7 @@ export default function Service() {
                             }}
                             aria-hidden="true"
                         >
-                            <span className="w-[40px] h-[40px] rounded-full border-1 border-white/50 bg-white/10 box-border block animate-[scroll-hint-rise_2s_ease-in-out_infinite]" />
+                            <span className="w-[40px] h-[40px] rounded-full border-1 border-white/20 bg-white/10 box-border block animate-[scroll-hint-rise_2s_ease-in-out_infinite]" />
                         </div>
 
                     </div>
@@ -196,7 +196,7 @@ export default function Service() {
                         opacity: 1;
                     }
                     100% {
-                        transform: translateY(40px);
+                        transform: translateY(50px);
                         opacity: 0;
                     }
                 }
