@@ -154,7 +154,7 @@ export default function Service() {
                             ))}
                         </div>
 
-                        {/* Indicador de scroll: visible solo en la primera card, desaparece al revelar la segunda */}
+                        {/* Indicador de scroll: modificado para reproducirse solo 3 veces */}
                         <div
                             className="absolute bottom-[clamp(1rem,3vh,2.5rem)] left-1/2 md:left-[clamp(1rem,3vw,2rem)] -translate-x-1/2 md:translate-x-0 flex flex-col items-center gap-1 transition-opacity duration-500 ease-in-out pointer-events-auto"
                             style={{
@@ -162,7 +162,7 @@ export default function Service() {
                             }}
                             aria-hidden="true"
                         >
-                            <span className="w-[40px] h-[40px] rounded-full border-1 border-white/20 bg-white/10 box-border block animate-[scroll-hint-rise_2s_ease-in-out_infinite]" />
+                            <span className="w-[40px] h-[40px] rounded-full border-1 border-white/20 bg-white/10 box-border block animate-[scroll-hint-rise_2s_ease-in-out_3_forwards]" />
                         </div>
 
                     </div>
@@ -182,11 +182,11 @@ export default function Service() {
                 </div>
             </div>
 
-            {/* Inyección global de la animación clave para evitar el retraso del renderizador en localhost */}
+            {/* Inyección global de la animación clave */}
             <style jsx global>{`
                 @keyframes scroll-hint-rise {
                     0% {
-                        transform: translateY(120);
+                        transform: translateY(120px);
                         opacity: 0;
                     }
                     20% {
