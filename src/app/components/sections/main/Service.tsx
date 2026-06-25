@@ -40,6 +40,8 @@ export default function Service() {
     const headRef = useRef<HTMLDivElement>(null)
     const triggerRefs = useRef<(HTMLDivElement | null)[]>([])
     const [activeIndex, setActiveIndex] = useState(0)
+    // Nuevo estado para controlar cuándo arranca la animación del indicador
+    const [isIndicatorVisible, setIsIndicatorVisible] = useState(false)
 
     useEffect(() => {
         const headObserver = new IntersectionObserver(
@@ -48,6 +50,8 @@ export default function Service() {
                     const el = entry.target as HTMLElement
                     el.style.opacity = '1'
                     el.style.transform = 'translateY(0)'
+                    // Activamos el indicador justo cuando la sección entra a la vista
+                    setIsIndicatorVisible(true)
                     headObserver.unobserve(el)
                 }
             },
@@ -154,15 +158,17 @@ export default function Service() {
                             ))}
                         </div>
 
-                        {/* Indicador de scroll: modificado para reproducirse solo 3 veces */}
+                        {/* Indicador de scroll: solo se renderiza/anima si la sección es visible */}
                         <div
                             className="absolute bottom-[clamp(1rem,3vh,2.5rem)] left-1/2 md:left-[clamp(1rem,3vw,2rem)] -translate-x-1/2 md:translate-x-0 flex flex-col items-center gap-1 transition-opacity duration-500 ease-in-out pointer-events-auto"
                             style={{
-                                opacity: activeIndex === 0 ? 1 : 0,
+                                opacity: activeIndex === 0 && isIndicatorVisible ? 1 : 0,
                             }}
                             aria-hidden="true"
                         >
-                            <span className="w-[40px] h-[40px] rounded-full border-1 border-white/20 bg-white/10 box-border block animate-[scroll-hint-rise_2s_ease-in-out_3_forwards]" />
+                            {isIndicatorVisible && (
+                                <span className="w-[40px] h-[40px] rounded-full border-1 border-white/20 bg-white/10 box-border block animate-[scroll-hint-rise_2s_ease-in-out_3_forwards]" />
+                            )}
                         </div>
 
                     </div>
