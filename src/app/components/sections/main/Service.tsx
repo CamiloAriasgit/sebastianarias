@@ -156,13 +156,14 @@ export default function Service() {
 
                         {/* Indicador de scroll: visible solo en la primera card, desaparece al revelar la segunda */}
                         <div
-                            className="absolute bottom-[clamp(1rem,3vh,2.5rem)] left-1/2 md:left-[clamp(1rem,3vw,2rem)] -translate-x-1/2 md:translate-x-0 flex flex-col items-center gap-1 transition-opacity duration-500 ease-in-out pointer-events-auto"
+                            // Se cambió bottom-1/2 md:bottom-[clamp(1rem,3vh,2.5rem)] y md:top-auto
+                            className="absolute bottom-1/2 md:top-auto md:bottom-[clamp(1rem,3vh,2.5rem)] left-1/2 md:left-[clamp(1rem,3vw,2rem)] -translate-x-1/2 md:translate-x-0 translate-y-1/2 md:translate-y-0 flex flex-col items-center gap-1 transition-opacity duration-500 ease-in-out pointer-events-auto"
                             style={{
                                 opacity: activeIndex === 0 ? 1 : 0,
                             }}
                             aria-hidden="true"
                         >
-                            <span className="scroll-hint-dot" />
+                            <span className="w-[14px] h-[14px] rounded-full border-2 border-white/80 bg-white/20 box-border block animate-[scroll-hint-rise_2s_ease-in-out_infinite]" />
                         </div>
 
                     </div>
@@ -182,35 +183,25 @@ export default function Service() {
                 </div>
             </div>
 
-            <style jsx>{`
-    .scroll-hint-dot {
-        width: 14px; /* Subimos un poco el tamaño base */
-        height: 14px;
-        border-radius: 50%;
-        border: 2px solid rgba(255, 255, 255, 0.8); /* Más grosor y opacidad */
-        background: rgba(255, 255, 255, 0.2); /* Un fondo sutil para dar cuerpo */
-        box-sizing: border-box; /* Forzamos a que el borde no encoja el círculo */
-        display: block;
-        animation: scroll-hint-rise 2s ease-in-out infinite;
-    }
-
-    @keyframes scroll-hint-rise {
-        0% {
-            transform: translateY(0);
-            opacity: 0;
-        }
-        20% {
-            opacity: 1;
-        }
-        80% {
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-20px); /* Más recorrido para que se note en desktop */
-            opacity: 0;
-        }
-    }
-`}</style>
+            {/* Inyección global de la animación clave para evitar el retraso del renderizador en localhost */}
+            <style jsx global>{`
+                @keyframes scroll-hint-rise {
+                    0% {
+                        transform: translateY(0);
+                        opacity: 0;
+                    }
+                    20% {
+                        opacity: 1;
+                    }
+                    80% {
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(-20px);
+                        opacity: 0;
+                    }
+                }
+            `}</style>
         </section>
     )
 }
