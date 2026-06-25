@@ -167,7 +167,7 @@ export default function Service() {
                             aria-hidden="true"
                         >
                             {isIndicatorVisible && (
-                                <span className="w-[40px] h-[40px] rounded-full border-1 border-white/20 bg-white/10 box-border block animate-[scroll-hint-rise_2s_ease-in-out_3_forwards]" />
+                                <span className="w-[40px] h-[40px] rounded-full border-1 border-white/20 bg-white/10 box-border block animate-[scroll-hint-rise_2s_ease-in-out_5_forwards]" />
                             )}
                         </div>
 
