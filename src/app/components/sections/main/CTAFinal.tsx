@@ -81,14 +81,14 @@ export default function CTAFinal() {
               letterSpacing: '-0.04em',
             }}
           >
-            <span className="block text-[var(--color-text-primary)]">
+            <span className="block text-white">
               Tu próximo proyecto
             </span>
-            <span className="block text-[var(--color-text-primary)]">
+            <span className="block text-white">
               merece más leads.
             </span>
           </h2>
-          <p className="text-sm leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[40ch]">
+          <p className="text-sm leading-relaxed text-neutral-200 m-0 max-w-[40ch]">
             El tráfico ya lo tienes.
             Lo que sigue es no desperdiciarlo.
           </p>
@@ -96,7 +96,7 @@ export default function CTAFinal() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex bg-white justify-center items-center gap-2 py-2.5 w-44 rounded-full text-black shadow-lg shadow-black/10 transition-all duration-300 hover:bg-neutral-800 group"
+            className="flex bg-white justify-center items-center gap-2 py-2.5 w-44 rounded-full text-black shadow-lg shadow-black/10 transition-all duration-300 hover:bg-neutral-300 group"
           >
             Agendar llamada
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">

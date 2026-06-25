@@ -4,36 +4,36 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 
 const FEATURES = [
-  {
-    title: 'Estética de producto, no de agencia.',
-    body: 'El diseño sigue los estándares visuales que definen las marcas digitales de alto nivel hoy — tipografía con criterio, espaciado generoso, jerarquía clara. No reinventamos la rueda: aplicamos lo que ya funciona, adaptado a la identidad de tu proyecto.',
-    image: '/images/code-and-interface.png',
-  },
-  {
-    title: 'WhatsApp estratégico.',
-    body: 'El botón no es un accesorio — es el punto de conversión. Está ubicado donde el inversionista lo necesita, en el momento en que decide, con un mensaje predefinido que reduce la fricción al mínimo. El contacto ocurre solo.',
-    image: '/images/whatsapp-button.png',
-  },
-  {
-    title: 'GTM + GA4.',
-    body: 'Cada clic, cada scroll, cada intención de contacto queda registrada como un evento real. Tu equipo de pauta deja de optimizar a ciegas y empieza a tomar decisiones con datos. La inversión en anuncios rinde más desde el primer mes.',
-    image: '/images/ga4-metrics.png',
-  },
-  {
-    title: 'Velocidad real.',
-    body: 'Construido en Next.js y desplegado en Vercel. Core Web Vitals en verde en móvil y desktop. Cada segundo de carga que se elimina es un inversionista que no se va antes de leer el primer párrafo.',
-    image: '/images/page-speed.png',
-  },
-  {
-    title: 'Entrega en 14 días.',
-    body: 'El proceso está definido desde el briefing hasta la publicación: estructura, diseño, desarrollo, integraciones y revisiones. Sin fases abiertas ni retrasos indefinidos. En dos semanas el proyecto está activo y recibiendo tráfico.',
-    image: '/images/image-service.webp',
-  },
-  {
-    title: 'Soporte continuo.',
-    body: 'El sitio evoluciona con el proyecto. Si el copy necesita ajustarse después de ver el comportamiento inicial del tráfico, o si una sección deja de funcionar, está cubierto. No es mantenimiento reactivo — es acompañamiento activo.',
-    image: '/images/edit-feature.png',
-  },
+    {
+        title: 'Estética de producto, no de agencia.',
+        body: 'El diseño sigue los estándares visuales que definen las marcas digitales de alto nivel hoy — tipografía con criterio, espaciado generoso, jerarquía clara. No reinventamos la rueda: aplicamos lo que ya funciona, adaptado a la identidad de tu proyecto.',
+        image: '/images/code-and-interface.png',
+    },
+    {
+        title: 'WhatsApp estratégico.',
+        body: 'El botón no es un accesorio — es el punto de conversión. Está ubicado donde el inversionista lo necesita, en el momento en que decide, con un mensaje predefinido que reduce la fricción al mínimo. El contacto ocurre solo.',
+        image: '/images/whatsapp-button.png',
+    },
+    {
+        title: 'GTM + GA4.',
+        body: 'Cada clic, cada scroll, cada intención de contacto queda registrada como un evento real. Tu equipo de pauta deja de optimizar a ciegas y empieza a tomar decisiones con datos. La inversión en anuncios rinde más desde el primer mes.',
+        image: '/images/ga4-metrics.png',
+    },
+    {
+        title: 'Velocidad real.',
+        body: 'Construido en Next.js y desplegado en Vercel. Core Web Vitals en verde en móvil y desktop. Cada segundo de carga que se elimina es un inversionista que no se va antes de leer el primer párrafo.',
+        image: '/images/page-speed.png',
+    },
+    {
+        title: 'Entrega en 14 días.',
+        body: 'El proceso está definido desde el briefing hasta la publicación: estructura, diseño, desarrollo, integraciones y revisiones. Sin fases abiertas ni retrasos indefinidos. En dos semanas el proyecto está activo y recibiendo tráfico.',
+        image: '/images/image-service.webp',
+    },
+    {
+        title: 'Soporte continuo.',
+        body: 'El sitio evoluciona con el proyecto. Si el copy necesita ajustarse después de ver el comportamiento inicial del tráfico, o si una sección deja de funcionar, está cubierto. No es mantenimiento reactivo — es acompañamiento activo.',
+        image: '/images/edit-feature.png',
+    },
 ]
 
 export default function Service() {
@@ -156,7 +156,7 @@ export default function Service() {
 
                         {/* Indicador de scroll: visible solo en la primera card, desaparece al revelar la segunda */}
                         <div
-                            className="absolute bottom-[clamp(0.5rem,3vh,2rem)] left-1/2 md:left-[clamp(1rem,3vw,2rem)] -translate-x-1/2 md:translate-x-0 flex flex-col items-center gap-1 transition-opacity duration-500 ease-in-out"
+                            className="absolute bottom-[clamp(1rem,3vh,2.5rem)] left-1/2 md:left-[clamp(1rem,3vw,2rem)] -translate-x-1/2 md:translate-x-0 flex flex-col items-center gap-1 transition-opacity duration-500 ease-in-out pointer-events-auto"
                             style={{
                                 opacity: activeIndex === 0 ? 1 : 0,
                             }}
@@ -183,32 +183,34 @@ export default function Service() {
             </div>
 
             <style jsx>{`
-                .scroll-hint-dot {
-                    width: 8px;
-                    height: 8px;
-                    border-radius: 50%;
-                    border: 1.5px solid rgba(255, 255, 255, 0.6);
-                    background: transparent;
-                    animation: scroll-hint-rise 1.8s ease-in-out infinite;
-                }
+    .scroll-hint-dot {
+        width: 14px; /* Subimos un poco el tamaño base */
+        height: 14px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.8); /* Más grosor y opacidad */
+        background: rgba(255, 255, 255, 0.2); /* Un fondo sutil para dar cuerpo */
+        box-sizing: border-box; /* Forzamos a que el borde no encoja el círculo */
+        display: block;
+        animation: scroll-hint-rise 2s ease-in-out infinite;
+    }
 
-                @keyframes scroll-hint-rise {
-                    0% {
-                        transform: translateY(0);
-                        opacity: 0;
-                    }
-                    25% {
-                        opacity: 1;
-                    }
-                    75% {
-                        opacity: 1;
-                    }
-                    100% {
-                        transform: translateY(-14px);
-                        opacity: 0;
-                    }
-                }
-            `}</style>
+    @keyframes scroll-hint-rise {
+        0% {
+            transform: translateY(0);
+            opacity: 0;
+        }
+        20% {
+            opacity: 1;
+        }
+        80% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-20px); /* Más recorrido para que se note en desktop */
+            opacity: 0;
+        }
+    }
+`}</style>
         </section>
     )
 }

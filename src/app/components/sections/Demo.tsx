@@ -43,12 +43,12 @@ return (
           style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}
         >
           <div>
-            <h2 className="text-display-md text-[var(--color-text-primary)] m-0">
+            <h2 className="text-display-md text-white m-0">
               Así se ve<br />
               en la práctica.
             </h2>
           </div>
-          <p className="text-[0.9375rem] leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[38ch]">
+          <p className="text-[0.9375rem] leading-relaxed text-neutral-400 m-0 max-w-[38ch]">
             Una landing construida para convertir.
             Diseño, tracking y WhatsApp estratégico
             funcionando desde el primer día.
@@ -86,7 +86,7 @@ return (
             </div>
           </a>
 
-          <p className="text-xs text-[var(--color-text-muted)] mt-4 tracking-wide text-center">
+          <p className="text-xs text-neutral-400 font-light mt-4 tracking-wide text-center">
             Proyecto ficticio · Muestra del estándar de entrega
           </p>
         </div>
