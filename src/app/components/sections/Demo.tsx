@@ -65,7 +65,7 @@ return (
             {/* Imagen de fondo */}
             <div className="w-full relative flex items-center justify-center">
               <img 
-                src="/images/demo-image.png" 
+                src="/images/hero-demo.png" 
                 alt="Vista previa de la Demo" 
                 className="w-full h-auto block"
               />
