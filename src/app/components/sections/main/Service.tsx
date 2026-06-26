@@ -168,7 +168,7 @@ export default function Service() {
                             aria-hidden="true"
                         >
                             {isIndicatorVisible && (
-                                <span className="w-[40px] h-[40px] rounded-full border-1 border-white/80 bg-white/10 box-border block animate-[scroll-hint-rise_2s_ease-in-out_4_forwards]" >
+                                <span className="w-[40px] h-[40px] flex items-center justify-center rounded-full border-1 border-white/80 bg-white/10 box-border block animate-[scroll-hint-rise_2s_ease-in-out_4_forwards]" >
                                     <ChevronUp size={16} strokeWidth={1.5} className="text-white/80" />
                                 </span>
                             )}
