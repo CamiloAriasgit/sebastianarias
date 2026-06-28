@@ -31,13 +31,13 @@ export default function Problem() {
       },
       { threshold: 0.12 }
     )
-    ;[headRef.current, ...itemRefs.current].forEach((el, i) => {
-      if (!el) return
-      el.style.opacity = '0'
-      el.style.transform = 'translateY(20px)'
-      el.style.transition = `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 80}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 80}ms`
-      observer.observe(el)
-    })
+      ;[headRef.current, ...itemRefs.current].forEach((el, i) => {
+        if (!el) return
+        el.style.opacity = '0'
+        el.style.transform = 'translateY(20px)'
+        el.style.transition = `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 80}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 80}ms`
+        observer.observe(el)
+      })
     return () => observer.disconnect()
   }, [])
 
@@ -45,10 +45,19 @@ export default function Problem() {
     <section className="bg-[#f8f8ff]">
       <div className="container-site">
         <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] text-center flex flex-col items-center">
-          <h2 className="text-display-md text-black m-0 max-w-[30ch]">
+          {/*<h2 className="text-display-md text-black m-0 max-w-[30ch]">
             La mayoría de landings inmobiliarias no convierten.
             <span className="block">Y el problema no es la pauta.</span>
-          </h2>
+          </h2>*/}
+          <h1
+            className="m-0 block text-zinc-950 font-medium tracking-tight drop-shadow-sm"
+            style={{
+              fontSize: 'clamp(1.9rem, 4vw, 4.5rem)',
+              lineHeight: 1.05,
+            }}
+          >
+            La mayoría de landings inmobiliarias no convierten. Y el problema no es la pauta.
+          </h1>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-[clamp(1.5rem,4vw,2.5rem)] gap-y-10">
