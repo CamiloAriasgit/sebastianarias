@@ -1,5 +1,5 @@
 // app/page.tsx
-import Header from './components/layout/Header'
+import Header from './components/layout/Header1'
 import Hero from './components/sections/main/Hero1'
 import Problem from './components/sections/main/Problem'
 import Service from './components/sections/main/Service1'

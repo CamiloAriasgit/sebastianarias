@@ -85,13 +85,13 @@ export default function Process() {
     return (
         <section
             ref={sectionRef}
-            className="bg-neutral-900 relative"
+            className="bg-[#f8f8ff] relative"
             style={{ paddingBlock: 'var(--section-py)' }}
         >
             <div className="container-site">
                 {/* Título centrado en la sección */}
                 <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] flex flex-col items-center text-center">
-                    <h2 className="text-display-md text-white m-0 max-w-[28ch]">
+                    <h2 className="text-display-md text-black m-0 max-w-[28ch]">
                         De briefing a publicado. <br />
                         Sin fricciones.
                     </h2>
@@ -106,13 +106,13 @@ export default function Process() {
             se cumple en cada paso siguiente.
           */}
                     <div
-                        className="relative w-full max-w-2xl rounded-[28px] bg-neutral-800/50 px-8 py-12 md:px-12 md:py-14 overflow-hidden"
+                        className="relative w-full max-w-2xl rounded-[28px] bg-gray-200 px-8 py-12 md:px-12 md:py-14 overflow-hidden"
                         style={{ minHeight: '21.25rem' }} // <-- Cambiado de 340 a 21.25rem (340 / 16)
                     >
                         {/* Marca de progreso integrada al marco, no al contenido */}
-                        <div className="absolute top-0 left-0 right-0 h-px bg-neutral-800">
+                        <div className="absolute top-0 left-0 right-0 h-px bg-neutral-200">
                             <motion.div
-                                className="h-full bg-neutral-300"
+                                className="h-full bg-neutral-700"
                                 initial={false}
                                 animate={{ width: `${((active + 1) / STEPS.length) * 100}%` }}
                                 transition={{ type: 'spring', stiffness: 200, damping: 30 }}
@@ -136,23 +136,23 @@ export default function Process() {
                                         initial={{ rotate: -10, scale: 0.8 }}
                                         animate={{ rotate: 0, scale: 1 }}
                                         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                                        className="mb-6 p-4 rounded-full bg-neutral-800 text-white"
+                                        className="mb-6 p-4 rounded-full bg-white text-black"
                                     >
                                         <ActiveIcon className="w-7 h-7" />
                                     </motion.div>
 
-                                    <p className="text-label text-neutral-500 mb-3">
+                                    <p className="text-label text-neutral-400 mb-3">
                                         Paso {STEPS[active].number} de {STEPS.length}
                                     </p>
 
                                     <h3
-                                        className="text-white m-0 mb-4"
+                                        className="text-black m-0 mb-4"
                                         style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 300, letterSpacing: '-0.025em', lineHeight: 1.15 }}
                                     >
                                         {STEPS[active].title}
                                     </h3>
 
-                                    <p className="text-[0.9375rem] leading-relaxed text-neutral-300 m-0 max-w-[42ch]">
+                                    <p className="text-[0.9375rem] leading-relaxed text-neutral-800 m-0 max-w-[42ch]">
                                         {STEPS[active].body}
                                     </p>
                                 </motion.div>
