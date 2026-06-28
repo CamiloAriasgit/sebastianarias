@@ -37,7 +37,7 @@ export default function CTAFinal() {
 
  return (
   <section
-    className="bg-neutral-900 relative overflow-hidden"
+    className="bg-white relative overflow-hidden"
     style={{ paddingBlock: 'clamp(6rem, 15vw, 14rem)' }} 
   >
       {/* Estilos para la animación de la aurora (puedes mover esto a tu global.css) */}
@@ -81,14 +81,14 @@ export default function CTAFinal() {
               letterSpacing: '-0.04em',
             }}
           >
-            <span className="block text-white">
+            <span className="block font-medium text-black">
               Tu próximo proyecto
             </span>
-            <span className="block text-white">
+            <span className="block font-medium text-black">
               merece más leads.
             </span>
           </h2>
-          <p className="text-sm leading-relaxed text-neutral-200 m-0 max-w-[40ch]">
+          <p className="text-sm leading-relaxed text-black m-0 max-w-[40ch]">
             El tráfico ya lo tienes.
             Lo que sigue es no desperdiciarlo.
           </p>
@@ -96,7 +96,7 @@ export default function CTAFinal() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex bg-white justify-center items-center gap-2 py-2.5 w-44 rounded-full text-black shadow-lg shadow-black/10 transition-all duration-300 hover:bg-neutral-300 group"
+            className="flex bg-black justify-center items-center gap-2 py-2.5 w-44 rounded-full text-white shadow-lg shadow-black/10 transition-all duration-300 hover:bg-neutral-300 group"
           >
             Agendar llamada
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
