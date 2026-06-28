@@ -49,7 +49,7 @@ export default function Problem() {
             La mayoría de landings inmobiliarias no convierten.
             <span className="block">Y el problema no es la pauta.</span>
           </h2>*/}
-          <h1
+          <h2
             className="m-0 block text-zinc-950 font-medium tracking-tight drop-shadow-sm"
             style={{
               fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
@@ -57,7 +57,7 @@ export default function Problem() {
             }}
           >
             La mayoría de landings inmobiliarias no convierten. Y el problema no es la pauta.
-          </h1>
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-[clamp(1.5rem,4vw,2.5rem)] gap-y-10">

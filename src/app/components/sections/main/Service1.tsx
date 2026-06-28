@@ -67,7 +67,7 @@ export default function Service() {
   }, [])
 
   return (
-    <section className="bg-neutral-900" style={{ paddingBlock: 'var(--section-py)' }}>
+    <section className="bg-[#f8f8ff]" style={{ paddingBlock: 'var(--section-py)' }}>
       <div className="container-site">
 
         {/* Cabecera */}
@@ -75,10 +75,19 @@ export default function Service() {
           ref={headRef}
           className="flex flex-col items-center text-center gap-4 mb-[clamp(4rem,8vw,7rem)]"
         >
-          <h2 className="text-display-md text-[var(--color-text-primary)] m-0 max-w-[24ch]">
+          {/*<h2 className="text-display-md text-[var(--color-text-primary)] m-0 max-w-[24ch]">
+            Una landing construida para el momento en que el comprador decide.
+          </h2>*/}
+          <h2
+            className="m-0 block text-black font-medium tracking-tight drop-shadow-sm"
+            style={{
+              fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
+              lineHeight: 1.05,
+            }}
+          >
             Una landing construida para el momento en que el comprador decide.
           </h2>
-          <p className="text-[0.9375rem] leading-relaxed text-[var(--color-text-secondary)] m-0 max-w-[42ch]">
+          <p className="text-[0.9375rem] leading-relaxed text-black m-0 max-w-[42ch]">
             Cada elemento tiene un propósito. Nada está ahí por decoración.
           </p>
         </div>
@@ -112,13 +121,10 @@ export default function Service() {
 
               {/* Texto */}
               <div className="order-2 max-w-[480px]" style={{ direction: 'ltr' }}>
-                <span className="text-label text-[var(--color-text-muted)] block mb-3">
-                  0{i + 1}
-                </span>
-                <h3 className="text-[1.25rem] md:text-[1.5rem] font-medium tracking-tight text-white m-0 mb-3" style={{ letterSpacing: '-0.015em' }}>
+                <h3 className="text-[1.25rem] md:text-[1.5rem] font-medium tracking-tight text-black m-0 mb-3" style={{ letterSpacing: '-0.015em' }}>
                   {f.title}
                 </h3>
-                <p className="text-[0.9375rem] leading-relaxed text-neutral-300 m-0">
+                <p className="text-[0.9375rem] leading-relaxed text-neutral-900 m-0">
                   {f.body}
                 </p>
               </div>
