@@ -67,7 +67,7 @@ export default function Service() {
   }, [])
 
   return (
-    <section className="bg-[#f8f8ff]" style={{ paddingBlock: 'var(--section-py)' }}>
+    <section className="bg-gray-100" style={{ paddingBlock: 'var(--section-py)' }}>
       <div className="container-site">
 
         {/* Cabecera */}

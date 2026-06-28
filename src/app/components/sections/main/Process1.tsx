@@ -89,9 +89,19 @@ export default function Process() {
             style={{ paddingBlock: 'var(--section-py)' }}
         >
             <div className="container-site">
-                {/* Título centrado en la sección */}
                 <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] flex flex-col items-center text-center">
+                    {/* Título centrado en la sección 
                     <h2 className="text-display-md text-black m-0 max-w-[28ch]">
+                        De briefing a publicado. <br />
+                        Sin fricciones.
+                    </h2>*/}
+                    <h2
+                        className="m-0 block text-black font-medium tracking-tight drop-shadow-sm"
+                        style={{
+                            fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
+                            lineHeight: 1.05,
+                        }}
+                    >
                         De briefing a publicado. <br />
                         Sin fricciones.
                     </h2>
@@ -171,7 +181,7 @@ export default function Process() {
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: 80, opacity: 0, scale: 0.9 }}
                             transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-                            className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-neutral-800 rounded-full shadow-[0_12px_40px_-12px_rgba(0,0,0,0.7)] w-full md:w-auto max-w-full gap-1"
+                            className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-gray-200 rounded-full shadow-[0_12px_40px_-12px_rgba(0,0,0,0.7)] w-full md:w-auto max-w-full gap-1"
                         >
                             {STEPS.map((step, i) => {
                                 const StepIcon = step.icon
@@ -183,13 +193,13 @@ export default function Process() {
                                         aria-label={`Ver paso ${step.number}: ${step.title}`}
                                         className="relative flex-1 md:flex-none p-3 md:px-5 md:py-2.5 bg-transparent border-none cursor-pointer rounded-full flex items-center justify-center gap-2 transition-colors duration-200 select-none outline-none focus-visible:ring-2 focus-visible:ring-white/60 group"
                                         style={{
-                                            color: active === i ? 'var(--color-bg-primary, #000)' : 'var(--color-text-secondary)'
+                                            color: active === i ? 'white' : 'black'
                                         }}
                                     >
                                         {active === i && (
                                             <motion.div
                                                 layoutId="active-pill-fixed"
-                                                className="absolute inset-0 bg-[var(--color-text-primary)] rounded-full"
+                                                className="absolute inset-0 bg-neutral-800 rounded-full"
                                                 transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                                                 style={{ zIndex: 0 }}
                                             />
