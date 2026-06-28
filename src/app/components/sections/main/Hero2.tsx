@@ -210,7 +210,7 @@ export default function Hero() {
                 <h1
                     className="m-0 block text-zinc-950 font-medium tracking-tight drop-shadow-sm"
                     style={{
-                        fontSize: 'clamp(2rem, 4vw, 4.5rem)',
+                        fontSize: 'clamp(1.9rem, 4vw, 4.5rem)',
                         lineHeight: 1.05,
                     }}
                 >

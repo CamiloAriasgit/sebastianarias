@@ -21,14 +21,14 @@ export default function Header() {
       <div 
         className={`container-site mx-auto transition-all duration-300 ${
           scrolled
-            ? 'bg-neutral-900/80 backdrop-blur-md border border-[var(--color-border)] rounded-full shadow-lg px-6'
+            ? 'bg-white backdrop-blur-md border border-black/5 rounded-full shadow-lg px-6'
             : 'bg-transparent border border-transparent px-4'
         }`}
       >
         <div className="flex items-center justify-between h-14">
           <span
             className={`text-sm font-medium tracking-tight transition-colors duration-300 ${
-              scrolled ? 'text-[var(--color-text-primary)]' : 'text-black'
+              scrolled ? 'text-black' : 'text-black'
             }`}
           >
             Sebastian Arias
@@ -38,7 +38,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             className={`text-sm hover:text-[var(--color-text-primary)] transition-colors duration-300 no-underline ${
-              scrolled ? 'text-[var(--color-text-secondary)]' : 'text-black'
+              scrolled ? 'text-black' : 'text-black'
             }`}
           >
             Contacto
