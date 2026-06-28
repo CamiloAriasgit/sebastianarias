@@ -42,10 +42,10 @@ export default function Problem() {
   }, [])
 
   return (
-    <section className="bg-neutral-900 py-[var(--section-py)]">
+    <section className="bg-[#f8f8ff]">
       <div className="container-site">
         <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] text-center flex flex-col items-center">
-          <h2 className="text-display-md text-white m-0 max-w-[30ch]">
+          <h2 className="text-display-md text-black m-0 max-w-[30ch]">
             La mayoría de landings inmobiliarias no convierten.
             <span className="block">Y el problema no es la pauta.</span>
           </h2>
@@ -59,14 +59,14 @@ export default function Problem() {
               className="flex flex-col"
             >
 
-              <div className="h-px w-full bg-neutral-900 relative mb-5 overflow-hidden">
+              <div className="h-px w-full relative mb-5 overflow-hidden">
                 <div
                   className="absolute inset-y-0 left-0 bg-neutral-500"
                   style={{ width: '38%' }}
                 />
               </div>
 
-              <h3 className="text-[1.0625rem] font-medium tracking-tight text-white m-0 mb-2">
+              <h3 className="text-[1.0625rem] font-medium tracking-tight text-black m-0 mb-2">
                 {p.title}
               </h3>
               <p className="text-sm leading-relaxed text-neutral-400 m-0">
@@ -77,7 +77,7 @@ export default function Problem() {
         </div>
         <div
           ref={el => { itemRefs.current[3] = el }}
-          className="relative mt-14 md:mt-16 rounded-2xl bg-neutral-800 px-7 py-9 md:px-10 md:py-10 overflow-hidden"
+          className="relative mt-14 md:mt-16 rounded-2xl bg-gray-200 px-7 py-9 md:px-10 md:py-10 overflow-hidden"
         >
           <div
             className="absolute inset-0 opacity-[0.07] pointer-events-none"
@@ -88,7 +88,7 @@ export default function Problem() {
           />
 
           <div className="relative flex flex-col md:flex-row md:items-center gap-5 md:gap-10">
-            <h3 className="text-[1.1875rem] md:text-[1.375rem] font-medium tracking-tight text-white m-0 md:max-w-[18ch]">
+            <h3 className="text-[1.1875rem] md:text-[1.375rem] font-medium tracking-tight text-black m-0 md:max-w-[18ch]">
               {BLIND_SPOT.title}
             </h3>
             <div className="hidden md:block w-px self-stretch bg-neutral-800" />
