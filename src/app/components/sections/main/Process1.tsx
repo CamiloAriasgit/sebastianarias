@@ -116,11 +116,11 @@ export default function Process() {
             se cumple en cada paso siguiente.
           */}
                     <div
-                        className="relative w-full max-w-2xl rounded-[28px] bg-gray-200 px-8 py-12 md:px-12 md:py-14 overflow-hidden"
+                        className="relative w-full max-w-2xl rounded-[28px] bg-gray-100 px-8 py-12 md:px-12 md:py-14 overflow-hidden"
                         style={{ minHeight: '21.25rem' }} // <-- Cambiado de 340 a 21.25rem (340 / 16)
                     >
                         {/* Marca de progreso integrada al marco, no al contenido */}
-                        <div className="absolute top-0 left-0 right-0 h-px bg-neutral-200">
+                        <div className="absolute top-0 left-0 right-0 h-px bg-neutral-100">
                             <motion.div
                                 className="h-full bg-neutral-700"
                                 initial={false}

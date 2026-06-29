@@ -86,7 +86,7 @@ export default function Problem() {
         </div>
         <div
           ref={el => { itemRefs.current[3] = el }}
-          className="relative mt-14 md:mt-16 rounded-2xl bg-gray-200 px-7 py-9 md:px-10 md:py-10 overflow-hidden"
+          className="relative mt-14 md:mt-16 rounded-2xl bg-gray-100 px-7 py-9 md:px-10 md:py-10 overflow-hidden"
         >
           <div
             className="absolute inset-0 opacity-[0.07] pointer-events-none"
