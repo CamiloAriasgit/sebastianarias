@@ -8,7 +8,7 @@ const BASE_WHATSAPP_NUMBER = '573235619283'
 // Función para generar los enlaces dinámicos con el texto correctamente codificado
 const getWhatsAppLink = (planName?: string, isCustomRequest = false) => {
   let message = ''
-  
+
   if (isCustomRequest) {
     message = 'Hola, mi proyecto tiene requerimientos específicos y me gustaría que conversemos para armar algo a la medida.'
   } else {
@@ -24,7 +24,7 @@ const PLANS = [
     price: '$800',
     monthly: '$60',
     description: 'Para proyectos que necesitan presencia sólida y captura de leads desde el primer día.',
-    features: ['Hasta 5 secciones','Diseño a medida','WhatsApp estratégico','GTM + GA4','Formulario de leads','Animaciones básicas','1 revisión','Entrega en 10 días'],
+    features: ['Hasta 5 secciones', 'Diseño a medida', 'WhatsApp estratégico', 'GTM + GA4', 'Formulario de leads', 'Animaciones básicas', '1 revisión', 'Entrega en 10 días'],
     highlighted: false,
   },
   {
@@ -32,7 +32,7 @@ const PLANS = [
     price: '$1.500',
     monthly: '$90',
     description: 'El punto dulce. Diseño completo, tracking avanzado y copy orientado a convertir.',
-    features: ['Hasta 8 secciones','Diseño a medida','WhatsApp strategic','GTM + GA4 + eventos custom','Formulario de leads','Animaciones completas','Orientación de copywriting','2 revisiones','Entrega en 14 días'],
+    features: ['Hasta 8 secciones', 'Diseño a medida', 'WhatsApp strategic', 'GTM + GA4 + eventos custom', 'Formulario de leads', 'Animaciones completas', 'Orientación de copywriting', '2 revisiones', 'Entrega en 14 días'],
     highlighted: true,
   },
   {
@@ -40,13 +40,13 @@ const PLANS = [
     price: '$2.800',
     monthly: '$140',
     description: 'Para proyectos que exigen el máximo nivel de detalle, conversión y presentación.',
-    features: ['Secciones ilimitadas','Diseño a medida','WhatsApp multi-punto','GTM + GA4 + funnel completo','Formulario de leads','Animaciones avanzadas','Copywriting incluido','3 revisiones','Entrega en 21 días'],
+    features: ['Secciones ilimitadas', 'Diseño a medida', 'WhatsApp multi-punto', 'GTM + GA4 + funnel completo', 'Formulario de leads', 'Animaciones avanzadas', 'Copywriting incluido', '3 revisiones', 'Entrega en 21 días'],
     highlighted: false,
   },
 ]
 
 export default function Pricing() {
-  const headRef  = useRef<HTMLDivElement>(null)
+  const headRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
@@ -63,13 +63,13 @@ export default function Pricing() {
       { threshold: 0.1 }
     )
 
-    ;[headRef.current, ...cardRefs.current].forEach((el, i) => {
-      if (!el) return
-      el.classList.add('opacity-0', 'translate-y-5', 'transition-all', 'duration-[700ms]', 'cubic-bezier-[0.16,1,0.3,1]')
-      el.style.transitionDelay = `${i * 80}ms`
-      observer.observe(el)
-    })
-    
+      ;[headRef.current, ...cardRefs.current].forEach((el, i) => {
+        if (!el) return
+        el.classList.add('opacity-0', 'translate-y-5', 'transition-all', 'duration-[700ms]', 'cubic-bezier-[0.16,1,0.3,1]')
+        el.style.transitionDelay = `${i * 80}ms`
+        observer.observe(el)
+      })
+
     return () => observer.disconnect()
   }, [])
 
@@ -78,7 +78,16 @@ export default function Pricing() {
       {/* Recuperamos tu contenedor original con su ancho exacto */}
       <div className="container-site">
         <div ref={headRef} className="mb-12 md:mb-20">
-          <h2 className="text-neutral-900 m-0 mb-3 max-w-[22ch] text-[clamp(1.75rem,4vw,3.25rem)] font-light leading-[1.1] tracking-[-0.03em]">
+          {/*<h2 className="text-neutral-900 m-0 mb-3 max-w-[22ch] text-[clamp(1.75rem,4vw,3.25rem)] font-light leading-[1.1] tracking-[-0.03em]">
+            Elige el nivel que necesita tu proyecto.
+          </h2>*/}
+          <h2
+            className="m-0 block text-black font-medium tracking-tight drop-shadow-sm"
+            style={{
+              fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
+              lineHeight: 1.05,
+            }}
+          >
             Elige el nivel que necesita tu proyecto.
           </h2>
           <p className="text-sm text-neutral-500 m-0">
@@ -92,24 +101,22 @@ export default function Pricing() {
             <div
               key={plan.name}
               ref={el => { cardRefs.current[i] = el }}
-              className={`flex flex-col gap-6 p-6 md:p-8 rounded-4xl ${
-                plan.highlighted 
-                  ? 'bg-neutral-900 ' 
-                  : 'bg-white shadow-md shadow-neutral-100'
-              }`}
+              className={`flex flex-col gap-6 p-6 md:p-8 rounded-4xl shadow-xl shadow-neutral-200 ${plan.highlighted
+                  ? 'bg-neutral-900 '
+                  : 'bg-white'
+                }`}
             >
               {/* Header */}
               <div>
                 <div className="flex items-baseline justify-between mb-2">
                   <span
-                    className={`text-sm font-medium ${
-                      plan.highlighted ? 'text-neutral-400' : 'text-neutral-500'
-                    }`}
+                    className={`text-sm font-medium ${plan.highlighted ? 'text-neutral-400' : 'text-neutral-500'
+                      }`}
                   >
                     {plan.name}
                   </span>
                   {plan.highlighted && (
-                    <span className="text-xs uppercase tracking-wider text-neutral-500">
+                    <span className="text-xs uppercase tracking-wider bg-neutral-800 px-2 py-1 rounded-md text-neutral-500">
                       Recomendado
                     </span>
                   )}
@@ -117,35 +124,31 @@ export default function Pricing() {
 
                 <div className="flex items-baseline gap-1.5 mb-3">
                   <span
-                    className={`font-light leading-none text-[clamp(2rem,4vw,2.75rem)] tracking-[-0.04em] ${
-                      plan.highlighted 
-                        ? 'bg-gradient-to-b from-neutral-400 via-neutral-100 to-neutral-500 text-transparent bg-clip-text' 
+                    className={`font-light leading-none text-[clamp(2rem,4vw,2.75rem)] tracking-[-0.04em] ${plan.highlighted
+                        ? 'text-white'
                         : 'text-neutral-900'
-                    }`}
+                      }`}
                   >
                     {plan.price}
                   </span>
                   <span
-                    className={`text-xs ${
-                      plan.highlighted ? 'text-neutral-500' : 'text-neutral-400'
-                    }`}
+                    className={`text-xs ${plan.highlighted ? 'text-neutral-500' : 'text-neutral-400'
+                      }`}
                   >
                     USD
                   </span>
                 </div>
 
                 <p
-                  className={`text-[0.8125rem] leading-relaxed mb-2 ${
-                    plan.highlighted ? 'text-neutral-400' : 'text-neutral-500'
-                  }`}
+                  className={`text-[0.8125rem] leading-relaxed mb-2 ${plan.highlighted ? 'text-neutral-400' : 'text-neutral-500'
+                    }`}
                 >
                   {plan.description}
                 </p>
 
                 <p
-                  className={`text-xs m-0 ${
-                    plan.highlighted ? 'text-neutral-500' : 'text-neutral-400'
-                  }`}
+                  className={`text-xs m-0 ${plan.highlighted ? 'text-neutral-500' : 'text-neutral-400'
+                    }`}
                 >
                   + {plan.monthly} USD / mes
                 </p>
@@ -153,9 +156,8 @@ export default function Pricing() {
 
               {/* Divisor */}
               <div
-                className={`h-px w-full ${
-                  plan.highlighted ? 'bg-neutral-800' : 'bg-neutral-200'
-                }`}
+                className={`h-px w-full ${plan.highlighted ? 'bg-neutral-800' : 'bg-neutral-200'
+                  }`}
               />
 
               {/* Features */}
@@ -163,16 +165,14 @@ export default function Pricing() {
                 {plan.features.map(feature => (
                   <li
                     key={feature}
-                    className={`flex items-center gap-2.5 text-[0.8125rem] ${
-                      plan.highlighted ? 'text-neutral-300' : 'text-neutral-900'
-                    }`}
+                    className={`flex items-center gap-2.5 text-[0.8125rem] ${plan.highlighted ? 'text-neutral-300' : 'text-neutral-900'
+                      }`}
                   >
                     <Check
                       size={13}
                       strokeWidth={1.5}
-                      className={`shrink-0 ${
-                        plan.highlighted ? 'text-neutral-500' : 'text-neutral-400'
-                      }`}
+                      className={`shrink-0 ${plan.highlighted ? 'text-neutral-500' : 'text-neutral-400'
+                        }`}
                     />
                     {feature}
                   </li>
@@ -184,11 +184,10 @@ export default function Pricing() {
                 href={getWhatsAppLink(plan.name)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center justify-center gap-2 py-3 rounded-full text-sm font-medium no-underline transition-opacity duration-200 hover:opacity-75 ${
-                  plan.highlighted 
-                    ? 'bg-neutral-50 text-neutral-900' 
+                className={`flex items-center justify-center gap-2 py-3 rounded-full text-sm font-medium no-underline transition-opacity duration-200 hover:opacity-75 ${plan.highlighted
+                    ? 'bg-neutral-50 text-neutral-900'
                     : 'bg-transparent text-neutral-900 border border-neutral-900'
-                }`}
+                  }`}
               >
                 Empezar
               </a>

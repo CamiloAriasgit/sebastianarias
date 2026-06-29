@@ -54,7 +54,7 @@ return (
             en la práctica.
           </h2>
           </div>
-          <p className="text-[0.9375rem] leading-relaxed text-neutral-400 m-0 max-w-[38ch]">
+          <p className="text-[0.9375rem] leading-relaxed text-neutral-700 m-0 max-w-[38ch]">
             Una landing construida para convertir.
             Diseño, tracking y WhatsApp estratégico
             funcionando desde el primer día.
@@ -63,7 +63,7 @@ return (
 
         <div ref={previewRef}>
           <a
-            href="https://demo.sebastianarias.com"
+            href="#demo"
             target="_blank"
             rel="noopener noreferrer"
             className="block no-underline relative rounded-[10px] overflow-hidden transition-colors duration-300 group"
@@ -78,8 +78,8 @@ return (
               
               {/* Rectángulo Negro en la Esquina Inferior Derecha (Estilo High-End) */}
               <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-black text-white px-3 py-1.5 rounded-md text-[10px] font-medium tracking-wider z-10 border border-black select-none">
-                <SquareArrowOutUpRight size={12} className="opacity-90" />
-                <span>VER DEMO</span>
+                <Info size={12} className="opacity-90" />
+                <span>PROXIMAMENTE</span>
               </div>
             </div>
 
@@ -92,7 +92,7 @@ return (
             </div>
           </a>
 
-          <p className="text-xs text-neutral-400 font-light mt-4 tracking-wide text-center">
+          <p className="text-xs text-neutral-600 font-light mt-4 tracking-wide text-center">
             Proyecto ficticio · Muestra del estándar de entrega
           </p>
         </div>

@@ -50,7 +50,7 @@ export default function Problem() {
             <span className="block">Y el problema no es la pauta.</span>
           </h2>*/}
           <h2
-            className="m-0 block text-zinc-950 font-medium tracking-tight drop-shadow-sm"
+            className="m-0 block text-neutral-950 font-medium tracking-tight drop-shadow-sm"
             style={{
               fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
               lineHeight: 1.05,
@@ -78,7 +78,7 @@ export default function Problem() {
               <h3 className="text-[1.0625rem] font-medium tracking-tight text-black m-0 mb-2">
                 {p.title}
               </h3>
-              <p className="text-sm leading-relaxed text-neutral-400 m-0">
+              <p className="text-sm leading-relaxed text-neutral-700 m-0">
                 {p.body}
               </p>
             </div>
@@ -86,7 +86,7 @@ export default function Problem() {
         </div>
         <div
           ref={el => { itemRefs.current[3] = el }}
-          className="relative mt-14 md:mt-16 rounded-2xl bg-gray-100 px-7 py-9 md:px-10 md:py-10 overflow-hidden"
+          className="relative mt-14 md:mt-16 rounded-2xl bg-gray-200/50 px-7 py-9 md:px-10 md:py-10 overflow-hidden"
         >
           <div
             className="absolute inset-0 opacity-[0.07] pointer-events-none"
@@ -101,7 +101,7 @@ export default function Problem() {
               {BLIND_SPOT.title}
             </h3>
             <div className="hidden md:block w-px self-stretch bg-neutral-800" />
-            <p className="text-sm leading-relaxed text-neutral-400 m-0 max-w-[48ch]">
+            <p className="text-sm leading-relaxed text-neutral-800 m-0 max-w-[48ch]">
               {BLIND_SPOT.body}
             </p>
           </div>
