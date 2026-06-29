@@ -77,18 +77,18 @@ export default function Pricing() {
     <section className="bg-[#f8f8ff] py-20 md:py-32">
       {/* Recuperamos tu contenedor original con su ancho exacto */}
       <div className="container-site">
-        <div ref={headRef} className="mb-12 md:mb-20">
+        <div ref={headRef} className="mb-12 md:mb-20 text-center">
           {/*<h2 className="text-neutral-900 m-0 mb-3 max-w-[22ch] text-[clamp(1.75rem,4vw,3.25rem)] font-light leading-[1.1] tracking-[-0.03em]">
             Elige el nivel que necesita tu proyecto.
           </h2>*/}
           <h2
-            className="m-0 mb-3 max-w-[22ch] block text-black font-medium tracking-tight drop-shadow-sm"
+            className="m-0 mb-3 block text-black font-medium tracking-tight drop-shadow-sm"
             style={{
               fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
               lineHeight: 1.05,
             }}
           >
-            Elige el nivel que necesita tu proyecto.
+            Elige el nivel que<br />necesita tu proyecto.
           </h2>
           <p className="text-sm text-neutral-500 m-0">
             Todos los planes incluyen hosting, despliegue y soporte mensual.
@@ -102,8 +102,8 @@ export default function Pricing() {
               key={plan.name}
               ref={el => { cardRefs.current[i] = el }}
               className={`flex flex-col gap-6 p-6 md:p-8 rounded-4xl shadow-xl shadow-neutral-200 ${plan.highlighted
-                  ? 'bg-neutral-900 '
-                  : 'bg-white'
+                  ? 'bg-neutral-900'
+                  : 'bg-white border border-[2px] border-gray-100'
                 }`}
             >
               {/* Header */}
@@ -116,7 +116,7 @@ export default function Pricing() {
                     {plan.name}
                   </span>
                   {plan.highlighted && (
-                    <span className="text-xs uppercase tracking-wider bg-neutral-800 px-2 py-1 rounded-md text-neutral-500">
+                    <span className="text-xs uppercase tracking-wider bg-indigo-800/20 px-2 py-1 rounded-md text-indigo-500">
                       Recomendado
                     </span>
                   )}
@@ -195,13 +195,13 @@ export default function Pricing() {
           ))}
         </div>
 
-        <p className="text-[0.8125rem] text-neutral-400 mt-6 text-center">
+        <p className="text-[0.8125rem] text-neutral-700 mt-6 text-center">
           ¿Tu proyecto tiene requerimientos específicos?{' '}
           <a
             href={getWhatsAppLink(undefined, true)}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-neutral-900 no-underline border-b border-neutral-200 pb-px"
+            className="text-black no-underline border-b border-neutral-900 pb-px"
           >
             Conversemos.
           </a>
