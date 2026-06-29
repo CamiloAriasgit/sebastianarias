@@ -74,7 +74,7 @@ export default function Pricing() {
   }, [])
 
   return (
-    <section className="bg-gray-200 py-20 md:py-32">
+    <section className="bg-[#f8f8ff] py-20 md:py-32">
       {/* Recuperamos tu contenedor original con su ancho exacto */}
       <div className="container-site">
         <div ref={headRef} className="mb-12 md:mb-20">
@@ -95,7 +95,7 @@ export default function Pricing() {
               className={`flex flex-col gap-6 p-6 md:p-8 rounded-4xl ${
                 plan.highlighted 
                   ? 'bg-neutral-900 ' 
-                  : 'bg-white'
+                  : 'bg-white shadow-md shadow-neutral-100'
               }`}
             >
               {/* Header */}

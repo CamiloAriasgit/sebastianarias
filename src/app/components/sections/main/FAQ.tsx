@@ -48,7 +48,7 @@ export default function FAQ() {
 
   return (
     <section
-      className="bg-gray-100"
+      className="bg-[#f8f8ff]"
       style={{ paddingBlock: 'var(--section-py)' }}
     >
       <div className="container-site">

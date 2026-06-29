@@ -37,7 +37,7 @@ export default function CTAFinal() {
 
  return (
   <section
-    className="bg-white relative overflow-hidden"
+    className="bg-[#f8f8ff] relative overflow-hidden"
     style={{ paddingBlock: 'clamp(6rem, 15vw, 14rem)' }} 
   >
       {/* Estilos para la animación de la aurora (puedes mover esto a tu global.css) */}
