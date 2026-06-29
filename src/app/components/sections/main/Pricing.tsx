@@ -116,8 +116,8 @@ export default function Pricing() {
                     {plan.name}
                   </span>
                   {plan.highlighted && (
-                    <span className="text-xs flex items-center uppercase tracking-wider font-medium bg-indigo-800/50 px-2 py-1 rounded-md text-indigo-500">
-                      <Sparkles className="inline-block mr-1" size={14} />
+                    <span className="text-xs flex items-center uppercase tracking-wider font-medium bg-indigo-800/50 px-2.5 py-1.5 rounded-md text-indigo-500">
+                      <Sparkles className="inline-block mr-1" size={12} />
                       Recomendado
                     </span>
                   )}
