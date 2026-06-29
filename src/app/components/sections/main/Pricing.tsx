@@ -116,7 +116,7 @@ export default function Pricing() {
                     {plan.name}
                   </span>
                   {plan.highlighted && (
-                    <span className="text-xs uppercase tracking-wider bg-indigo-800/20 px-2 py-1 rounded-md text-indigo-500">
+                    <span className="text-xs uppercase tracking-wider font-medium bg-indigo-800/30 px-2 py-1 rounded-md text-indigo-500">
                       Recomendado
                     </span>
                   )}
