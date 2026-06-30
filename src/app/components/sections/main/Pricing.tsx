@@ -103,7 +103,7 @@ export default function Pricing() {
               ref={el => { cardRefs.current[i] = el }}
               className={`flex flex-col gap-6 p-6 md:p-8 rounded-4xl shadow-xl shadow-neutral-200 ${plan.highlighted
                   ? 'bg-neutral-900'
-                  : 'bg-white border border-[2px] border-gray-200'
+                  : 'bg-white border border-[2px] border-gray-200/70'
                 }`}
             >
               {/* Header */}
@@ -117,7 +117,7 @@ export default function Pricing() {
                   </span>
                   {plan.highlighted && (
                     <span className="text-xs flex items-center uppercase tracking-wider font-medium bg-indigo-800/50 px-2.5 py-1.5 rounded-md text-indigo-500">
-                      <Sparkles className="inline-block mr-1" size={12} />
+                      <Sparkles className="inline-block mr-1.5" size={12} />
                       Recomendado
                     </span>
                   )}
@@ -185,9 +185,9 @@ export default function Pricing() {
                 href={getWhatsAppLink(plan.name)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center justify-center gap-2 py-3 rounded-full text-sm font-medium no-underline transition-opacity duration-200 hover:opacity-75 ${plan.highlighted
+                className={`flex items-center justify-center gap-2 py-3 rounded-full text-sm font-medium no-underline transition-opacity duration-200 hover:opacity-97 ${plan.highlighted
                     ? 'bg-neutral-50 text-neutral-900'
-                    : 'bg-transparent text-neutral-900 border border-neutral-900'
+                    : 'bg-neutral-900 text-neutral-100'
                   }`}
               >
                 Empezar
