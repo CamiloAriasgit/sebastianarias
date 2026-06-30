@@ -1,13 +1,13 @@
-// components/layout/Header.tsx
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useId } from 'react'
 
 const WHATSAPP_URL =
   'https://wa.me/573235619283?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const filterId = useId().replace(/:/g, '') // Evita caracteres inválidos en selectores SVG
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -15,32 +15,90 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Parámetros dinámicos para el look Apple Liquid Glass adaptado a un Header plano
+  const strength = scrolled ? 40 : 0
+  const chromaticAberration = scrolled ? 4 : 0
+
+  /**
+   * Generamos el mapa de desplazamiento vectorial puro (SVG) optimizado para píldoras.
+   * Usamos gradientes lineales que empujan los canales R y G simulando los bordes redondeados.
+   */
+  const svgFilterDataUri =
+    "data:image/svg+xml;utf8," +
+    encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <defs>
+        <filter id="${filterId}" color-interpolation-filters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+          
+          <feImage x="0" y="0" width="100%" height="100%" href="data:image/svg+xml;utf8,${encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+              <style>.mix { mix-blend-mode: screen; }</style>
+              <defs>
+                <linearGradient id="Y" x1="0" x2="0" y1="10%" y2="90%">
+                  <stop offset="0%" stop-color="%230F0" />
+                  <stop offset="100%" stop-color="%23000" />
+                </linearGradient>
+                <linearGradient id="X" x1="5%" x2="95%" y1="0" y2="0">
+                  <stop offset="0%" stop-color="%23F00" />
+                  <stop offset="100%" stop-color="%23000" />
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="100%" fill="%23808080" />
+              <g filter="blur(3px)">
+                <rect width="100%" height="100%" fill="%23000080" />
+                <rect width="100%" height="100%" fill="url(%23Y)" class="mix" />
+                <rect width="100%" height="100%" fill="url(%23X)" class="mix" />
+                <rect x="8" y="8" width="calc(100% - 16px)" height="calc(100% - 16px)" fill="%23808080" rx="9999px" ry="9999px" filter="blur(8px)" />
+              </g>
+            </svg>
+          `)}" result="displacementMap" />
+
+          <feDisplacementMap in="SourceGraphic" in2="displacementMap" scale="${strength + chromaticAberration * 2}" xChannelSelector="R" yChannelSelector="G" />
+          <feColorMatrix type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="displacedR" />
+
+          <feDisplacementMap in="SourceGraphic" in2="displacementMap" scale="${strength + chromaticAberration}" xChannelSelector="R" yChannelSelector="G" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="displacedG" />
+
+          <feDisplacementMap in="SourceGraphic" in2="displacementMap" scale="${strength}" xChannelSelector="R" yChannelSelector="G" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="displacedB" />
+
+          <feBlend in="displacedR" in2="displacedG" mode="screen" />
+          <feBlend in2="displacedB" mode="screen" />
+        </filter>
+      </defs>
+    </svg>`) + `#${filterId}`;
+
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-neutral-900/80 backdrop-blur-md border-b border-[var(--color-border)]'
-          : 'bg-transparent border-b border-transparent'
-      }`}
-    >
-      <div className="container-site flex items-center justify-between h-14">
-        <span
-          className={`text-sm font-medium tracking-tight transition-colors duration-300 ${
-            scrolled ? 'text-[var(--color-text-primary)]' : 'text-black'
+    <header className="fixed top-0 inset-x-0 z-50 p-4 transition-all duration-500">
+      <div
+        className={`container-site mx-auto transition-all duration-500 rounded-full ${scrolled ? 'px-6 shadow-xl' : 'px-4'
           }`}
-        >
-          Sebastian Arias
-        </span>
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`text-sm hover:text-[var(--color-text-primary)] transition-colors duration-300 no-underline ${
-            scrolled ? 'text-[var(--color-text-secondary)]' : 'text-black'
-          }`}
-        >
-          Contacto
-        </a>
+        style={{
+          backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.35)' : 'transparent',
+          backdropFilter: scrolled
+            ? `url("${svgFilterDataUri}") blur(4px) brightness(1.08) saturate(1.4)`
+            : 'none',
+          WebkitBackdropFilter: scrolled
+            ? `url("${svgFilterDataUri}") blur(4px) brightness(1.08) saturate(1.4)`
+            : 'none',
+          boxShadow: scrolled
+            ? 'inset 0 0 12px 0px rgba(255, 255, 255, 0.45), 0 12px 32px rgba(0, 0, 0, 0.12)'
+            : 'none',
+          border: scrolled ? '1px solid rgba(255, 255, 255, 0.2)' : '1px solid transparent',
+        }}
+      >
+        <div className="flex items-center justify-between h-14">
+          <span className="text-sm tracking-tight text-neutral-900 drop-shadow-[0_1px_12px_rgba(255,255,255,0.6)]">
+            Sebastian Arias
+          </span>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-neutral-900 hover:opacity-80 transition-opacity duration-300 no-underline bg-white/40 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm"
+          >
+            Contacto
+          </a>
+        </div>
       </div>
     </header>
   )
