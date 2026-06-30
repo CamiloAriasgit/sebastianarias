@@ -187,7 +187,7 @@ export default function Pricing() {
                 rel="noopener noreferrer"
                 className={`flex items-center justify-center gap-2 py-3 rounded-full text-sm font-medium no-underline transition-opacity duration-200 hover:opacity-97 ${plan.highlighted
                     ? 'bg-neutral-50 text-neutral-900'
-                    : 'bg-neutral-900 text-neutral-100'
+                    : 'bg-transparent text-neutral-900 border border-neutral-900'
                   }`}
               >
                 Empezar
