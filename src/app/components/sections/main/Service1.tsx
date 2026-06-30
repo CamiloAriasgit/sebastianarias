@@ -79,7 +79,7 @@ export default function Service() {
             Una landing construida para el momento en que el comprador decide.
           </h2>*/}
           <h2
-            className="m-0 block text-black font-medium tracking-tight drop-shadow-sm"
+            className="m-0 block text-black font-medium tracking-tighter drop-shadow-sm"
             style={{
               fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
               lineHeight: 1.05,

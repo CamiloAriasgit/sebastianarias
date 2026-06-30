@@ -96,7 +96,7 @@ export default function Process() {
                         Sin fricciones.
                     </h2>*/}
                     <h2
-                        className="m-0 block text-black font-medium tracking-tight drop-shadow-sm"
+                        className="m-0 block text-black font-medium tracking-tighter drop-shadow-sm"
                         style={{
                             fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
                             lineHeight: 1.05,
@@ -116,13 +116,13 @@ export default function Process() {
             se cumple en cada paso siguiente.
           */}
                     <div
-                        className="relative w-full max-w-2xl rounded-[28px] bg-gray-200/70 px-8 py-12 md:px-12 md:py-14 overflow-hidden"
+                        className="relative w-full max-w-2xl rounded-[28px] bg-white border border-gray-200/70 px-8 py-12 md:px-12 md:py-14 shadow-xl shadow-gray-200 overflow-hidden"
                         style={{ minHeight: '21.25rem' }} // <-- Cambiado de 340 a 21.25rem (340 / 16)
                     >
                         {/* Marca de progreso integrada al marco, no al contenido */}
-                        <div className="absolute top-0 left-0 right-0 h-px bg-neutral-100">
+                        <div className="absolute top-0 left-0 right-0 h-px bg-neutral-00">
                             <motion.div
-                                className="h-full bg-neutral-700"
+                                className="h-full bg-neutral-00"
                                 initial={false}
                                 animate={{ width: `${((active + 1) / STEPS.length) * 100}%` }}
                                 transition={{ type: 'spring', stiffness: 200, damping: 30 }}
@@ -181,7 +181,7 @@ export default function Process() {
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: 80, opacity: 0, scale: 0.9 }}
                             transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-                            className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-gray-200/20 backdrop-blur-md rounded-full shadow-[0_12px_40px_-12px_rgba(0,0,0,0.7)] w-full md:w-auto max-w-full gap-1"
+                            className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-white backdrop-blur-md rounded-full shadow-xl shadow-gray-200 border border-gray-200 w-full md:w-auto max-w-full gap-1"
                         >
                             {STEPS.map((step, i) => {
                                 const StepIcon = step.icon

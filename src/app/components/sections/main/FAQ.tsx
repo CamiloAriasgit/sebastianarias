@@ -58,7 +58,7 @@ export default function FAQ() {
           style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}
         >
           <h2
-            className="m-0 block text-black text-center font-medium tracking-tight drop-shadow-sm"
+            className="m-0 block text-black text-center font-medium tracking-tighter drop-shadow-sm"
             style={{
               fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
               lineHeight: 1.05,

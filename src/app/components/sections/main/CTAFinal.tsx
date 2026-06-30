@@ -81,10 +81,10 @@ export default function CTAFinal() {
               letterSpacing: '-0.04em',
             }}
           >
-            <span className="block font-medium text-black">
+            <span className="block font-medium text-black tracking-tighter">
               Tu próximo proyecto
             </span>
-            <span className="block font-medium text-black">
+            <span className="block font-medium text-black tracking-tighter">
               merece más leads.
             </span>
           </h2>
