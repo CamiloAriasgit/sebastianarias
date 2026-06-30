@@ -94,7 +94,7 @@ export default function Header() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium text-neutral-900 hover:opacity-80 transition-opacity duration-300 no-underline bg-white/40 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm"
+            className="text-sm font-medium text-neutral-900 hover:opacity-80 transition-opacity duration-300 no-underline  px-3 py-1.5"
           >
             Contacto
           </a>
