@@ -101,9 +101,9 @@ export default function Pricing() {
             <div
               key={plan.name}
               ref={el => { cardRefs.current[i] = el }}
-              className={`flex flex-col gap-6 p-6 md:p-8 rounded-4xl shadow-xl shadow-neutral-200 ${plan.highlighted
+              className={`flex flex-col gap-6 p-6 md:p-8 rounded-4xl shadow-xl shadow-neutral-200/60 ${plan.highlighted
                   ? 'bg-neutral-900'
-                  : 'bg-white border border-[2px] border-gray-200/70'
+                  : 'bg-white border border-neutral-200'
                 }`}
             >
               {/* Header */}
