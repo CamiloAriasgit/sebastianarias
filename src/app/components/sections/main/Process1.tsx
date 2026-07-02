@@ -181,7 +181,7 @@ export default function Process() {
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: 80, opacity: 0, scale: 0.9 }}
                             transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-                            className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-black backdrop-blur-md rounded-full shadow-xl shadow-gray-200 w-full md:w-auto max-w-full gap-1"
+                            className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-neutral-950 backdrop-blur-md rounded-full shadow-xl shadow-gray-200 w-full md:w-auto max-w-full gap-1"
                         >
                             {STEPS.map((step, i) => {
                                 const StepIcon = step.icon
