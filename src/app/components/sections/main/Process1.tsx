@@ -90,11 +90,6 @@ export default function Process() {
         >
             <div className="container-site">
                 <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] flex flex-col items-center text-center">
-                    {/* Título centrado en la sección 
-                    <h2 className="text-display-md text-black m-0 max-w-[28ch]">
-                        De briefing a publicado. <br />
-                        Sin fricciones.
-                    </h2>*/}
                     <h2
                         className="m-0 block text-black font-medium tracking-tighter drop-shadow-sm"
                         style={{
@@ -108,18 +103,10 @@ export default function Process() {
                 </div>
 
                 <div className="flex flex-col items-center justify-center w-full">
-                    {/*
-            MARCO FIJO: esta tarjeta es el contenedor predecible que faltaba.
-            Su tamaño, borde y posición NUNCA cambian al cambiar de paso —
-            solo lo que hay dentro se anima. El usuario aprende en el primer
-            clic dónde y cómo va a cambiar el contenido, y esa expectativa
-            se cumple en cada paso siguiente.
-          */}
                     <div
-                        className="relative w-full max-w-2xl rounded-[28px] bg-white border border-gray-200/70 px-8 py-12 md:px-12 md:py-14 shadow-xl shadow-gray-200 overflow-hidden"
-                        style={{ minHeight: '21.25rem' }} // <-- Cambiado de 340 a 21.25rem (340 / 16)
+                        className="relative w-full max-w-2xl rounded-[28px] bg-white border border-neutral-200 px-8 py-12 md:px-12 md:py-14 shadow-xl shadow-neutral-200/60 overflow-hidden"
+                        style={{ minHeight: '21.25rem' }}
                     >
-                        {/* Marca de progreso integrada al marco, no al contenido */}
                         <div className="absolute top-0 left-0 right-0 h-px bg-neutral-00">
                             <motion.div
                                 className="h-full bg-neutral-00"
@@ -172,7 +159,6 @@ export default function Process() {
                 </div>
             </div>
 
-            {/* Navbar Fijo — sin cambios respecto al original */}
             <div className="fixed bottom-6 left-0 right-0 z-50 pointer-events-none flex justify-center px-4">
                 <AnimatePresence>
                     {isSectionInView && (
