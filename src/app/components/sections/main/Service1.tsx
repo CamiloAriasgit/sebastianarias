@@ -1,4 +1,3 @@
-// components/sections/Service.tsx
 'use client'
 
 import { useEffect, useRef } from 'react'
@@ -38,8 +37,8 @@ const FEATURES = [
 ]
 
 export default function Service() {
-  const headRef  = useRef<HTMLDivElement>(null)
-  const rowRefs  = useRef<(HTMLDivElement | null)[]>([])
+  const headRef = useRef<HTMLDivElement>(null)
+  const rowRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -106,13 +105,15 @@ export default function Service() {
               {/* Imagen */}
               <div
                 className="relative w-full rounded-2xl overflow-hidden order-1"
-                style={{ aspectRatio: '4/3', direction: 'ltr' }}
+                style={{ direction: 'ltr' }}
               >
                 <Image
                   src={f.image}
                   alt={f.title}
-                  fill
-                  sizes="(max-width: 768px) 90vw, 45vw"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: '100%', height: 'auto' }}
                   className="object-cover"
                   quality={88}
                   priority={i === 0}
