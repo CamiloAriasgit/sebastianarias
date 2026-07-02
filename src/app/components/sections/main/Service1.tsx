@@ -121,7 +121,7 @@ export default function Service() {
 
               {/* Texto */}
               <div className="order-2 max-w-[480px]" style={{ direction: 'ltr' }}>
-                <h3 className="text-[1.25rem] md:text-[1.5rem] font-medium tracking-tight text-black m-0 mb-3" style={{ letterSpacing: '-0.015em' }}>
+                <h3 className="text-[1.25rem] md:text-[1.5rem] font-medium tracking-tighter text-black m-0 mb-3" style={{ letterSpacing: '-0.015em' }}>
                   {f.title}
                 </h3>
                 <p className="text-[0.9375rem] leading-relaxed text-neutral-900 m-0">

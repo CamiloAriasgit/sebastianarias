@@ -23,31 +23,42 @@ export default function Header() {
    * Generamos el mapa de desplazamiento vectorial puro (SVG) optimizado para píldoras.
    * Usamos gradientes lineales que empujan los canales R y G simulando los bordes redondeados.
    */
+  const headerHeight = 56;
+  const pillRadius = 28;
+
   const svgFilterDataUri =
     "data:image/svg+xml;utf8," +
     encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
       <defs>
-        <filter id="${filterId}" color-interpolation-filters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+        <filter id="${filterId}" color-interpolation-filters="sRGB" x="-10%" y="-10%" width="120%" height="120%">
           
           <feImage x="0" y="0" width="100%" height="100%" href="data:image/svg+xml;utf8,${encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
-              <style>.mix { mix-blend-mode: screen; }</style>
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="${headerHeight}" preserveAspectRatio="none">
+              <style>
+                .mix { mix-blend-mode: screen; }
+                .edge-top { fill: url(%23Y-top); }
+                .edge-bottom { fill: url(%23Y-bottom); }
+                .edge-left { fill: url(%23X-left); }
+                .edge-right { fill: url(%23X-right); }
+              </style>
               <defs>
-                <linearGradient id="Y" x1="0" x2="0" y1="10%" y2="90%">
-                  <stop offset="0%" stop-color="%230F0" />
-                  <stop offset="100%" stop-color="%23000" />
-                </linearGradient>
-                <linearGradient id="X" x1="5%" x2="95%" y1="0" y2="0">
-                  <stop offset="0%" stop-color="%23F00" />
-                  <stop offset="100%" stop-color="%23000" />
-                </linearGradient>
+                <linearGradient id="Y-top" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="%230F0" /><stop offset="100%" stop-color="%23000" /></linearGradient>
+                <linearGradient id="Y-bottom" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="%23000" /><stop offset="100%" stop-color="%230F0" /></linearGradient>
+                <linearGradient id="X-left" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="%23F00" /><stop offset="100%" stop-color="%23000" /></linearGradient>
+                <linearGradient id="X-right" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="%23000" /><stop offset="100%" stop-color="%23F00" /></linearGradient>
               </defs>
+              
               <rect width="100%" height="100%" fill="%23808080" />
-              <g filter="blur(3px)">
+              
+              <g filter="blur(4px)">
                 <rect width="100%" height="100%" fill="%23000080" />
-                <rect width="100%" height="100%" fill="url(%23Y)" class="mix" />
-                <rect width="100%" height="100%" fill="url(%23X)" class="mix" />
-                <rect x="8" y="8" width="calc(100% - 16px)" height="calc(100% - 16px)" fill="%23808080" rx="9999px" ry="9999px" filter="blur(8px)" />
+                
+                <rect width="100%" height="${pillRadius}px" class="edge-top mix" />
+                <rect y="${headerHeight - pillRadius}px" width="100%" height="${pillRadius}px" class="edge-bottom mix" />
+                <rect width="${pillRadius}px" height="100%" class="edge-left mix" />
+                <rect x="calc(100% - ${pillRadius}px)" width="${pillRadius}px" height="100%" class="edge-right mix" />
+                
+                <rect x="4px" y="4px" width="calc(100% - 8px)" height="calc(100% - 8px)" fill="%23808080" rx="${pillRadius}px" ry="${pillRadius}px" filter="blur(4px)" />
               </g>
             </svg>
           `)}" result="displacementMap" />

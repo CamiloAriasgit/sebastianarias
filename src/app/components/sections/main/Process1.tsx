@@ -181,7 +181,7 @@ export default function Process() {
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: 80, opacity: 0, scale: 0.9 }}
                             transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-                            className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-white backdrop-blur-md rounded-full shadow-xl shadow-gray-200 border border-gray-200 w-full md:w-auto max-w-full gap-1"
+                            className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-black backdrop-blur-md rounded-full shadow-xl shadow-gray-200 w-full md:w-auto max-w-full gap-1"
                         >
                             {STEPS.map((step, i) => {
                                 const StepIcon = step.icon
@@ -193,7 +193,7 @@ export default function Process() {
                                         aria-label={`Ver paso ${step.number}: ${step.title}`}
                                         className="relative flex-1 md:flex-none p-3 md:px-5 md:py-2.5 bg-transparent border-none cursor-pointer rounded-full flex items-center justify-center gap-2 transition-colors duration-200 select-none outline-none focus-visible:ring-2 focus-visible:ring-white/60 group"
                                         style={{
-                                            color: active === i ? 'white' : 'black'
+                                            color: active === i ? 'white' : '#999999'
                                         }}
                                     >
                                         {active === i && (
