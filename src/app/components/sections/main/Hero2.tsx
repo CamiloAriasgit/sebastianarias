@@ -208,7 +208,7 @@ export default function Hero() {
         <section className="relative w-full padding-block py-40 md:py-30 bg-[#f8f8ff] overflow-hidden">
             <div className="relative z-20 container-site w-full max-w-3xl px-4 flex flex-col items-center justify-center text-center gap-6">
                 <h1
-                    className="m-0 block text-zinc-950 font-medium tracking-tighter drop-shadow-sm"
+                    className="m-0 block text-neutral-950 font-medium tracking-tighter drop-shadow-sm"
                     style={{
                         fontSize: 'clamp(1.9rem, 4vw, 4.5rem)',
                         lineHeight: 1.05,

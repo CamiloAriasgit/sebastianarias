@@ -27,7 +27,7 @@ const FEATURES = [
   {
     title: 'Entrega en 10-14 días, una vez recibido el contenido.',
     body: 'El proceso está definido desde el briefing hasta la publicación: estructura, diseño, desarrollo, integraciones y revisiones. Sin fases abiertas ni retrasos indefinidos. En dos semanas el proyecto está activo y recibiendo tráfico.',
-    image: '/images/calendar-icon.png',
+    image: '/images/calendar-number.png',
   },
   {
     title: 'Soporte continuo.',
