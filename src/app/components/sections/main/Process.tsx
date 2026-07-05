@@ -16,6 +16,8 @@ interface Step {
     title: string
     body: string
     icon: LucideIcon
+    bg: string
+    mode: 'light-text' | 'dark-text'
 }
 
 const STEPS: Step[] = [
@@ -23,31 +25,41 @@ const STEPS: Step[] = [
         number: '01',
         title: 'Briefing',
         body: 'Entendemos el proyecto, el comprador objetivo, y lo que necesita sentir al llegar a la página. Sin formularios largos — una conversación.',
-        icon: MessageSquare
+        icon: MessageSquare,
+        bg: 'linear-gradient(135deg, #1D4B3E 0%, #2F6E5A 100%)',
+        mode: 'light-text'
     },
     {
         number: '02',
         title: 'Estructura',
         body: 'Se define la arquitectura de conversión: qué secciones, en qué orden, con qué intención. El esqueleto antes del diseño.',
-        icon: Layers
+        icon: Layers,
+        bg: 'linear-gradient(135deg, #2B3A55 0%, #45607F 100%)',
+        mode: 'light-text'
     },
     {
         number: '03',
         title: 'Diseño y desarrollo',
         body: 'Se construye sobre Next.js con animaciones, tipografía y paleta alineadas a la marca del proyecto. Carga extremadamente veloz.',
-        icon: Palette
+        icon: Palette,
+        bg: 'linear-gradient(135deg, #3B2A4A 0%, #5C4373 100%)',
+        mode: 'light-text'
     },
     {
         number: '04',
         title: 'Integraciones',
         body: 'GTM, GA4, formulario de leads y WhatsApp configurados y probados. Cada evento de conversión verificado antes de publicar.',
-        icon: Settings
+        icon: Settings,
+        bg: 'linear-gradient(135deg, #E4CDA0 0%, #D9B67F 100%)',
+        mode: 'dark-text'
     },
     {
         number: '05',
         title: 'Publicación',
         body: 'El sitio queda activo en el dominio del cliente. Desde ese momento, cada visita es medible y cada lead es rastreable.',
-        icon: Rocket
+        icon: Rocket,
+        bg: 'linear-gradient(135deg, #8C3B2E 0%, #B5553F 100%)',
+        mode: 'light-text'
     },
 ]
 
@@ -81,38 +93,51 @@ export default function Process() {
     }, [])
 
     const ActiveIcon = STEPS[active].icon
+    const isLight = STEPS[active].mode === 'light-text'
+
+    const textPrimary = isLight ? 'rgba(255,255,255,0.96)' : 'rgba(0,0,0,0.88)'
+    const textSecondary = isLight ? 'rgba(255,255,255,0.78)' : 'rgba(0,0,0,0.65)'
+    const textMuted = isLight ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.45)'
+    const iconBg = isLight ? 'rgba(255,255,255,0.16)' : 'rgba(0,0,0,0.08)'
+    const trackBg = isLight ? 'rgba(255,255,255,0.18)' : 'rgba(0,0,0,0.1)'
+    const fillBg = isLight ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.7)'
 
     return (
         <section
             ref={sectionRef}
-            className="bg-neutral-900 relative"
+            className="bg-[#f8f8ff] relative"
             style={{ paddingBlock: 'var(--section-py)' }}
         >
             <div className="container-site">
-                {/* Título centrado en la sección */}
                 <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] flex flex-col items-center text-center">
-                    <h2 className="text-display-md text-white m-0 max-w-[28ch]">
+                    <h2
+                        className="m-0 block text-black font-medium tracking-tighter drop-shadow-sm"
+                        style={{
+                            fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
+                            lineHeight: 1.05,
+                        }}
+                    >
                         De briefing a publicado. <br />
                         Sin fricciones.
                     </h2>
                 </div>
 
                 <div className="flex flex-col items-center justify-center w-full">
-                    {/*
-            MARCO FIJO: esta tarjeta es el contenedor predecible que faltaba.
-            Su tamaño, borde y posición NUNCA cambian al cambiar de paso —
-            solo lo que hay dentro se anima. El usuario aprende en el primer
-            clic dónde y cómo va a cambiar el contenido, y esa expectativa
-            se cumple en cada paso siguiente.
-          */}
                     <div
-                        className="relative w-full max-w-2xl rounded-[28px] bg-neutral-800/50 px-8 py-12 md:px-12 md:py-14 overflow-hidden"
-                        style={{ minHeight: '21.25rem' }} // <-- Cambiado de 340 a 21.25rem (340 / 16)
+                        className="relative w-full max-w-2xl rounded-[28px] px-8 py-12 md:px-12 md:py-14 shadow-xl shadow-neutral-200/60 overflow-hidden"
+                        style={{
+                            minHeight: '21.25rem',
+                            background: STEPS[active].bg,
+                            transition: 'background 0.5s ease'
+                        }}
                     >
-                        {/* Marca de progreso integrada al marco, no al contenido */}
-                        <div className="absolute top-0 left-0 right-0 h-px bg-neutral-800">
+                        <div
+                            className="absolute top-0 left-0 right-0 h-px"
+                            style={{ backgroundColor: trackBg, transition: 'background-color 0.5s ease' }}
+                        >
                             <motion.div
-                                className="h-full bg-neutral-300"
+                                className="h-full"
+                                style={{ backgroundColor: fillBg }}
                                 initial={false}
                                 animate={{ width: `${((active + 1) / STEPS.length) * 100}%` }}
                                 transition={{ type: 'spring', stiffness: 200, damping: 30 }}
@@ -136,23 +161,33 @@ export default function Process() {
                                         initial={{ rotate: -10, scale: 0.8 }}
                                         animate={{ rotate: 0, scale: 1 }}
                                         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                                        className="mb-6 p-4 rounded-full bg-neutral-800 text-white"
+                                        className="mb-6 p-4 rounded-full"
+                                        style={{ backgroundColor: iconBg }}
                                     >
-                                        <ActiveIcon className="w-7 h-7" />
+                                        <ActiveIcon className="w-7 h-7" style={{ color: textPrimary }} />
                                     </motion.div>
 
-                                    <p className="text-label text-neutral-500 mb-3">
+                                    <p className="text-label mb-3" style={{ color: textMuted }}>
                                         Paso {STEPS[active].number} de {STEPS.length}
                                     </p>
 
                                     <h3
-                                        className="text-white m-0 mb-4"
-                                        style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 300, letterSpacing: '-0.025em', lineHeight: 1.15 }}
+                                        className="m-0 mb-4"
+                                        style={{
+                                            fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
+                                            fontWeight: 300,
+                                            letterSpacing: '-0.025em',
+                                            lineHeight: 1.15,
+                                            color: textPrimary
+                                        }}
                                     >
                                         {STEPS[active].title}
                                     </h3>
 
-                                    <p className="text-[0.9375rem] leading-relaxed text-neutral-300 m-0 max-w-[42ch]">
+                                    <p
+                                        className="text-[0.9375rem] leading-relaxed m-0 max-w-[42ch]"
+                                        style={{ color: textSecondary }}
+                                    >
                                         {STEPS[active].body}
                                     </p>
                                 </motion.div>
@@ -162,7 +197,6 @@ export default function Process() {
                 </div>
             </div>
 
-            {/* Navbar Fijo — sin cambios respecto al original */}
             <div className="fixed bottom-6 left-0 right-0 z-50 pointer-events-none flex justify-center px-4">
                 <AnimatePresence>
                     {isSectionInView && (
@@ -171,7 +205,7 @@ export default function Process() {
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: 80, opacity: 0, scale: 0.9 }}
                             transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-                            className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-neutral-800 rounded-full shadow-[0_12px_40px_-12px_rgba(0,0,0,0.7)] w-full md:w-auto max-w-full gap-1"
+                            className="pointer-events-auto flex items-center justify-between md:justify-start p-1.5 bg-neutral-950 backdrop-blur-md rounded-full shadow-xl shadow-gray-200 w-full md:w-auto max-w-full gap-1"
                         >
                             {STEPS.map((step, i) => {
                                 const StepIcon = step.icon
@@ -183,13 +217,13 @@ export default function Process() {
                                         aria-label={`Ver paso ${step.number}: ${step.title}`}
                                         className="relative flex-1 md:flex-none p-3 md:px-5 md:py-2.5 bg-transparent border-none cursor-pointer rounded-full flex items-center justify-center gap-2 transition-colors duration-200 select-none outline-none focus-visible:ring-2 focus-visible:ring-white/60 group"
                                         style={{
-                                            color: active === i ? 'var(--color-bg-primary, #000)' : 'var(--color-text-secondary)'
+                                            color: active === i ? 'white' : '#999999'
                                         }}
                                     >
                                         {active === i && (
                                             <motion.div
                                                 layoutId="active-pill-fixed"
-                                                className="absolute inset-0 bg-[var(--color-text-primary)] rounded-full"
+                                                className="absolute inset-0 bg-neutral-800 rounded-full"
                                                 transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                                                 style={{ zIndex: 0 }}
                                             />

@@ -63,7 +63,7 @@ return (
 
         <div ref={previewRef}>
           <a
-            href="#demo"
+            href="https://demo.sebastianarias.com"
             target="_blank"
             rel="noopener noreferrer"
             className="block no-underline relative rounded-[10px] overflow-hidden transition-colors duration-300 group"
@@ -71,15 +71,15 @@ return (
             {/* Imagen de fondo */}
             <div className="w-full relative flex items-center justify-center">
               <img 
-                src="/images/hero-demo.png" 
+                src="/images/hero-demo-cabins.png" 
                 alt="Vista previa de la Demo" 
                 className="w-full h-auto block"
               />
               
               {/* Rectángulo Negro en la Esquina Inferior Derecha (Estilo High-End) */}
               <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-black text-white px-3 py-1.5 rounded-md text-[10px] font-medium tracking-wider z-10 border border-black select-none">
-                <Info size={12} className="opacity-90" />
-                <span>PROXIMAMENTE</span>
+                <SquareArrowOutUpRight size={12} className="opacity-90" />
+                <span>VER DEMO</span>
               </div>
             </div>
 
