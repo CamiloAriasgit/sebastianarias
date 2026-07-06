@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState, useMemo } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const WHATSAPP_URL =
     'https://wa.me/573235619283?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
@@ -185,78 +185,6 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
     )
 }
 
-// PRNG determinístico: misma grilla siempre, sin diferencias servidor/cliente
-function mulberry32(seed: number) {
-    return function () {
-        seed |= 0
-        seed = (seed + 0x6d2b79f5) | 0
-        let t = Math.imul(seed ^ (seed >>> 15), 1 | seed)
-        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
-        return ((t ^ (t >>> 14)) >>> 0) / 4294967296
-    }
-}
-
-// Filas/columnas de referencia usadas solo para calcular el degradé de probabilidad por fila.
-// El número real de columnas que se ven lo decide el CSS (auto-fill), esto es una aproximación.
-const GRID_ROWS = 8
-const GRID_COLS = 9
-const TOTAL_CELLS = GRID_ROWS * GRID_COLS
-
-const GRID_CELLS = (() => {
-    const rand = mulberry32(42)
-    return Array.from({ length: TOTAL_CELLS }).map((_, i) => {
-        const rowIdx = Math.floor(i / GRID_COLS)
-        const verticalProgress = rowIdx / (GRID_ROWS - 1) // 0 = abajo, 1 = arriba
-
-        // Entre más arriba (verticalProgress -> 1), menos probabilidad de azul
-        const blueProb = Math.max(0.04, 0.85 - verticalProgress * 0.8)
-        const grayProb = Math.max(0.03, 0.18 - verticalProgress * 0.14)
-
-        const r = rand()
-        let bgColorClass = 'bg-transparent'
-        if (r < blueProb) {
-            bgColorClass = 'bg-blue-100/80'
-        } else if (r < blueProb + grayProb) {
-            bgColorClass = 'bg-gray-100/70'
-        }
-
-        return { id: i, bgColorClass }
-    })
-})()
-
-function GridBackground() {
-    const cells = useMemo(() => GRID_CELLS, [])
-
-    return (
-        <div
-            aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 pointer-events-none w-full flex justify-center overflow-hidden"
-            style={{
-                zIndex: 0,
-                height: '55%', // sube un poco por debajo de la mitad
-                maskImage: 'linear-gradient(to top, black 15%, transparent 85%)',
-                WebkitMaskImage: 'linear-gradient(to top, black 15%, transparent 85%)',
-            }}
-        >
-            <div
-                className="grid w-full h-full p-4"
-                style={{
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(clamp(2.75rem, 6vw, 5.5rem), 1fr))',
-                    gridAutoRows: 'clamp(2.75rem, 6vw, 5.5rem)',
-                    gap: 'clamp(0.5rem, 1.2vw, 0.9rem)',
-                }}
-            >
-                {cells.map(cell => (
-                    <div
-                        key={cell.id}
-                        className={`rounded-sm ${cell.bgColorClass}`}
-                    />
-                ))}
-            </div>
-        </div>
-    )
-}
-
 export default function Hero() {
     const paraRef = useRef<HTMLParagraphElement>(null)
     const [stackVisible, setStackVisible] = useState(false)
@@ -278,15 +206,12 @@ export default function Hero() {
 
     return (
         <section className="relative w-full padding-block py-40 md:py-30 bg-[#f8f8ff] overflow-hidden">
-            {/* Background Grid */}
-            <GridBackground />
-
             <div className="relative z-20 container-site w-full max-w-3xl px-4 flex flex-col items-center justify-center text-center gap-6">
                 <h1
-                    className="m-0 block text-neutral-950 font-medium tracking-tighter drop-shadow-sm"
+                    className="m-0 block text-neutral-950 font-semibold tracking-tighter drop-shadow-sm"
                     style={{
-                        fontSize: 'clamp(1.9rem, 4vw, 4.5rem)',
-                        lineHeight: 1.05,
+                        fontSize: 'clamp(3rem, 4vw, 4.5rem)',
+                        lineHeight: 0.9,
                     }}
                 >
                     Landing pages para proyectos inmobiliarios
