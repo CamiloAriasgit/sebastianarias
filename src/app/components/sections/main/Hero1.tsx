@@ -214,7 +214,7 @@ export default function Hero() {
                         lineHeight: 0.9,
                     }}
                 >
-                    Landing pages para proyectos inmobiliarios
+                    Landing pages para <br className='hidden md:block'/> proyectos inmobiliarios
                 </h1>
 
                 <p
@@ -231,6 +231,9 @@ export default function Hero() {
                     className="flex bg-black justify-center items-center gap-2 py-3 w-44 rounded-full text-white shadow-lg shadow-black/10 transition-all duration-300 hover:bg-neutral-800"
                 >
                     Agendar llamada
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
+                        <path d="M2 6.5h9M7.5 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
                 </a>
 
                 <div className="w-full mt-8">
