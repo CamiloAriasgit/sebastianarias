@@ -133,18 +133,18 @@ export default function Process() {
                                         initial={{ rotate: -10, scale: 0.8 }}
                                         animate={{ rotate: 0, scale: 1 }}
                                         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                                        className="mb-6 p-4 rounded-full bg-white text-neutral-700"
+                                        className="mb-3 p-4 rounded-full bg-white text-neutral-900"
                                     >
-                                        <ActiveIcon className="w-7 h-7" />
+                                        <ActiveIcon className="w-9 h-9" />
                                     </motion.div>
 
-                                    <p className="text-label text-neutral-400 mb-3">
+                                    {/*<p className="text-label text-neutral-400 mb-3">
                                         Paso {STEPS[active].number} de {STEPS.length}
-                                    </p>
+                                    </p>*/}
 
                                     <h3
-                                        className="text-black m-0 mb-4"
-                                        style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 300, letterSpacing: '-0.025em', lineHeight: 1.15 }}
+                                        className="text-neutral-900 font-medium tracking-tighter m-0 mb-4"
+                                        style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', lineHeight: 1.15 }}
                                     >
                                         {STEPS[active].title}
                                     </h3>
