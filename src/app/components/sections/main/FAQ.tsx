@@ -1,8 +1,7 @@
-// components/sections/FAQ.tsx
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Plus } from 'lucide-react'
+import { ChevronRight } from 'lucide-react'
 
 const FAQS = [
   { q: '¿El dominio está incluido?', a: 'El dominio lo registra el cliente a su nombre — eso garantiza que siempre sea de su propiedad. La configuración técnica y los DNS corren por nuestra cuenta.' },
@@ -48,7 +47,7 @@ export default function FAQ() {
 
   return (
     <section
-      className="bg-[#f8f8ff]"
+      className="bg-[#F4F6F9]"
       style={{ paddingBlock: 'var(--section-py)' }}
     >
       <div className="container-site">
@@ -68,12 +67,12 @@ export default function FAQ() {
           </h2>
         </div>
 
-        <div className="border-t border-neutral-300">
+        <div>
           {FAQS.map((faq, i) => (
             <div
               key={faq.q}
               ref={el => { itemRefs.current[i] = el }}
-              className="border-b border-neutral-300"
+              className="bg-white rounded-xl px-6 mb-3"
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
@@ -88,11 +87,11 @@ export default function FAQ() {
                 >
                   {faq.q}
                 </span>
-                <Plus
+                <ChevronRight
                   size={16}
                   strokeWidth={1.5}
                   className="shrink-0 text-neutral-400 transition-transform duration-300"
-                  style={{ transform: open === i ? 'rotate(45deg)' : 'rotate(0deg)', color: open === i ? 'white' : undefined }}
+                  style={{ transform: open === i ? 'rotate(90deg)' : 'rotate(0deg)', color: open === i ? 'white' : undefined }}
                 />
               </button>
 
