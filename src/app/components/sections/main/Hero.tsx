@@ -205,7 +205,7 @@ export default function Hero() {
     }, [])
 
     return (
-        <section className="relative w-full padding-block py-40 md:py-30 bg-[#f8f8ff] overflow-hidden">
+        <section className="relative w-full padding-block py-40 md:py-30 bg-[#EDEFF3] overflow-hidden">
             <div className="relative z-20 container-site w-full max-w-3xl px-4 flex flex-col items-center justify-center text-center gap-6">
                 <h1
                     className="m-0 block text-neutral-950 font-medium tracking-tighter drop-shadow-sm"

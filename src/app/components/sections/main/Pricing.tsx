@@ -74,7 +74,7 @@ export default function Pricing() {
   }, [])
 
   return (
-    <section className="bg-[#f8f8ff] py-20 md:py-32">
+    <section className="bg-[#EDEFF3] py-20 md:py-32">
       {/* Recuperamos tu contenedor original con su ancho exacto */}
       <div className="container-site">
         <div ref={headRef} className="mb-12 md:mb-20 text-center">
