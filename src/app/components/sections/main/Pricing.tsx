@@ -90,7 +90,7 @@ export default function Pricing() {
           >
             Elige el nivel que<br />necesita tu proyecto.
           </h2>
-          <p className="text-sm text-neutral-500 m-0">
+          <p className="text-sm text-neutral-900 m-0">
             Todos los planes incluyen hosting, despliegue y soporte mensual.
           </p>
         </div>
@@ -133,7 +133,7 @@ export default function Pricing() {
                     {plan.price}
                   </span>
                   <span
-                    className={`text-xs ${plan.highlighted ? 'text-neutral-500' : 'text-neutral-400'
+                    className={`text-xs ${plan.highlighted ? 'text-neutral-300' : 'text-neutral-700'
                       }`}
                   >
                     USD
@@ -141,14 +141,14 @@ export default function Pricing() {
                 </div>
 
                 <p
-                  className={`text-[0.8125rem] leading-relaxed mb-2 ${plan.highlighted ? 'text-neutral-400' : 'text-neutral-500'
+                  className={`text-[0.8125rem] leading-relaxed mb-2 ${plan.highlighted ? 'text-neutral-300 font-light' : 'text-neutral-700'
                     }`}
                 >
                   {plan.description}
                 </p>
 
                 <p
-                  className={`text-xs m-0 ${plan.highlighted ? 'text-neutral-500' : 'text-neutral-400'
+                  className={`text-xs m-0 ${plan.highlighted ? 'text-neutral-300' : 'text-neutral-700'
                     }`}
                 >
                   + {plan.monthly} USD / mes

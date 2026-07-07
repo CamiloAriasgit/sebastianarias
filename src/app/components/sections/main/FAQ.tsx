@@ -72,7 +72,7 @@ export default function FAQ() {
             <div
               key={faq.q}
               ref={el => { itemRefs.current[i] = el }}
-              className="bg-white rounded-xl px-6 mb-3"
+              className="bg-white rounded-xl px-6 mb-3 shadow-xl shadow-neutral-200/40 border border-neutral-200"
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
@@ -90,7 +90,7 @@ export default function FAQ() {
                 <ChevronRight
                   size={16}
                   strokeWidth={1.5}
-                  className="shrink-0 text-neutral-400 transition-transform duration-300"
+                  className="shrink-0 text-neutral-500 transition-transform duration-300"
                   style={{ transform: open === i ? 'rotate(90deg)' : 'rotate(0deg)', color: open === i ? 'white' : undefined }}
                 />
               </button>
