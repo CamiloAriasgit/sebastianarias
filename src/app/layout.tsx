@@ -1,6 +1,7 @@
 // app/layout.tsx
 import type { Metadata } from 'next'
 import './globals.css'
+import { GoogleTagManager } from '@next/third-parties/google'; //
 
 export const metadata: Metadata = {
   title: 'Sebastian Arias — Desarrollo web para proyectos inmobiliarios',
@@ -39,6 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className="scroll-smooth">
+      <GoogleTagManager gtmId="GTM-P2SQSJ5W" />
       <body className="antialiased">
         {children}
       </body>
