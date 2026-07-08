@@ -19,7 +19,7 @@ const WaIcon = () => (
 
 export default function Header() {
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+    <header className="fixed top-0 inset-x-0 z-50 bg-gradient-to-b from-[#EDEFF3] via-[#EDEFF3] to-[#EDEFF3]/90 backdrop-blur-md">
       <div className="container-site mx-auto px-4">
         <div className="flex items-center justify-between h-15">
           
@@ -28,8 +28,8 @@ export default function Header() {
             <Image
               src="/images/sebastian-profile.jpg" // Cambia esta ruta por la de tu imagen
               alt="Sebastian Arias"
-              width={32}
-              height={32}
+              width={35}
+              height={35}
               className="rounded-full object-cover"
             />
             <span className="text-sm font-medium tracking-tight text-gray-900">
