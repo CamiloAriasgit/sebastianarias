@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { name: 'Proceso', href: '#proceso' },
   { name: 'Demo', href: '#demo' },
   { name: 'Planes', href: '#planes' },
-  { name: 'FAQ', href: '#faq' },
+  { name: 'Preguntas', href: '#faq' },
 ]
 
 const WaIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
@@ -129,7 +129,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMenu}
-            className="flex items-center justify-center gap-3 w-full py-3.5 px-6 rounded-full bg-neutral-900 text-white font-medium hover:bg-neutral-800 transition-colors text-base"
+            className="flex items-center justify-center gap-3 w-full py-3.5 px-6 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 transition-colors text-base"
           >
             <WaIcon className="w-5 h-5 fill-white" />
             <span>Agendar llamada</span>

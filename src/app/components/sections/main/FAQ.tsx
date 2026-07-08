@@ -47,6 +47,7 @@ export default function FAQ() {
 
   return (
     <section
+      id="faq"
       className="bg-[#EDEFF3]"
       style={{ paddingBlock: 'var(--section-py)' }}
     >
