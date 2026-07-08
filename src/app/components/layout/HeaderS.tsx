@@ -1,3 +1,4 @@
+// components/layout/Header.tsx
 'use client'
 
 import { useState } from 'react'
@@ -101,7 +102,7 @@ export default function Header() {
       </div>
 
       <div
-        className={`md:hidden fixed top-15 inset-x-0 bottom-0 bg-[#EDEFF3] transition-all duration-300 flex flex-col justify-between p-6 ${isOpen
+        className={`md:hidden fixed top-15 inset-x-0 h-[calc(100vh-3.75rem)] bg-[#EDEFF3] transition-all duration-300 flex flex-col justify-start p-6 ${isOpen
           ? 'opacity-100 pointer-events-auto translate-y-0'
           : 'opacity-0 pointer-events-none -translate-y-4'
           }`}
@@ -119,7 +120,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="pt-6 pb-[env(safe-area-inset-bottom,0px)]">
+        <div className="pt-6">
           <a
             href={WHATSAPP_URL}
             target="_blank"
