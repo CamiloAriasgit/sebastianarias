@@ -1,48 +1,53 @@
 // components/layout/Header.tsx
-'use client'
-
-import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 const WHATSAPP_URL =
   'https://wa.me/573235619283?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
 
+const WaIcon = () => (
+  <svg
+    viewBox="0 0 30.667 30.667"
+    width="20"
+    height="20"
+    fill="currentColor"
+  >
+    <path
+      d="M30.667,14.939c0,8.25-6.74,14.938-15.056,14.938c-2.639,0-5.118-0.675-7.276-1.857L0,30.667l2.717-8.017 c-1.37-2.25-2.159-4.892-2.159-7.712C0.559,6.688,7.297,0,15.613,0C23.928,0.002,30.667,6.689,30.667,14.939z M15.61,2.382 c-6.979,0-12.656,5.634-12.656,12.56c0,2.748,0.896,5.292,2.411,7.362l-1.58,4.663l4.862-1.545c2,1.312,4.393,2.076,6.963,2.076 c6.979,0,12.658-5.633,12.658-12.559C28.27,8.016,22.59,2.382,15.61,2.382z M23.214,18.38c-0.094-0.151-0.34-0.243-0.708-0.427 c-0.367-0.184-2.184-1.069-2.521-1.189c-0.34-0.123-0.586-0.185-0.832,0.182c-0.243,0.367-0.951,1.191-1.168,1.437 c-0.215,0.245-0.43,0.276-0.799,0.095c-0.369-0.186-1.559-0.57-2.969-1.817c-1.097-0.972-1.838-2.169-2.052-2.536 c-0.217-0.366-0.022-0.564,0.161-0.746c0.165-0.165,0.369-0.428,0.554-0.643c0.185-0.213,0.246-0.364,0.369-0.609 c0.121-0.245,0.06-0.458-0.031-0.643c-0.092-0.184-0.829-1.984-1.138-2.717c-0.307-0.732-0.614-0.611-0.83-0.611 c-0.215,0-0.461-0.03-0.707-0.03S9.897,8.215,9.56,8.582s-1.291,1.252-1.291,3.054c0,1.804,1.321,3.543,1.506,3.787 c0.186,0.243,2.554,4.062,6.305,5.528c3.753,1.465,3.753,0.976,4.429,0.914c0.678-0.062,2.184-0.885,2.49-1.739 C23.307,19.268,23.307,18.533,23.214,18.38z"
+    />
+  </svg>
+)
+
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
-    // Agregamos un padding superior (pt-4) para que el header "flote" al hacer scroll
-    <header className="fixed top-0 inset-x-0 z-50 p-4 transition-all duration-300">
-      <div 
-        className={`container-site mx-auto transition-all duration-300 ${
-          scrolled
-            ? 'bg-neutral-900/80 backdrop-blur-md border border-[var(--color-border)] rounded-full shadow-lg px-6'
-            : 'bg-transparent border border-transparent px-4'
-        }`}
-      >
-        <div className="flex items-center justify-between h-14">
-          <span
-            className={`text-sm font-medium tracking-tight transition-colors duration-300 ${
-              scrolled ? 'text-[var(--color-text-primary)]' : 'text-black'
-            }`}
-          >
-            Sebastian Arias
-          </span>
+    <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+      <div className="container-site mx-auto px-4">
+        <div className="flex items-center justify-between h-15">
+          
+          {/* Perfil: Imagen redonda + Nombre */}
+          <div className="flex items-center gap-3">
+            <Image
+              src="/images/sebastian-profile.jpg" // Cambia esta ruta por la de tu imagen
+              alt="Sebastian Arias"
+              width={32}
+              height={32}
+              className="rounded-full object-cover"
+            />
+            <span className="text-sm font-medium tracking-tight text-gray-900">
+              Sebastian Arias
+            </span>
+          </div>
+
+          {/* Enlace WhatsApp */}
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`text-sm hover:text-[var(--color-text-primary)] transition-colors duration-300 no-underline ${
-              scrolled ? 'text-[var(--color-text-secondary)]' : 'text-black'
-            }`}
+            aria-label="Contacto por WhatsApp"
+            className="flex items-center justify-center p-2 rounded-full text-gray-700 hover:text-green-600 hover:bg-gray-100 transition-colors duration-200"
           >
-            Contacto
+            <WaIcon />
           </a>
+
         </div>
       </div>
     </header>
