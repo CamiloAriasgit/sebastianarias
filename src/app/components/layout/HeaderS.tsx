@@ -1,14 +1,24 @@
 // components/layout/Header.tsx
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
 
 const WHATSAPP_URL =
   'https://wa.me/573235619283?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
 
-const WaIcon = () => (
+const NAV_LINKS = [
+  { name: 'Servicio', href: '#servicio' },
+  { name: 'Proceso', href: '#proceso' },
+  { name: 'Demo', href: '#demo' },
+  { name: 'Planes', href: '#planes' },
+  { name: 'FAQ', href: '#faq' },
+]
+
+const WaIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg
     viewBox="0 0 30.667 30.667"
-    width="20"
-    height="20"
+    className={className}
     fill="currentColor"
   >
     <path
@@ -18,36 +28,112 @@ const WaIcon = () => (
 )
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleMenu = () => setIsOpen(!isOpen)
+  const closeMenu = () => setIsOpen(false)
+
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-gradient-to-b from-[#EDEFF3] via-[#EDEFF3] to-[#EDEFF3]/90 backdrop-blur-md">
       <div className="container-site mx-auto px-4">
         <div className="flex items-center justify-between h-15">
-          
+
           {/* Perfil: Imagen redonda + Nombre */}
           <div className="flex items-center gap-3">
             <Image
-              src="/images/sebastian-profile.jpg" // Cambia esta ruta por la de tu imagen
+              src="/images/sebastian-profile.jpg"
               alt="Sebastian Arias"
               width={35}
               height={35}
               className="rounded-full object-cover"
             />
-            <span className="text-sm font-medium tracking-tight text-gray-900">
+            <span className="text-sm font-medium tracking-tight text-neutral-900">
               Sebastian Arias
             </span>
           </div>
 
-          {/* Enlace WhatsApp */}
+          {/* Menú Desktop */}
+          <nav className="hidden md:flex items-center gap-6">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-sm font-medium text-neutral-700 hover:text-black transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+
+          {/* Acciones Derecha */}
+          <div className="flex items-center gap-1">
+            {/* Enlace WhatsApp Icono */}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Contacto por WhatsApp"
+              className="flex items-center justify-center p-2 rounded-full text-neutral-800 hover:text-black transition-colors duration-200"
+            >
+              <WaIcon />
+            </a>
+
+            {/* Botón Hamburguesa (Solo Móvil) */}
+            <button
+              onClick={toggleMenu}
+              aria-label="Abrir menú"
+              className="md:hidden flex flex-col justify-center items-end w-9 h-9 gap-1.5 p-2 text-neutral-800"
+            >
+              <span
+                className={`w-5 h-[2px] bg-neutral-900 rounded-full transition-all duration-300 ease-in-out ${isOpen ? 'rotate-45 translate-y-[7.5px]' : ''
+                  }`}
+              />
+              <span
+                className={`w-5 h-[2px] bg-neutral-900 rounded-full transition-all duration-300 ease-in-out ${isOpen ? 'opacity-0' : ''
+                  }`}
+              />
+              <span
+                className={`h-[2px] bg-neutral-900 rounded-full transition-all duration-300 ease-in-out ${isOpen ? 'w-5 -rotate-45 -translate-y-[7.5px]' : 'w-2.5'
+                  }`}
+              />
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Menú Desplegable Móvil */}
+      <div
+        className={`md:hidden fixed top-15 inset-x-0 h-[calc(100vh-3.75rem)] bg-[#EDEFF3] transition-all duration-300 flex flex-col justify-between p-6 ${isOpen
+            ? 'opacity-100 pointer-events-auto translate-y-0'
+            : 'opacity-0 pointer-events-none -translate-y-4'
+          }`}
+      >
+        <nav className="flex flex-col gap-6 mt-4">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={closeMenu}
+              className="text-2xl font-medium text-neutral-900 hover:text-black transition-colors"
+            >
+              {link.name}
+            </a>
+          ))}
+        </nav>
+
+        {/* Botón Agendar llamada Móvil */}
+        <div className="pt-6">
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Contacto por WhatsApp"
-            className="flex items-center justify-center p-2 rounded-full text-gray-700 hover:text-green-600 hover:bg-gray-100 transition-colors duration-200"
+            onClick={closeMenu}
+            className="flex items-center justify-center gap-3 w-full py-3.5 px-6 rounded-xl bg-black text-white font-medium hover:bg-neutral-800 transition-colors text-base"
           >
-            <WaIcon />
+            <WaIcon className="w-5 h-5 fill-white" />
+            <span>Agendar llamada</span>
           </a>
-
         </div>
       </div>
     </header>
