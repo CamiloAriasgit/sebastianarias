@@ -104,7 +104,7 @@ export default function Header() {
 
       {/* Menú Desplegable Móvil */}
       <div
-        className={`md:hidden fixed top-15 inset-x-0 h-[calc(100vh-3.75rem)] bg-[#EDEFF3] transition-all duration-300 flex flex-col justify-between p-6 ${isOpen
+        className={`md:hidden fixed top-15 inset-x-0 h-[calc(100vh-3.75rem)] bg-[#EDEFF3] transition-all duration-300 flex flex-col justify-start p-6 ${isOpen
             ? 'opacity-100 pointer-events-auto translate-y-0'
             : 'opacity-0 pointer-events-none -translate-y-4'
           }`}
@@ -115,7 +115,7 @@ export default function Header() {
               key={link.name}
               href={link.href}
               onClick={closeMenu}
-              className="text-2xl font-medium text-neutral-900 hover:text-black transition-colors"
+              className="text-2xl font-medium tracking-tighter text-neutral-900 hover:text-black transition-colors"
             >
               {link.name}
             </a>
@@ -129,7 +129,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMenu}
-            className="flex items-center justify-center gap-3 w-full py-3.5 px-6 rounded-xl bg-black text-white font-medium hover:bg-neutral-800 transition-colors text-base"
+            className="flex items-center justify-center gap-3 w-full py-3.5 px-6 rounded-full bg-neutral-900 text-white font-medium hover:bg-neutral-800 transition-colors text-base"
           >
             <WaIcon className="w-5 h-5 fill-white" />
             <span>Agendar llamada</span>
