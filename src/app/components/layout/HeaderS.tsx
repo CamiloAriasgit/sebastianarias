@@ -3,6 +3,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const WHATSAPP_URL =
   'https://wa.me/573235619283?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
@@ -38,8 +39,10 @@ export default function Header() {
       <div className="container-site mx-auto px-4">
         <div className="flex items-center justify-between h-15">
 
-          {/* Perfil: Imagen redonda + Nombre */}
-          <div className="flex items-center gap-3">
+          <Link
+            href="https://sebastianarias.com"
+            className="flex items-center gap-3 no-underline"
+          >
             <Image
               src="/images/sebastian-profile.jpg"
               alt="Sebastian Arias"
@@ -50,9 +53,8 @@ export default function Header() {
             <span className="text-sm font-medium tracking-tight text-neutral-900">
               Sebastian Arias
             </span>
-          </div>
+          </Link>
 
-          {/* Menú Desktop */}
           <nav className="hidden md:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
               <a
@@ -65,9 +67,7 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Acciones Derecha */}
           <div className="flex items-center gap-1">
-            {/* Enlace WhatsApp Icono */}
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -78,7 +78,6 @@ export default function Header() {
               <WaIcon />
             </a>
 
-            {/* Botón Hamburguesa (Solo Móvil) */}
             <button
               onClick={toggleMenu}
               aria-label="Abrir menú"
@@ -102,11 +101,10 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Menú Desplegable Móvil */}
       <div
         className={`md:hidden fixed top-15 inset-x-0 h-[calc(100vh-3.75rem)] bg-[#EDEFF3] transition-all duration-300 flex flex-col justify-start p-6 ${isOpen
-            ? 'opacity-100 pointer-events-auto translate-y-0'
-            : 'opacity-0 pointer-events-none -translate-y-4'
+          ? 'opacity-100 pointer-events-auto translate-y-0'
+          : 'opacity-0 pointer-events-none -translate-y-4'
           }`}
       >
         <nav className="flex flex-col gap-6 mt-4">
@@ -122,7 +120,6 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Botón Agendar llamada Móvil */}
         <div className="pt-6">
           <a
             href={WHATSAPP_URL}
