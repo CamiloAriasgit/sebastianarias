@@ -50,9 +50,14 @@ export default function Header() {
               height={35}
               className="rounded-full object-cover"
             />
-            <span className="text-sm font-medium tracking-tight text-neutral-900">
-              Sebastian Arias
-            </span>
+            <div className="flex flex-col justify-center space-y-[-4px]">
+              <span className="text-sm font-medium tracking-tight text-neutral-900">
+                Sebastian Arias
+              </span>
+              <span className="text-xs text-neutral-500 font-normal">
+                Software Developer
+              </span>
+            </div>
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
