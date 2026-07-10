@@ -55,7 +55,7 @@ export default function Header() {
                 Sebastian Arias
               </span>
               <span className="text-xs text-neutral-500 font-normal">
-                Software Developer
+                Developer
               </span>
             </div>
           </Link>
