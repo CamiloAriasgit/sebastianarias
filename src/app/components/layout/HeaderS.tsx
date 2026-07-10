@@ -54,8 +54,8 @@ export default function Header() {
               <span className="text-sm font-medium tracking-tight text-neutral-900">
                 Sebastian Arias
               </span>
-              <span className="text-xs text-neutral-500 font-normal">
-                Developer
+              <span className="text-xs text-neutral-500/80 font-normal">
+                Web Developer
               </span>
             </div>
           </Link>
