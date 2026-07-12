@@ -86,8 +86,8 @@ export default function Service() {
           >
             Una landing construida<br className='md:hidden'/> para el<br className='hidden md:block' /> momento en que<br className='md:hidden'/> el comprador decide.
           </h2>
-          <p className="text-[0.9375rem] leading-relaxed text-black m-0 max-w-[42ch]">
-            Cada elemento tiene un propósito. Nada está ahí por decoración.
+          <p className="text-[0.9375rem] leading-relaxed text-black m-0 max-w-[47ch]">
+            Cada elemento tiene un propósito.<br className='md:hidden' /> Nada está ahí por decoración.
           </p>
         </div>
 
