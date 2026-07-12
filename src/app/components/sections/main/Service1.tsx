@@ -104,7 +104,7 @@ export default function Service() {
             >
               {/* Imagen */}
               <div
-                className="relative w-full rounded-2xl overflow-hidden order-1"
+                className="relative w-full rounded-md overflow-hidden order-1"
                 style={{ direction: 'ltr' }}
               >
                 <Image
