@@ -84,7 +84,7 @@ export default function Service() {
               lineHeight: 1.05,
             }}
           >
-            Una landing construida para el momento en que el comprador decide.
+            Una landing construida<br className='md:hidden'/> para el<br className='hidden md:block' /> momento en que<br className='md:hidden'/> el comprador decide.
           </h2>
           <p className="text-[0.9375rem] leading-relaxed text-black m-0 max-w-[42ch]">
             Cada elemento tiene un propósito. Nada está ahí por decoración.
