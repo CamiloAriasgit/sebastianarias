@@ -80,7 +80,7 @@ export default function Service() {
           <h2
             className="m-0 block text-black font-medium tracking-tighter drop-shadow-sm"
             style={{
-              fontSize: 'clamp(1.9rem, 3vw, 3.5rem)',
+              fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
               lineHeight: 1.05,
             }}
           >
