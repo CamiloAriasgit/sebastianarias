@@ -113,16 +113,14 @@ export default function FAQ() {
         {/* Bloque inferior: Centrado de posición y texto original con el link embebido */}
         <div className="text-center flex justify-center w-full">
           <p className="text-[0.9375rem] leading-relaxed text-neutral-700 pt-10 m-0 max-w-[38ch]">
+            ¿Algo más? Escríbenos directamente y lo resolvemos en la misma{" "}
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline hover:text-black transition-colors duration-200 ease-out cursor-pointer"
+              className="inline-flex items-center gap-1 px-2 rounded-md bg-gradient-to-bl from-blue-200 via-blue-100/70 to-blue-200 hover:opacity-90 transition-opacity"
             >
-              ¿Algo más? Escríbenos directamente y lo resolvemos en la misma{" "}
-              <span className="inline-flex items-center gap-1 px-2 rounded-md bg-gradient-to-bl from-blue-200 via-blue-100/70 to-blue-200">
-                conversación <ArrowUpRight className="w-4 h-4 inline" />
-              </span>
+              conversación <ArrowUpRight className="w-4 h-4" />
             </a>
           </p>
         </div>
