@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, ArrowUpRight, } from 'lucide-react'
 
 const FAQS = [
   { q: '¿El dominio está incluido?', a: 'El dominio lo registra el cliente a su nombre — eso garantiza que siempre sea de su propiedad. La configuración técnica y los DNS corren por nuestra cuenta.' },
@@ -13,7 +13,7 @@ const FAQS = [
 
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
-  const headRef  = useRef<HTMLDivElement>(null)
+  const headRef = useRef<HTMLDivElement>(null)
   const itemRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
@@ -29,13 +29,13 @@ export default function FAQ() {
       },
       { threshold: 0.1 }
     )
-    ;[headRef.current, ...itemRefs.current].forEach((el, i) => {
-      if (!el) return
-      el.style.opacity = '0'
-      el.style.transform = 'translateY(16px)'
-      el.style.transition = `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 60}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 60}ms`
-      observer.observe(el)
-    })
+      ;[headRef.current, ...itemRefs.current].forEach((el, i) => {
+        if (!el) return
+        el.style.opacity = '0'
+        el.style.transform = 'translateY(16px)'
+        el.style.transition = `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 60}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 60}ms`
+        observer.observe(el)
+      })
     return () => observer.disconnect()
   }, [])
 
@@ -113,13 +113,16 @@ export default function FAQ() {
         {/* Bloque inferior: Centrado de posición y texto original con el link embebido */}
         <div className="text-center flex justify-center w-full">
           <p className="text-[0.9375rem] leading-relaxed text-neutral-700 pt-10 m-0 max-w-[38ch]">
-            <a 
+            <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline hover:text-black underline underline-offset-4 decoration-neutral-700 hover:decoration-black transition-colors duration-200 ease-out cursor-pointer"
+              className="inline hover:text-black transition-colors duration-200 ease-out cursor-pointer"
             >
-              ¿Algo más? Escríbenos directamente y lo resolvemos en la misma conversación.
+              ¿Algo más? Escríbenos directamente y lo resolvemos en la misma{" "}
+              <span className="inline-flex items-center gap-1 px-2 rounded-md bg-gradient-to-bl from-blue-200 via-blue-100/70 to-blue-200">
+                conversación <ArrowUpRight className="w-4 h-4 inline" />
+              </span>
             </a>
           </p>
         </div>
