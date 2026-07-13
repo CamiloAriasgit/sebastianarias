@@ -26,9 +26,9 @@
   --color-light-muted:   #888888;
 
   /* Acento */
-  --color-accent:      #c8a96e;
+  --color-accent:      #ffffff;
   --color-accent-dark: #b8933a;
-  --color-accent-dim:  rgba(200,169,110,0.12);
+  --color-accent-dim:  #101010;
 
   /* Espaciado de sección */
   --section-py: clamp(5rem, 10vw, 9rem);
@@ -59,7 +59,7 @@
 
   ::selection {
     background: var(--color-accent-dim);
-    color: var(--color-accent);
+    color: #ffffff;
   }
 
   ::-webkit-scrollbar { width: 3px; }

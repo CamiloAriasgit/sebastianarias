@@ -105,7 +105,7 @@ export default function Process() {
 
                 <div className="flex flex-col items-center justify-center w-full">
                     <div
-                        className="relative w-full  rounded-xl bg-white border border-neutral-200 px-8 py-12 md:px-12 md:py-14 shadow-xl shadow-neutral-200/60 overflow-hidden"
+                        className="relative w-full  rounded-xl bg-gradient-to-bl from-white to-white border border-neutral-200 px-8 py-12 md:px-12 md:py-14 shadow-xl shadow-neutral-200/60 overflow-hidden"
                         style={{ minHeight: '21.25rem' }}
                     >
                         <div className="absolute top-0 left-0 right-0 h-px bg-neutral-00">
@@ -134,7 +134,7 @@ export default function Process() {
                                         initial={{ rotate: -10, scale: 0.8 }}
                                         animate={{ rotate: 0, scale: 1 }}
                                         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                                        className="mb-3 p-4 rounded-full bg-white text-neutral-900"
+                                        className="mb-3 p-4 rounded-full text-neutral-900"
                                     >
                                         <ActiveIcon className="w-9 h-9" />
                                     </motion.div>
