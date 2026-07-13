@@ -50,24 +50,23 @@ export default function CTAFinal() {
 
   return (
     <section
-      className="bg-[#EDEFF3] relative overflow-hidden"
-      style={{ paddingBlock: 'clamp(6rem, 15vw, 14rem)' }} 
+      className="bg-[#EDEFF3] relative overflow-hidden pb-6"
     >
       <div className="container-site relative z-10">
-        {/* Card con la imagen y bordes redondeados xl */}
-        <div className="relative rounded-xl overflow-hidden py-16 px-6 md:py-24">
+        {/* Card con la imagen y centrado flex en móvil y escritorio */}
+        <div className="relative rounded-xl overflow-hidden py-16 px-2 md:py-24 flex flex-col justify-center items-center min-h-[400px]">
           
-          {/* Imagen importada desde la carpeta public */}
+          {/* Imagen importada desde /images/cta-bg.png */}
           <Image
-            src="/images/cta-bg.png" // Cambia esta ruta según el nombre exacto de tu imagen en la carpeta public
+            src="/images/cta-bg.png"
             alt="Fondo CTA"
             fill
             className="object-cover"
             priority
           />
 
-          {/* Headline grande — como el hero */}
-          <div ref={headRef} className="flex flex-col items-center text-center gap-6 pb-30 md:pb-0 relative z-10">
+          {/* Headline grande — se eliminó pb-30 para asegurar el centrado vertical */}
+          <div ref={headRef} className="flex flex-col items-center text-center gap-6 relative z-10">
             <h2
               className="m-0"
               style={{
