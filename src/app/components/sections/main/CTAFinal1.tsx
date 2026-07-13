@@ -83,7 +83,7 @@ export default function CTAFinal() {
                 merece más leads.
               </span>
             </h2>
-            <p className="text-sm leading-relaxed text-black m-0 max-w-[40ch]">
+            <p className="text-sm leading-relaxed text-black m-0 max-w-[40ch] hidden md:block">
               El tráfico ya lo tienes.
               Lo que sigue es no desperdiciarlo.
             </p>
