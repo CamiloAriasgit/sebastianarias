@@ -59,7 +59,7 @@ export default function CTAFinal() {
           
           {/* Imagen importada desde la carpeta public */}
           <Image
-            src="/cta-bg.jpg" // Cambia esta ruta según el nombre exacto de tu imagen en la carpeta public
+            src="/images/cta-bg.png" // Cambia esta ruta según el nombre exacto de tu imagen en la carpeta public
             alt="Fondo CTA"
             fill
             className="object-cover"
