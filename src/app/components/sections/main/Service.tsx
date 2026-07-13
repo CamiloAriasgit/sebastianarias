@@ -8,32 +8,32 @@ const FEATURES = [
     {
         title: 'Estética de producto, no de agencia.',
         body: 'El diseño sigue los estándares visuales que definen las marcas digitales de alto nivel hoy — tipografía con criterio, espaciado generoso, jerarquía clara. No reinventamos la rueda: aplicamos lo que ya funciona, adaptado a la identidad de tu proyecto.',
-        image: '/images/code-and-interface.png',
+        image: '/images/service-fronted.png',
     },
     {
         title: 'WhatsApp estratégico.',
         body: 'El botón no es un accesorio — es el punto de conversión. Está ubicado donde el inversionista lo necesita, en el momento en que decide, con un mensaje predefinido que reduce la fricción al mínimo. El contacto ocurre solo.',
-        image: '/images/whatsapp-button.png',
+        image: '/images/service-whatsapp-button.png',
     },
     {
         title: 'GTM + GA4.',
         body: 'Cada clic, cada scroll, cada intención de contacto queda registrada como un evento real. Tu equipo de pauta deja de optimizar a ciegas y empieza a tomar decisiones con datos. La inversión en anuncios rinde más desde el primer mes.',
-        image: '/images/ga4-metrics.png',
+        image: '/images/service-ga4.png',
     },
     {
         title: 'Velocidad real.',
         body: 'Construido en Next.js y desplegado en Vercel. Core Web Vitals en verde en móvil y desktop. Cada segundo de carga que se elimina es un inversionista que no se va antes de leer el primer párrafo.',
-        image: '/images/page-speed.png',
+        image: '/images/service-speed-page.png',
     },
     {
         title: 'Entrega en 10-14 días, una vez recibido el contenido.',
         body: 'El proceso está definido desde el briefing hasta la publicación: estructura, diseño, desarrollo, integraciones y revisiones. Sin fases abiertas ni retrasos indefinidos. En dos semanas el proyecto está activo y recibiendo tráfico.',
-        image: '/images/calendar-icon.png',
+        image: '/images/service-calendar.png',
     },
     {
         title: 'Soporte continuo.',
         body: 'El sitio evoluciona con el proyecto. Si el copy necesita ajustarse después de ver el comportamiento inicial del tráfico, o si una sección deja de funcionar, está cubierto. No es mantenimiento reactivo — es acompañamiento activo.',
-        image: '/images/edit-text.png',
+        image: '/images/service-edition-page.png',
     },
 ]
 
