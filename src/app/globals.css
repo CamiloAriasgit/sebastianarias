@@ -49,7 +49,7 @@
   }
 
   body {
-    background-color: var(--color-bg);
+    background-color: #EDEFF3;
     color: var(--color-text-primary);
     font-family: var(--font-sans);
     font-weight: 400;

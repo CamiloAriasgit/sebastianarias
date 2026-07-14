@@ -68,12 +68,11 @@ export default function CTAFinal() {
           {/* Headline grande — se eliminó pb-30 para asegurar el centrado vertical */}
           <div ref={headRef} className="flex flex-col items-center text-center gap-6 relative z-10">
             <h2
-              className="m-0"
+              className="m-0 tracking-tighter"
               style={{
                 fontSize: 'clamp(2rem, 4vw, 4.5rem)',
                 fontWeight: 300,
                 lineHeight: 1.02,
-                letterSpacing: '-0.04em',
               }}
             >
               <span className="block font-medium text-black tracking-tighter">
