@@ -102,7 +102,7 @@ export default function NotFound() {
 
     return (
         <section
-            className="relative w-full padding-block py-40 md:py-32 bg-[#EDEFF3] overflow-hidden"
+            className="relative w-full min-h-[100svh] py-10 padding-block bg-[#EDEFF3] overflow-hidden"
             style={{
                 backgroundImage:
                     'repeating-linear-gradient(0deg, rgba(161,161,170,0.14) 0px, rgba(161,161,170,0.14) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, rgba(161,161,170,0.14) 0px, rgba(161,161,170,0.14) 1px, transparent 1px, transparent 40px)',
