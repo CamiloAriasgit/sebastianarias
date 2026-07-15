@@ -32,7 +32,7 @@ export default function NotFound() {
 
         {/* Carpeta */}
         <div
-          className="relative z-10 px-6 py-8 sm:px-10 sm:py-10 rounded-sm shadow-[0_8px_0_rgba(43,36,29,0.08),0_2px_6px_rgba(43,36,29,0.15)]"
+          className="relative z-10 px-2 py-8 sm:px-10 sm:py-10 rounded-sm shadow-[0_8px_0_rgba(43,36,29,0.08),0_2px_6px_rgba(43,36,29,0.15)]"
           style={{ background: '#DCC9A0', border: '1px solid rgba(43,36,29,0.2)' }}
         >
           {/* Clip */}
@@ -127,7 +127,7 @@ export default function NotFound() {
           <div className="mt-8 flex justify-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center h-10 px-7 text-xs tracking-widest uppercase rounded-full transition-transform active:scale-95 hover:brightness-110"
+              className="inline-flex text-center items-center justify-center h-10 px-7 text-xs tracking-widest uppercase rounded-full transition-transform active:scale-95 hover:brightness-110"
               style={{ background: '#9C2B2B', color: '#EFE6CD', fontFamily: 'var(--font-mono)', fontWeight: 500 }}
             >
               Volver a territorio conocido
