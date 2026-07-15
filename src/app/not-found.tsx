@@ -13,7 +13,7 @@ export default function NotFound() {
 
   return (
     <main
-      className={`${stamp.variable} ${mono.variable} min-h-screen flex items-center justify-center px-4 py-16`}
+      className={`${stamp.variable} ${mono.variable} min-h-[100svh] flex items-center justify-center px-4 py-16`}
       style={{
         background: '#EFE6CD',
         backgroundImage:
@@ -47,11 +47,11 @@ export default function NotFound() {
 
           {/* Encabezado del expediente */}
           <div
-            className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] pb-3 mb-5"
+            className="flex flex-col items-start justify-start text-[10px] uppercase tracking-[0.2em] pb-3 mb-5"
             style={{ borderBottom: '1px dashed rgba(43,36,29,0.35)', color: '#5A4E3E', fontFamily: 'var(--font-mono)' }}
           >
             <span>Unidad de páginas perdidas</span>
-            <span>Caso N.º 404</span>
+            <span className="font-semibold">Caso N.º 404</span>
           </div>
 
           <div className="flex gap-5">
