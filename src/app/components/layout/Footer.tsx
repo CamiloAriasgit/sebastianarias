@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="flex flex-col gap-10">
 
           {/* Perfil */}
-          <div className='flex justify-between'>
+          <div className='flex justify-between items-center'>
             <div className="flex items-center gap-3">
               <div className="relative">
                 <Image
@@ -42,7 +42,7 @@ export default function Footer() {
                 <span className="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-neutral-900" />
               </div>
               <div className="flex flex-col space-y-[-2px]">
-                <span className="text-sm font- tracking-tight text-white">
+                <span className="text-sm tracking-tight text-white">
                   Sebastian Arias
                 </span>
                 <span className="flex items-center gap-1.5 text-xs text-neutral-400 font-normal">
@@ -50,11 +50,13 @@ export default function Footer() {
                 </span>
               </div>
             </div>
+
+            {/* Botón Desktop (Oculto por defecto en móvil, flex en desktop) */}
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex bg-neutral-800 justify-center items-center gap-2 py-3 w-35 rounded-full text-white transition-all duration-300 hover:bg-neutral-800 group"
+              className="hidden md:flex bg-neutral-800 justify-center items-center gap-2 py-3 w-35 rounded-full text-white transition-all duration-300 hover:bg-neutral-800 group"
             >
               <WaIcon />
               Contacto
@@ -76,6 +78,17 @@ export default function Footer() {
               </a>
             ))}
           </nav>
+
+          {/* Botón Móvil (Flex por defecto en móvil, oculto en desktop) */}
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="md:hidden flex bg-neutral-800 justify-center items-center gap-2 py-3 w-full rounded-full text-white transition-all duration-300 hover:bg-neutral-800 group"
+          >
+            <WaIcon />
+            Contacto
+          </a>
         </div>
 
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col-reverse md:flex-row items-center justify-between gap-3">
