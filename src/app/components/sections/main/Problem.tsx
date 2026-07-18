@@ -58,13 +58,13 @@ export default function Problem() {
       <div className="container-site">
         <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] text-center flex flex-col items-center">
           <h2
-            className="m-0 block text-neutral-950 font-medium tracking-tighter drop-shadow-sm"
+            className="mt-20 block text-neutral-950 font-medium tracking-tighter drop-shadow-sm"
             style={{
               fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
               lineHeight: 1.05,
             }}
           >
-            La mayoría de landings inmobiliarias no convierten. Y el problema no es la pauta.
+            La mayoría de landings inmobiliarias no convierten. <br className='hidden md:block'/> Y el problema no es la pauta.
           </h2>
         </div>
 
@@ -77,8 +77,8 @@ export default function Problem() {
                 ref={el => { itemRefs.current[i] = el }}
                 className="flex flex-col"
               >
-                <div className="flex items-center gap-2 mb-3">
-                  <Icon className="w-4 h-4 text-neutral-800 shrink-0" strokeWidth={2.2} />
+                <div className="flex flex-col items-start gap-3 mb-3">
+                  <Icon className="w-5 h-5 text-neutral-800 shrink-0" strokeWidth={2.2} />
                   <h3 className="text-[1.0625rem] font-medium tracking-tight text-black m-0">
                     {p.title}
                   </h3>

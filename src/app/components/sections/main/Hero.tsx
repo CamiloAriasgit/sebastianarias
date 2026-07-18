@@ -197,6 +197,31 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
     )
 }
 
+
+const BarsBackground = () => (
+    <div
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+        style={{
+            // Modificado: El desvanecimiento empieza mucho más abajo (30%) y se vuelve totalmente transparente al 75%
+            maskImage: 'linear-gradient(to top, black 30%, transparent 75%)',
+            WebkitMaskImage: 'linear-gradient(to top, black 30%, transparent 75%)',
+        }}
+    >
+        <div className="w-full h-full flex items-stretch">
+            {[...Array(5)].map((_, i) => (
+                <div
+                    key={i}
+                    className={`flex-1 h-full ${i >= 3 ? 'hidden md:block' : ''}`}
+                    style={{
+                        background:
+                            'linear-gradient(90deg, #9bc1ff, #a8cbfc, #adcafa, #a8cbfc, #9bc1ff, #6ea3f3)',
+                    }}
+                />
+            ))}
+        </div>
+    </div>
+)
+
 export default function Hero() {
     const paraRef = useRef<HTMLParagraphElement>(null)
     const [stackVisible, setStackVisible] = useState(false)
@@ -218,6 +243,8 @@ export default function Hero() {
 
     return (
         <section className="relative w-full padding-block py-40 md:py-30 bg-[#EDEFF3] overflow-hidden">
+            <BarsBackground />
+
             <div className="relative z-20 container-site w-full max-w-3xl px-4 flex flex-col items-center justify-center text-center gap-6">
                 <h1
                     className="m-0 block text-neutral-950 font-medium tracking-tighter drop-shadow-sm"
