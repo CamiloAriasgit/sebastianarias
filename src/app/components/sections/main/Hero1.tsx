@@ -202,9 +202,8 @@ const BarsBackground = () => (
     <div
         className="absolute inset-0 overflow-hidden pointer-events-none"
         style={{
-            // Modificado: El desvanecimiento empieza mucho más abajo (30%) y se vuelve totalmente transparente al 75%
-            maskImage: 'linear-gradient(to top, black 30%, transparent 75%)',
-            WebkitMaskImage: 'linear-gradient(to top, black 30%, transparent 75%)',
+            maskImage: 'linear-gradient(to top, black 0%, transparent 65%)',
+            WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 65%)',
         }}
     >
         <div className="w-full h-full flex items-stretch">
