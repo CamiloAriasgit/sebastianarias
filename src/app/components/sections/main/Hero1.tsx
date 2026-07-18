@@ -242,8 +242,6 @@ export default function Hero() {
 
     return (
         <section className="relative flex  w-full padding-block min-h-[100svh] bg-[#EDEFF3] overflow-hidden">
-            <BarsBackground />
-
             <div className="relative z-20 container-site w-full max-w-3xl px-4 flex flex-col items-center justify-center text-center gap-6">
                 <h1
                     className="m-0 block text-neutral-950 font-medium tracking-tighter drop-shadow-sm"
