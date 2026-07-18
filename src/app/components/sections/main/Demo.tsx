@@ -66,7 +66,7 @@ return (
             href="https://demo.sebastianarias.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="block no-underline relative rounded-xl overflow-hidden transition-colors duration-300 group border border-neutral-300 shadow-xl"
+            className="block no-underline relative rounded-xl overflow-hidden transition-colors duration-300 group border border-neutral-300"
           >
             {/* Imagen de fondo */}
             <div className="w-full relative flex items-center justify-center">

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { ChevronRight, ArrowUpRight, } from 'lucide-react'
+import { ChevronRight, ArrowUpRight } from 'lucide-react'
 
 const FAQS = [
   { q: '¿El dominio está incluido?', a: 'El dominio lo registra el cliente a su nombre — eso garantiza que siempre sea de su propiedad. La configuración técnica y los DNS corren por nuestra cuenta.' },
@@ -29,17 +29,16 @@ export default function FAQ() {
       },
       { threshold: 0.1 }
     )
-      ;[headRef.current, ...itemRefs.current].forEach((el, i) => {
-        if (!el) return
-        el.style.opacity = '0'
-        el.style.transform = 'translateY(16px)'
-        el.style.transition = `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 60}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 60}ms`
-        observer.observe(el)
-      })
+    ;[headRef.current, ...itemRefs.current].forEach((el, i) => {
+      if (!el) return
+      el.style.opacity = '0'
+      el.style.transform = 'translateY(16px)'
+      el.style.transition = `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 60}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 60}ms`
+      observer.observe(el)
+    })
     return () => observer.disconnect()
   }, [])
 
-  // Configuración del enlace de WhatsApp con mensaje predeterminado
   const whatsappMessage = encodeURIComponent(
     "Hola, tengo una duda sobre el servicio de desarrollo de landing pages que no aparece en las preguntas frecuentes."
   );
@@ -48,21 +47,15 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="bg-[#EDEFF3]"
-      style={{ paddingBlock: 'var(--section-py)' }}
+      className="bg-[#EDEFF3] py-[var(--section-py)]"
     >
       <div className="container-site">
         <div
           ref={headRef}
-          className="grid gap-[clamp(1rem,4vw,4rem)] items-end mb-[clamp(3rem,5vw,4rem)]"
-          style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}
+          className="grid gap-[clamp(1rem,4vw,4rem)] items-end mb-[clamp(3rem,5vw,4rem)] grid-cols-[repeat(auto-fit,minmax(280px,1fr))]"
         >
           <h2
-            className="m-0 block text-black text-center font-medium tracking-tighter drop-shadow-sm"
-            style={{
-              fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
-              lineHeight: 1.05,
-            }}
+            className="m-0 block text-black text-center font-medium tracking-tighter drop-shadow-sm text-[clamp(1.5rem,3vw,3.5rem)] leading-[1.05]"
           >
             Preguntas frecuentes.
           </h2>
@@ -73,32 +66,32 @@ export default function FAQ() {
             <div
               key={faq.q}
               ref={el => { itemRefs.current[i] = el }}
-              className="bg-white rounded-xl px-6 mb-3 shadow-xl shadow-neutral-200/40 border border-neutral-200"
+              className="bg-white rounded-xl px-6 mb-3"
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full bg-transparent border-none cursor-pointer text-left py-5 flex items-center justify-between gap-6"
               >
                 <span
-                  className="text-[0.9375rem] tracking-tight transition-colors duration-200"
-                  style={{
-                    fontWeight: open === i ? 500 : 400,
-                    color: open === i ? 'black' : 'var(--text-neutral-600, #606060)',
-                  }}
+                  className={`text-[0.9375rem] tracking-tight transition-colors duration-200 ${
+                    open === i ? 'font-normal text-black' : 'font-normal text-[var(--text-neutral-600,#606060)]'
+                  }`}
                 >
                   {faq.q}
                 </span>
                 <ChevronRight
                   size={16}
                   strokeWidth={1.5}
-                  className="shrink-0 text-neutral-500 transition-transform duration-300"
-                  style={{ transform: open === i ? 'rotate(90deg)' : 'rotate(0deg)', color: open === i ? 'white' : undefined }}
+                  className={`shrink-0 transition-transform duration-300 ${
+                    open === i ? 'rotate-90 text-black' : 'rotate-0 text-neutral-500'
+                  }`}
                 />
               </button>
 
               <div
-                className="grid transition-all duration-300"
-                style={{ gridTemplateRows: open === i ? '1fr' : '0fr', transitionTimingFunction: 'cubic-bezier(0.16,1,0.3,1)' }}
+                className={`grid transition-all duration-300 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] ${
+                  open === i ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                }`}
               >
                 <div className="overflow-hidden">
                   <p className="text-sm leading-relaxed text-neutral-600 m-0 pb-5 max-w-[58ch]">
@@ -110,7 +103,6 @@ export default function FAQ() {
           ))}
         </div>
 
-        {/* Bloque inferior: Centrado de posición y texto original con el link embebido */}
         <div className="text-center flex justify-center w-full">
           <p className="text-[0.9375rem] leading-relaxed text-neutral-700 pt-10 m-0 max-w-[38ch]">
             ¿Algo más? Escríbenos directamente y lo resolvemos en la misma{" "}
