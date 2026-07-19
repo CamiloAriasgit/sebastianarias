@@ -177,7 +177,7 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
     }, [visible])
 
     return (
-        <div className="relative w-full max-w-[400px] mx-auto" style={{ height: '140px' }}>
+        <div className="relative w-full max-w-[400px] mx-auto lg:mx-0" style={{ height: '140px' }}>
             {NOTIFICATIONS.map((n, i) => (
                 <div
                     key={n.id}
@@ -197,30 +197,6 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
     )
 }
 
-
-const BarsBackground = () => (
-    <div
-        className="absolute inset-0 overflow-hidden pointer-events-none"
-        style={{
-            // Modificado: El desvanecimiento empieza mucho más abajo (30%) y se vuelve totalmente transparente al 75%
-            maskImage: 'linear-gradient(to top, black 30%, transparent 75%)',
-            WebkitMaskImage: 'linear-gradient(to top, black 30%, transparent 75%)',
-        }}
-    >
-        <div className="w-full h-full flex items-stretch">
-            {[...Array(5)].map((_, i) => (
-                <div
-                    key={i}
-                    className={`flex-1 h-full ${i >= 3 ? 'hidden md:block' : ''}`}
-                    style={{
-                        background:
-                            'linear-gradient(90deg, #9bc1ff, #a8cbfc, #adcafa, #a8cbfc, #9bc1ff, #6ea3f3)',
-                    }}
-                />
-            ))}
-        </div>
-    </div>
-)
 
 export default function Hero() {
     const paraRef = useRef<HTMLParagraphElement>(null)
@@ -242,39 +218,41 @@ export default function Hero() {
     }, [])
 
     return (
-        <section className="relative w-full padding-block py-40 md:py-30 bg-[#EDEFF3] overflow-hidden">
-            <BarsBackground />
+        <section className="relative flex w-full padding-block min-h-[100svh] bg-[#EDEFF3] overflow-hidden">
+            <div className="relative z-20 container-site flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-16 items-center justify-center text-center gap-6">
 
-            <div className="relative z-20 container-site w-full max-w-3xl px-4 flex flex-col items-center justify-center text-center gap-6">
-                <h1
-                    className="m-0 block text-neutral-950 font-medium tracking-tighter drop-shadow-sm"
-                    style={{
-                        fontSize: 'clamp(1.9rem, 4vw, 4.5rem)',
-                        lineHeight: 1.05,
-                    }}
-                >
-                    Landing pages para proyectos inmobiliarios
-                </h1>
+                {/* Columna izquierda: título, párrafo y CTA */}
+                <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 lg:max-w-[46%]">
+                    <h1
+                        className="m-0 block text-neutral-950 font-medium tracking-tighter drop-shadow-sm"
+                        style={{
+                            fontSize: 'clamp(1.9rem, 4vw, 4.5rem)',
+                            lineHeight: 1.05,
+                        }}
+                    >
+                        Landing pages para proyectos inmobiliarios
+                    </h1>
 
-                <p
-                    ref={paraRef}
-                    className="text-sm md:text-base leading-relaxed text-neutral-700 m-0 max-w-[45ch]"
-                >
-                    Convertimos el tráfico de tu pauta en inversionistas reales contactando por WhatsApp.
-                </p>
+                    <p
+                        ref={paraRef}
+                        className="text-sm md:text-base leading-relaxed text-neutral-700 m-0 max-w-[45ch]"
+                    >
+                        Convertimos el tráfico de tu pauta en inversionistas reales contactando por WhatsApp.
+                    </p>
 
-                <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex bg-neutral-900 justify-center items-center gap-2 py-3 w-47 rounded-full text-white shadow-lg shadow-black/10 transition-all duration-300 hover:bg-neutral-800"
-                >
-                    <WaIconContact className="w-5 h-5 fill-white" />
-                    Agendar llamada
+                    <a
+                        href={WHATSAPP_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex bg-neutral-900 justify-center items-center gap-2 py-3 w-47 rounded-full text-white shadow-lg shadow-black/10 transition-all duration-300 hover:bg-neutral-800"
+                    >
+                        <WaIconContact className="w-5 h-5 fill-white" />
+                        Agendar llamada
+                    </a>
+                </div>
 
-                </a>
-
-                <div className="w-full mt-8">
+                {/* Columna derecha: notificaciones */}
+                <div className="w-full mt-8 lg:mt-0 lg:w-[46%]">
                     <NotifStack visible={stackVisible} />
                 </div>
             </div>
