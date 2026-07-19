@@ -117,7 +117,7 @@ export default function Pricing() {
                                     </span>
                                     {plan.highlighted && (
                                         <span className="text-xs flex items-center uppercase tracking-wider bg-neutral-700/70 px-2.5 py-1.5 rounded-full text-neutral-200">
-                                            <Gem className="text-sky-400 inline-block mr-1.5" size={12} />
+                                            <Sparkles className="text-amber-400 inline-block mr-1.5" size={12} />
                                             Recomendado
                                         </span>
                                     )}
