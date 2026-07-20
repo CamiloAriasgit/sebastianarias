@@ -73,17 +73,17 @@ const NotifCard = ({ n, time }: { n: Notif; time: string }) => (
                 <div className="w-[18px] h-[18px] rounded-md flex items-center justify-center shrink-0 bg-[#25d366]">
                     <WaIcon />
                 </div>
-                <span className="text-xs font-medium text-zinc-600 tracking-wide">
+                <span className="text-xs font-medium text-neutral-600 tracking-wide">
                     WhatsApp
                 </span>
             </div>
-            <span className="text-[0.625rem] text-zinc-500">{time}</span>
+            <span className="text-[0.625rem] text-neutral-500">{time}</span>
         </div>
-        <p className="text-sm font-medium text-zinc-950 m-0 mb-1 text-left">
+        <p className="text-sm font-medium text-neutral-950 m-0 mb-1 text-left">
             {n.name}
         </p>
         <p
-            className="text-xs text-zinc-700 m-0 leading-relaxed text-left"
+            className="text-xs text-neutral-700 m-0 leading-relaxed text-left"
             style={{
                 display: '-webkit-box',
                 WebkitLineClamp: 2,

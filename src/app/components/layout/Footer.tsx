@@ -39,7 +39,7 @@ export default function Footer() {
                   className="rounded-full object-cover grayscale-[30%]"
                 />
                 {/* Indicador creativo: Disponibilidad / Active Status */}
-                <span className="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-neutral-900" />
+                <span className="absolute bottom-0 right-0 block h-2 w-2 rounded-full bg-emerald-500 ring-2 ring-neutral-900" />
               </div>
               <div className="flex flex-col space-y-[-2px]">
                 <span className="text-sm tracking-tight text-white">
