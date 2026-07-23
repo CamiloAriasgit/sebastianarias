@@ -78,13 +78,13 @@ export default function Service() {
             Una landing construida para el momento en que el comprador decide.
           </h2>*/}
           <h2
-            className="m-0 block text-black font-medium tracking-tighter drop-shadow-sm"
+            className="m-0 block text-black font-medium text-balance tracking-tighter drop-shadow-sm"
             style={{
               fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
               lineHeight: 1.05,
             }}
           >
-            Una landing construida<br className='md:hidden'/> para el<br className='hidden md:block' /> momento en que<br className='md:hidden'/> el comprador decide.
+            Una landing construida para el momento en que el comprador decide.
           </h2>
           <p className="text-[0.9375rem] leading-relaxed text-black m-0 max-w-[47ch]">
             Cada elemento tiene un propósito. Nada está ahí por decoración.
