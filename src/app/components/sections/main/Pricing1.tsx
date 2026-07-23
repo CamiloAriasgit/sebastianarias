@@ -21,7 +21,7 @@ const getWhatsAppLink = (planName?: string, isCustomRequest = false) => {
 const PLANS = [
     {
         name: 'Esencial',
-        price: '$800',
+        price: '$799',
         monthly: '$60',
         description: 'Para proyectos que necesitan presencia sólida y captura de leads desde el primer día.',
         features: ['Hasta 5 secciones', 'Diseño a medida', 'WhatsApp estratégico', 'GTM + GA4', 'Formulario de leads', 'Animaciones básicas', '1 revisión', 'Entrega en 10 días'],
@@ -29,7 +29,7 @@ const PLANS = [
     },
     {
         name: 'Conversión',
-        price: '$1.500',
+        price: '$1.499',
         monthly: '$90',
         description: 'El punto dulce. Diseño completo, tracking avanzado y copy orientado a convertir.',
         features: ['Hasta 8 secciones', 'Diseño a medida', 'WhatsApp strategic', 'GTM + GA4 + eventos custom', 'Formulario de leads', 'Animaciones completas', 'Orientación de copywriting', '2 revisiones', 'Entrega en 14 días'],
@@ -37,7 +37,7 @@ const PLANS = [
     },
     {
         name: 'Premium',
-        price: '$2.800',
+        price: '$2.799',
         monthly: '$140',
         description: 'Para proyectos que exigen el máximo nivel de detalle, conversión y presentación.',
         features: ['Secciones ilimitadas', 'Diseño a medida', 'WhatsApp multi-punto', 'GTM + GA4 + funnel completo', 'Formulario de leads', 'Animaciones avanzadas', 'Copywriting incluido', '3 revisiones', 'Entrega en 21 días'],
@@ -90,7 +90,7 @@ export default function Pricing() {
                     >
                         Elige el nivel que<br />necesita tu proyecto.
                     </h2>
-                    <p className="text-sm text-neutral-900 m-0">
+                    <p className="text-sm text-neutral-900 m-0 text-balance">
                         Todos los planes incluyen hosting, despliegue y soporte mensual.
                     </p>
                 </div>
