@@ -6,36 +6,41 @@
   --font-sans: 'Inter', system-ui, sans-serif;
 
   /* Escala de negros — profundidad sin modo claro */
-  --color-bg:          #0a0a0a;
-  --color-surface:     #111111;
-  --color-surface-hi:  #171717;
+  --color-bg: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-hi: #171717;
   --color-surface-top: #1f1f1f;
-  --color-border:      #1e1e1e;
-  --color-border-hi:   #2a2a2a;
+  --color-border: #1e1e1e;
+  --color-border-hi: #2a2a2a;
 
   /* Texto */
-  --color-text-primary:   #f0f0ed;
+  --color-text-primary: #f0f0ed;
   --color-text-secondary: #777777;
-  --color-text-muted:     #3d3d3d;
+  --color-text-muted: #3d3d3d;
 
   /* Light — solo Pricing */
-  --color-light-bg:      #f5f5f0;
+  --color-light-bg: #f5f5f0;
   --color-light-surface: #ece8e0;
-  --color-light-border:  #dddad2;
-  --color-light-text:    #0f0f0f;
-  --color-light-muted:   #888888;
+  --color-light-border: #dddad2;
+  --color-light-text: #0f0f0f;
+  --color-light-muted: #888888;
 
   /* Acento */
-  --color-accent:      #ffffff;
+  --color-accent: #ffffff;
   --color-accent-dark: #b8933a;
-  --color-accent-dim:  #101010;
+  --color-accent-dim: #101010;
 
   /* Espaciado de sección */
   --section-py: clamp(5rem, 10vw, 9rem);
 }
 
 @layer base {
-  *, *::before, *::after { box-sizing: border-box; }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
   :root {
     --text-display: clamp(2.75rem, 10.5vw, 11rem);
@@ -62,8 +67,14 @@
     color: #ffffff;
   }
 
-  ::-webkit-scrollbar { width: 3px; }
-  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
   ::-webkit-scrollbar-thumb {
     background: var(--color-border-hi);
     border-radius: 2px;
@@ -75,9 +86,9 @@
   /* Contenedor */
   .container-site {
     width: 100%;
-    max-width: 1120px;
+    max-width: 1280px;
     margin-inline: auto;
-    padding-inline: clamp(1.25rem, 5vw, 3rem);
+    padding-inline: clamp(1.25rem, 5vw, 3.5rem);
   }
 
   /* Tipografía */
@@ -120,6 +131,7 @@
     white-space: nowrap;
     transition: opacity 0.2s ease, transform 0.2s ease;
   }
+
   .btn-primary:hover {
     opacity: 0.85;
     transform: translateY(-1px);
@@ -133,5 +145,9 @@
   }
 
   /* Divisor */
-  .divider { height: 0.5px; background: var(--color-border); width: 100%; }
+  .divider {
+    height: 0.5px;
+    background: var(--color-border);
+    width: 100%;
+  }
 }

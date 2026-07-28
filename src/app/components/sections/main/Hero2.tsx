@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Signal, Wifi, Battery, Fingerprint } from 'lucide-react'
+import Image from 'next/image';
 
 const WHATSAPP_URL =
     'https://wa.me/573235619283?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
@@ -292,55 +293,63 @@ export default function Hero() {
 
              <div className="w-full mt-8 lg:mt-0 lg:w-[46%] flex justify-center lg:justify-end lg:relative group">
 
-                    <div className="hidden lg:block absolute -top-40 right-18 w-[275px] h-[550px] rounded-[40px] border-[10px] border-neutral-900 bg-neutral-950 shadow-xl z-0 overflow-hidden">
-                        <div className="absolute flex items-center justify-end top-3 left-1/2 -translate-x-1/2 w-15 h-4 bg-neutral-900 rounded-full z-10" >
-                            <div className='bg-gray-800 flex flex-col items-center justify-center h-2 w-2 mr-1 rounded-full shadow-inner shadow-gray-800' >
-                                <span className='flex bg-gradient-to-b from-blue-700 via-gray-800 to-blue-700 py-[1px] blur-[1px] rounded-full shadow-inner shadow-blue-700/20'>
-                                    <span className='h-1 w-1 bg-gray-800 rounded-full'></span>
-                                </span>
-                            </div>
-                        </div>
-                        <div className="absolute top-3 left-0 right-0 px-6 flex items-center justify-between z-20 text-neutral-200">
-                            <span className="text-[0.7rem] font-light">
-                                {currentTime.time}
-                                <span className="text-[0.6rem] ml-0.5">{currentTime.period}</span>
-                            </span>
-                            <div className="flex items-center gap-2">
-                                <Signal className="w-2.5 h-2.5" strokeWidth={2.5} />
-                                <Wifi className="w-2.5 h-2.5" strokeWidth={2.5} />
-                                <Battery className="w-3 h-3" strokeWidth={2} />
-                            </div>
-                        </div>
-                        <div className="absolute top-20 font-extralight left-0 right-0 flex flex-col items-center z-10 text-white">
-                            <span className="text-5xl flex bg-gradient-to-b from-white via-white to-transparent bg-clip-text text-transparent items-end tracking-tight">
-                                {currentTime.time}
-                            </span>
-                            <span className="text-xs text-white/80 mt-1">{currentDate}</span>
-                        </div>
-
-                        <div
-                            className="absolute inset-0 z-0"
-                            style={{
-                                backgroundImage: `
-                                    radial-gradient(circle at 80% 20%, #3b82f680 0%, transparent 50%),
-                                    radial-gradient(circle at 10% 40%, #60a5fa73 0%, transparent 45%),
-                                    radial-gradient(circle at 90% 80%, #ffffff59 0%, transparent 55%),
-                                    radial-gradient(circle at 30% 90%, #1d4ed880 0%, transparent 60%),
-                                    linear-gradient(145deg, #0b0f19 0%, #111827 40%, #030712 100%)
-                                `,
-                                backgroundSize: '100% 100%',
-                                backgroundPosition: 'center'
-                            }}
-                        />
-
-                        <div className="absolute bottom-6 left-0 right-0 flex justify-center z-20">
-                            <Fingerprint className="w-7 h-7 text-gray-400" strokeWidth={1.5} />
-                        </div>
-                    </div>
-                    <div className="relative z-10 w-full lg:pr-10 lg:pt-10">
-                        <NotifStack visible={stackVisible} />
-                    </div>
+        {/* Contenedor del Móvil (visible solo en lg) */}
+        <div className="hidden lg:block absolute -top-40 right-18 w-[275px] h-[550px] rounded-[40px] border-[10px] border-neutral-900 bg-neutral-950 shadow-xl z-0 overflow-hidden">
+            
+            {/* 'Notch' superior */}
+            <div className="absolute flex items-center justify-end top-3 left-1/2 -translate-x-1/2 w-15 h-4 bg-neutral-900 rounded-full z-10" >
+                <div className='bg-gray-800 flex flex-col items-center justify-center h-2 w-2 mr-1 rounded-full shadow-inner shadow-gray-800' >
+                    <span className='flex bg-gradient-to-b from-blue-500 via-gray-800 to-blue-500 py-[1px] blur-[1px] rounded-full shadow-inner shadow-blue-700/20'>
+                        <span className='h-1 w-1 bg-gray-800 rounded-full'></span>
+                    </span>
                 </div>
+            </div>
+
+            {/* Barra de estado superior */}
+            <div className="absolute top-3 left-0 right-0 px-6 flex items-center justify-between z-20 text-neutral-900">
+                <span className="text-[0.7rem] font-light">
+                    {currentTime.time}
+                    <span className="text-[0.6rem] ml-0.5">{currentTime.period}</span>
+                </span>
+                <div className="flex items-center gap-2">
+                    <Signal className="w-2.5 h-2.5" strokeWidth={2.5} />
+                    <Wifi className="w-2.5 h-2.5" strokeWidth={2.5} />
+                    <Battery className="w-3 h-3" strokeWidth={2} />
+                </div>
+            </div>
+
+            {/* Reloj y Fecha centrales */}
+            <div className="absolute top-20 left-0 right-0 flex flex-col items-center z-10 text-white">
+                <span className="text-5xl flex bg-gradient-to-b from-neutral-900 via-neutral-900 to-transparent bg-clip-text text-transparent font-extralight items-end tracking-tight">
+                    {currentTime.time}
+                </span>
+                <span className="text-xs text-neutral-900 mt-1">{currentDate}</span>
+            </div>
+
+            {/* --- FONDO DE PANTALLA DEL MÓVIL --- */}
+            {/* Se ha eliminado el div con los gradientes inline y se ha sustituido por Next Image */}
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src="/images/cta-bg.png" // Ruta de la imagen proporcionada
+                    alt="Fondo de pantalla del móvil"
+                    fill // Ocupa todo el contenedor padre
+                    className="object-cover" // Asegura que la imagen cubra el área sin deformarse
+                    priority // Carga la imagen con prioridad ya que es un fondo visual importante
+                />
+            </div>
+            {/* ---------------------------------- */}
+
+            {/* Icono de Huella Dactilar inferior */}
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center z-20">
+                <Fingerprint className="w-7 h-7 text-neutral-600" strokeWidth={1.5} />
+            </div>
+        </div>
+
+        {/* Contenido superpuesto (Notificaciones) */}
+        <div className="relative z-10 w-full lg:pr-10 lg:pt-10">
+            <NotifStack visible={stackVisible} />
+        </div>
+    </div>
             </div>
         </section>
     )
