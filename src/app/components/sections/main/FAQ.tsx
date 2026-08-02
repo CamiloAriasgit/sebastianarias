@@ -55,7 +55,7 @@ export default function FAQ() {
           className="grid gap-[clamp(1rem,4vw,4rem)] items-end mb-[clamp(3rem,5vw,4rem)] grid-cols-[repeat(auto-fit,minmax(280px,1fr))]"
         >
           <h2
-            className="m-0 block text-black text-center font-medium tracking-tighter drop-shadow-sm text-[clamp(1.5rem,3vw,3.5rem)] leading-[1.05]"
+            className="m-0 block text-black text-center font-medium tracking-tighter drop-shadow-sm text-[clamp(1.5rem,3vw,3.5rem)] leading-snug"
           >
             Preguntas frecuentes.
           </h2>

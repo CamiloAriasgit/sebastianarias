@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import { ArrowUpRight, Info, SquareArrowOutUpRight } from 'lucide-react'
 
 export default function Demo() {
-  const headRef    = useRef<HTMLDivElement>(null)
+  const headRef = useRef<HTMLDivElement>(null)
   const previewRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -20,41 +20,39 @@ export default function Demo() {
       },
       { threshold: 0.1 }
     )
-    ;[headRef.current, previewRef.current].forEach((el, i) => {
-      if (!el) return
-      el.style.opacity = '0'
-      el.style.transform = 'translateY(20px)'
-      el.style.transition = `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 140}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 140}ms`
-      observer.observe(el)
-    })
+      ;[headRef.current, previewRef.current].forEach((el, i) => {
+        if (!el) return
+        el.style.opacity = '0'
+        el.style.transform = 'translateY(20px)'
+        el.style.transition = `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 140}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 140}ms`
+        observer.observe(el)
+      })
     return () => observer.disconnect()
   }, [])
 
-return (
-  <section
-    id="demo"
-    className="bg-[#EDEFF3]" // Quitamos min-h-svh, flex, flex-col y justify-center
-    style={{ paddingBlock: 'var(--section-py)' }}
-  >
-    <div className="container-site">
+  return (
+    <section
+      id="demo"
+      className="bg-[#EDEFF3]" // Quitamos min-h-svh, flex, flex-col y justify-center
+      style={{ paddingBlock: 'var(--section-py)' }}
+    >
+      <div className="container-site">
         <div
           ref={headRef}
-          className="grid gap-[clamp(1rem,4vw,4rem)] items-end mb-[clamp(2.5rem,5vw,4rem)]"
-          style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}
+          className="grid text-center md:text-left gap-4 items-end mb-[clamp(2.5rem,5vw,4rem)]"
         >
           <div>
             <h2
-            className="m-0 block text-black font-medium tracking-tighter drop-shadow-sm"
-            style={{
-              fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
-              lineHeight: 1.05,
-            }}
-          >
-            Así se ve<br />
-            en la práctica.
-          </h2>
+              className="m-0 block text-black font-medium tracking-tighter drop-shadow-sm"
+              style={{
+                fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
+                lineHeight: 1.05,
+              }}
+            >
+              Así se ve en la práctica.
+            </h2>
           </div>
-          <p className="text-[0.9375rem] leading-relaxed text-neutral-700 m-0 max-w-[38ch]">
+          <p className="mx-auto md:mx-0 text-balance md:text-wrap text-[0.9375rem] leading-relaxed text-neutral-700 m-0 max-w-[50ch] md:max-w-[60ch]">
             Una landing construida para convertir.
             Diseño, tracking y WhatsApp estratégico
             funcionando desde el primer día.
@@ -70,12 +68,12 @@ return (
           >
             {/* Imagen de fondo */}
             <div className="w-full relative flex items-center justify-center">
-              <img 
-                src="/images/hero-demo-cabins.png" 
-                alt="Vista previa de la Demo" 
+              <img
+                src="/images/hero-demo-cabins.png"
+                alt="Vista previa de la Demo"
                 className="w-full h-auto block"
               />
-              
+
               {/* Rectángulo Negro en la Esquina Inferior Derecha (Estilo High-End) */}
               <div className="absolute bottom-4 right-4 flex items-center gap-1.5 bg-black text-white px-3 py-1.5 rounded-md text-[10px] font-medium tracking-wider z-10 border border-black select-none">
                 <SquareArrowOutUpRight size={12} className="opacity-90" />
