@@ -275,7 +275,7 @@ export default function Hero() {
 
                     <p
                         ref={paraRef}
-                        className="text-sm md:text-base leading-relaxed text-neutral-700 m-0 max-w-[45ch]"
+                        className="text-sm md:text-base leading-relaxed text-neutral-700 m-0 max-w-[49ch]"
                     >
                         Convertimos el tráfico de tu pauta en inversionistas reales contactando por WhatsApp.
                     </p>
