@@ -1,6 +1,9 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { Signal, Wifi, Battery, Fingerprint } from 'lucide-react'
+import Image from 'next/image';
+import { motion } from 'framer-motion'
 
 const WHATSAPP_URL =
     'https://wa.me/573235619283?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
@@ -73,17 +76,17 @@ const NotifCard = ({ n, time }: { n: Notif; time: string }) => (
                 <div className="w-[18px] h-[18px] rounded-md flex items-center justify-center shrink-0 bg-[#25d366]">
                     <WaIcon />
                 </div>
-                <span className="text-xs font-medium text-zinc-600 tracking-wide">
+                <span className="text-xs font-medium text-neutral-600 tracking-wide">
                     WhatsApp
                 </span>
             </div>
-            <span className="text-[0.625rem] text-zinc-500">{time}</span>
+            <span className="text-[0.625rem] text-neutral-500">{time}</span>
         </div>
-        <p className="text-sm font-medium text-zinc-950 m-0 mb-1 text-left">
+        <p className="text-sm font-medium text-neutral-950 m-0 mb-1 text-left">
             {n.name}
         </p>
         <p
-            className="text-xs text-zinc-700 m-0 leading-relaxed text-left"
+            className="text-xs text-neutral-700 m-0 leading-relaxed text-left"
             style={{
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
@@ -177,7 +180,7 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
     }, [visible])
 
     return (
-        <div className="relative w-full max-w-[400px] mx-auto" style={{ height: '140px' }}>
+        <div className="relative w-full max-w-[400px] lg:max-w-[340px] mx-auto lg:mx-0 lg:ml-auto" style={{ height: '140px' }}>
             {NOTIFICATIONS.map((n, i) => (
                 <div
                     key={n.id}
@@ -197,83 +200,237 @@ const NotifStack = ({ visible }: { visible: boolean }) => {
     )
 }
 
+const formatPhoneTime = (date: Date) => {
+    const parts = new Intl.DateTimeFormat([], {
+        hour: 'numeric',
+        minute: '2-digit',
+    }).formatToParts(date)
 
-const BarsBackground = () => (
-    <div
-        className="absolute inset-0 overflow-hidden pointer-events-none"
-        style={{
-            maskImage: 'linear-gradient(to top, black 0%, transparent 65%)',
-            WebkitMaskImage: 'linear-gradient(to top, black 0%, transparent 65%)',
-        }}
-    >
-        <div className="w-full h-full flex items-stretch">
-            {[...Array(5)].map((_, i) => (
-                <div
-                    key={i}
-                    className={`flex-1 h-full ${i >= 3 ? 'hidden md:block' : ''}`}
-                    style={{
-                        background:
-                            'linear-gradient(90deg, #9bc1ff, #a8cbfc, #adcafa, #a8cbfc, #9bc1ff, #6ea3f3)',
-                    }}
-                />
+    let time = ''
+    let period = ''
+
+    parts.forEach(part => {
+        if (part.type === 'dayPeriod') {
+            period = part.value
+        } else if (part.type !== 'literal' || part.value.trim() !== '') {
+            time += part.value
+        }
+    })
+
+    return { time: time.trim(), period }
+}
+
+const formatPhoneDate = (date: Date) => {
+    const raw = date.toLocaleDateString('es-ES', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+    })
+    return raw.charAt(0).toUpperCase() + raw.slice(1)
+}
+
+// ---- Animation variants ----
+
+const titleContainerVariants = {
+    hidden: {},
+    visible: {
+        transition: {
+            staggerChildren: 0.025,
+            delayChildren: 0.05,
+        },
+    },
+}
+
+const letterVariants = {
+    hidden: { opacity: 0, y: 18 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const },
+    },
+}
+
+const fadeUpVariants = {
+    hidden: { opacity: 0, y: 14 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+    },
+}
+
+const phoneVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.96 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] as const },
+    },
+}
+
+const TITLE_TEXT = 'Landing pages para proyectos inmobiliarios'
+
+const AnimatedTitle = () => {
+    const words = TITLE_TEXT.split(' ')
+
+    return (
+        <motion.h1
+            className="m-0 block text-neutral-950 font-semibold text-balance tracking-tighter drop-shadow-sm"
+            style={{
+                fontSize: 'clamp(1.9rem, 4vw, 4.5rem)',
+                lineHeight: 1.05,
+            }}
+            variants={titleContainerVariants}
+            initial="hidden"
+            animate="visible"
+        >
+            {words.map((word, wi) => (
+                <span
+                    key={wi}
+                    className="inline-block whitespace-nowrap"
+                    style={{ marginRight: '0.28em' }}
+                >
+                    {word.split('').map((letter, li) => (
+                        <span
+                            key={li}
+                            className="inline-block"
+                            style={{
+                                overflow: 'hidden',
+                                paddingBottom: '0.25em',
+                                marginBottom: '-0.25em',
+                                verticalAlign: 'top',
+                            }}
+                        >
+                            <motion.span
+                                className="inline-block"
+                                variants={letterVariants}
+                            >
+                                {letter}
+                            </motion.span>
+                        </span>
+                    ))}
+                </span>
             ))}
-        </div>
-    </div>
-)
+        </motion.h1>
+    )
+}
 
 export default function Hero() {
-    const paraRef = useRef<HTMLParagraphElement>(null)
     const [stackVisible, setStackVisible] = useState(false)
+    const [now, setNow] = useState<Date | null>(null)
 
     useEffect(() => {
-        if (paraRef.current) {
-            paraRef.current.style.opacity = '0'
-            paraRef.current.style.transform = 'translateY(14px)'
-            paraRef.current.style.transition = 'opacity 0.9s cubic-bezier(0.16,1,0.3,1) 280ms, transform 0.9s cubic-bezier(0.16,1,0.3,1) 280ms'
-            setTimeout(() => {
-                if (!paraRef.current) return
-                paraRef.current.style.opacity = '1'
-                paraRef.current.style.transform = 'translateY(0)'
-            }, 60)
-        }
-
         setTimeout(() => setStackVisible(true), 400)
     }, [])
 
+    useEffect(() => {
+        setNow(new Date())
+        const interval = setInterval(() => setNow(new Date()), 1000 * 30)
+        return () => clearInterval(interval)
+    }, [])
+
+
+    const currentTime = now ? formatPhoneTime(now) : { time: '', period: '' }
+    const currentDate = now ? formatPhoneDate(now) : ''
+
     return (
-        <section className="relative flex  w-full padding-block min-h-[100svh] bg-[#EDEFF3] overflow-hidden">
-            <div className="relative z-20 container-site w-full max-w-3xl px-4 flex flex-col items-center justify-center text-center gap-6">
-                <h1
-                    className="m-0 block text-neutral-950 font-medium tracking-tighter drop-shadow-sm"
-                    style={{
-                        fontSize: 'clamp(1.9rem, 4vw, 4.5rem)',
-                        lineHeight: 1.05,
-                    }}
-                >
-                    Landing pages para proyectos inmobiliarios
-                </h1>
+        <section className="relative flex w-full padding-block min-h-[100svh] bg-[#EDEFF3] overflow-hidden">
+            <div className="relative z-20 container-site flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-16 items-center justify-center text-center gap-6">
 
-                <p
-                    ref={paraRef}
-                    className="text-sm md:text-base leading-relaxed text-neutral-700 m-0 max-w-[45ch]"
-                >
-                    Convertimos el tráfico de tu pauta en inversionistas reales contactando por WhatsApp.
-                </p>
+                <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 lg:max-w-[46%]">
+                    <AnimatedTitle />
 
-                <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex bg-neutral-900 justify-center items-center gap-2 py-3 w-47 rounded-full text-white shadow-lg shadow-black/10 transition-all duration-300 hover:bg-neutral-800"
-                >
-                    <WaIconContact className="w-5 h-5 fill-white" />
-                    Agendar llamada
+                    <motion.p
+                        className="text-sm md:text-base leading-relaxed text-neutral-700 m-0 max-w-[45ch]"
+                        variants={fadeUpVariants}
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ delay: 0.9 }}
+                    >
+                        Convertimos el tráfico de tu pauta en inversionistas reales contactando por WhatsApp.
+                    </motion.p>
 
-                </a>
-
-                <div className="w-full mt-8">
-                    <NotifStack visible={stackVisible} />
+                    <motion.a
+                        href={WHATSAPP_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex bg-neutral-900 justify-center items-center gap-2 py-3 w-47 rounded-full text-white shadow-lg shadow-black/10 transition-all duration-300 hover:bg-neutral-800"
+                        variants={fadeUpVariants}
+                        initial="hidden"
+                        animate="visible"
+                        transition={{ delay: 1.1 }}
+                    >
+                        <WaIconContact className="w-5 h-5 fill-white" />
+                        Agendar llamada
+                    </motion.a>
                 </div>
+
+             <div className="w-full mt-8 lg:mt-0 lg:w-[46%] flex justify-center lg:justify-end lg:relative group">
+
+        {/* Contenedor del Móvil (visible solo en lg) */}
+        <motion.div
+            className="hidden lg:block absolute -top-40 right-18 w-[275px] h-[550px] rounded-[40px] border-[10px] border-neutral-900 bg-neutral-950 shadow-xl z-0 overflow-hidden"
+            variants={phoneVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.3 }}
+        >
+            
+            {/* 'Notch' superior */}
+            <div className="absolute flex items-center justify-end top-3 left-1/2 -translate-x-1/2 w-15 h-4 bg-neutral-900 rounded-full z-10" >
+                <div className='bg-gray-800 flex flex-col items-center justify-center h-2 w-2 mr-1 rounded-full shadow-inner shadow-gray-800' >
+                    <span className='flex bg-gradient-to-b from-blue-500 via-gray-800 to-blue-500 py-[1px] blur-[1px] rounded-full shadow-inner shadow-blue-700/20'>
+                        <span className='h-1 w-1 bg-gray-800 rounded-full'></span>
+                    </span>
+                </div>
+            </div>
+
+            {/* Barra de estado superior */}
+            <div className="absolute top-3 left-0 right-0 px-6 flex items-center justify-between z-20 text-neutral-900">
+                <span className="text-[0.7rem] font-light">
+                    {currentTime.time}
+                    <span className="text-[0.6rem] ml-0.5">{currentTime.period}</span>
+                </span>
+                <div className="flex items-center gap-2">
+                    <Signal className="w-2.5 h-2.5" strokeWidth={2.5} />
+                    <Wifi className="w-2.5 h-2.5" strokeWidth={2.5} />
+                    <Battery className="w-3 h-3" strokeWidth={2} />
+                </div>
+            </div>
+
+            {/* Reloj y Fecha centrales */}
+            <div className="absolute top-20 left-0 right-0 flex flex-col items-center z-10 text-white">
+                <span className="text-5xl flex bg-gradient-to-b from-neutral-900 via-neutral-900 to-transparent bg-clip-text text-transparent font-extralight items-end tracking-tight">
+                    {currentTime.time}
+                </span>
+                <span className="text-xs text-neutral-900 mt-1">{currentDate}</span>
+            </div>
+
+            {/* --- FONDO DE PANTALLA DEL MÓVIL --- */}
+            {/* Se ha eliminado el div con los gradientes inline y se ha sustituido por Next Image */}
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src="/images/cta-bg.png" // Ruta de la imagen proporcionada
+                    alt="Fondo de pantalla del móvil"
+                    fill // Ocupa todo el contenedor padre
+                    className="object-cover" // Asegura que la imagen cubra el área sin deformarse
+                    priority // Carga la imagen con prioridad ya que es un fondo visual importante
+                />
+            </div>
+            {/* ---------------------------------- */}
+
+            {/* Icono de Huella Dactilar inferior */}
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center z-20">
+                <Fingerprint className="w-7 h-7 text-neutral-600" strokeWidth={1.5} />
+            </div>
+        </motion.div>
+
+        {/* Contenido superpuesto (Notificaciones) */}
+        <div className="relative z-10 w-full lg:pr-10 lg:pt-10">
+            <NotifStack visible={stackVisible} />
+        </div>
+    </div>
             </div>
         </section>
     )
