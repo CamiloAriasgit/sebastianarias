@@ -289,7 +289,7 @@ const AnimatedTitle = () => {
                 <span
                     key={wi}
                     className="inline-block whitespace-nowrap"
-                    style={{ marginRight: '0.25em' }}
+                    style={{ marginRight: '0.27em' }}
                 >
                     {word.split('').map((letter, li) => (
                         <span
