@@ -47,7 +47,7 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="bg-[#EDEFF3] py-[var(--section-py)]"
+      className="bg-section py-[var(--section-py)]"
     >
       <div className="container-site">
         <div

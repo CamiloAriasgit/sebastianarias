@@ -3,22 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Signal, Wifi, Battery, Fingerprint } from 'lucide-react'
 import Image from 'next/image';
-
-const WHATSAPP_URL =
-    'https://wa.me/573235619283?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20landing%20pages%20para%20mi%20proyecto%20inmobiliario.'
-
-const WaIconContact = ({ className = "w-5 h-5" }: { className?: string }) => (
-    <svg
-        viewBox="0 0 30.667 30.667"
-        className={className}
-        fill="currentColor"
-    >
-        <path
-            d="M30.667,14.939c0,8.25-6.74,14.938-15.056,14.938c-2.639,0-5.118-0.675-7.276-1.857L0,30.667l2.717-8.017 c-1.37-2.25-2.159-4.892-2.159-7.712C0.559,6.688,7.297,0,15.613,0C23.928,0.002,30.667,6.689,30.667,14.939z M15.61,2.382 c-6.979,0-12.656,5.634-12.656,12.56c0,2.748,0.896,5.292,2.411,7.362l-1.58,4.663l4.862-1.545c2,1.312,4.393,2.076,6.963,2.076 c6.979,0,12.658-5.633,12.658-12.559C28.27,8.016,22.59,2.382,15.61,2.382z M23.214,18.38c-0.094-0.151-0.34-0.243-0.708-0.427 c-0.367-0.184-2.184-1.069-2.521-1.189c-0.34-0.123-0.586-0.185-0.832,0.182c-0.243,0.367-0.951,1.191-1.168,1.437 c-0.215,0.245-0.43,0.276-0.799,0.095c-0.369-0.186-1.559-0.57-2.969-1.817c-1.097-0.972-1.838-2.169-2.052-2.536 c-0.217-0.366-0.022-0.564,0.161-0.746c0.165-0.165,0.369-0.428,0.554-0.643c0.185-0.213,0.246-0.364,0.369-0.609 c0.121-0.245,0.06-0.458-0.031-0.643c-0.092-0.184-0.829-1.984-1.138-2.717c-0.307-0.732-0.614-0.611-0.83-0.611 c-0.215,0-0.461-0.03-0.707-0.03S9.897,8.215,9.56,8.582s-1.291,1.252-1.291,3.054c0,1.804,1.321,3.543,1.506,3.787 c0.186,0.243,2.554,4.062,6.305,5.528c3.753,1.465,3.753,0.976,4.429,0.914c0.678-0.062,2.184-0.885,2.49-1.739 C23.307,19.268,23.307,18.533,23.214,18.38z"
-        />
-    </svg>
-)
-
+import { WhatsAppButton } from '../../ui/WhatsAppButton';
 const NOTIFICATIONS = [
     {
         id: 3,
@@ -259,7 +244,7 @@ export default function Hero() {
     const currentDate = now ? formatPhoneDate(now) : ''
 
     return (
-        <section className="relative flex w-full padding-block min-h-[100svh] bg-[#EDEFF3] overflow-hidden">
+        <section className="relative flex w-full padding-block min-h-[100svh] bg-section overflow-hidden">
             <div className="relative z-20 container-site flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-16 items-center justify-center text-center gap-6">
 
                 <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 lg:max-w-[46%]">
@@ -280,65 +265,57 @@ export default function Hero() {
                         Convertimos tu tráfico en inversionistas reales<br className="hidden md:block" /> contactando por WhatsApp.
                     </p>
 
-                    <a
-                        href={WHATSAPP_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex bg-neutral-900 justify-center items-center gap-2 py-3 w-47 rounded-full text-white shadow-lg shadow-black/10 transition-all duration-300 hover:bg-neutral-800"
-                    >
-                        <WaIconContact className="w-5 h-5 fill-white" />
-                        Agendar llamada
-                    </a>
+                    <WhatsAppButton />
                 </div>
 
-             <div className="w-full mt-8 lg:mt-0 lg:w-[46%] flex justify-center lg:justify-end lg:relative group">
+                <div className="w-full mt-8 lg:mt-0 lg:w-[46%] flex justify-center lg:justify-end lg:relative group">
 
-        <div className="hidden lg:block absolute -top-40 right-18 w-[275px] h-[550px] rounded-[40px] border-[10px] border-neutral-900 bg-neutral-950 shadow-xl z-0 overflow-hidden">
-            
-            <div className="absolute flex items-center justify-end top-3 left-1/2 -translate-x-1/2 w-15 h-4 bg-neutral-900 rounded-full z-10" >
-                <div className='bg-gray-800 flex flex-col items-center justify-center h-2 w-2 mr-1 rounded-full shadow-inner shadow-gray-800' >
-                    <span className='flex bg-gradient-to-b from-blue-500 via-gray-800 to-blue-500 py-[1px] blur-[1px] rounded-full shadow-inner shadow-blue-700/20'>
-                        <span className='h-1 w-1 bg-gray-800 rounded-full'></span>
-                    </span>
+                    <div className="hidden lg:block absolute -top-40 right-18 w-[275px] h-[550px] rounded-[40px] border-[10px] border-neutral-900 bg-neutral-950 shadow-xl z-0 overflow-hidden">
+                        
+                        <div className="absolute flex items-center justify-end top-3 left-1/2 -translate-x-1/2 w-15 h-4 bg-neutral-900 rounded-full z-10" >
+                            <div className='bg-gray-800 flex flex-col items-center justify-center h-2 w-2 mr-1 rounded-full shadow-inner shadow-gray-800' >
+                                <span className='flex bg-gradient-to-b from-blue-500 via-gray-800 to-blue-500 py-[1px] blur-[1px] rounded-full shadow-inner shadow-blue-700/20'>
+                                    <span className='h-1 w-1 bg-gray-800 rounded-full'></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div className="absolute top-3 left-0 right-0 px-6 flex items-center justify-between z-20 text-neutral-900">
+                            <span className="text-[0.7rem] font-light">
+                                {currentTime.time}
+                                <span className="text-[0.6rem] ml-0.5">{currentTime.period}</span>
+                            </span>
+                            <div className="flex items-center gap-2">
+                                <Signal className="w-2.5 h-2.5" strokeWidth={2.5} />
+                                <Wifi className="w-2.5 h-2.5" strokeWidth={2.5} />
+                                <Battery className="w-3 h-3" strokeWidth={2} />
+                            </div>
+                        </div>
+
+                        <div className="absolute top-20 left-0 right-0 flex flex-col items-center z-10 text-white">
+                            <span className="text-5xl flex bg-gradient-to-b from-neutral-900 via-neutral-900 to-transparent bg-clip-text text-transparent font-extralight items-end tracking-tight">
+                                {currentTime.time}
+                            </span>
+                            <span className="text-xs text-neutral-900 mt-1">{currentDate}</span>
+                        </div>
+                        <div className="absolute inset-0 z-0">
+                            <Image
+                                src="/images/cta-bg.png" 
+                                alt="Fondo de pantalla del móvil"
+                                fill 
+                                className="object-cover"
+                                priority 
+                            />
+                        </div>
+                        <div className="absolute bottom-6 left-0 right-0 flex justify-center z-20">
+                            <Fingerprint className="w-7 h-7 text-neutral-600" strokeWidth={1.5} />
+                        </div>
+                    </div>
+
+                    <div className="relative z-10 w-full lg:pr-10 lg:pt-10">
+                        <NotifStack visible={stackVisible} />
+                    </div>
                 </div>
-            </div>
-
-            <div className="absolute top-3 left-0 right-0 px-6 flex items-center justify-between z-20 text-neutral-900">
-                <span className="text-[0.7rem] font-light">
-                    {currentTime.time}
-                    <span className="text-[0.6rem] ml-0.5">{currentTime.period}</span>
-                </span>
-                <div className="flex items-center gap-2">
-                    <Signal className="w-2.5 h-2.5" strokeWidth={2.5} />
-                    <Wifi className="w-2.5 h-2.5" strokeWidth={2.5} />
-                    <Battery className="w-3 h-3" strokeWidth={2} />
-                </div>
-            </div>
-
-            <div className="absolute top-20 left-0 right-0 flex flex-col items-center z-10 text-white">
-                <span className="text-5xl flex bg-gradient-to-b from-neutral-900 via-neutral-900 to-transparent bg-clip-text text-transparent font-extralight items-end tracking-tight">
-                    {currentTime.time}
-                </span>
-                <span className="text-xs text-neutral-900 mt-1">{currentDate}</span>
-            </div>
-            <div className="absolute inset-0 z-0">
-                <Image
-                    src="/images/cta-bg.png" 
-                    alt="Fondo de pantalla del móvil"
-                    fill 
-                    className="object-cover"
-                    priority 
-                />
-            </div>
-            <div className="absolute bottom-6 left-0 right-0 flex justify-center z-20">
-                <Fingerprint className="w-7 h-7 text-neutral-600" strokeWidth={1.5} />
-            </div>
-        </div>
-
-        <div className="relative z-10 w-full lg:pr-10 lg:pt-10">
-            <NotifStack visible={stackVisible} />
-        </div>
-    </div>
             </div>
         </section>
     )

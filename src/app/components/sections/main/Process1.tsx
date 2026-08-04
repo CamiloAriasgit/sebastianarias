@@ -86,7 +86,7 @@ export default function Process() {
         <section
             id="proceso"
             ref={sectionRef}
-            className="bg-[#EDEFF3] relative"
+            className="bg-section relative"
             style={{ paddingBlock: 'var(--section-py)' }}
         >
             <div className="container-site">

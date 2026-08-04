@@ -2,22 +2,24 @@
 
 import { useEffect, useRef } from 'react'
 import { Zap, ShieldAlert, MessageSquareOff } from 'lucide-react'
+import { SectionTitle } from '../../ui/SectionTitle';
+
 
 const LEAKS = [
-  { 
-    title: 'Carga lento.', 
+  {
+    title: 'Carga lento.',
     body: 'Cada segundo de espera es un lead que se fue. El tráfico de pauta no perdona páginas lentas.',
-    icon: Zap 
+    icon: Zap
   },
-  { 
-    title: 'No genera confianza.', 
+  {
+    title: 'No genera confianza.',
     body: 'Una página genérica le dice al inversionista que el proyecto tampoco es serio. El diseño es el primer filtro.',
-    icon: ShieldAlert 
+    icon: ShieldAlert
   },
-  { 
-    title: 'El WhatsApp está escondido.', 
+  {
+    title: 'El WhatsApp está escondido.',
     body: 'Si el botón no está donde el usuario lo espera, en el momento en que lo necesita, el contacto no ocurre.',
-    icon: MessageSquareOff 
+    icon: MessageSquareOff
   },
 ]
 
@@ -43,29 +45,23 @@ export default function Problem() {
       },
       { threshold: 0.12 }
     )
-    ;[headRef.current, ...itemRefs.current].forEach((el, i) => {
-      if (!el) return
-      el.style.opacity = '0'
-      el.style.transform = 'translateY(20px)'
-      el.style.transition = `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 80}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 80}ms`
-      observer.observe(el)
-    })
+      ;[headRef.current, ...itemRefs.current].forEach((el, i) => {
+        if (!el) return
+        el.style.opacity = '0'
+        el.style.transform = 'translateY(20px)'
+        el.style.transition = `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 80}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 80}ms`
+        observer.observe(el)
+      })
     return () => observer.disconnect()
   }, [])
 
   return (
-    <section className="bg-[#EDEFF3]">
+    <section className="bg-section">
       <div className="container-site">
         <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] text-center flex flex-col items-center">
-          <h2
-            className="mt-10 block text-neutral-950 font-medium text-balance tracking-tighter drop-shadow-sm"
-            style={{
-              fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
-              lineHeight: 1.05,
-            }}
-          >
+          <SectionTitle>
             La mayoría de landings inmobiliarias no convierten. Y el problema no es la pauta.
-          </h2>
+          </SectionTitle>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-[clamp(1.5rem,4vw,2.5rem)] gap-y-10">

@@ -6,7 +6,9 @@
   --font-sans: 'Inter', system-ui, sans-serif;
 
   /* Escala de negros — profundidad sin modo claro */
-  --color-bg: #0a0a0a;
+  --color-section-bg: #303030;
+
+  --color-section: #EDEFF3;
   --color-surface: #111111;
   --color-surface-hi: #171717;
   --color-surface-top: #1f1f1f;

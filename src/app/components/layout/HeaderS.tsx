@@ -35,7 +35,7 @@ export default function Header() {
   const closeMenu = () => setIsOpen(false)
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-gradient-to-b from-[#EDEFF3] via-[#EDEFF3] to-[#EDEFF3]">
+    <header className="fixed top-0 inset-x-0 z-50 bg-section">
       <div className="container-site">
         <div className="flex items-center justify-between h-15">
 
