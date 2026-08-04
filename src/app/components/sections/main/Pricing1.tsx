@@ -78,7 +78,7 @@ export default function Pricing() {
         <section id='planes' className="bg-section py-20 md:py-32">
             {/* Recuperamos tu contenedor original con su ancho exacto */}
             <div className="container-site">
-                <div ref={headRef} className="mb-12 md:mb-20 text-center">
+                <div ref={headRef} className="mb-12 grid gap-4 md:mb-20 text-center">
                     <SectionTitle>
                         Elige el nivel que<br/> necesita tu proyecto.
                     </SectionTitle>

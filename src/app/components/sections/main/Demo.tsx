@@ -43,12 +43,10 @@ export default function Demo() {
           ref={headRef}
           className="grid text-center md:text-left gap-4 items-end mb-[clamp(2.5rem,5vw,4rem)]"
         >
-          <div>
             <SectionTitle>
               Así se ve en la práctica.
             </SectionTitle>
 
-          </div>
           <p className="mx-auto md:mx-0 text-balance md:text-wrap text-[0.9375rem] leading-relaxed text-neutral-700 m-0 max-w-[50ch] md:max-w-[60ch]">
             Una landing construida para convertir.
             Diseño, tracking y WhatsApp estratégico
