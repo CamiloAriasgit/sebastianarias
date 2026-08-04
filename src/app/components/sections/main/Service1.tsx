@@ -73,12 +73,12 @@ export default function Service() {
         {/* Cabecera */}
         <div
           ref={headRef}
-          className="flex flex-col items-center text-center gap-4 mb-[clamp(4rem,8vw,7rem)]"
+          className="flex flex-col items-center lg:text-center gap-4 mb-[clamp(4rem,8vw,7rem)]"
         >
           <SectionTitle>
             Una landing construida para el momento en que el comprador decide.
           </SectionTitle>
-          <p className="text-[0.9375rem] leading-relaxed text-black m-0 max-w-[47ch]">
+          <p className="text-[0.9375rem] leading-relaxed text-black m-0 max-w-[47ch] hidden">
             Cada elemento tiene un propósito. Nada está ahí por decoración.
           </p>
         </div>

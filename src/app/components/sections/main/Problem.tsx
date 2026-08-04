@@ -58,7 +58,7 @@ export default function Problem() {
   return (
     <section className="bg-section">
       <div className="container-site">
-        <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] text-center flex flex-col items-center">
+        <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] lg:text-center flex flex-col items-center">
           <SectionTitle>
             La mayoría de landings inmobiliarias no convierten. Y el problema no es la pauta.
           </SectionTitle>
