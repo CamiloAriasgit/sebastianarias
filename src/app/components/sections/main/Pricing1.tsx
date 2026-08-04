@@ -32,7 +32,7 @@ const PLANS = [
         price: '$1.499',
         monthly: '$89',
         description: 'El punto dulce. Diseño completo, tracking avanzado y copy orientado a convertir.',
-        features: ['Hasta 8 secciones', 'Diseño a medida', 'WhatsApp strategic', 'GTM + GA4 + eventos custom', 'Formulario de leads', 'Animaciones completas', 'Orientación de copywriting', '2 revisiones', 'Entrega en 14 días'],
+        features: ['Hasta 8 secciones', 'Diseño a medida', 'WhatsApp strategic', 'GTM + GA4 + eventos custom', 'Formulario de leads', 'Animaciones completas', 'Orientación de copywriting', 'Simulador de cuota inicial', '2 revisiones', 'Entrega en 14 días'],
         highlighted: true,
     },
     {
@@ -40,7 +40,7 @@ const PLANS = [
         price: '$2.799',
         monthly: '$139',
         description: 'Para proyectos que exigen el máximo nivel de detalle, conversión y presentación.',
-        features: ['Secciones ilimitadas', 'Diseño a medida', 'WhatsApp multi-punto', 'GTM + GA4 + funnel completo', 'Formulario de leads', 'Animaciones avanzadas', 'Copywriting incluido', '3 revisiones', 'Entrega en 21 días'],
+        features: ['Secciones ilimitadas', 'Diseño a medida', 'WhatsApp multi-punto', 'GTM + GA4 + funnel completo', 'Formulario de leads', 'Animaciones avanzadas', 'Copywriting incluido', 'Simulador de cuota inicial', '3 revisiones', 'Entrega en 21 días'],
         highlighted: false,
     },
 ]
