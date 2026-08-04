@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
+import { SectionTitle } from '../../ui/SectionTitle';
 
 const FEATURES = [
   {
@@ -54,13 +55,13 @@ export default function Service() {
       { threshold: 0.15 }
     )
 
-    ;[headRef.current, ...rowRefs.current].forEach((el, i) => {
-      if (!el) return
-      el.style.opacity = '0'
-      el.style.transform = 'translateY(24px)'
-      el.style.transition = `opacity 0.8s cubic-bezier(0.16,1,0.3,1) ${i === 0 ? 0 : 60}ms, transform 0.8s cubic-bezier(0.16,1,0.3,1) ${i === 0 ? 0 : 60}ms`
-      observer.observe(el)
-    })
+      ;[headRef.current, ...rowRefs.current].forEach((el, i) => {
+        if (!el) return
+        el.style.opacity = '0'
+        el.style.transform = 'translateY(24px)'
+        el.style.transition = `opacity 0.8s cubic-bezier(0.16,1,0.3,1) ${i === 0 ? 0 : 60}ms, transform 0.8s cubic-bezier(0.16,1,0.3,1) ${i === 0 ? 0 : 60}ms`
+        observer.observe(el)
+      })
 
     return () => observer.disconnect()
   }, [])
@@ -74,18 +75,9 @@ export default function Service() {
           ref={headRef}
           className="flex flex-col items-center text-center gap-4 mb-[clamp(4rem,8vw,7rem)]"
         >
-          {/*<h2 className="text-display-md text-[var(--color-text-primary)] m-0 max-w-[24ch]">
+          <SectionTitle>
             Una landing construida para el momento en que el comprador decide.
-          </h2>*/}
-          <h2
-            className="m-0 block text-black font-medium text-balance tracking-tighter drop-shadow-sm"
-            style={{
-              fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
-              lineHeight: 1.05,
-            }}
-          >
-            Una landing construida para el momento en que el comprador decide.
-          </h2>
+          </SectionTitle>
           <p className="text-[0.9375rem] leading-relaxed text-black m-0 max-w-[47ch]">
             Cada elemento tiene un propósito. Nada está ahí por decoración.
           </p>
@@ -97,9 +89,8 @@ export default function Service() {
             <div
               key={f.title}
               ref={el => { rowRefs.current[i] = el }}
-              className={`grid items-center gap-8 md:gap-[clamp(2rem,5vw,4rem)] ${
-                i % 2 === 1 ? 'md:[direction:rtl]' : ''
-              }`}
+              className={`grid items-center gap-8 md:gap-[clamp(2rem,5vw,4rem)] ${i % 2 === 1 ? 'md:[direction:rtl]' : ''
+                }`}
               style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}
             >
               {/* Imagen */}

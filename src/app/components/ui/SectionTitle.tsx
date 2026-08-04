@@ -16,9 +16,9 @@ export function SectionTitle({
     <Tag
       className={`block text-neutral-900 font-medium text-balance ${className}`}
       style={{
-        fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
-        lineHeight: 1.15,
-        letterSpacing: '-0.02em',
+        fontSize: 'clamp(1.5rem, 2.2vw, 2.75rem)',
+        lineHeight: 1.2,
+        letterSpacing: '-0.015em',
       }}
     >
       {children}

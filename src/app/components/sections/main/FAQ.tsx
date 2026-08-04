@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { ChevronRight, ArrowUpRight } from 'lucide-react'
+import { SectionTitle } from '../../ui/SectionTitle';
 
 const FAQS = [
   { q: '¿El dominio está incluido?', a: 'El dominio lo registra el cliente a su nombre — eso garantiza que siempre sea de su propiedad. La configuración técnica y los DNS corren por nuestra cuenta.' },
@@ -52,13 +53,12 @@ export default function FAQ() {
       <div className="container-site">
         <div
           ref={headRef}
-          className="grid gap-[clamp(1rem,4vw,4rem)] items-end mb-[clamp(3rem,5vw,4rem)] grid-cols-[repeat(auto-fit,minmax(280px,1fr))]"
+          className="text-center mb-[clamp(3rem,5vw,4rem)]"
         >
-          <h2
-            className="m-0 block text-black text-center font-medium tracking-tighter drop-shadow-sm text-[clamp(1.5rem,3vw,3.5rem)] leading-snug"
-          >
+          
+          <SectionTitle>
             Preguntas frecuentes.
-          </h2>
+          </SectionTitle>
         </div>
 
         <div>

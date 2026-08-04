@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from 'react'
 import { ArrowUpRight, Info, SquareArrowOutUpRight } from 'lucide-react'
+import { SectionTitle } from '../../ui/SectionTitle';
+
 
 export default function Demo() {
   const headRef = useRef<HTMLDivElement>(null)
@@ -42,15 +44,10 @@ export default function Demo() {
           className="grid text-center md:text-left gap-4 items-end mb-[clamp(2.5rem,5vw,4rem)]"
         >
           <div>
-            <h2
-              className="m-0 block text-black font-medium tracking-tighter drop-shadow-sm"
-              style={{
-                fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
-                lineHeight: 1.05,
-              }}
-            >
+            <SectionTitle>
               Así se ve en la práctica.
-            </h2>
+            </SectionTitle>
+
           </div>
           <p className="mx-auto md:mx-0 text-balance md:text-wrap text-[0.9375rem] leading-relaxed text-neutral-700 m-0 max-w-[50ch] md:max-w-[60ch]">
             Una landing construida para convertir.

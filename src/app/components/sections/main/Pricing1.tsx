@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { Check, Sparkles, ArrowUpRight, Gem } from 'lucide-react'
+import { SectionTitle } from '../../ui/SectionTitle';
 
 const BASE_WHATSAPP_NUMBER = '573235619283'
 
@@ -78,18 +79,9 @@ export default function Pricing() {
             {/* Recuperamos tu contenedor original con su ancho exacto */}
             <div className="container-site">
                 <div ref={headRef} className="mb-12 md:mb-20 text-center">
-                    {/*<h2 className="text-neutral-900 m-0 mb-3 max-w-[22ch] text-[clamp(1.75rem,4vw,3.25rem)] font-light leading-[1.1] tracking-[-0.03em]">
-            Elige el nivel que necesita tu proyecto.
-          </h2>*/}
-                    <h2
-                        className="m-0 mb-3 block text-black font-medium tracking-tighter drop-shadow-sm"
-                        style={{
-                            fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
-                            lineHeight: 1.05,
-                        }}
-                    >
-                        Elige el nivel que<br />necesita tu proyecto.
-                    </h2>
+                    <SectionTitle>
+                        Elige el nivel que<br/> necesita tu proyecto.
+                    </SectionTitle>
                     <p className="text-sm text-neutral-900 m-0 text-balance">
                         Todos los planes incluyen hosting, despliegue y soporte mensual.
                     </p>

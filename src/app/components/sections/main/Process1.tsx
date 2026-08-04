@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { SectionTitle } from '../../ui/SectionTitle';
+
 import {
     MessageSquare,
     Layers,
@@ -91,16 +93,10 @@ export default function Process() {
         >
             <div className="container-site">
                 <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] flex flex-col items-center text-center">
-                    <h2
-                        className="m-0 block text-black font-medium tracking-tighter drop-shadow-sm"
-                        style={{
-                            fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
-                            lineHeight: 1.05,
-                        }}
-                    >
+                    <SectionTitle>
                         De briefing a publicado. <br />
                         Sin fricciones.
-                    </h2>
+                    </SectionTitle>
                 </div>
 
                 <div className="flex flex-col items-center justify-center w-full">
