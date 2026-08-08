@@ -9,7 +9,6 @@ const FAQS = [
   { q: '¿Qué pasa cuando el proyecto termina su ciclo de ventas?', a: 'La landing se apaga o redirige al sitio principal. El repositorio queda archivado por si hay una segunda etapa o un nuevo proyecto.' },
   { q: '¿Puedo pedir cambios después de publicado?', a: 'Sí. Cada plan incluye un número de cambios mensuales acordados. Los cambios fuera de ese límite se cotizan por separado.' },
   { q: '¿Qué necesito tener listo para empezar?', a: 'Los textos del proyecto, logotipo, paleta de colores si existe, y referencias visuales. Con eso es suficiente para arrancar.' },
-  { q: '¿Trabajan con proyectos fuera de Colombia?', a: 'Sí. El servicio opera para cualquier proyecto en Latinoamérica. Los pagos se manejan en USD.' },
 ]
 
 export default function FAQ() {

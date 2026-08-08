@@ -1,7 +1,9 @@
 // app/layout.tsx
 import type { Metadata } from 'next'
 import './globals.css'
-import { GoogleTagManager } from '@next/third-parties/google'; //
+import { GoogleTagManager } from '@next/third-parties/google';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 
 export const metadata: Metadata = {
   title: 'Sebastian Arias — Desarrollo web para proyectos inmobiliarios',
@@ -39,7 +41,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className="scroll-smooth">
+    <html
+      lang="es"
+      className={`scroll-smooth ${GeistSans.variable} ${GeistMono.variable}`}
+    >
       <GoogleTagManager gtmId="GTM-P2SQSJ5W" />
       <body className="antialiased">
         {children}
