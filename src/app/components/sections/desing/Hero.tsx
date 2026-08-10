@@ -122,7 +122,7 @@ export default function Hero() {
           <div className="relative flex flex-1 flex-col items-start justify-center gap-6 p-8 pt-12 sm:p-10 sm:pt-14 lg:col-span-7 lg:p-14 lg:pt-16 xl:p-20 xl:pt-24 2xl:p-24">
             <Meta index="01" />
 
-            <h1 className="text-balance text-[2.35rem] font-medium uppercase leading-[1.06] tracking-tight text-[#12141A] sm:text-5xl lg:text-[3.6rem] xl:text-[4.4rem] 2xl:text-[5.2rem]">
+            <h1 className="text-balance text-[2.35rem] font-medium  leading-[1.06] tracking-tight text-neutral-600 sm:text-5xl lg:text-[3.6rem] xl:text-[4.4rem] 2xl:text-[5.2rem]">
               Landing pages para proyectos inmobiliarios
             </h1>
 
