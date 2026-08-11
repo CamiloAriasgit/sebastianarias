@@ -27,12 +27,12 @@ export default function ChatScene({ progress, highlightedMessage, exchange }: Pr
       animate={closing ? { opacity: 0, y: -20 } : { opacity: 1, y: 0 }}
       className="w-full max-w-sm mx-4 bg-white rounded-3xl shadow-2xl overflow-hidden"
     >
-      <motion.div layoutId={`message-${highlightedMessage.id}`} className="bg-emerald-600 px-4 py-3 flex items-center gap-3">
+      <div className="bg-emerald-600 px-4 py-3 flex items-center gap-3">
         <div className={`w-9 h-9 rounded-full ${highlightedMessage.avatarColor} flex items-center justify-center text-white font-semibold`}>
           {highlightedMessage.name.charAt(0)}
         </div>
         <p className="text-white font-medium text-sm">{highlightedMessage.name}</p>
-      </motion.div>
+      </div>
 
       <div className="bg-[#e5ddd5] p-4 flex flex-col gap-2 min-h-[180px]">
         {step >= 1 && (
