@@ -7,11 +7,8 @@ import { whatsappFunnelScript } from "./whatsapp-flow.data";
 import { SceneId } from "./whatsapp-flow.types";
 import IconCountingScene from "./scenes/IconCountingScene";
 import NotificationsScene from "./scenes/NotificationsScene";
-import HighlightScene from "./scenes/HighlightScene";
 import ChatScene from "./scenes/ChatScene";
 
-// Transición estándar de entrada/salida entre escenas — la misma para todas,
-// así el ritmo se siente consistente aunque no haya morph.
 const sceneVariants = {
   initial: { opacity: 0, scale: 0.96 },
   animate: { opacity: 1, scale: 1 },
@@ -44,14 +41,9 @@ export default function WhatsAppFunnel() {
               <NotificationsScene progress={localProgress} messages={messages} />
             </motion.div>
           )}
-          {activeScene === "highlight" && (
-            <motion.div key="highlight" variants={sceneVariants} initial="initial" animate="animate" exit="exit" transition={sceneTransition}>
-              <HighlightScene progress={localProgress} messages={messages} highlightedIndex={highlightedMessageIndex} />
-            </motion.div>
-          )}
           {activeScene === "chat" && (
             <motion.div key="chat" variants={sceneVariants} initial="initial" animate="animate" exit="exit" transition={sceneTransition}>
-              <ChatScene progress={localProgress} highlightedMessage={messages[highlightedMessageIndex]} exchange={chatExchange} />
+              <ChatScene progress={localProgress} contact={messages[highlightedMessageIndex]} exchange={chatExchange} />
             </motion.div>
           )}
         </AnimatePresence>

@@ -5,9 +5,8 @@ export const whatsappFunnelScript: WhatsAppFunnelScript = {
   // Cambiar el orden aquí cambia el orden del funnel.
 scenes: [
   { id: "icon-counting", from: 0.0, to: 0.18 },
-  { id: "notifications", from: 0.18, to: 0.48 },
-  { id: "highlight", from: 0.48, to: 0.62 },
-  { id: "chat", from: 0.62, to: 1.0 },
+  { id: "notifications", from: 0.18, to: 0.55 },
+  { id: "chat", from: 0.55, to: 1.0 },
 ],
 
   messages: [

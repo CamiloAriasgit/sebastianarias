@@ -6,51 +6,63 @@ import { LeadMessage, ChatExchange } from "../whatsapp-flow.types";
 
 interface Props {
   progress: MotionValue<number>;
-  highlightedMessage: LeadMessage;
+  contact: LeadMessage;
   exchange: ChatExchange;
 }
 
-export default function ChatScene({ progress, highlightedMessage, exchange }: Props) {
-  const [step, setStep] = useState(0); // 0 header, 1 lead, 2 reply, 3 confirmación
-  const [closing, setClosing] = useState(false);
+// step: 0 = solo header, 1 = mensaje del lead, 2 = respuesta, 3 = confirmación
+export default function ChatScene({ progress, contact, exchange }: Props) {
+  const [step, setStep] = useState(0);
 
   useMotionValueEvent(progress, "change", (latest) => {
-    if (latest < 0.2) setStep(0);
+    if (latest < 0.15) setStep(0);
     else if (latest < 0.45) setStep(1);
-    else if (latest < 0.7) setStep(2);
+    else if (latest < 0.75) setStep(2);
     else setStep(3);
-    setClosing(latest > 0.9);
   });
 
   return (
-    <motion.div
-      animate={closing ? { opacity: 0, y: -20 } : { opacity: 1, y: 0 }}
-      className="w-full max-w-sm mx-4 bg-white rounded-3xl shadow-2xl overflow-hidden"
-    >
-      <div className="bg-emerald-600 px-4 py-3 flex items-center gap-3">
-        <div className={`w-9 h-9 rounded-full ${highlightedMessage.avatarColor} flex items-center justify-center text-white font-semibold`}>
-          {highlightedMessage.name.charAt(0)}
+    // w-[92vw] + -mr-8 en móvil = el contenido "sangra" fuera del borde derecho,
+    // como si el chat continuara fuera de pantalla. En sm+ vuelve a comportarse normal.
+    <div className="w-[92vw] sm:w-full max-w-md -mr-8 sm:mr-0 px-4">
+      {/* Header simple: solo avatar + nombre, sin contenedor */}
+      <div className="flex items-center gap-3 mb-5">
+        <div className={`w-11 h-11 rounded-full ${contact.avatarColor} flex items-center justify-center text-white font-semibold shrink-0`}>
+          {contact.name.charAt(0)}
         </div>
-        <p className="text-white font-medium text-sm">{highlightedMessage.name}</p>
+        <p className="font-semibold text-gray-900">{contact.name}</p>
       </div>
 
-      <div className="bg-[#e5ddd5] p-4 flex flex-col gap-2 min-h-[180px]">
+      {/* Mensajes sueltos sobre el fondo, sin panel/contenedor general */}
+      <div className="flex flex-col gap-3">
         {step >= 1 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="self-start bg-white rounded-lg px-3 py-2 text-sm max-w-[80%]">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="self-start bg-white rounded-2xl rounded-tl-sm px-4 py-2 text-sm text-gray-800 shadow-sm max-w-[75%]"
+          >
             {exchange.leadMessage}
-          </motion.div>
+          </motion.p>
         )}
         {step >= 2 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="self-end bg-emerald-100 rounded-lg px-3 py-2 text-sm max-w-[80%]">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="self-end bg-emerald-500 text-white rounded-2xl rounded-tr-sm px-4 py-2 text-sm shadow-sm max-w-[75%]"
+          >
             {exchange.agentReply}
-          </motion.div>
+          </motion.p>
         )}
         {step >= 3 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="self-start bg-white rounded-lg px-3 py-2 text-sm max-w-[80%]">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="self-start bg-white rounded-2xl rounded-tl-sm px-4 py-2 text-sm text-gray-800 shadow-sm max-w-[75%]"
+          >
             {exchange.leadConfirmation}
-          </motion.div>
+          </motion.p>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }

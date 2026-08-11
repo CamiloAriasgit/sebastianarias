@@ -1,8 +1,7 @@
 // Nombres de cada escena dentro de la sección inmersiva.
 // Este union type es la "fuente de verdad" del orden — reordenar
 // el flujo es reordenar el array de escenas en el guion, no tocar lógica.
-export type SceneId = "icon-counting" | "notifications" | "highlight" | "chat";
-
+export type SceneId = "icon-counting" | "notifications" | "chat";
 // Un mensaje de notificación tipo WhatsApp
 export interface LeadMessage {
   id: string;
