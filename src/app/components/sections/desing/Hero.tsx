@@ -1,3 +1,6 @@
+import { WhatsAppButton } from '../../ui/WhatsAppButton';
+
+
 function CornerBracket({ className }: { className: string }) {
   return (
     <div className={`pointer-events-none absolute ${className}`} aria-hidden="true">
@@ -130,28 +133,7 @@ export default function Hero() {
               Convertimos tu tráfico en inversionistas reales contactando por WhatsApp.
             </p>
 
-            <button
-              type="button"
-              className="group inline-flex items-center gap-3 bg-black px-6 py-3.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-neutral-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#20406B] sm:text-base lg:px-7 lg:py-4"
-            >
-              Agendar llamada
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                className="shrink-0 transition-transform duration-200 motion-reduce:transition-none group-hover:translate-x-0.5"
-                aria-hidden="true"
-              >
-                <path
-                  d="M2 8h12M9 3l5 5-5 5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+            <WhatsAppButton />
           </div>
 
           {/* Columna derecha: notificaciones de WhatsApp, planas, mismo tamaño */}
