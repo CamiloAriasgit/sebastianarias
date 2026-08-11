@@ -249,10 +249,10 @@ export default function Hero() {
 
                 <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 lg:max-w-[46%]">
                     <h1
-                        className="m-0 block text-neutral-950 font-semibold text-balance tracking-tighter drop-shadow-sm"
+                        className="m-0 block text-neutral-950 font-semibold text-balance tracking-tight drop-shadow-sm"
                         style={{
                             fontSize: 'clamp(1.9rem, 4vw, 4.5rem)',
-                            lineHeight: 1.05,
+                            //lineHeight: 1.05,
                         }}
                     >
                         Landing pages para proyectos inmobiliarios
