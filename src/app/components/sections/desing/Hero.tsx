@@ -336,7 +336,7 @@ export default function LiveLeadsSection() {
                         />
                     ))}
                 </div>
-                <div className={reduceMotion ? 'lg:hidden flex flex-col gap-1' : 'lg:hidden flex flex-col gap-1 py-[15vh]'}>
+                <div className={reduceMotion ? 'lg:hidden flex flex-col gap-1' : 'lg:hidden flex flex-col gap-1'}>
                     {PROJECTS.map((project, i) => (
                         <ProjectPanel
                             key={project.id}
