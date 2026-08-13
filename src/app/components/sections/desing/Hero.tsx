@@ -276,7 +276,9 @@ export default function LiveLeadsSection() {
 
                     const weights = PROJECTS.map((_, i) => {
                         const center = (i + 0.5) / PROJECTS.length
-                        const dist = Math.abs(progress - center) * PROJECTS.length
+                        // 2*N en vez de N: cada panel ocupa exactamente 1/N del scroll,
+                        // así no hay solape entre paneles y todos arrancan en 0.
+                        const dist = Math.abs(progress - center) * (PROJECTS.length * 2)
                         return clamp(1 - dist, 0, 1)
                     })
                     setScrollWeights(weights)
@@ -308,7 +310,7 @@ export default function LiveLeadsSection() {
             <div className="container-full">
                 <div className="max-w-xl mb-10 lg:mb-14 text-center lg:text-left mx-auto lg:mx-0">
                     <h2 className="mt-3 text-3xl lg:text-4xl font-medium text-neutral-950 tracking-tight text-balance">
-                       Landing pages para proyectos inmobiliarios
+                        Landing pages para proyectos inmobiliarios
                     </h2>
                     <p className="mt-3 text-sm lg:text-base text-neutral-700 leading-relaxed">
                         Convertimos el tráfico de tu pauta en inversionistas reales contactando por WhatsApp.
@@ -342,8 +344,8 @@ export default function LiveLeadsSection() {
                                 project={project}
                                 growValue={1}
                                 isActive={reduceMotion ? true : isActiveFor(i)}
-                                onEnter={() => {}}
-                                onLeave={() => {}}
+                                onEnter={() => { }}
+                                onLeave={() => { }}
                                 reduceMotion={reduceMotion}
                                 isRow={true}
                                 weight={reduceMotion ? 1 : scrollWeights[i]}
