@@ -1,153 +1,339 @@
-import { WhatsAppButton } from '../../ui/WhatsAppButton';
+'use client'
 
+import { useEffect, useRef, useState, useCallback } from 'react'
 
-function CornerBracket({ className }: { className: string }) {
-  return (
-    <div className={`pointer-events-none absolute ${className}`} aria-hidden="true">
-      <div className="absolute h-px w-3.5 bg-[#2A4A73]" />
-      <div className="absolute h-3.5 w-px bg-[#2A4A73]" />
-    </div>
-  );
-}
+/* ─────────────────────────────────────────────────────────────
+   INTEGRACIÓN EN TU PROYECTO (borrar este bloque al copiar):
+   1) Reemplaza <MockWhatsAppButton /> por:
+        import { WhatsAppButton } from '../../ui/WhatsAppButton'
+   2) Reemplaza className="mock-container" por tu clase real "container"
+   3) Reemplaza los bloques `tone` (gradientes) por tus <Image /> reales
+      de Next — el punto exacto está marcado con // IMAGEN REAL AQUÍ
+───────────────────────────────────────────────────────────────── */
 
-function CrossTick({ className }: { className: string }) {
-  return (
-    <div className={`pointer-events-none absolute ${className}`} aria-hidden="true">
-      <span className="absolute left-1/2 top-1/2 h-[9px] w-px -translate-x-1/2 -translate-y-1/2 bg-[#B9BFC9]" />
-      <span className="absolute left-1/2 top-1/2 h-px w-[9px] -translate-x-1/2 -translate-y-1/2 bg-[#B9BFC9]" />
-    </div>
-  );
-}
-
-function HatchBand({ className = "" }: { className?: string }) {
-  return (
-    <div
-      className={`bg-[repeating-linear-gradient(135deg,#B9BFC9_0px,#B9BFC9_1px,transparent_1px,transparent_9px)] ${className}`}
-      aria-hidden="true"
-    />
-  );
-}
-
-function Meta({ index }: { index: string }) {
-  return (
-    <div className="absolute left-4 top-3 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-[#9AA1AC] sm:left-6 lg:left-8">
-      <span className="text-[#2A4A73]">{index}</span>
-    </div>
-  );
-}
-
-/* --- WhatsApp notifications (columna derecha) --- */
-
-const NOTIFICATIONS = [
-  {
-    id: 3,
-    name: "Andrés Castillo",
-    preview: "¿Aún hay unidades en el piso 8? Vi los planos y me convencieron.",
-    time: "3 min",
-  },
-  {
-    id: 2,
-    name: "Valeria Ríos",
-    preview: "Hola, me interesa el de 2 hab. ¿Tienen sala de ventas este fin de semana?",
-    time: "1 min",
-  },
-  {
-    id: 1,
-    name: "Carlos Mendoza",
-    preview: "Buenas, vi el proyecto Reserva del Bosque. ¿Cuándo puedo agendar una visita?",
-    time: "ahora",
-  },
-];
-
-function WaIcon({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 30.667 30.667" className={className} fill="white" aria-hidden="true">
-      <path
-        d="M30.667,14.939c0,8.25-6.74,14.938-15.056,14.938c-2.639,0-5.118-0.675-7.276-1.857L0,30.667l2.717-8.017
-        c-1.37-2.25-2.159-4.892-2.159-7.712C0.559,6.688,7.297,0,15.613,0C23.928,0.002,30.667,6.689,30.667,14.939z M15.61,2.382
-        c-6.979,0-12.656,5.634-12.656,12.56c0,2.748,0.896,5.292,2.411,7.362l-1.58,4.663l4.862-1.545c2,1.312,4.393,2.076,6.963,2.076
-        c6.979,0,12.658-5.633,12.658-12.559C28.27,8.016,22.59,2.382,15.61,2.382z M23.214,18.38c-0.094-0.151-0.34-0.243-0.708-0.427
-        c-0.367-0.184-2.184-1.069-2.521-1.189c-0.34-0.123-0.586-0.185-0.832,0.182c-0.243,0.367-0.951,1.191-1.168,1.437
-        c-0.215,0.245-0.43,0.276-0.799,0.095c-0.369-0.186-1.559-0.57-2.969-1.817c-1.097-0.972-1.838-2.169-2.052-2.536
-        c-0.217-0.366-0.022-0.564,0.161-0.746c0.165-0.165,0.369-0.428,0.554-0.643c0.185-0.213,0.246-0.364,0.369-0.609
-        c0.121-0.245,0.06-0.458-0.031-0.643c-0.092-0.184-0.829-1.984-1.138-2.717c-0.307-0.732-0.614-0.611-0.83-0.611
-        c-0.215,0-0.461-0.03-0.707-0.03S9.897,8.215,9.56,8.582s-1.291,1.252-1.291,3.054c0,1.804,1.321,3.543,1.506,3.787
-        c0.186,0.243,2.554,4.062,6.305,5.528c3.753,1.465,3.753,0.976,4.429,0.914c0.678-0.062,2.184-0.885,2.49-1.739
-        C23.307,19.268,23.307,18.533,23.214,18.38z"
-      />
+const WaIcon = ({ size = 12 }) => (
+    <svg viewBox="0 0 30.667 30.667" width={size} height={size} fill="currentColor">
+        <path d="M30.667,14.939c0,8.25-6.74,14.938-15.056,14.938c-2.639,0-5.118-0.675-7.276-1.857L0,30.667l2.717-8.017 c-1.37-2.25-2.159-4.892-2.159-7.712C0.559,6.688,7.297,0,15.613,0C23.928,0.002,30.667,6.689,30.667,14.939z M15.61,2.382 c-6.979,0-12.656,5.634-12.656,12.56c0,2.748,0.896,5.292,2.411,7.362l-1.58,4.663l4.862-1.545c2,1.312,4.393,2.076,6.963,2.076 c6.979,0,12.658-5.633,12.658-12.559C28.27,8.016,22.59,2.382,15.61,2.382z M23.214,18.38c-0.094-0.151-0.34-0.243-0.708-0.427 c-0.367-0.184-2.184-1.069-2.521-1.189c-0.34-0.123-0.586-0.185-0.832,0.182c-0.243,0.367-0.951,1.191-1.168,1.437 c-0.215,0.245-0.43,0.276-0.799,0.095c-0.369-0.186-1.559-0.57-2.969-1.817c-1.097-0.972-1.838-2.169-2.052-2.536 c-0.217-0.366-0.022-0.564,0.161-0.746c0.165-0.165,0.369-0.428,0.554-0.643c0.185-0.213,0.246-0.364,0.369-0.609 c0.121-0.245,0.06-0.458-0.031-0.643c-0.092-0.184-0.829-1.984-1.138-2.717c-0.307-0.732-0.614-0.611-0.83-0.611 c-0.215,0-0.461-0.03-0.707-0.03S9.897,8.215,9.56,8.582s-1.291,1.252-1.291,3.054c0,1.804,1.321,3.543,1.506,3.787 c0.186,0.243,2.554,4.062,6.305,5.528c3.753,1.465,3.753,0.976,4.429,0.914c0.678-0.062,2.184-0.885,2.49-1.739 C23.307,19.268,23.307,18.533,23.214,18.38z" />
     </svg>
-  );
+)
+
+// Placeholder: reemplaza `tone` por tu fotografía real de cada proyecto.
+const PROJECTS = [
+    {
+        id: 'bosque',
+        name: 'Reserva del Bosque',
+        location: 'Envigado, Antioquia',
+        tone: 'linear-gradient(155deg, #3a4a3d 0%, #1b241d 55%, #0a0d0a 100%)',
+        lead: {
+            name: 'Carlos Mendoza',
+            time: 'ahora',
+            message: 'Buenas, vi el proyecto Reserva del Bosque. ¿Cuándo puedo agendar una visita?',
+        },
+    },
+    {
+        id: 'altos',
+        name: 'Altos de Provenza',
+        location: 'Sabaneta, Antioquia',
+        tone: 'linear-gradient(155deg, #4a4237 0%, #241f19 55%, #0d0b09 100%)',
+        lead: {
+            name: 'Valeria Ríos',
+            time: '2 min',
+            message: 'Me interesa el apartamento de 2 habitaciones. ¿Tienen sala de ventas este fin de semana?',
+        },
+    },
+    {
+        id: 'cielo',
+        name: 'Cielo Nueve14',
+        location: 'El Poblado, Medellín',
+        tone: 'linear-gradient(155deg, #2b3040 0%, #171a24 55%, #0a0b10 100%)',
+        lead: {
+            name: 'Andrés Castillo',
+            time: '5 min',
+            message: '¿Aún hay unidades disponibles en el piso 8? Los planos me convencieron.',
+        },
+    },
+]
+
+const clamp = (v, min, max) => Math.min(max, Math.max(min, v))
+const lerp = (a, b, t) => a + (b - a) * t
+const ease = (t) => 1 - Math.pow(1 - t, 3) // easeOutCubic
+
+function MockWhatsAppButton({ children = 'Agendar llamada' }) {
+    return (
+        <a
+            href="https://wa.me/573235619283"
+            className="inline-flex items-center gap-2 rounded-full bg-neutral-950 text-white text-sm font-medium px-5 py-3 hover:bg-neutral-800 transition-colors"
+        >
+            <WaIcon size={14} />
+            {children}
+        </a>
+    )
 }
 
-type Notif = (typeof NOTIFICATIONS)[number];
-
-function NotifCard({ n }: { n: Notif }) {
-  return (
-    <div className="w-full shrink-0 rounded-2xl bg-white px-4 py-3 shadow-[0_8px_30px_rgba(18,20,26,0.08)] sm:rounded-2xl sm:px-5 sm:py-3.5 lg:rounded-3xl lg:px-6 lg:py-4 xl:px-7 xl:py-5">
-      <div className="mb-2 flex items-center justify-between sm:mb-2.5 lg:mb-3">
-        <div className="flex items-center gap-2 sm:gap-2.5">
-          <div className="flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-md bg-[#25D366] sm:h-5 sm:w-5 lg:h-6 lg:w-6 xl:h-7 xl:w-7">
-            <WaIcon className="h-[10px] w-[10px] sm:h-3 sm:w-3 lg:h-3.5 lg:w-3.5 xl:h-4 xl:w-4" />
-          </div>
-          <span className="text-[11px] font-medium tracking-wide text-neutral-600 sm:text-xs lg:text-sm">
-            WhatsApp
-          </span>
+function LeadCard({ lead, style, floating }) {
+    return (
+        <div
+            className="pointer-events-none absolute w-[240px] rounded-2xl px-4 py-3 backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+            style={{
+                background: 'rgba(255,255,255,0.92)',
+                ...style,
+            }}
+        >
+            <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center gap-1.5">
+                    <div className="w-[16px] h-[16px] rounded-md flex items-center justify-center bg-[#25d366] text-white shrink-0">
+                        <WaIcon size={10} />
+                    </div>
+                    <span className="text-[0.65rem] font-medium text-neutral-500 tracking-wide">WhatsApp</span>
+                </div>
+                <span className="text-[0.6rem] text-neutral-400">{lead.time}</span>
+            </div>
+            <p className="text-[0.8rem] font-semibold text-neutral-950 m-0 mb-0.5 text-left">{lead.name}</p>
+            <p className="text-[0.72rem] text-neutral-700 m-0 leading-snug text-left">{lead.message}</p>
         </div>
-        <span className="font-mono text-[9px] text-neutral-400 sm:text-[10px] lg:text-xs">
-          {n.time}
-        </span>
-      </div>
-      <p className="m-0 mb-1 text-left text-sm font-medium text-neutral-950 sm:text-base lg:text-lg">
-        {n.name}
-      </p>
-      <p className="m-0 line-clamp-2 text-left text-xs leading-relaxed text-neutral-600 sm:text-sm lg:text-base">
-        {n.preview}
-      </p>
-    </div>
-  );
+    )
 }
 
-export default function Hero() {
-  return (
-    <section className="relative flex min-h-[100svh] w-full flex-col bg-[#EDEFF3] p-3 sm:p-4 lg:min-h-screen lg:p-6">
-      <div className="relative flex flex-1 flex-col border border-[#B9BFC9]">
-        <CornerBracket className="left-0 top-0" />
-        <CornerBracket className="right-0 top-0 rotate-90" />
-        <CornerBracket className="bottom-0 left-0 -rotate-90" />
-        <CornerBracket className="bottom-0 right-0 rotate-180" />
+/* ── Panel individual (columna en desktop / fila en mobile) ── */
+function ProjectPanel({ project, index, growValue, isActive, onEnter, onLeave, reduceMotion, isRow }) {
+    const panelRef = useRef(null)
+    const cardRef = useRef(null)
+    const targetOffset = useRef({ x: 0, y: 0 })
+    const currentOffset = useRef({ x: 0, y: 0 })
+    const rafId = useRef(null)
 
-        {/* Grid principal */}
-        <div className="relative flex flex-1 flex-col divide-y divide-dotted divide-[#B9BFC9] lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
-          <CrossTick className="left-0 top-0 hidden -translate-x-1/2 -translate-y-1/2 lg:block lg:left-[58.333%]" />
-          <CrossTick className="bottom-0 left-0 hidden -translate-x-1/2 translate-y-1/2 lg:block lg:left-[58.333%]" />
+    const handleMouseMove = useCallback((e) => {
+        if (reduceMotion || !panelRef.current) return
+        const rect = panelRef.current.getBoundingClientRect()
+        const relX = e.clientX - rect.left
+        const relY = e.clientY - rect.top
+        // desplazamiento magnético acotado respecto al centro del panel
+        const maxOffset = 26
+        const cx = clamp(((relX / rect.width) - 0.5) * 2, -1, 1)
+        const cy = clamp(((relY / rect.height) - 0.5) * 2, -1, 1)
+        targetOffset.current = { x: cx * maxOffset, y: cy * maxOffset }
 
-          {/* Columna izquierda: Título + Párrafo + Botón */}
-          <div className="relative flex flex-1 flex-col items-start justify-center gap-6 p-8 pt-12 sm:p-10 sm:pt-14 lg:col-span-7 lg:p-14 lg:pt-16 xl:p-20 xl:pt-24 2xl:p-24">
-            <Meta index="01" />
+        // posiciona la tarjeta cerca del cursor (offset base + magnetismo)
+        if (cardRef.current) {
+            cardRef.current.style.left = `${clamp(relX, 90, rect.width - 90)}px`
+            cardRef.current.style.top = `${clamp(relY - 70, 10, rect.height - 90)}px`
+        }
+    }, [reduceMotion])
 
-            <h1 className="text-balance text-[2.35rem] font-medium  leading-[1.06] tracking-tight text-black sm:text-5xl lg:text-[3.6rem] xl:text-[4.4rem] 2xl:text-[5.2rem]">
-              Landing pages para proyectos inmobiliarios
-            </h1>
+    useEffect(() => {
+        if (!isActive || reduceMotion) {
+            if (rafId.current) cancelAnimationFrame(rafId.current)
+            return
+        }
+        const tick = () => {
+            currentOffset.current.x = lerp(currentOffset.current.x, targetOffset.current.x, 0.14)
+            currentOffset.current.y = lerp(currentOffset.current.y, targetOffset.current.y, 0.14)
+            if (cardRef.current) {
+                cardRef.current.style.transform = `translate(${currentOffset.current.x}px, ${currentOffset.current.y}px)`
+            }
+            rafId.current = requestAnimationFrame(tick)
+        }
+        rafId.current = requestAnimationFrame(tick)
+        return () => rafId.current && cancelAnimationFrame(rafId.current)
+    }, [isActive, reduceMotion])
 
-            <p className="max-w-[30ch] text-base leading-relaxed text-neutral-700 sm:text-lg lg:text-xl xl:text-2xl">
-              Convertimos tu tráfico en inversionistas reales contactando por WhatsApp.
-            </p>
+    return (
+        <div
+            ref={panelRef}
+            tabIndex={0}
+            role="button"
+            aria-label={`Ver mensaje de lead recibido para ${project.name}`}
+            onMouseEnter={onEnter}
+            onMouseLeave={onLeave}
+            onFocus={onEnter}
+            onBlur={onLeave}
+            onMouseMove={handleMouseMove}
+            className="relative overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
+            style={{
+                flexGrow: growValue,
+                flexBasis: 0,
+                minWidth: isRow ? undefined : 0,
+                minHeight: isRow ? 0 : undefined,
+                transition: reduceMotion ? 'none' : 'flex-grow 0.7s cubic-bezier(0.16,1,0.3,1)',
+                background: project.tone, // IMAGEN REAL AQUÍ → reemplazar por <Image fill className="object-cover" />
+                cursor: 'pointer',
+            }}
+        >
+            {/* velo oscuro para legibilidad del texto sobre la foto */}
+            <div
+                className="absolute inset-0"
+                style={{
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 45%, transparent 70%)',
+                    opacity: isActive ? 0.35 : 0.75,
+                    transition: 'opacity 0.6s ease',
+                }}
+            />
 
-            <WhatsAppButton />
-          </div>
+            {/* etiqueta del proyecto — siempre visible */}
+            <div
+                className="absolute left-4 bottom-4 right-4 text-white"
+                style={{
+                    opacity: isActive ? 0 : 1,
+                    transform: isActive ? 'translateY(6px)' : 'translateY(0)',
+                    transition: 'opacity 0.4s ease, transform 0.4s ease',
+                }}
+            >
+                <p className="text-sm font-semibold m-0 tracking-tight">{project.name}</p>
+                <p className="text-[0.7rem] text-white/70 m-0 mt-0.5">{project.location}</p>
+            </div>
 
-          {/* Columna derecha: notificaciones de WhatsApp, planas, mismo tamaño */}
-          <div className="relative flex flex-1 flex-col justify-center gap-4 p-8 pt-12 sm:p-10 sm:pt-14 lg:col-span-5 lg:gap-5 lg:p-14 lg:pt-16 xl:gap-6 xl:p-16 xl:pt-24 2xl:p-20">
-            <Meta index="02" />
-            {NOTIFICATIONS.map((n) => (
-              <NotifCard key={n.id} n={n} />
-            ))}
-          </div>
+            {/* tarjeta de lead flotante */}
+            <div
+                ref={cardRef}
+                style={{
+                    position: 'absolute',
+                    left: isRow ? '50%' : '30%',
+                    top: isRow ? '50%' : '40%',
+                    marginLeft: isRow ? -120 : 0,
+                    marginTop: isRow ? -46 : 0,
+                    opacity: isActive ? 1 : 0,
+                    transition: 'opacity 0.45s ease',
+                }}
+            >
+                <LeadCard lead={project.lead} />
+            </div>
         </div>
+    )
+}
 
-        {/* Franja inferior: banda diagonal */}
-        <HatchBand className="h-3 w-full border-t border-[#B9BFC9] sm:h-4" />
-      </div>
-    </section>
-  );
+export default function LiveLeadsSection() {
+    const [activeIndex, setActiveIndex] = useState(null)
+    const [scrollGrow, setScrollGrow] = useState([1, 1, 1])
+    const [reduceMotion, setReduceMotion] = useState(false)
+    const [isDesktop, setIsDesktop] = useState(true)
+    const scrollWrapRef = useRef(null)
+    const tickingRef = useRef(false)
+
+    useEffect(() => {
+        const mql = window.matchMedia('(prefers-reduced-motion: reduce)')
+        const mqlDesktop = window.matchMedia('(min-width: 1024px)')
+        const update = () => {
+            setReduceMotion(mql.matches)
+            setIsDesktop(mqlDesktop.matches)
+        }
+        update()
+        mql.addEventListener('change', update)
+        mqlDesktop.addEventListener('change', update)
+        return () => {
+            mql.removeEventListener('change', update)
+            mqlDesktop.removeEventListener('change', update)
+        }
+    }, [])
+
+    // scroll-linked (sin pin) — solo corre en mobile
+    useEffect(() => {
+        if (isDesktop || reduceMotion) {
+            setScrollGrow([1, 1, 1])
+            return
+        }
+        const handleScroll = () => {
+            if (tickingRef.current) return
+            tickingRef.current = true
+            requestAnimationFrame(() => {
+                const el = scrollWrapRef.current
+                if (el) {
+                    const rect = el.getBoundingClientRect()
+                    const total = rect.height - window.innerHeight
+                    const progress = clamp(total > 0 ? -rect.top / total : 0, 0, 1)
+
+                    const grows = PROJECTS.map((_, i) => {
+                        // ventana triangular: cada panel "pesa" más cerca de su tercio de scroll
+                        const center = (i + 0.5) / PROJECTS.length
+                        const dist = Math.abs(progress - center) * PROJECTS.length
+                        const weight = clamp(1 - dist, 0, 1)
+                        return 1 + ease(weight) * 3.2
+                    })
+                    setScrollGrow(grows)
+                }
+                tickingRef.current = false
+            })
+        }
+        handleScroll()
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        window.addEventListener('resize', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+            window.removeEventListener('resize', handleScroll)
+        }
+    }, [isDesktop, reduceMotion])
+
+    const growFor = (i) => {
+        if (isDesktop) {
+            if (reduceMotion) return 1
+            if (activeIndex === null) return 1
+            return activeIndex === i ? 3.1 : 0.75
+        }
+        return scrollGrow[i]
+    }
+
+    const isActiveFor = (i) => (isDesktop ? activeIndex === i : scrollGrow[i] > 2.2)
+
+    return (
+        <section className="w-full bg-neutral-950 py-20 lg:py-28">
+            <div className="container mx-auto max-w-[1400px] px-6 lg:px-10">
+                <div className="max-w-xl mb-10 lg:mb-14 text-center lg:text-left mx-auto lg:mx-0">
+                    <span className="text-xs font-medium tracking-widest uppercase text-white/50">
+                        Leads en tiempo real
+                    </span>
+                    <h2 className="mt-3 text-3xl lg:text-4xl font-medium text-white tracking-tight text-balance">
+                        Cada proyecto, con su propia conversación abierta.
+                    </h2>
+                    <p className="mt-3 text-sm lg:text-base text-white/60 leading-relaxed">
+                        Así llegan los mensajes reales de inversionistas cuando el WhatsApp está
+                        donde tiene que estar.
+                    </p>
+                </div>
+
+                {/* ── Desktop: fila de columnas, hover expande ── */}
+                <div className="hidden lg:flex gap-1 h-[560px] rounded-2xl overflow-hidden">
+                    {PROJECTS.map((project, i) => (
+                        <ProjectPanel
+                            key={project.id}
+                            project={project}
+                            index={i}
+                            growValue={growFor(i)}
+                            isActive={isActiveFor(i)}
+                            onEnter={() => setActiveIndex(i)}
+                            onLeave={() => setActiveIndex(null)}
+                            reduceMotion={reduceMotion}
+                            isRow={false}
+                        />
+                    ))}
+                </div>
+
+                {/* ── Mobile: columna de filas, scroll expande (sin pin) ──
+                     El contenedor mismo mide ~230vh: esa altura ES el recorrido
+                     de scroll. No hay sticky ni spacer — la página nunca deja
+                     de moverse con el dedo del usuario. */}
+                <div
+                    ref={scrollWrapRef}
+                    className="lg:hidden flex flex-col gap-1 rounded-2xl overflow-hidden"
+                    style={{ height: reduceMotion ? 'auto' : '230vh' }}
+                >
+                    {PROJECTS.map((project, i) => (
+                        <ProjectPanel
+                            key={project.id}
+                            project={project}
+                            index={i}
+                            growValue={reduceMotion ? 1 : growFor(i)}
+                            isActive={reduceMotion ? true : isActiveFor(i)}
+                            onEnter={() => {}}
+                            onLeave={() => {}}
+                            reduceMotion={reduceMotion}
+                            isRow={true}
+                        />
+                    ))}
+                </div>
+
+                <div className="mt-12 lg:mt-16 flex justify-center lg:justify-start">
+                    <MockWhatsAppButton>¿Y tu proyecto? Agendar llamada</MockWhatsAppButton>
+                </div>
+            </div>
+        </section>
+    )
 }
