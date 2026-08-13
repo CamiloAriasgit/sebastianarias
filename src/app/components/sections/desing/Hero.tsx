@@ -346,7 +346,7 @@ export default function LiveLeadsSection() {
                 {/* Móvil: flujo normal de scroll, cada panel se activa al pasar
                     por el centro vertical de la pantalla. El gap grande da
                     "recorrido" suficiente para que el efecto se sienta gradual. */}
-                <div className={reduceMotion ? 'lg:hidden flex flex-col gap-1' : 'lg:hidden flex flex-col gap-[35vh] py-[12vh]'}>
+                <div className={reduceMotion ? 'lg:hidden flex flex-col gap-1' : 'lg:hidden flex flex-col gap-1 py-[15vh]'}>
                     {PROJECTS.map((project, i) => (
                         <ProjectPanel
                             key={project.id}
