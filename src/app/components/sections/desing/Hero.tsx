@@ -86,7 +86,7 @@ const ease = (t: number): number => 1 - Math.pow(1 - t, 3)
 
 // Proporción alto/ancho de cada panel en móvil: rectangular y bajo cuando está
 // inactivo, cuadrado (1:1) cuando está totalmente activo.
-const INACTIVE_HEIGHT_RATIO = 0.5
+const INACTIVE_HEIGHT_RATIO = 0.4
 const ACTIVE_HEIGHT_RATIO = 1
 
 function LeadCard({ lead, style }: LeadCardProps) {
