@@ -35,6 +35,7 @@ interface ProjectPanelProps {
     onLeave: () => void
     reduceMotion: boolean
     isRow: boolean
+    weight?: number // 0..1, solo se usa cuando isRow=true: controla el aspect-ratio
 }
 
 const WaIcon = ({ size = 12 }: WaIconProps) => (
@@ -83,10 +84,15 @@ const clamp = (v: number, min: number, max: number): number => Math.min(max, Mat
 const lerp = (a: number, b: number, t: number): number => a + (b - a) * t
 const ease = (t: number): number => 1 - Math.pow(1 - t, 3)
 
+// Proporción alto/ancho de cada panel en móvil: rectangular y bajo cuando está
+// inactivo, cuadrado (1:1) cuando está totalmente activo.
+const INACTIVE_HEIGHT_RATIO = 0.5
+const ACTIVE_HEIGHT_RATIO = 1
+
 function LeadCard({ lead, style }: LeadCardProps) {
     return (
         <div
-            className="pointer-events-none absolute w-[240px] rounded-2xl px-4 py-3 backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+            className="pointer-events-none absolute w-[240px] rounded-xl px-4 py-3 backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
             style={{
                 background: 'rgba(255,255,255,0.92)',
                 ...style,
@@ -107,7 +113,7 @@ function LeadCard({ lead, style }: LeadCardProps) {
     )
 }
 
-function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMotion, isRow }: ProjectPanelProps) {
+function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMotion, isRow, weight = 0 }: ProjectPanelProps) {
     const panelRef = useRef<HTMLDivElement>(null)
     const cardRef = useRef<HTMLDivElement>(null)
     const targetOffset = useRef({ x: 0, y: 0 })
@@ -119,7 +125,7 @@ function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMo
         const rect = panelRef.current.getBoundingClientRect()
         const relX = e.clientX - rect.left
         const relY = e.clientY - rect.top
-        
+
         const maxOffset = 26
         const cx = clamp(((relX / rect.width) - 0.5) * 2, -1, 1)
         const cy = clamp(((relY / rect.height) - 0.5) * 2, -1, 1)
@@ -145,11 +151,17 @@ function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMo
             rafId.current = requestAnimationFrame(tick)
         }
         rafId.current = requestAnimationFrame(tick)
-        
+
         return () => {
             if (rafId.current) cancelAnimationFrame(rafId.current)
         }
     }, [isActive, reduceMotion])
+
+    // En móvil, la altura se define por aspect-ratio (interpolando entre
+    // rectángulo bajo y cuadrado) en vez de flex-grow.
+    const heightRatio = isRow
+        ? lerp(INACTIVE_HEIGHT_RATIO, ACTIVE_HEIGHT_RATIO, ease(clamp(weight, 0, 1)))
+        : undefined
 
     return (
         <div
@@ -164,11 +176,17 @@ function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMo
             onMouseMove={handleMouseMove}
             className="relative overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
             style={{
-                flexGrow: growValue,
-                flexBasis: 0,
+                flexGrow: isRow ? undefined : growValue,
+                flexShrink: isRow ? 0 : undefined,
+                flexBasis: isRow ? undefined : 0,
                 minWidth: isRow ? undefined : 0,
-                minHeight: isRow ? 0 : undefined,
-                transition: reduceMotion ? 'none' : 'flex-grow 0.7s cubic-bezier(0.16,1,0.3,1)',
+                width: isRow ? '100%' : undefined,
+                aspectRatio: isRow ? `1 / ${heightRatio}` : undefined,
+                transition: reduceMotion
+                    ? 'none'
+                    : isRow
+                        ? 'aspect-ratio 0.4s cubic-bezier(0.16,1,0.3,1)'
+                        : 'flex-grow 0.7s cubic-bezier(0.16,1,0.3,1)',
                 background: project.tone,
                 cursor: 'pointer',
             }}
@@ -214,7 +232,7 @@ function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMo
 
 export default function LiveLeadsSection() {
     const [activeIndex, setActiveIndex] = useState<number | null>(null)
-    const [scrollGrow, setScrollGrow] = useState<number[]>([1, 1, 1])
+    const [scrollWeights, setScrollWeights] = useState<number[]>([0, 0, 0])
     const [reduceMotion, setReduceMotion] = useState<boolean>(false)
     const [isDesktop, setIsDesktop] = useState<boolean>(true)
     const scrollWrapRef = useRef<HTMLDivElement>(null)
@@ -236,9 +254,14 @@ export default function LiveLeadsSection() {
         }
     }, [])
 
+    // Progreso de scroll → peso (0..1) de activación de cada panel en móvil.
+    // El wrapper mantiene una altura fija (230vh) que actúa solo como "carril"
+    // de scroll; el contenido visual va en un contenedor sticky aparte, así
+    // los puntos de activación quedan igual de espaciados sin importar cuánto
+    // crezca visualmente cada panel.
     useEffect(() => {
         if (isDesktop || reduceMotion) {
-            setScrollGrow([1, 1, 1])
+            setScrollWeights([0, 0, 0])
             return
         }
         const handleScroll = () => {
@@ -251,13 +274,12 @@ export default function LiveLeadsSection() {
                     const total = rect.height - window.innerHeight
                     const progress = clamp(total > 0 ? -rect.top / total : 0, 0, 1)
 
-                    const grows = PROJECTS.map((_, i) => {
+                    const weights = PROJECTS.map((_, i) => {
                         const center = (i + 0.5) / PROJECTS.length
                         const dist = Math.abs(progress - center) * PROJECTS.length
-                        const weight = clamp(1 - dist, 0, 1)
-                        return 1 + ease(weight) * 3.2
+                        return clamp(1 - dist, 0, 1)
                     })
-                    setScrollGrow(grows)
+                    setScrollWeights(weights)
                 }
                 tickingRef.current = false
             })
@@ -271,34 +293,29 @@ export default function LiveLeadsSection() {
         }
     }, [isDesktop, reduceMotion])
 
+    // Solo se usa en desktop (flex-grow horizontal)
     const growFor = (i: number): number => {
-        if (isDesktop) {
-            if (reduceMotion) return 1
-            if (activeIndex === null) return 1
-            return activeIndex === i ? 3.1 : 0.75
-        }
-        return scrollGrow[i]
+        if (reduceMotion) return 1
+        if (activeIndex === null) return 1
+        return activeIndex === i ? 3.1 : 0.75
     }
 
-    const isActiveFor = (i: number): boolean => (isDesktop ? activeIndex === i : scrollGrow[i] > 2.2)
+    const isActiveFor = (i: number): boolean =>
+        isDesktop ? activeIndex === i : scrollWeights[i] > 0.55
 
     return (
         <section className="w-full bg-section py-20 lg:py-28">
             <div className="container-full">
                 <div className="max-w-xl mb-10 lg:mb-14 text-center lg:text-left mx-auto lg:mx-0">
-                    <span className="text-xs font-medium tracking-widest uppercase text-neutral-500">
-                        Así llega un lead.
-                    </span>
                     <h2 className="mt-3 text-3xl lg:text-4xl font-medium text-neutral-950 tracking-tight text-balance">
-                        Un mensaje real por proyecto, no una demo genérica.
+                       Landing pages para proyectos inmobiliarios
                     </h2>
                     <p className="mt-3 text-sm lg:text-base text-neutral-700 leading-relaxed">
-                        El WhatsApp no está ahí de adorno. Cada proyecto recibe su propia
-                        conversación, en el momento en que el inversionista decide.
+                        Convertimos el tráfico de tu pauta en inversionistas reales contactando por WhatsApp.
                     </p>
                 </div>
 
-                <div className="hidden lg:flex gap-1 h-[560px] rounded-2xl overflow-hidden">
+                <div className="hidden lg:flex gap-1 h-[560px] overflow-hidden">
                     {PROJECTS.map((project, i) => (
                         <ProjectPanel
                             key={project.id}
@@ -315,21 +332,24 @@ export default function LiveLeadsSection() {
 
                 <div
                     ref={scrollWrapRef}
-                    className="lg:hidden flex flex-col gap-1 rounded-2xl overflow-hidden"
+                    className="lg:hidden relative"
                     style={{ height: reduceMotion ? 'auto' : '230vh' }}
                 >
-                    {PROJECTS.map((project, i) => (
-                        <ProjectPanel
-                            key={project.id}
-                            project={project}
-                            growValue={reduceMotion ? 1 : growFor(i)}
-                            isActive={reduceMotion ? true : isActiveFor(i)}
-                            onEnter={() => {}}
-                            onLeave={() => {}}
-                            reduceMotion={reduceMotion}
-                            isRow={true}
-                        />
-                    ))}
+                    <div className={reduceMotion ? 'flex flex-col gap-1' : 'sticky top-0 flex flex-col gap-1'}>
+                        {PROJECTS.map((project, i) => (
+                            <ProjectPanel
+                                key={project.id}
+                                project={project}
+                                growValue={1}
+                                isActive={reduceMotion ? true : isActiveFor(i)}
+                                onEnter={() => {}}
+                                onLeave={() => {}}
+                                reduceMotion={reduceMotion}
+                                isRow={true}
+                                weight={reduceMotion ? 1 : scrollWeights[i]}
+                            />
+                        ))}
+                    </div>
                 </div>
 
                 <div className="mt-12 lg:mt-16 flex justify-center lg:justify-start">
