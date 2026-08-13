@@ -36,6 +36,7 @@ interface ProjectPanelProps {
     reduceMotion: boolean
     isRow: boolean
     weight?: number // 0..1, solo se usa cuando isRow=true: controla el aspect-ratio
+    registerRef?: (el: HTMLDivElement | null) => void // expone el nodo al padre (móvil)
 }
 
 const WaIcon = ({ size = 12 }: WaIconProps) => (
@@ -113,12 +114,19 @@ function LeadCard({ lead, style }: LeadCardProps) {
     )
 }
 
-function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMotion, isRow, weight = 0 }: ProjectPanelProps) {
+function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMotion, isRow, weight = 0, registerRef }: ProjectPanelProps) {
     const panelRef = useRef<HTMLDivElement>(null)
     const cardRef = useRef<HTMLDivElement>(null)
     const targetOffset = useRef({ x: 0, y: 0 })
     const currentOffset = useRef({ x: 0, y: 0 })
     const rafId = useRef<number | null>(null)
+
+    // Combina el ref interno (usado para el efecto de mouse/tilt) con el ref
+    // que el padre necesita para medir la posición real del panel en móvil.
+    const setRefs = useCallback((el: HTMLDivElement | null) => {
+        panelRef.current = el
+        registerRef?.(el)
+    }, [registerRef])
 
     const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
         if (reduceMotion || !panelRef.current) return
@@ -165,7 +173,7 @@ function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMo
 
     return (
         <div
-            ref={panelRef}
+            ref={isRow ? setRefs : panelRef}
             tabIndex={0}
             role="button"
             aria-label={`Ver mensaje de lead recibido para ${project.name}`}
@@ -235,8 +243,11 @@ export default function LiveLeadsSection() {
     const [scrollWeights, setScrollWeights] = useState<number[]>([0, 0, 0])
     const [reduceMotion, setReduceMotion] = useState<boolean>(false)
     const [isDesktop, setIsDesktop] = useState<boolean>(true)
-    const scrollWrapRef = useRef<HTMLDivElement>(null)
-    const tickingRef = useRef<boolean>(false)
+
+    // Nodos reales de cada panel en móvil, para medir su posición en pantalla.
+    const panelRefs = useRef<(HTMLDivElement | null)[]>([])
+    const lastWeightsRef = useRef<number[]>([0, 0, 0])
+    const rafLoopId = useRef<number | null>(null)
 
     useEffect(() => {
         const mql = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -254,44 +265,44 @@ export default function LiveLeadsSection() {
         }
     }, [])
 
-    // Progreso de scroll → peso (0..1) de activación de cada panel en móvil.
-    // El wrapper mantiene una altura fija (230vh) que actúa solo como "carril"
-    // de scroll; el contenido visual va en un contenedor sticky aparte, así
-    // los puntos de activación quedan igual de espaciados sin importar cuánto
-    // crezca visualmente cada panel.
+    // Cada panel se activa cuando su centro real coincide con el centro
+    // vertical del viewport, sin importar si es el primero, el del medio o
+    // el último. Se usa un bucle rAF (en vez de solo el evento scroll) porque
+    // el propio tamaño del panel cambia al activarse, y eso desplaza a los
+    // demás; medir cada frame evita que la posición quede desincronizada.
     useEffect(() => {
         if (isDesktop || reduceMotion) {
             setScrollWeights([0, 0, 0])
             return
         }
-        const handleScroll = () => {
-            if (tickingRef.current) return
-            tickingRef.current = true
-            requestAnimationFrame(() => {
-                const el = scrollWrapRef.current
-                if (el) {
-                    const rect = el.getBoundingClientRect()
-                    const total = rect.height - window.innerHeight
-                    const progress = clamp(total > 0 ? -rect.top / total : 0, 0, 1)
 
-                    const weights = PROJECTS.map((_, i) => {
-                        const center = (i + 0.5) / PROJECTS.length
-                        // 2*N en vez de N: cada panel ocupa exactamente 1/N del scroll,
-                        // así no hay solape entre paneles y todos arrancan en 0.
-                        const dist = Math.abs(progress - center) * (PROJECTS.length * 2)
-                        return clamp(1 - dist, 0, 1)
-                    })
-                    setScrollWeights(weights)
-                }
-                tickingRef.current = false
+        const loop = () => {
+            const viewportCenter = window.innerHeight / 2
+            // Qué tan lejos del centro (en px) empieza a decaer el peso.
+            // Súbelo para que el "foco" dure más tiempo en pantalla; bájalo
+            // para que la transición entre paneles sea más rápida/abrupta.
+            const range = window.innerHeight * 0.55
+
+            const next = panelRefs.current.map((el) => {
+                if (!el) return 0
+                const rect = el.getBoundingClientRect()
+                const elCenter = rect.top + rect.height / 2
+                const dist = Math.abs(elCenter - viewportCenter)
+                return clamp(1 - dist / range, 0, 1)
             })
+
+            const last = lastWeightsRef.current
+            const changed = next.some((v, i) => Math.abs(v - last[i]) > 0.002)
+            if (changed) {
+                lastWeightsRef.current = next
+                setScrollWeights(next)
+            }
+            rafLoopId.current = requestAnimationFrame(loop)
         }
-        handleScroll()
-        window.addEventListener('scroll', handleScroll, { passive: true })
-        window.addEventListener('resize', handleScroll)
+
+        rafLoopId.current = requestAnimationFrame(loop)
         return () => {
-            window.removeEventListener('scroll', handleScroll)
-            window.removeEventListener('resize', handleScroll)
+            if (rafLoopId.current) cancelAnimationFrame(rafLoopId.current)
         }
     }, [isDesktop, reduceMotion])
 
@@ -332,26 +343,24 @@ export default function LiveLeadsSection() {
                     ))}
                 </div>
 
-                <div
-                    ref={scrollWrapRef}
-                    className="lg:hidden relative"
-                    style={{ height: reduceMotion ? 'auto' : '230vh' }}
-                >
-                    <div className={reduceMotion ? 'flex flex-col gap-1' : 'sticky top-0 flex flex-col gap-1'}>
-                        {PROJECTS.map((project, i) => (
-                            <ProjectPanel
-                                key={project.id}
-                                project={project}
-                                growValue={1}
-                                isActive={reduceMotion ? true : isActiveFor(i)}
-                                onEnter={() => { }}
-                                onLeave={() => { }}
-                                reduceMotion={reduceMotion}
-                                isRow={true}
-                                weight={reduceMotion ? 1 : scrollWeights[i]}
-                            />
-                        ))}
-                    </div>
+                {/* Móvil: flujo normal de scroll, cada panel se activa al pasar
+                    por el centro vertical de la pantalla. El gap grande da
+                    "recorrido" suficiente para que el efecto se sienta gradual. */}
+                <div className={reduceMotion ? 'lg:hidden flex flex-col gap-1' : 'lg:hidden flex flex-col gap-[35vh] py-[12vh]'}>
+                    {PROJECTS.map((project, i) => (
+                        <ProjectPanel
+                            key={project.id}
+                            project={project}
+                            growValue={1}
+                            isActive={reduceMotion ? true : isActiveFor(i)}
+                            onEnter={() => {}}
+                            onLeave={() => {}}
+                            reduceMotion={reduceMotion}
+                            isRow={true}
+                            weight={reduceMotion ? 1 : scrollWeights[i]}
+                            registerRef={(el) => { panelRefs.current[i] = el }}
+                        />
+                    ))}
                 </div>
 
                 <div className="mt-12 lg:mt-16 flex justify-center lg:justify-start">
