@@ -165,8 +165,6 @@ function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMo
         }
     }, [isActive, reduceMotion])
 
-    // En móvil, la altura se define por aspect-ratio (interpolando entre
-    // rectángulo bajo y cuadrado) en vez de flex-grow.
     const heightRatio = isRow
         ? lerp(INACTIVE_HEIGHT_RATIO, ACTIVE_HEIGHT_RATIO, ease(clamp(weight, 0, 1)))
         : undefined
@@ -265,11 +263,6 @@ export default function LiveLeadsSection() {
         }
     }, [])
 
-    // Cada panel se activa cuando su centro real coincide con el centro
-    // vertical del viewport, sin importar si es el primero, el del medio o
-    // el último. Se usa un bucle rAF (en vez de solo el evento scroll) porque
-    // el propio tamaño del panel cambia al activarse, y eso desplaza a los
-    // demás; medir cada frame evita que la posición quede desincronizada.
     useEffect(() => {
         if (isDesktop || reduceMotion) {
             setScrollWeights([0, 0, 0])
@@ -278,9 +271,7 @@ export default function LiveLeadsSection() {
 
         const loop = () => {
             const viewportCenter = window.innerHeight / 2
-            // Qué tan lejos del centro (en px) empieza a decaer el peso.
-            // Súbelo para que el "foco" dure más tiempo en pantalla; bájalo
-            // para que la transición entre paneles sea más rápida/abrupta.
+
             const range = window.innerHeight * 0.55
 
             const next = panelRefs.current.map((el) => {
@@ -326,6 +317,9 @@ export default function LiveLeadsSection() {
                     <p className="mt-3 text-sm lg:text-base text-neutral-700 leading-relaxed">
                         Convertimos el tráfico de tu pauta en inversionistas reales contactando por WhatsApp.
                     </p>
+                    <div className="mt-12 lg:mt-16 flex justify-center lg:justify-start">
+                        <WhatsAppButton />
+                    </div>
                 </div>
 
                 <div className="hidden lg:flex gap-1 h-[560px] overflow-hidden">
@@ -342,10 +336,6 @@ export default function LiveLeadsSection() {
                         />
                     ))}
                 </div>
-
-                {/* Móvil: flujo normal de scroll, cada panel se activa al pasar
-                    por el centro vertical de la pantalla. El gap grande da
-                    "recorrido" suficiente para que el efecto se sienta gradual. */}
                 <div className={reduceMotion ? 'lg:hidden flex flex-col gap-1' : 'lg:hidden flex flex-col gap-1 py-[15vh]'}>
                     {PROJECTS.map((project, i) => (
                         <ProjectPanel
@@ -353,18 +343,14 @@ export default function LiveLeadsSection() {
                             project={project}
                             growValue={1}
                             isActive={reduceMotion ? true : isActiveFor(i)}
-                            onEnter={() => {}}
-                            onLeave={() => {}}
+                            onEnter={() => { }}
+                            onLeave={() => { }}
                             reduceMotion={reduceMotion}
                             isRow={true}
                             weight={reduceMotion ? 1 : scrollWeights[i]}
                             registerRef={(el) => { panelRefs.current[i] = el }}
                         />
                     ))}
-                </div>
-
-                <div className="mt-12 lg:mt-16 flex justify-center lg:justify-start">
-                    <WhatsAppButton />
                 </div>
             </div>
         </section>
