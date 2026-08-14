@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, useCallback, CSSProperties } from 'react'
+import Image from 'next/image'
 import { WhatsAppButton } from '../../ui/WhatsAppButton'
 
 // ── Tipos e Interfaces ──
@@ -15,6 +16,7 @@ interface Project {
     name: string
     location: string
     tone: string
+    imageUrl: string
     lead: Lead
 }
 
@@ -51,6 +53,7 @@ const PROJECTS: Project[] = [
         name: 'Reserva del Bosque',
         location: 'Envigado, Antioquia',
         tone: 'linear-gradient(155deg, #3a4a3d 0%, #1b241d 55%, #0a0d0a 100%)',
+        imageUrl: '/images/hero-project-1.jpg', // Pegar enlace de la imagen aquí
         lead: {
             name: 'Carlos Mendoza',
             time: 'ahora',
@@ -62,6 +65,7 @@ const PROJECTS: Project[] = [
         name: 'Altos de Provenza',
         location: 'Sabaneta, Antioquia',
         tone: 'linear-gradient(155deg, #4a4237 0%, #241f19 55%, #0d0b09 100%)',
+        imageUrl: '/images/hero-project-2.jpg', // Pegar enlace de la imagen aquí
         lead: {
             name: 'Valeria Ríos',
             time: '2 min',
@@ -73,6 +77,7 @@ const PROJECTS: Project[] = [
         name: 'Cielo Nueve14',
         location: 'El Poblado, Medellín',
         tone: 'linear-gradient(155deg, #2b3040 0%, #171a24 55%, #0a0b10 100%)',
+        imageUrl: '/images/hero-project-3.jpg', // Pegar enlace de la imagen aquí
         lead: {
             name: 'Andrés Castillo',
             time: '5 min',
@@ -93,7 +98,7 @@ const ACTIVE_HEIGHT_RATIO = 1
 function LeadCard({ lead, style }: LeadCardProps) {
     return (
         <div
-            className="pointer-events-none absolute w-[240px] rounded-xl px-4 py-3 backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+            className="pointer-events-none absolute w-[320px] rounded-xl px-4 py-3 backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
             style={{
                 background: 'rgba(255,255,255,0.92)',
                 ...style,
@@ -193,10 +198,17 @@ function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMo
                     : isRow
                         ? 'aspect-ratio 0.4s cubic-bezier(0.16,1,0.3,1)'
                         : 'flex-grow 0.7s cubic-bezier(0.16,1,0.3,1)',
-                background: project.tone,
                 cursor: 'pointer',
             }}
         >
+            <Image
+                src={project.imageUrl}
+                alt={project.name}
+                fill
+                className="object-cover"
+                priority
+            />
+
             <div
                 className="absolute inset-0"
                 style={{
@@ -246,9 +258,6 @@ export default function LiveLeadsSection() {
     const lastWeightsRef = useRef<number[]>([0, 0, 0])
     const rafLoopId = useRef<number | null>(null)
 
-    // Hasta que el usuario no haga scroll de verdad, todos los paneles
-    // permanecen cerrados sin importar dónde caiga geométricamente su centro.
-    // Esto evita depender de la altura de pantalla de cada dispositivo.
     const hasScrolledRef = useRef(false)
 
     useEffect(() => {
@@ -267,8 +276,6 @@ export default function LiveLeadsSection() {
         }
     }, [])
 
-    // Detecta el primer scroll real. Si la página ya carga scrolleada
-    // (ej. volviendo con "atrás" del navegador), no forzamos el cierre.
     useEffect(() => {
         if (isDesktop || reduceMotion) return
 
@@ -323,8 +330,6 @@ export default function LiveLeadsSection() {
             if (rafLoopId.current) cancelAnimationFrame(rafLoopId.current)
         }
     }, [isDesktop, reduceMotion])
-
-    // ... el resto del componente queda exactamente igual
 
     // Solo se usa en desktop (flex-grow horizontal)
     const growFor = (i: number): number => {
