@@ -242,10 +242,14 @@ export default function LiveLeadsSection() {
     const [reduceMotion, setReduceMotion] = useState<boolean>(false)
     const [isDesktop, setIsDesktop] = useState<boolean>(true)
 
-    // Nodos reales de cada panel en móvil, para medir su posición en pantalla.
     const panelRefs = useRef<(HTMLDivElement | null)[]>([])
     const lastWeightsRef = useRef<number[]>([0, 0, 0])
     const rafLoopId = useRef<number | null>(null)
+
+    // Hasta que el usuario no haga scroll de verdad, todos los paneles
+    // permanecen cerrados sin importar dónde caiga geométricamente su centro.
+    // Esto evita depender de la altura de pantalla de cada dispositivo.
+    const hasScrolledRef = useRef(false)
 
     useEffect(() => {
         const mql = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -263,6 +267,23 @@ export default function LiveLeadsSection() {
         }
     }, [])
 
+    // Detecta el primer scroll real. Si la página ya carga scrolleada
+    // (ej. volviendo con "atrás" del navegador), no forzamos el cierre.
+    useEffect(() => {
+        if (isDesktop || reduceMotion) return
+
+        if (window.scrollY > 4) {
+            hasScrolledRef.current = true
+            return
+        }
+
+        const markScrolled = () => {
+            hasScrolledRef.current = true
+        }
+        window.addEventListener('scroll', markScrolled, { passive: true, once: true })
+        return () => window.removeEventListener('scroll', markScrolled)
+    }, [isDesktop, reduceMotion])
+
     useEffect(() => {
         if (isDesktop || reduceMotion) {
             setScrollWeights([0, 0, 0])
@@ -270,17 +291,23 @@ export default function LiveLeadsSection() {
         }
 
         const loop = () => {
-            const viewportCenter = window.innerHeight / 2
+            let next: number[]
 
-            const range = window.innerHeight * 0.55
+            if (!hasScrolledRef.current) {
+                // Estado inicial: todo cerrado, sin importar la geometría real.
+                next = [0, 0, 0]
+            } else {
+                const viewportCenter = window.innerHeight / 2
+                const range = window.innerHeight * 0.55
 
-            const next = panelRefs.current.map((el) => {
-                if (!el) return 0
-                const rect = el.getBoundingClientRect()
-                const elCenter = rect.top + rect.height / 2
-                const dist = Math.abs(elCenter - viewportCenter)
-                return clamp(1 - dist / range, 0, 1)
-            })
+                next = panelRefs.current.map((el) => {
+                    if (!el) return 0
+                    const rect = el.getBoundingClientRect()
+                    const elCenter = rect.top + rect.height / 2
+                    const dist = Math.abs(elCenter - viewportCenter)
+                    return clamp(1 - dist / range, 0, 1)
+                })
+            }
 
             const last = lastWeightsRef.current
             const changed = next.some((v, i) => Math.abs(v - last[i]) > 0.002)
@@ -296,6 +323,8 @@ export default function LiveLeadsSection() {
             if (rafLoopId.current) cancelAnimationFrame(rafLoopId.current)
         }
     }, [isDesktop, reduceMotion])
+
+    // ... el resto del componente queda exactamente igual
 
     // Solo se usa en desktop (flex-grow horizontal)
     const growFor = (i: number): number => {
