@@ -51,7 +51,7 @@ export default function CTAFinal() {
               <span className="block text-black tracking-tighter">
                 Tu próximo proyecto
               </span>
-              <span className="block font-medium text-black tracking-tighter">
+              <span className="block text-black tracking-tighter">
                 merece más leads.
               </span>
             </h2>
