@@ -37,15 +37,7 @@ export default function CTAFinal() {
   return (
     <section className="bg-section relative overflow-hidden pb-6">
       <div className="container-site relative z-10">
-        <div className="relative rounded-xl overflow-hidden py-16 px-2 md:py-24 flex flex-col justify-center items-center min-h-[400px]">
-          
-          <Image
-            src="/images/cta-bg.png"
-            alt="Fondo CTA"
-            fill
-            className="object-cover"
-            priority
-          />
+        <div className="relative rounded-xl overflow-hidden py-16 px-2 md:py-24 flex flex-col justify-center items-center min-h-[400px] bg-white">
 
           <div ref={headRef} className="flex flex-col items-center text-center gap-6 relative z-10">
             <h2
@@ -56,7 +48,7 @@ export default function CTAFinal() {
                 lineHeight: 1.02,
               }}
             >
-              <span className="block font-medium text-black tracking-tighter">
+              <span className="block text-black tracking-tighter">
                 Tu próximo proyecto
               </span>
               <span className="block font-medium text-black tracking-tighter">
