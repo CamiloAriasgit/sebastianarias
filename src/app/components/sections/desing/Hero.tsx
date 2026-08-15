@@ -98,23 +98,24 @@ const ACTIVE_HEIGHT_RATIO = 1
 function LeadCard({ lead, style }: LeadCardProps) {
     return (
         <div
-            className="pointer-events-none absolute w-[240px] lg:w-[320px] rounded-xl px-4 py-3 backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
-            style={{
-                background: 'rgba(255,255,255,0.92)',
-                ...style,
-            }}
+            className="pointer-events-none absolute w-[240px] lg:w-[320px] rounded-2xl px-4 py-3 backdrop-blur-xl backdrop-saturate-150 bg-white/50 border border-white/40 shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]"
+            style={style}
         >
             <div className="flex items-center justify-between mb-1.5">
                 <div className="flex items-center gap-1.5">
-                    <div className="w-[16px] h-[16px] rounded-md flex items-center justify-center bg-[#25d366] text-white shrink-0">
+                    <div className="w-[16px] h-[16px] rounded-md flex items-center justify-center bg-[#25d366] text-white shrink-0 shadow-sm">
                         <WaIcon size={10} />
                     </div>
-                    <span className="text-[0.65rem] font-medium text-neutral-500 tracking-wide">WhatsApp</span>
+                    <span className="text-[0.65rem] font-semibold text-neutral-600 tracking-wide">WhatsApp</span>
                 </div>
-                <span className="text-[0.6rem] text-neutral-400">{lead.time}</span>
+                <span className="text-[0.6rem] font-medium text-neutral-500">{lead.time}</span>
             </div>
-            <p className="text-[0.8rem] font-semibold text-neutral-950 m-0 mb-0.5 text-left">{lead.name}</p>
-            <p className="text-[0.72rem] text-neutral-700 m-0 leading-snug text-left">{lead.message}</p>
+            <p className="text-[0.8rem] font-bold text-neutral-900 m-0 mb-0.5 text-left tracking-tight">
+                {lead.name}
+            </p>
+            <p className="text-[0.72rem] font-medium text-neutral-700 m-0 leading-snug text-left">
+                {lead.message}
+            </p>
         </div>
     )
 }
@@ -202,19 +203,18 @@ function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMo
             }}
         >
             {/* En lugar de llamar a <Image /> directamente en la raíz del panel */}
+            {/* Contenedor máscara fija */}
             <div className="absolute inset-0 overflow-hidden rounded-xl">
-                <Image
-                    src={project.imageUrl}
-                    alt={project.name}
-                    fill
-                    /*
-                      Usamos min-w y min-h para forzar a la imagen a mantener el tamaño 
-                      del contenedor al máximo de su expansión (560px de alto en desktop),
-                      haciendo que el panel solo recorte (crop/reveal) en lugar de escalar.
-                    */
-                    className="object-cover object-center min-h-[560px] min-w-[800px]"
-                    priority
-                />
+                {/* Contenedor interno rígido centrado que nunca cambia de tamaño */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px] pointer-events-none">
+                    <Image
+                        src={project.imageUrl}
+                        alt={project.name}
+                        fill
+                        className="object-cover object-center"
+                        priority
+                    />
+                </div>
             </div>
 
             <div
