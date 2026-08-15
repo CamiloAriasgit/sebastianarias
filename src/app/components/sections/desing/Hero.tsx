@@ -98,7 +98,7 @@ const ACTIVE_HEIGHT_RATIO = 1
 function LeadCard({ lead, style }: LeadCardProps) {
     return (
         <div
-            className="pointer-events-none absolute w-[320px] rounded-xl px-4 py-3 backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+            className="pointer-events-none absolute w-[240px] lg:w-[320px] rounded-xl px-4 py-3 backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
             style={{
                 background: 'rgba(255,255,255,0.92)',
                 ...style,
@@ -201,13 +201,21 @@ function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMo
                 cursor: 'pointer',
             }}
         >
-            <Image
-                src={project.imageUrl}
-                alt={project.name}
-                fill
-                className="object-cover"
-                priority
-            />
+            {/* En lugar de llamar a <Image /> directamente en la raíz del panel */}
+            <div className="absolute inset-0 overflow-hidden rounded-xl">
+                <Image
+                    src={project.imageUrl}
+                    alt={project.name}
+                    fill
+                    /*
+                      Usamos min-w y min-h para forzar a la imagen a mantener el tamaño 
+                      del contenedor al máximo de su expansión (560px de alto en desktop),
+                      haciendo que el panel solo recorte (crop/reveal) en lugar de escalar.
+                    */
+                    className="object-cover object-center min-h-[560px] min-w-[800px]"
+                    priority
+                />
+            </div>
 
             <div
                 className="absolute inset-0"
