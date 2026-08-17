@@ -324,7 +324,7 @@ export default function Hero() {
             </div>
 
             {/* === VISTA DESKTOP === */}
-            <div className="hidden lg:flex flex-col w-full justify-center z-20 container-site gap-12">
+            <div className="hidden lg:flex flex-col w-full lg:py-30 justify-center z-20 container-site gap-12">
 
                 {/* Arriba: Dos columnas */}
                 <div className="grid grid-cols-2 gap-8 items-start w-full">
@@ -332,7 +332,7 @@ export default function Hero() {
                     <div className="flex flex-col items-start gap-6 text-left">
                         <h1
                             className="m-0 block text-neutral-950 text-balance leading-[1.06] tracking-tight drop-shadow-sm"
-                            style={{ fontSize: 'clamp(1.9rem, 2vw, 3rem)' }}
+                            style={{ fontSize: 'clamp(1.9rem, 3vw, 3.5rem)' }}
                         >
                             Landing pages para proyectos inmobiliarios
                         </h1>
