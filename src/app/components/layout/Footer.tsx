@@ -23,7 +23,7 @@ const WaIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-900 border-t border-white/10">
+    <footer className="bg-neutral-900">
       <div className="container-site py-12">
         <div className="flex flex-col gap-10">
 
