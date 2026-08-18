@@ -73,11 +73,11 @@ export default function Problem() {
                 className="relative bg-white rounded-2xl h-[380px] p-6 flex flex-col overflow-hidden select-none"
               >
                 {/* Parte superior: Textos (Mismo tamaño, peso light, diferente color) */}
-                <div className="relative z-10 flex flex-col gap-2">
-                  <h3 className="text-lg  tracking-tight text-black m-0 leading-snug">
+                <div className="relative z-10 text-base flex flex-col gap-2">
+                  <h3 className="tracking-tight text-black m-0 leading-snug">
                     {p.title}
                   </h3>
-                  <p className="text-lg leading-relaxed text-neutral-500 m-0">
+                  <p className="leading-relaxed text-neutral-500 m-0">
                     {p.body}
                   </p>
                 </div>
