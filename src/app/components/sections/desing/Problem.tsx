@@ -94,7 +94,7 @@ export default function Problem() {
 
                 {/* Ícono centrado sobre el patrón de puntos con contenedor circular blanco */}
                 <div className="absolute left-1/2 top-[75%] -translate-x-1/2 -translate-y-1/2 z-20">
-                  <div className="bg-white rounded-full p-5 flex items-center justify-center">
+                  <div className="bg-white rounded-full p-7 flex items-center justify-center">
                     <Icon className="w-8 h-8 text-neutral-500" strokeWidth={1} />
                   </div>
                 </div>
