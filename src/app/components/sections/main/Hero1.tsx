@@ -25,7 +25,7 @@ const NOTIFICATIONS = [
         name: 'Carlos Mendoza',
         preview: 'Buenas, vi el proyecto Reserva del Bosque. ¿Cuándo puedo agendar una visita?',
         time: 'ahora',
-        avatar: '/avatars/profile-avatar.webp',
+        avatar: '/avatars/profile-avatar-1.png',
     },
 ]
 
@@ -299,7 +299,7 @@ export default function Hero() {
 
                     <p
                         ref={paraRef}
-                        className="text-sm md:text-base leading-relaxed text-neutral-700 m-0"
+                        className="text-sm md:text-base leading-relaxed text-neutral-700 m-0 text-balance"
                     >
                         Convertimos tu tráfico en inversionistas reales<br className="hidden md:block" /> contactando por WhatsApp.
                     </p>
