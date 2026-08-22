@@ -11,18 +11,21 @@ const NOTIFICATIONS = [
         name: 'Andrés Castillo',
         preview: '¿Aún hay unidades en el piso 8? Vi los planos y me convencieron.',
         time: '3 min',
+        avatar: '/avatars/profile-avatar-3.jpg',
     },
     {
         id: 2,
         name: 'Valeria Ríos',
         preview: 'Hola, me interesa el de 2 hab. ¿Tienen sala de ventas este fin de semana?',
         time: '1 min',
+        avatar: '/avatars/profile-avatar-2.png',
     },
     {
         id: 1,
         name: 'Carlos Mendoza',
         preview: 'Buenas, vi el proyecto Reserva del Bosque. ¿Cuándo puedo agendar una visita?',
         time: 'ahora',
+        avatar: '/avatars/profile-avatar.webp',
     },
 ]
 
@@ -44,7 +47,7 @@ const NotifCard = ({ n, time }: { n: Notif; time: string }) => (
         }}
     >
         <Image
-            src="/avatars/profile-avatar.webp"
+            src={n.avatar}
             alt={n.name}
             width={36}
             height={36}
@@ -284,7 +287,7 @@ export default function Hero() {
     return (
         <section className="relative flex w-full padding-block min-h-[100svh] bg-section overflow-hidden">
 
-            {/* === VISTA MÓVIL (Sin alterations) === */}
+            {/* === VISTA MÓVIL (Sin alteraciones) === */}
             <div className="lg:hidden bg-section relative z-20 container-site flex flex-col items-center justify-center text-center gap-6">
                 <div className="flex flex-col items-center text-center gap-6">
                     <h1

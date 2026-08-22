@@ -78,7 +78,7 @@ export default function Demo() {
 
             {/* Overlay */}
             <div className="absolute inset-0 bg-[#0a0a0a]/50 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="flex items-center gap-2 bg-[var(--color-text-primary)] text-[var(--color-bg)] px-5 py-3 rounded-md text-sm font-medium">
+              <div className="flex items-center gap-2 bg-[var(--color-text-primary)] text-black px-5 py-3 rounded-md text-sm font-medium">
                 Ver demo
                 <ArrowUpRight size={15} strokeWidth={2} />
               </div>

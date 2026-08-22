@@ -14,7 +14,7 @@ export function SectionTitle({
 }: SectionTitleProps) {
   return (
     <Tag
-      className={`block text-neutral-900 text-balance ${className}`}
+      className={`block text-neutral-900 tracking-tight text-balance ${className}`}
       style={{
         fontSize: 'clamp(1.5rem, 2.2vw, 2.75rem)',
         lineHeight: 1.2,
