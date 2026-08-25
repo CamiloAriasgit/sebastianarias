@@ -1,8 +1,9 @@
 // app/page.tsx
 import Header from './components/layout/HeaderS'
+import GradientDivider from './components/ui/GradientDivider'
 import Hero from './components/sections/main/Hero'
 import Problem from './components/sections/main/Problem'
-import Service from './components/sections/main/Service1'
+import Service from './components/sections/main/Service'
 import Process from './components/sections/main/Process1'
 import Demo from './components/sections/main/Demo'
 import Pricing from './components/sections/main/Pricing1'
@@ -17,6 +18,7 @@ export default function Home() {
       <main>
         <Hero />
         <Problem />
+        <GradientDivider/>
         <Service /> 
         <Process />
         <Demo />
