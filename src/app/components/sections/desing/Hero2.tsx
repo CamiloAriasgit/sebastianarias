@@ -289,7 +289,7 @@ export default function Hero() {
 
             {/* === VISTA MÓVIL (Sin alteraciones) === */}
             <div className="lg:hidden bg-section relative z-20 container-site flex flex-col items-center justify-center text-center gap-6">
-                <div className="flex flex-col items-start text-start gap-6">
+                <div className="flex flex-col items-center text-center gap-6">
                     <h1
                         className="m-0 block text-neutral-950 text-balance leading-[1.06] tracking-tighter drop-shadow-sm"
                         style={{ fontSize: 'clamp(1.9rem, 2vw, 3rem)' }}

@@ -67,7 +67,7 @@ export default function Service() {
   }, [])
 
   return (
-    <section id='servicio' className="bg-section" style={{ paddingBlock: 'var(--section-py)' }}>
+    <section id='servicio' className="bg-black" style={{ paddingBlock: 'var(--section-py)' }}>
       <div className="container-full">
 
         {/* Cabecera */}
@@ -75,10 +75,10 @@ export default function Service() {
           ref={headRef}
           className="flex flex-col items-center lg:text-center gap-4 mb-[clamp(4rem,8vw,7rem)]"
         >
-          <SectionTitle>
+          <SectionTitle className="text-white text-center">
             Una landing construida para el momento en que el comprador decide.
           </SectionTitle>
-          <p className="text-[0.9375rem] leading-relaxed text-black m-0 max-w-[47ch] hidden">
+          <p className="text-[0.9375rem] leading-relaxed text-white m-0 max-w-[47ch] hidden">
             Cada elemento tiene un propósito. Nada está ahí por decoración.
           </p>
         </div>
@@ -113,10 +113,10 @@ export default function Service() {
 
               {/* Texto */}
               <div className="order-2 max-w-[480px]" style={{ direction: 'ltr' }}>
-                <h3 className="text-[1.25rem] lg:text-[1.5rem] font-medium tracking-tighter text-black m-0 mb-3" style={{ letterSpacing: '-0.015em' }}>
+                <h3 className="text-[1.25rem] lg:text-[1.5rem] font-medium tracking-tighter text-white m-0 mb-3" style={{ letterSpacing: '-0.015em' }}>
                   {f.title}
                 </h3>
-                <p className="text-base lg:text-lg leading-relaxed text-neutral-900 m-0">
+                <p className="text-base lg:text-lg leading-relaxed text-neutral-300 m-0">
                   {f.body}
                 </p>
               </div>

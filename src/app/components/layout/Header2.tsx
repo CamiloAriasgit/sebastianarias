@@ -1,7 +1,6 @@
-// components/layout/Header.tsx
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -30,12 +29,38 @@ const WaIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isDark, setIsDark] = useState(false)
 
   const toggleMenu = () => setIsOpen(!isOpen)
   const closeMenu = () => setIsOpen(false)
 
+  useEffect(() => {
+    // Reemplaza '#demo' por el id o data-attribute de la sección oscura
+    const targetSection = document.querySelector('#servicio')
+    if (!targetSection) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Modifica el estado cuando la sección esté entrando en el viewport
+        setIsDark(entry.isIntersecting)
+      },
+      {
+        // Intersecta cuando la sección cruza el margen superior del header (aprox 60px)
+        rootMargin: '-60px 0px 0px 0px',
+        threshold: 0,
+      }
+    )
+
+    observer.observe(targetSection)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-section">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
+        isDark ? 'bg-neutral-950 text-white' : 'bg-section text-neutral-900'
+      }`}
+    >
       <div className="container-full">
         <div className="flex items-center justify-between h-15">
 
@@ -51,10 +76,10 @@ export default function Header() {
               className="rounded-full object-cover"
             />
             <div className="flex flex-col justify-center space-y-[-4px]">
-              <span className="text-sm font-medium tracking-tight text-neutral-900">
+              <span className={`text-sm tracking-tight ${isDark ? 'text-white font-light' : 'text-neutral-900 font-medium '}`}>
                 Sebastian Arias
               </span>
-              <span className="text-xs text-neutral-500/80 font-normal">
+              <span className={`text-xs font-normal ${isDark ? 'text-neutral-400' : 'text-neutral-500/80'}`}>
                 Web Developer
               </span>
             </div>
@@ -65,7 +90,11 @@ export default function Header() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-neutral-700 hover:text-black transition-colors"
+                className={`text-sm font-medium transition-colors ${
+                  isDark
+                    ? 'text-neutral-300 hover:text-white'
+                    : 'text-neutral-700 hover:text-black'
+                }`}
               >
                 {link.name}
               </a>
@@ -78,7 +107,11 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Contacto por WhatsApp"
-              className="flex items-center justify-center p-2 rounded-full text-neutral-800 hover:text-black transition-colors duration-200"
+              className={`flex items-center justify-center p-2 rounded-full transition-colors duration-200 ${
+                isDark
+                  ? 'text-neutral-200 hover:text-white'
+                  : 'text-neutral-800 hover:text-black'
+              }`}
             >
               <WaIcon />
             </a>
@@ -86,19 +119,24 @@ export default function Header() {
             <button
               onClick={toggleMenu}
               aria-label="Abrir menú"
-              className="md:hidden flex flex-col justify-center items-end w-9 h-9 gap-1.5 p-2 text-neutral-800"
+              className={`md:hidden flex flex-col justify-center items-end w-9 h-9 gap-1.5 p-2 ${
+                isDark ? 'text-white' : 'text-neutral-800'
+              }`}
             >
               <span
-                className={`w-5 h-[2px] bg-neutral-900 rounded-full transition-all duration-300 ease-in-out ${isOpen ? 'rotate-45 translate-y-[7.5px]' : ''
-                  }`}
+                className={`w-5 h-[2px] rounded-full transition-all duration-300 ease-in-out ${
+                  isDark ? 'bg-white' : 'bg-neutral-900'
+                } ${isOpen ? 'rotate-45 translate-y-[7.5px]' : ''}`}
               />
               <span
-                className={`w-5 h-[2px] bg-neutral-900 rounded-full transition-all duration-300 ease-in-out ${isOpen ? 'opacity-0' : ''
-                  }`}
+                className={`w-5 h-[2px] rounded-full transition-all duration-300 ease-in-out ${
+                  isDark ? 'bg-white' : 'bg-neutral-900'
+                } ${isOpen ? 'opacity-0' : ''}`}
               />
               <span
-                className={`h-[2px] bg-neutral-900 rounded-full transition-all duration-300 ease-in-out ${isOpen ? 'w-5 -rotate-45 -translate-y-[7.5px]' : 'w-2.5'
-                  }`}
+                className={`h-[2px] rounded-full transition-all duration-300 ease-in-out ${
+                  isDark ? 'bg-white' : 'bg-neutral-900'
+                } ${isOpen ? 'w-5 -rotate-45 -translate-y-[7.5px]' : 'w-2.5'}`}
               />
             </button>
           </div>
@@ -106,11 +144,15 @@ export default function Header() {
         </div>
       </div>
 
+      {/* Menú Mobile */}
       <div
-        className={`md:hidden fixed top-15 inset-x-0 h-[calc(100vh-3.75rem)] bg-[#EDEFF3] transition-all duration-300 flex flex-col justify-start p-6 ${isOpen
-          ? 'opacity-100 pointer-events-auto translate-y-0'
-          : 'opacity-0 pointer-events-none -translate-y-4'
-          }`}
+        className={`md:hidden fixed top-15 inset-x-0 h-[calc(100vh-3.75rem)] transition-all duration-300 flex flex-col justify-start p-6 ${
+          isDark ? 'bg-neutral-900' : 'bg-[#EDEFF3]'
+        } ${
+          isOpen
+            ? 'opacity-100 pointer-events-auto translate-y-0'
+            : 'opacity-0 pointer-events-none -translate-y-4'
+        }`}
       >
         <nav className="flex flex-col gap-6 mt-4">
           {NAV_LINKS.map((link) => (
@@ -118,7 +160,11 @@ export default function Header() {
               key={link.name}
               href={link.href}
               onClick={closeMenu}
-              className="text-2xl font-medium tracking-tighter text-neutral-900 hover:text-black transition-colors"
+              className={`text-2xl font-medium tracking-tighter transition-colors ${
+                isDark
+                  ? 'text-white hover:text-neutral-300'
+                  : 'text-neutral-900 hover:text-black'
+              }`}
             >
               {link.name}
             </a>
@@ -131,9 +177,13 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMenu}
-            className="flex items-center justify-center gap-3 w-full py-3.5 px-6 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 transition-colors text-base"
+            className={`flex items-center justify-center gap-3 w-full py-3.5 px-6 rounded-full transition-colors text-base ${
+              isDark
+                ? 'bg-white text-neutral-900 hover:bg-neutral-200'
+                : 'bg-neutral-900 text-white hover:bg-neutral-800'
+            }`}
           >
-            <WaIcon className="w-5 h-5 fill-white" />
+            <WaIcon className={`w-5 h-5 ${isDark ? 'fill-neutral-900' : 'fill-white'}`} />
             <span>Agendar llamada</span>
           </a>
         </div>
