@@ -35,25 +35,23 @@ export default function Header() {
   const closeMenu = () => setIsOpen(false)
 
   useEffect(() => {
-    // Reemplaza '#demo' por el id o data-attribute de la sección oscura
-    const targetSection = document.querySelector('#servicio')
-    if (!targetSection) return
+  const targetSection = document.querySelector('#servicio')
+  if (!targetSection) return
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Modifica el estado cuando la sección esté entrando en el viewport
-        setIsDark(entry.isIntersecting)
-      },
-      {
-        // Intersecta cuando la sección cruza el margen superior del header (aprox 60px)
-        rootMargin: '-60px 0px 0px 0px',
-        threshold: 0,
-      }
-    )
+  const handleScroll = () => {
+    const rect = targetSection.getBoundingClientRect()
+    const headerHeight = 60 // Altura en px de tu h-15
 
-    observer.observe(targetSection)
-    return () => observer.disconnect()
-  }, [])
+    // Activa dark mode si el borde superior de la sección llegó/pasó el header
+    // Y se desactiva cuando el borde inferior de la sección sale por arriba del header
+    const isHeaderInsideSection = rect.top <= headerHeight && rect.bottom >= headerHeight
+
+    setIsDark(isHeaderInsideSection)
+  }
+
+ window.addEventListener('scroll', handleScroll, { passive: true })
+  return () => window.removeEventListener('scroll', handleScroll)
+}, [])
 
   return (
     <header
