@@ -31,16 +31,13 @@ const NOTIFICATIONS = [
 type Notif = typeof NOTIFICATIONS[0]
 
 const OrbitItem = ({ n, step }: { n: Notif; step: number }) => {
-    // Calculamos el ángulo para que dé vueltas perfectas por todo el círculo
     const cycle = Math.floor(step / 3)
     const positionIndex = step % 3
     
     // Posiciones en grados: Arriba (-90deg), Izquierda (-180deg), Abajo (-270deg)
     const offsets = [-90, -180, -270]
-    // El ángulo acumulado asegura que siga avanzando por el trazo hacia adelante
     const angle = -360 * cycle + offsets[positionIndex]
 
-    // La posición "middle" (tarjeta abierta) es la índice 1 (Izquierda)
     const isCard = positionIndex === 1 
 
     return (
@@ -51,58 +48,76 @@ const OrbitItem = ({ n, step }: { n: Notif; step: number }) => {
                 zIndex: isCard ? 20 : 10,
             }}
         >
-            {/* Punto de anclaje: se ubica en el radio exacto del SVG (40% de distancia desde el centro) */}
             <div className="absolute top-1/2 left-[90%] w-0 h-0 pointer-events-none">
                 
-                {/* Contra-rotador: gira en dirección opuesta para mantener la tarjeta perfectamente derecha */}
                 <div
                     className="absolute inset-0 transition-transform duration-[900ms] ease-in-out pointer-events-auto"
                     style={{ transform: `rotate(${-angle}deg)` }}
                 >
+                    {/* 
+                        CONTENEDOR PRINCIPAL:
+                        Mantiene siempre su transform en -50% -50% para que el crecimiento 
+                        sea simétrico y el centro EXACTO de la tarjeta se quede sobre el trazo.
+                    */}
                     <div
-                        className="absolute flex items-center overflow-hidden transition-all duration-[900ms] ease-in-out"
+                        className="absolute overflow-hidden transition-all duration-[900ms] ease-in-out shadow-xl"
                         style={{
-                            // Usamos cqw (Container Query Width) para basarnos en el ancho del contenedor padre
-                            width: isCard ? '90cqw' : 'clamp(56px, 19cqw, 84px)',
-                            height: isCard ? 'auto' : 'clamp(56px, 19cqw, 84px)',
-                            // Alinea el centro del avatar exacto en el trazo del círculo en todo momento
-                            transform: `translate(${isCard ? '-34px' : '-50%'}, -50%)`,
-                            borderRadius: isCard ? '1rem' : '9999px',
-                            padding: isCard ? '0.75rem 1rem' : '4px',
-                            gap: isCard ? '0.75rem' : 0,
-                            background: isCard ? 'rgba(255, 255, 255, 0.92)' : 'transparent',
-                            boxShadow: isCard ? '0 12px 50px rgba(0,0,0,0.16)' : 'none',
-                            backdropFilter: isCard ? 'blur(6px)' : 'none',
+                            width: isCard ? 280 : 56,
+                            height: isCard ? 72 : 56,
+                            transform: 'translate(-50%, -50%)',
+                            borderRadius: isCard ? 16 : 28,
+                            background: isCard ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+                            boxShadow: isCard ? '0 12px 40px rgba(0,0,0,0.12)' : 'none',
+                            backdropFilter: isCard ? 'blur(8px)' : 'none',
                         }}
                     >
-                        {/* Anillo punteado que envuelve solo a los avatares */}
+                        {/* Anillo punteado (se desvanece al abrir la tarjeta) */}
                         <div
-                            className="absolute inset-0 rounded-full border border-dashed border-neutral-400/70 transition-opacity duration-500 pointer-events-none"
+                            className="absolute transition-all duration-[900ms] ease-in-out rounded-full border border-dashed border-neutral-400/80 pointer-events-none"
                             style={{
+                                width: 56,
+                                height: 56,
+                                left: isCard ? -20 : 0, 
+                                top: 0,
                                 opacity: isCard ? 0 : 1,
                                 animation: 'spin 22s linear infinite',
                             }}
                         />
 
+                        {/* AVATAR: Se mueve independientemente dentro de la caja */}
                         <div
-                            className="relative shrink-0 rounded-full overflow-hidden ring-4 ring-white shadow-md transition-all duration-[900ms] ease-in-out z-10"
-                            style={{ width: isCard ? 36 : '100%', height: isCard ? 36 : '100%' }}
+                            className="absolute transition-all duration-[900ms] ease-in-out rounded-full overflow-hidden z-10"
+                            style={{
+                                width: isCard ? 44 : 56,
+                                height: isCard ? 44 : 56,
+                                left: isCard ? 14 : 0,
+                                top: isCard ? 14 : 0, // 72 (alto total) - 44 / 2 = 14px (centrado perfecto)
+                                border: isCard ? '2px solid white' : '4px solid white',
+                            }}
                         >
                             <Image src={n.avatar} alt={n.name} fill className="object-cover" />
                         </div>
 
+                        {/* TEXTOS: Ancho fijo absoluto para evitar que se compriman durante el slide */}
                         <div
-                            className="min-w-0 flex-1 transition-all duration-500 ease-in-out overflow-hidden z-10"
-                            style={{ opacity: isCard ? 1 : 0, maxWidth: isCard ? '100%' : 0 }}
+                            className="absolute flex flex-col justify-center transition-all duration-[900ms] ease-in-out z-10"
+                            style={{
+                                left: isCard ? 70 : 90, // Deslizamiento suave hacia la izquierda
+                                top: 0,
+                                height: '100%',
+                                width: 196, // 280px - 70px(left) - 14px(padding right)
+                                opacity: isCard ? 1 : 0,
+                                pointerEvents: isCard ? 'auto' : 'none',
+                            }}
                         >
                             <div className="flex items-center justify-between mb-0.5 gap-2">
-                                <p className="text-sm font-medium text-neutral-950 m-0 text-left truncate">
+                                <p className="text-sm font-semibold text-neutral-900 m-0 truncate">
                                     {n.name}
                                 </p>
-                                <span className="text-[0.625rem] text-neutral-500 shrink-0">{n.time}</span>
+                                <span className="text-[0.65rem] text-neutral-500 shrink-0">{n.time}</span>
                             </div>
                             <p
-                                className="text-xs text-neutral-700 m-0 leading-relaxed text-left"
+                                className="text-xs text-neutral-600 m-0 leading-snug"
                                 style={{
                                     display: '-webkit-box',
                                     WebkitLineClamp: 2,
@@ -134,8 +149,9 @@ const NotificationOrbit = ({ visible }: { visible: boolean }) => {
     return (
         <div
             className="relative w-full max-w-[300px] sm:max-w-[380px] lg:max-w-[440px] mx-auto aspect-square transition-opacity duration-700"
-            style={{ opacity: visible ? 1 : 0, containerType: 'inline-size' }}
+            style={{ opacity: visible ? 1 : 0 }}
         >
+            {/* Aro punteado geométricamente perfecto (Círculo completo) */}
             <svg
                 viewBox="0 0 400 400"
                 className="absolute inset-0 w-full h-full pointer-events-none z-0"
