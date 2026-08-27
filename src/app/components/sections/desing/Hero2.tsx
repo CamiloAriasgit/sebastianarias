@@ -6,11 +6,11 @@ import { WhatsAppButton } from '../../ui/WhatsAppButton'
 
 const NOTIFICATIONS = [
     {
-        id: 3,
-        name: 'Andrés Castillo',
-        preview: '¿Aún hay unidades en el piso 8? Vi los planos y me convencieron.',
-        time: '3 min',
-        avatar: '/avatars/profile-avatar-3.jpg',
+        id: 1,
+        name: 'Carlos Mendoza',
+        preview: 'Buenas, vi el proyecto Reserva del Bosque. ¿Cuándo puedo agendar una visita?',
+        time: 'ahora',
+        avatar: '/avatars/profile-avatar-1.png',
     },
     {
         id: 2,
@@ -20,138 +20,140 @@ const NOTIFICATIONS = [
         avatar: '/avatars/profile-avatar-2.png',
     },
     {
-        id: 1,
-        name: 'Carlos Mendoza',
-        preview: 'Buenas, vi el proyecto Reserva del Bosque. ¿Cuándo puedo agendar una visita?',
-        time: 'ahora',
-        avatar: '/avatars/profile-avatar-1.png',
+        id: 3,
+        name: 'Andrés Castillo',
+        preview: '¿Aún hay unidades en el piso 8? Vi los planos y me convencieron.',
+        time: '3 min',
+        avatar: '/avatars/profile-avatar-3.jpg',
     },
 ]
 
 type Notif = typeof NOTIFICATIONS[0]
 
-const NotifCard = ({ n }: { n: Notif }) => (
-    <div
-        className="rounded-2xl px-4 py-3 shadow-[0_12px_50px_rgba(0,0,0,0.16)] backdrop-blur-md flex items-center gap-3"
-        style={{ background: 'rgba(255, 255, 255, 0.9)' }}
-    >
-        <Image
-            src={n.avatar}
-            alt={n.name}
-            width={36}
-            height={36}
-            className="rounded-full shrink-0 object-cover"
-        />
-        <div className="flex-1 min-w-0">
-            <div className="flex items-center justify-between mb-0.5">
-                <p className="text-sm font-medium text-neutral-950 m-0 text-left truncate">
-                    {n.name}
-                </p>
-                <span className="text-[0.625rem] text-neutral-500 shrink-0 ml-2">{n.time}</span>
-            </div>
-            <p
-                className="text-xs text-neutral-700 m-0 leading-relaxed text-left"
-                style={{
-                    display: '-webkit-box',
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
-                    textAlign: 'left',
-                }}
-            >
-                {n.preview}
-            </p>
-        </div>
-    </div>
-)
+const OrbitItem = ({ n, step }: { n: Notif; step: number }) => {
+    // Calculamos el ángulo para que dé vueltas perfectas por todo el círculo
+    const cycle = Math.floor(step / 3)
+    const positionIndex = step % 3
+    
+    // Posiciones en grados: Arriba (-90deg), Izquierda (-180deg), Abajo (-270deg)
+    const offsets = [-90, -180, -270]
+    // El ángulo acumulado asegura que siga avanzando por el trazo hacia adelante
+    const angle = -360 * cycle + offsets[positionIndex]
 
-const OrbitAvatar = ({
-    n,
-    position,
-    reverse = false,
-    duration = 18,
-}: {
-    n: Notif
-    position: 'top' | 'bottom'
-    reverse?: boolean
-    duration?: number
-}) => (
-    <div
-        className={`absolute w-[68px] h-[68px] sm:w-[84px] sm:h-[84px] ${
-            position === 'top' ? 'top-[0%] right-[8%]' : 'bottom-[2%] left-[4%]'
-        }`}
-    >
-        {/* Rotating dashed ring */}
-        <div
-            className="absolute inset-0 rounded-full border border-dashed border-neutral-400/70"
-            style={{
-                animation: `spin ${duration}s linear infinite${reverse ? ' reverse' : ''}`,
-            }}
-        />
-        {/* Avatar */}
-        <div className="absolute inset-[9px] rounded-full overflow-hidden ring-4 ring-white shadow-md">
-            <Image src={n.avatar} alt={n.name} fill className="object-cover" />
-        </div>
-    </div>
-)
-
-const NotificationOrbit = ({ visible }: { visible: boolean }) => {
-    const [activeIndex, setActiveIndex] = useState(0)
-    const [cardShown, setCardShown] = useState(true)
-
-    useEffect(() => {
-        if (!visible) return
-
-        const id = setInterval(() => {
-            setCardShown(false)
-            setTimeout(() => {
-                setActiveIndex(i => (i + 1) % NOTIFICATIONS.length)
-                setCardShown(true)
-            }, 350)
-        }, 3800)
-
-        return () => clearInterval(id)
-    }, [visible])
-
-    const active = NOTIFICATIONS[activeIndex]
-    const others = NOTIFICATIONS.filter((_, i) => i !== activeIndex)
+    // La posición "middle" (tarjeta abierta) es la índice 1 (Izquierda)
+    const isCard = positionIndex === 1 
 
     return (
         <div
-            className="relative w-full max-w-[380px] lg:max-w-[440px] mx-auto aspect-square transition-opacity duration-700"
-            style={{ opacity: visible ? 1 : 0 }}
+            className="absolute inset-0 pointer-events-none transition-transform duration-[900ms] ease-in-out"
+            style={{
+                transform: `rotate(${angle}deg)`,
+                zIndex: isCard ? 20 : 10,
+            }}
         >
-            {/* Dotted connecting path, drawn behind the card */}
+            {/* Punto de anclaje: se ubica en el radio exacto del SVG (40% de distancia desde el centro) */}
+            <div className="absolute top-1/2 left-[90%] w-0 h-0 pointer-events-none">
+                
+                {/* Contra-rotador: gira en dirección opuesta para mantener la tarjeta perfectamente derecha */}
+                <div
+                    className="absolute inset-0 transition-transform duration-[900ms] ease-in-out pointer-events-auto"
+                    style={{ transform: `rotate(${-angle}deg)` }}
+                >
+                    <div
+                        className="absolute flex items-center overflow-hidden transition-all duration-[900ms] ease-in-out"
+                        style={{
+                            // Usamos cqw (Container Query Width) para basarnos en el ancho del contenedor padre
+                            width: isCard ? '90cqw' : 'clamp(56px, 19cqw, 84px)',
+                            height: isCard ? 'auto' : 'clamp(56px, 19cqw, 84px)',
+                            // Alinea el centro del avatar exacto en el trazo del círculo en todo momento
+                            transform: `translate(${isCard ? '-34px' : '-50%'}, -50%)`,
+                            borderRadius: isCard ? '1rem' : '9999px',
+                            padding: isCard ? '0.75rem 1rem' : '4px',
+                            gap: isCard ? '0.75rem' : 0,
+                            background: isCard ? 'rgba(255, 255, 255, 0.92)' : 'transparent',
+                            boxShadow: isCard ? '0 12px 50px rgba(0,0,0,0.16)' : 'none',
+                            backdropFilter: isCard ? 'blur(6px)' : 'none',
+                        }}
+                    >
+                        {/* Anillo punteado que envuelve solo a los avatares */}
+                        <div
+                            className="absolute inset-0 rounded-full border border-dashed border-neutral-400/70 transition-opacity duration-500 pointer-events-none"
+                            style={{
+                                opacity: isCard ? 0 : 1,
+                                animation: 'spin 22s linear infinite',
+                            }}
+                        />
+
+                        <div
+                            className="relative shrink-0 rounded-full overflow-hidden ring-4 ring-white shadow-md transition-all duration-[900ms] ease-in-out z-10"
+                            style={{ width: isCard ? 36 : '100%', height: isCard ? 36 : '100%' }}
+                        >
+                            <Image src={n.avatar} alt={n.name} fill className="object-cover" />
+                        </div>
+
+                        <div
+                            className="min-w-0 flex-1 transition-all duration-500 ease-in-out overflow-hidden z-10"
+                            style={{ opacity: isCard ? 1 : 0, maxWidth: isCard ? '100%' : 0 }}
+                        >
+                            <div className="flex items-center justify-between mb-0.5 gap-2">
+                                <p className="text-sm font-medium text-neutral-950 m-0 text-left truncate">
+                                    {n.name}
+                                </p>
+                                <span className="text-[0.625rem] text-neutral-500 shrink-0">{n.time}</span>
+                            </div>
+                            <p
+                                className="text-xs text-neutral-700 m-0 leading-relaxed text-left"
+                                style={{
+                                    display: '-webkit-box',
+                                    WebkitLineClamp: 2,
+                                    WebkitBoxOrient: 'vertical',
+                                    overflow: 'hidden',
+                                }}
+                            >
+                                {n.preview}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const NotificationOrbit = ({ visible }: { visible: boolean }) => {
+    const [rotation, setRotation] = useState(0)
+
+    useEffect(() => {
+        if (!visible) return
+        const id = setInterval(() => {
+            setRotation(r => r + 1)
+        }, 3800)
+        return () => clearInterval(id)
+    }, [visible])
+
+    return (
+        <div
+            className="relative w-full max-w-[300px] sm:max-w-[380px] lg:max-w-[440px] mx-auto aspect-square transition-opacity duration-700"
+            style={{ opacity: visible ? 1 : 0, containerType: 'inline-size' }}
+        >
             <svg
                 viewBox="0 0 400 400"
                 className="absolute inset-0 w-full h-full pointer-events-none z-0"
                 fill="none"
+                preserveAspectRatio="xMidYMid meet"
             >
                 <path
-                    d="M 380 -20 C 330 30, 300 60, 316 110
-                       C 336 175, 60 175, 84 240
-                       C 104 300, 60 330, 20 420"
+                    d="M 200 40 A 160 160 0 1 1 199.99 40"
                     stroke="rgb(23 23 23 / 0.22)"
                     strokeWidth="2"
-                    strokeDasharray="1 10"
+                    strokeDasharray="4 8"
                     strokeLinecap="round"
                 />
             </svg>
 
-            <div className="z-10 relative">
-                <OrbitAvatar n={others[0]} position="top" duration={20} />
-                <OrbitAvatar n={others[1]} position="bottom" duration={24} reverse />
-            </div>
-
-            <div
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[86%] z-20 transition-all duration-300 ease-out"
-                style={{
-                    opacity: cardShown ? 1 : 0,
-                    transform: `translate(-50%, -50%) translateY(${cardShown ? 0 : 8}px)`,
-                }}
-            >
-                <NotifCard n={active} />
-            </div>
+            {NOTIFICATIONS.map((n, i) => (
+                <OrbitItem key={n.id} n={n} step={i + rotation} />
+            ))}
         </div>
     )
 }
@@ -166,7 +168,6 @@ export default function Hero() {
 
     return (
         <section className="relative flex w-full padding-block min-h-[100svh] bg-section overflow-hidden">
-
             {/* === VISTA MÓVIL === */}
             <div className="lg:hidden bg-blue-20 relative z-20 container-site flex flex-col items-center justify-end gap-6">
                 <div className="w-full flex justify-center relative">
@@ -191,7 +192,6 @@ export default function Hero() {
 
             {/* === VISTA DESKTOP === */}
             <div className="hidden lg:flex flex-row w-full lg:py-30 justify-center items-center z-20 container-full gap-12">
-
                 <div className="flex flex-col gap-8 items-start w-full">
                     <div className="flex flex-col items-start gap-6 text-left">
                         <h1
@@ -212,9 +212,7 @@ export default function Hero() {
                 <div className="w-full bg-white rounded-xl overflow-hidden relative flex justify-center items-center h-[650px]">
                     <NotificationOrbit visible={graphicVisible} />
                 </div>
-
             </div>
-
         </section>
     )
 }
