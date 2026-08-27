@@ -57,9 +57,9 @@ export default function Problem() {
   return (
     <section className="bg-section py-16">
       <div className="container-full">
-        <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] lg:text-center flex flex-col items-center">
+        <div ref={headRef} className="mb-[clamp(3rem,6vw,5rem)] text-center flex flex-col items-center">
           <SectionTitle>
-            La mayoría de landings inmobiliarias no convierten. Y el problema no es la pauta.
+            La mayoría de landings inmobiliarias no <br className='hidden lg:flex'/> convierten. Y el problema no es la pauta.
           </SectionTitle>
         </div>
 
@@ -72,12 +72,12 @@ export default function Problem() {
                 ref={el => { itemRefs.current[i] = el }}
                 className="relative bg-white rounded-2xl h-[380px] p-6 flex flex-col overflow-hidden select-none"
               >
-                {/* Parte superior: Textos (Mismo tamaño, peso light, diferente color) */}
-                <div className="relative z-10 flex flex-col gap-2">
-                  <h3 className="text-lg  tracking-tight text-black m-0 leading-snug">
+                {/* Parte superior: Textos */}
+                <div className="relative z-10 text-base font-light flex flex-col gap-2">
+                  <h3 className="tracking-tight font-medium text-neutral-800 m-0 leading-snug">
                     {p.title}
                   </h3>
-                  <p className="text-lg leading-relaxed text-neutral-500 m-0">
+                  <p className="leading-relaxed text-neutral-500 m-0">
                     {p.body}
                   </p>
                 </div>
@@ -92,10 +92,20 @@ export default function Problem() {
                   }}
                 />
 
-                {/* Ícono centrado sobre el patrón de puntos con contenedor circular blanco */}
+                {/* Ícono centrado con padding optimizado y amplio resplandor de desvanecimiento */}
                 <div className="absolute left-1/2 top-[75%] -translate-x-1/2 -translate-y-1/2 z-20">
-                  <div className="bg-white rounded-full p-7 flex items-center justify-center">
-                    <Icon className="w-8 h-8 text-neutral-500" strokeWidth={1} />
+                  <div 
+                    className="bg-white rounded-full p-5 flex items-center justify-center"
+                    style={{
+                      boxShadow: `
+                        0 0 0 6px rgba(255, 255, 255, 1),
+                        0 0 16px 12px rgba(255, 255, 255, 0.95),
+                        0 0 32px 20px rgba(255, 255, 255, 0.7),
+                        0 0 48px 28px rgba(255, 255, 255, 0.4)
+                      `
+                    }}
+                  >
+                    <Icon className="w-7 h-7 text-neutral-600" strokeWidth={1.25} />
                   </div>
                 </div>
               </div>
