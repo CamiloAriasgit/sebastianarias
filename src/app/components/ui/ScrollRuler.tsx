@@ -131,8 +131,8 @@ export default function ScrollRuler({
       ctx!.strokeStyle = 'rgba(0,0,0,0.92)'
       ctx!.lineWidth = 2
       ctx!.beginPath()
-      ctx!.moveTo(centerX, height * 0.08)
-      ctx!.lineTo(centerX, height * 0.85)
+      ctx!.moveTo(centerX, height * 0.18)
+      ctx!.lineTo(centerX, height * 0.97)
       ctx!.stroke()
 
       rafRef.current = requestAnimationFrame(draw)
