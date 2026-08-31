@@ -70,7 +70,7 @@ export default function Header() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-full mx-2 h-10 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors"
+              className="flex items-center justify-center w-full mx-2 h-10 rounded-full bg-neutral-300 text-black text-sm font-medium shadow-inner shadow-white hover:bg-neutral-300 transition-colors"
             >
               Contactar
             </a>
@@ -78,21 +78,21 @@ export default function Header() {
             <button
               onClick={toggleMenu}
               aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-white shrink-0"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 shrink-0"
             >
-              <div className="flex flex-col justify-center items-end gap-1.5">
+              <div className="flex flex-col justify-center items-end gap-1">
                 <span
-                  className={`w-4 h-[2px] bg-neutral-900 rounded-full transition-all duration-300 ease-in-out ${
+                  className={`w-4 h-[2px] bg-neutral-300 rounded-full transition-all duration-300 ease-in-out ${
                     isOpen ? 'rotate-45 translate-y-[6px]' : ''
                   }`}
                 />
                 <span
-                  className={`w-4 h-[2px] bg-neutral-900 rounded-full transition-all duration-300 ease-in-out ${
+                  className={`w-4 h-[2px] bg-neutral-300 rounded-full transition-all duration-300 ease-in-out ${
                     isOpen ? 'opacity-0' : ''
                   }`}
                 />
                 <span
-                  className={`h-[2px] bg-neutral-900 rounded-full transition-all duration-300 ease-in-out ${
+                  className={`h-[2px] bg-neutral-300 rounded-full transition-all duration-300 ease-in-out ${
                     isOpen ? 'w-4 -rotate-45 -translate-y-[6px]' : 'w-4'
                   }`}
                 />
