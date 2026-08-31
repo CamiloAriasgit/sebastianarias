@@ -75,7 +75,7 @@ export default function Header() {
                         <button
                             onClick={toggleMenu}
                             aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
-                            className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 shrink-0"
+                            className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 shrink-0"
                         >
                             <div className="flex flex-col justify-center items-end gap-1">
                                 <span

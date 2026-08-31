@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Header from '../components/layout/HeaderVersion'
+import ScrollRuler from '../components/ui/ScrollRuler'
 import HeroSection, { heroGradient } from "../components/sections/desing/HeroSection";
 import AboutSection, { aboutGradient } from "../components/sections/desing/AboutSection";
 import GradientBackground from "../components/sections/desing/GradientBackground";
@@ -29,6 +30,12 @@ export default function VersionPage() {
 
   return (
     <>
+      <ScrollRuler
+        unit="BZ"
+        baseValue={-1000}
+        valuePerPixel={0.15}
+        scrollContainerRef={containerRef}
+      />
       <GradientBackground layers={gradients} activeId={activeId} />
       <main
         ref={containerRef}
