@@ -1,6 +1,6 @@
 export const heroGradient = {
   id: "inicio",
-  colors: ["#2b426d", "#496bac", "#6283b9"],
+  colors: ["#EDEFF3", "#EDEFF3", "#EDEFF3"],
 };
 
 export default function HeroSection() {
@@ -9,7 +9,7 @@ export default function HeroSection() {
       id={heroGradient.id}
       className="flex h-[100dvh] w-full snap-start items-center justify-center px-6"
     >
-      <h2 className="text-4xl font-bold text-white">Inicio</h2>
+      <h2 className="text-4xl font-medium text-black font-mono">01</h2>
     </section>
   );
 }
