@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Header from '../components/layout/HeaderVersion'
 import HeroSection, { heroGradient } from "../components/sections/desing/HeroSection";
 import AboutSection, { aboutGradient } from "../components/sections/desing/AboutSection";
 import GradientBackground from "../components/sections/desing/GradientBackground";
@@ -33,6 +34,7 @@ export default function VersionPage() {
         ref={containerRef}
         className="relative h-[100dvh] snap-y snap-mandatory overflow-y-scroll scroll-smooth"
       >
+        <Header />
         <HeroSection />
         <AboutSection />
       </main>

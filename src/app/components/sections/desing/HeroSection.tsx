@@ -1,6 +1,6 @@
 export const heroGradient = {
   id: "inicio",
-  colors: ["#0f172a", "#312e81", "#0f172a"],
+  colors: ["#2b426d", "#496bac", "#6283b9"],
 };
 
 export default function HeroSection() {
