@@ -1,6 +1,6 @@
 export const aboutGradient = {
   id: "nosotros",
-  colors: ["#EDEFF3", "#EDEFF3", "#6283b9"],
+  colors: ["#EDEFF3", "#EDEFF3", "#EDEFF3"],
 };
 
 export default function AboutSection() {
