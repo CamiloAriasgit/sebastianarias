@@ -52,7 +52,7 @@ export default function Header() {
           </nav>
 
           {/* Fila fija: avatar / contactar / menu */}
-          <div className="flex items-center justify-between h-16 px-2">
+          <div className="flex items-center justify-between h-15 px-3">
             <Link
               href="https://sebastianarias.com"
               className="flex items-center justify-center shrink-0"
@@ -78,7 +78,7 @@ export default function Header() {
             <button
               onClick={toggleMenu}
               aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 shrink-0"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 shrink-0"
             >
               <div className="flex flex-col justify-center items-end gap-1">
                 <span
