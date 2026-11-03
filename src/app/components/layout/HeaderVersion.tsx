@@ -26,7 +26,7 @@ export default function Header() {
         <header className="fixed bottom-4 inset-x-0 z-50">
             <div className="container-site md:max-w-md md:mx-auto">
                 <div
-                    className={`bg-black/30 backdrop-blur-md overflow-hidden transition-all duration-300 ease-in-out rounded-[30px]`}
+                    className={`bg-black/40 backdrop-blur-md overflow-hidden transition-all duration-300 ease-in-out rounded-[30px]`}
                 >
                     {/* Lista de enlaces (se abre arriba, empuja la altura) */}
                     <nav
@@ -49,7 +49,7 @@ export default function Header() {
                     </nav>
 
                     {/* Fila fija: avatar / contactar / menu */}
-                    <div className="flex items-center justify-between h-15 px-3">
+                    <div className="flex items-center justify-between h-15 px-2.5">
                         <Link
                             href="https://sebastianarias.com"
                             className="flex items-center justify-center shrink-0"
@@ -79,15 +79,15 @@ export default function Header() {
                         >
                             <div className="flex flex-col justify-center items-end gap-1">
                                 <span
-                                    className={`w-4 h-[2px] bg-neutral-300 rounded-full transition-all duration-300 ease-in-out ${isOpen ? 'rotate-45 translate-y-[6px]' : ''
+                                    className={`w-4 h-[2px] bg-neutral-200 rounded-full transition-all duration-300 ease-in-out ${isOpen ? 'rotate-45 translate-y-[6px]' : ''
                                         }`}
                                 />
                                 <span
-                                    className={`w-4 h-[2px] bg-neutral-300 rounded-full transition-all duration-300 ease-in-out ${isOpen ? 'opacity-0' : ''
+                                    className={`w-4 h-[2px] bg-neutral-200 rounded-full transition-all duration-300 ease-in-out ${isOpen ? 'opacity-0' : ''
                                         }`}
                                 />
                                 <span
-                                    className={`h-[2px] bg-neutral-300 rounded-full transition-all duration-300 ease-in-out ${isOpen ? 'w-4 -rotate-45 -translate-y-[6px]' : 'w-4'
+                                    className={`h-[2px] bg-neutral-200 rounded-full transition-all duration-300 ease-in-out ${isOpen ? 'w-4 -rotate-45 -translate-y-[6px]' : 'w-4'
                                         }`}
                                 />
                             </div>

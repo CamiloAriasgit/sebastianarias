@@ -33,9 +33,6 @@ export default function VersionPage() {
   return (
     <>
       <ScrollRuler
-        unit="BZ"
-        baseValue={-1000}
-        valuePerPixel={0.15}
         scrollContainerRef={containerRef}
       />
       <GradientBackground layers={gradients} activeId={activeId} />

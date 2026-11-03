@@ -2,8 +2,13 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { GoogleTagManager } from '@next/third-parties/google';
-import { GeistSans } from 'geist/font/sans';
+import { Inter } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   title: 'Sebastian Arias — Desarrollo web para proyectos inmobiliarios',
@@ -43,7 +48,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`scroll-smooth ${GeistSans.variable} ${GeistMono.variable}`}
+      className={`scroll-smooth ${inter.variable} ${GeistMono.variable}`}
     >
       <GoogleTagManager gtmId="GTM-P2SQSJ5W" />
       <body className="antialiased">
