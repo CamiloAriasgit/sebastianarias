@@ -1,5 +1,5 @@
 export const aboutGradient = {
-  id: "nosotros",
+  id: "nosotro",
   colors: ["#EDEFF3", "#EDEFF3", "#EDEFF3"],
 };
 
