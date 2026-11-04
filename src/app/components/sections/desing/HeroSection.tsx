@@ -24,7 +24,7 @@ export default function HeroSection() {
         <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-900 shadow-2xl border border-neutral-800 pt-2 px-2 pb-2 flex flex-col items-center">
           
           {/* Barra de navegación superior simulada */}
-          <div className="mb-2 w-full max-w-xs sm:max-w-sm h-7 sm:h-8 bg-neutral-800 rounded-md flex items-center justify-center px-3 shadow-inner">
+          <div className="mb-2 h-7 sm:h-8 bg-neutral-800 rounded-md flex items-center justify-center px-3 shadow-inner">
             <span className="text-xs sm:text-sm text-neutral-400 tracking-tight select-none">
               tudominio.com/admin
             </span>
