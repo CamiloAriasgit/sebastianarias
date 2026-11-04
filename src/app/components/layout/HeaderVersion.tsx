@@ -39,7 +39,7 @@ export default function Header() {
                                     <a
                                         href={link.href}
                                         onClick={closeMenu}
-                                        className="block px-3 py-2.5 text-base font-medium text-white/90 hover:text-white transition-colors"
+                                        className="block px-3 py-2.5 text-base rounded-xl font-medium text-white/90 hover:text-white hover:bg-white/5 transition-colors"
                                     >
                                         {link.name}
                                     </a>
@@ -67,7 +67,7 @@ export default function Header() {
                             href={WHATSAPP_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center w-full mx-2 h-10 rounded-full bg-neutral-300 text-black text-sm font-medium shadow-inner shadow-white hover:bg-neutral-300 transition-colors"
+                            className="flex items-center justify-center w-full mx-2 h-10 rounded-full bg-neutral-200 text-black text-sm font-medium shadow-inner shadow-white hover:bg-neutral-300 transition-colors"
                         >
                             Contactar
                         </a>

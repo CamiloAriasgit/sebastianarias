@@ -34,7 +34,7 @@ export default function HeroSection() {
           </div>
 
           {/* Imagen respetando su tamaño y proporción original */}
-          <div className="relative w-full rounded-t-md overflow-hidden bg-neutral-950">
+          <div className="relative w-full rounded-t-xs sm:rounded-t-md overflow-hidden bg-neutral-950">
             <Image
               src="/images/img1.webp"
               alt="Vista previa del portal inmobiliario"
