@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { Globe } from 'lucide-react'
+
 
 export const heroGradient = {
   id: "inicio",
@@ -24,14 +26,15 @@ export default function HeroSection() {
         <div className="relative w-full rounded-t-2xl sm:rounded-t-3xl overflow-hidden bg-neutral-900 pt-2 px-2 flex flex-col items-center">
           
           {/* Barra de navegación superior simulada */}
-          <div className="mb-2 h-7 sm:h-8 bg-neutral-800 rounded-md flex items-center justify-center px-3 shadow-inner">
+          <div className="mb-2 h-6 sm:h-7 bg-neutral-800 rounded-md flex items-center justify-center px-3 shadow-inner">
             <span className="text-xs sm:text-sm text-neutral-400 tracking-tight select-none">
+              <Globe className="inline-block w-3 h-3 mr-1 -mt-[1px] text-neutral-400" />
               tudominio.com/admin
             </span>
           </div>
 
           {/* Imagen respetando su tamaño y proporción original */}
-          <div className="relative w-full rounded-t-xl overflow-hidden bg-neutral-950">
+          <div className="relative w-full rounded-t-md overflow-hidden bg-neutral-950">
             <Image
               src="/images/img1.webp"
               alt="Vista previa del portal inmobiliario"
