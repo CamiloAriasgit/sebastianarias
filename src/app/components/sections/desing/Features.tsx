@@ -18,7 +18,7 @@ const carouselCards = [
   },
   {
     title: "Ficha de Propiedad",
-    description: "Una ficha por propiedad con fotos, descripción, características, condiciones y ubicación, y un botón para compartir el enlace.",
+    description: "Una ficha por propiedad con fotos, información, y un botón para compartir el enlace.",
     image: "/images/img3.webp",
   },
   {
@@ -61,10 +61,10 @@ export default function Features() {
 
               {/* Texto debajo de la card */}
               <div className="mt-4 space-y-1.5 px-1">
-                <h3 className="text-base sm:text-lg font- tracking-tight text-neutral-100 leading-snug">
+                <h3 className="text-base sm:text-lg tracking-tight text-neutral-100 leading-snug">
                   {card.title}
                 </h3>
-                <p className="text-md sm:text-sm text-neutral-300 font-normal leading-relaxed">
+                <p className="text-md sm:text-sm text-neutral-300 font-semibold leading-tight">
                   {card.description}
                 </p>
               </div>
