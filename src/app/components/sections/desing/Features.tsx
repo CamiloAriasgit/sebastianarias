@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const aboutGradient = {
   id: "nosotro",
-  colors: ["#283d68", "#3a5487", "#5879b0"],
+  colors: ["#202020", "#202020", "#202020"],
 };
 
 const carouselCards = [
@@ -32,14 +32,14 @@ export default function Features() {
   return (
     <section
       id={aboutGradient.id}
-      className="flex flex-col min-h-[100dvh] w-full snap-start items-center justify-center sm:px-6 py-12 text-center overflow-hidden"
+      className="flex flex-col min-h-[100dvh] w-full snap-start items-start md:items-center justify-center sm:px-6 py-12 text-center overflow-hidden"
     >
-      <h2 className="text-2xl sm:text-4xl text-white tracking-tight max-w-4xl">
+      <h2 className="text-2xl px-4 sm:text-4xl text-white tracking-tight max-w-4xl">
         Lo que ve quien busca
       </h2>
 
       {/* Contenedor del carrusel con snap-x obligatorio */}
-      <div className="mt-10 sm:mt-12 w-full overflow-x-auto snap-x snap-mandatory py-4 px-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      <div className="mt-4 w-full overflow-x-auto snap-x snap-mandatory py-4 px-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         <div className="flex items-start gap-6 sm:gap-8 justify-start sm:justify-center min-w-max px-4">
           {carouselCards.map((card, index) => (
             <div

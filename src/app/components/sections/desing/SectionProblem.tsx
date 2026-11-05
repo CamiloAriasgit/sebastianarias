@@ -1,6 +1,6 @@
 export const problemGradient = {
   id: "nosotros",
-  colors: ["#EDEFF3", "#EDEFF3", "#EDEFF3"],
+  colors: ["#283d68", "#3a5487", "#5879b0"],
 };
 
 export default function SectionProblem() {

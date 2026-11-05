@@ -11,7 +11,7 @@ export default function HeroSection() {
   return (
     <section
       id={heroGradient.id}
-      className="flex flex-col min-h-[100dvh] w-full snap-start items-center justify-center px-4 sm:px-6 py-12 text-center overflow-hidden"
+      className="flex flex-col bg-[#EDEFF3] min-h-[100dvh] w-full snap-start items-center justify-center px-4 sm:px-6 py-12 text-center overflow-hidden"
     >
       {/* Encabezado */}
       <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-black max-w-4xl leading-tight">
