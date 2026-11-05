@@ -39,7 +39,7 @@ export default function Features() {
       </h2>
 
       {/* Carrusel de tarjetas con scrollbar oculto nativamente */}
-      <div className="mt-10 sm:mt-12 w-full overflow-x-auto py-4 px-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      <div className="mt-6 w-full overflow-x-auto py-4 px-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         <div className="flex items-start gap-6 sm:gap-8 justify-start sm:justify-center min-w-max px-4">
           {carouselCards.map((card, index) => (
             <div
@@ -64,7 +64,7 @@ export default function Features() {
                 <h3 className="text-base sm:text-lg font-semibold tracking-tight text-neutral-900 leading-snug">
                   {card.title}
                 </h3>
-                <p className="text-base sm:text-sm text-neutral-600 font-normal leading-relaxed">
+                <p className="text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed">
                   {card.description}
                 </p>
               </div>
