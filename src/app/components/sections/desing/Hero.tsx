@@ -1,400 +1,56 @@
-'use client'
+import Image from "next/image";
+import { Globe } from 'lucide-react'
 
-import { useEffect, useRef, useState, useCallback, CSSProperties } from 'react'
-import Image from 'next/image'
-import { WhatsAppButton } from '../../ui/WhatsAppButton'
 
-// ── Tipos e Interfaces ──
-interface Lead {
-    name: string
-    time: string
-    message: string
-}
+export const heroGradient = {
+  id: "inicio",
+colors: ["#5879b0", "#3a5487", "#3a5487"],
+};
 
-interface Project {
-    id: string
-    name: string
-    location: string
-    tone: string
-    imageUrl: string
-    lead: Lead
-}
+export default function HeroSection() {
+  return (
+    <section
+      id={heroGradient.id}
+      className="flex flex-col min-h-[100dvh] w-full snap-start items-center justify-center px-4 sm:px-6 py-12 text-center overflow-hidden"
+    >
+      {/* Encabezado */}
+      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-white max-w-4xl leading-tight">
+        Obtén tu propio<br />portal inmobiliario
+      </h1>
+      <p className="mt-4 sm:mt-6 text-base sm:text-xl md:text-xl text-neutral-300 max-w-2xl leading-relaxed">
+        Con tu logo, tu dominio y un panel donde queda cada contacto.
+      </p>
 
-interface WaIconProps {
-    size?: number
-}
+      {/* Contenedor tipo navegador */}
+      <div className="mt-8 sm:mt-12 w-full max-w-4xl px-2">
+        <div className="relative w-full rounded-t-2xl sm:rounded-t-3xl overflow-hidden bg-neutral-900 pt-2 px-2 flex flex-col items-center">
+          
+          {/* Barra de navegación superior simulada */}
+          <div className="mb-2 h-6 sm:h-7 bg-neutral-800 rounded-md flex items-center justify-center px-3 shadow-inner">
+            <span className="text-xs sm:text-sm text-neutral-400 tracking-tight select-none">
+              <Globe className="inline-block w-3 h-3 mr-1 -mt-[1px] text-neutral-400" />
+              tudominio.com/admin
+            </span>
+          </div>
 
-interface LeadCardProps {
-    lead: Lead
-    style?: CSSProperties
-}
-
-interface ProjectPanelProps {
-    project: Project
-    growValue: number
-    isActive: boolean
-    onEnter: () => void
-    onLeave: () => void
-    reduceMotion: boolean
-    isRow: boolean
-    weight?: number // 0..1, solo se usa cuando isRow=true: controla el aspect-ratio
-    registerRef?: (el: HTMLDivElement | null) => void // expone el nodo al padre (móvil)
-}
-
-const WaIcon = ({ size = 12 }: WaIconProps) => (
-    <svg viewBox="0 0 30.667 30.667" width={size} height={size} fill="currentColor">
-        <path d="M30.667,14.939c0,8.25-6.74,14.938-15.056,14.938c-2.639,0-5.118-0.675-7.276-1.857L0,30.667l2.717-8.017 c-1.37-2.25-2.159-4.892-2.159-7.712C0.559,6.688,7.297,0,15.613,0C23.928,0.002,30.667,6.689,30.667,14.939z M15.61,2.382 c-6.979,0-12.656,5.634-12.656,12.56c0,2.748,0.896,5.292,2.411,7.362l-1.58,4.663l4.862-1.545c2,1.312,4.393,2.076,6.963,2.076 c6.979,0,12.658-5.633,12.658-12.559C28.27,8.016,22.59,2.382,15.61,2.382z M23.214,18.38c-0.094-0.151-0.34-0.243-0.708-0.427 c-0.367-0.184-2.184-1.069-2.521-1.189c-0.34-0.123-0.586-0.185-0.832,0.182c-0.243,0.367-0.951,1.191-1.168,1.437 c-0.215,0.245-0.43,0.276-0.799,0.095c-0.369-0.186-1.559-0.57-2.969-1.817c-1.097-0.972-1.838-2.169-2.052-2.536 c-0.217-0.366-0.022-0.564,0.161-0.746c0.165-0.165,0.369-0.428,0.554-0.643c0.185-0.213,0.246-0.364,0.369-0.609 c0.121-0.245,0.06-0.458-0.031-0.643c-0.092-0.184-0.829-1.984-1.138-2.717c-0.307-0.732-0.614-0.611-0.83-0.611 c-0.215,0-0.461-0.03-0.707-0.03S9.897,8.215,9.56,8.582s-1.291,1.252-1.291,3.054c0,1.804,1.321,3.543,1.506,3.787 c0.186,0.243,2.554,4.062,6.305,5.528c3.753,1.465,3.753,0.976,4.429,0.914c0.678-0.062,2.184-0.885,2.49-1.739 C23.307,19.268,23.307,18.533,23.214,18.38z" />
-    </svg>
-)
-
-const PROJECTS: Project[] = [
-    {
-        id: 'bosque',
-        name: 'Reserva del Bosque',
-        location: 'Envigado, Antioquia',
-        tone: 'linear-gradient(155deg, #3a4a3d 0%, #1b241d 55%, #0a0d0a 100%)',
-        imageUrl: '/images/hero-project-1.jpg', // Pegar enlace de la imagen aquí
-        lead: {
-            name: 'Carlos Mendoza',
-            time: 'ahora',
-            message: 'Buenas, vi el proyecto Reserva del Bosque. ¿Cuándo puedo agendar una visita?',
-        },
-    },
-    {
-        id: 'altos',
-        name: 'Altos de Provenza',
-        location: 'Sabaneta, Antioquia',
-        tone: 'linear-gradient(155deg, #4a4237 0%, #241f19 55%, #0d0b09 100%)',
-        imageUrl: '/images/hero-project-2.jpg', // Pegar enlace de la imagen aquí
-        lead: {
-            name: 'Valeria Ríos',
-            time: '2 min',
-            message: 'Me interesa el apartamento de 2 habitaciones. ¿Tienen sala de ventas este fin de semana?',
-        },
-    },
-    {
-        id: 'cielo',
-        name: 'Cielo Nueve14',
-        location: 'El Poblado, Medellín',
-        tone: 'linear-gradient(155deg, #2b3040 0%, #171a24 55%, #0a0b10 100%)',
-        imageUrl: '/images/hero-project-3.jpg', // Pegar enlace de la imagen aquí
-        lead: {
-            name: 'Andrés Castillo',
-            time: '5 min',
-            message: '¿Aún hay unidades disponibles en el piso 8? Los planos me convencieron.',
-        },
-    },
-]
-
-const clamp = (v: number, min: number, max: number): number => Math.min(max, Math.max(min, v))
-const lerp = (a: number, b: number, t: number): number => a + (b - a) * t
-const ease = (t: number): number => 1 - Math.pow(1 - t, 3)
-
-// Proporción alto/ancho de cada panel en móvil: rectangular y bajo cuando está
-// inactivo, cuadrado (1:1) cuando está totalmente activo.
-const INACTIVE_HEIGHT_RATIO = 0.4
-const ACTIVE_HEIGHT_RATIO = 1
-
-function LeadCard({ lead, style }: LeadCardProps) {
-    return (
-        <div
-            className="pointer-events-none absolute w-[240px] lg:w-[320px] rounded-2xl px-4 py-3 backdrop-blur-xl backdrop-saturate-150 bg-white/50 border border-white/40 shadow-[0_8px_32px_0_rgba(0,0,0,0.18)]"
-            style={style}
-        >
-            <div className="flex items-center justify-between mb-1.5">
-                <div className="flex items-center gap-1.5">
-                    <div className="w-[16px] h-[16px] rounded-md flex items-center justify-center bg-[#25d366] text-white shrink-0 shadow-sm">
-                        <WaIcon size={10} />
-                    </div>
-                    <span className="text-[0.65rem] font-semibold text-neutral-600 tracking-wide">WhatsApp</span>
-                </div>
-                <span className="text-[0.6rem] font-medium text-neutral-500">{lead.time}</span>
-            </div>
-            <p className="text-[0.8rem] font-bold text-neutral-900 m-0 mb-0.5 text-left tracking-tight">
-                {lead.name}
-            </p>
-            <p className="text-[0.72rem] font-medium text-neutral-700 m-0 leading-snug text-left">
-                {lead.message}
-            </p>
-        </div>
-    )
-}
-
-function ProjectPanel({ project, growValue, isActive, onEnter, onLeave, reduceMotion, isRow, weight = 0, registerRef }: ProjectPanelProps) {
-    const panelRef = useRef<HTMLDivElement>(null)
-    const cardRef = useRef<HTMLDivElement>(null)
-    const targetOffset = useRef({ x: 0, y: 0 })
-    const currentOffset = useRef({ x: 0, y: 0 })
-    const rafId = useRef<number | null>(null)
-
-    // Combina el ref interno (usado para el efecto de mouse/tilt) con el ref
-    // que el padre necesita para medir la posición real del panel en móvil.
-    const setRefs = useCallback((el: HTMLDivElement | null) => {
-        panelRef.current = el
-        registerRef?.(el)
-    }, [registerRef])
-
-    const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-        if (reduceMotion || !panelRef.current) return
-        const rect = panelRef.current.getBoundingClientRect()
-        const relX = e.clientX - rect.left
-        const relY = e.clientY - rect.top
-
-        const maxOffset = 26
-        const cx = clamp(((relX / rect.width) - 0.5) * 2, -1, 1)
-        const cy = clamp(((relY / rect.height) - 0.5) * 2, -1, 1)
-        targetOffset.current = { x: cx * maxOffset, y: cy * maxOffset }
-
-        if (cardRef.current) {
-            cardRef.current.style.left = `${clamp(relX, 90, rect.width - 90)}px`
-            cardRef.current.style.top = `${clamp(relY - 70, 10, rect.height - 90)}px`
-        }
-    }, [reduceMotion])
-
-    useEffect(() => {
-        if (!isActive || reduceMotion) {
-            if (rafId.current) cancelAnimationFrame(rafId.current)
-            return
-        }
-        const tick = () => {
-            currentOffset.current.x = lerp(currentOffset.current.x, targetOffset.current.x, 0.14)
-            currentOffset.current.y = lerp(currentOffset.current.y, targetOffset.current.y, 0.14)
-            if (cardRef.current) {
-                cardRef.current.style.transform = `translate(${currentOffset.current.x}px, ${currentOffset.current.y}px)`
-            }
-            rafId.current = requestAnimationFrame(tick)
-        }
-        rafId.current = requestAnimationFrame(tick)
-
-        return () => {
-            if (rafId.current) cancelAnimationFrame(rafId.current)
-        }
-    }, [isActive, reduceMotion])
-
-    const heightRatio = isRow
-        ? lerp(INACTIVE_HEIGHT_RATIO, ACTIVE_HEIGHT_RATIO, ease(clamp(weight, 0, 1)))
-        : undefined
-
-    return (
-        <div
-            ref={isRow ? setRefs : panelRef}
-            tabIndex={0}
-            role="button"
-            aria-label={`Ver mensaje de lead recibido para ${project.name}`}
-            onMouseEnter={onEnter}
-            onMouseLeave={onLeave}
-            onFocus={onEnter}
-            onBlur={onLeave}
-            onMouseMove={handleMouseMove}
-            className="relative overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
-            style={{
-                flexGrow: isRow ? undefined : growValue,
-                flexShrink: isRow ? 0 : undefined,
-                flexBasis: isRow ? undefined : 0,
-                minWidth: isRow ? undefined : 0,
-                width: isRow ? '100%' : undefined,
-                aspectRatio: isRow ? `1 / ${heightRatio}` : undefined,
-                transition: reduceMotion
-                    ? 'none'
-                    : isRow
-                        ? 'aspect-ratio 0.4s cubic-bezier(0.16,1,0.3,1)'
-                        : 'flex-grow 0.7s cubic-bezier(0.16,1,0.3,1)',
-                cursor: 'pointer',
-            }}
-        >
-            {/* En lugar de llamar a <Image /> directamente en la raíz del panel */}
-            {/* Contenedor máscara fija */}
-            <div className="absolute inset-0 overflow-hidden rounded-xl">
-                {/* Contenedor interno rígido centrado que nunca cambia de tamaño */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px] pointer-events-none">
-                    <Image
-                        src={project.imageUrl}
-                        alt={project.name}
-                        fill
-                        className="object-cover object-center"
-                        priority
-                    />
-                </div>
-            </div>
-
-            <div
-                className="absolute inset-0"
-                style={{
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 45%, transparent 70%)',
-                    opacity: isActive ? 0.35 : 0.75,
-                    transition: 'opacity 0.6s ease',
-                }}
+          {/* Imagen respetando su tamaño y proporción original */}
+          <div className="relative w-full rounded-t-xs sm:rounded-t-md overflow-hidden bg-neutral-950">
+            <Image
+              src="/images/img1.webp"
+              alt="Vista previa del portal inmobiliario"
+              width={1200}
+              height={800}
+              unoptimized
+              priority
+              className="w-full h-auto object-contain block"
             />
+          </div>
 
-            <div
-                className="absolute left-4 bottom-4 right-4 text-white"
-                style={{
-                    opacity: isActive ? 0 : 1,
-                    transform: isActive ? 'translateY(6px)' : 'translateY(0)',
-                    transition: 'opacity 0.4s ease, transform 0.4s ease',
-                }}
-            >
-                <p className="text-sm font-semibold m-0 tracking-tight">{project.name}</p>
-                <p className="text-[0.7rem] text-white/70 m-0 mt-0.5">{project.location}</p>
-            </div>
+          {/* Gradiente #EDEFF3 de abajo hacia arriba (1/4) cubriendo TODO el contenedor negro */}
+          <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[#3a5487] via-[#3a5487]/80 to-transparent pointer-events-none z-10" />
 
-            <div
-                ref={cardRef}
-                style={{
-                    position: 'absolute',
-                    left: isRow ? '50%' : '30%',
-                    top: isRow ? '50%' : '40%',
-                    marginLeft: isRow ? -120 : 0,
-                    marginTop: isRow ? -46 : 0,
-                    opacity: isActive ? 1 : 0,
-                    transition: 'opacity 0.45s ease',
-                }}
-            >
-                <LeadCard lead={project.lead} />
-            </div>
         </div>
-    )
-}
-
-export default function LiveLeadsSection() {
-    const [activeIndex, setActiveIndex] = useState<number | null>(null)
-    const [scrollWeights, setScrollWeights] = useState<number[]>([0, 0, 0])
-    const [reduceMotion, setReduceMotion] = useState<boolean>(false)
-    const [isDesktop, setIsDesktop] = useState<boolean>(true)
-
-    const panelRefs = useRef<(HTMLDivElement | null)[]>([])
-    const lastWeightsRef = useRef<number[]>([0, 0, 0])
-    const rafLoopId = useRef<number | null>(null)
-
-    const hasScrolledRef = useRef(false)
-
-    useEffect(() => {
-        const mql = window.matchMedia('(prefers-reduced-motion: reduce)')
-        const mqlDesktop = window.matchMedia('(min-width: 1024px)')
-        const update = () => {
-            setReduceMotion(mql.matches)
-            setIsDesktop(mqlDesktop.matches)
-        }
-        update()
-        mql.addEventListener('change', update)
-        mqlDesktop.addEventListener('change', update)
-        return () => {
-            mql.removeEventListener('change', update)
-            mqlDesktop.removeEventListener('change', update)
-        }
-    }, [])
-
-    useEffect(() => {
-        if (isDesktop || reduceMotion) return
-
-        if (window.scrollY > 4) {
-            hasScrolledRef.current = true
-            return
-        }
-
-        const markScrolled = () => {
-            hasScrolledRef.current = true
-        }
-        window.addEventListener('scroll', markScrolled, { passive: true, once: true })
-        return () => window.removeEventListener('scroll', markScrolled)
-    }, [isDesktop, reduceMotion])
-
-    useEffect(() => {
-        if (isDesktop || reduceMotion) {
-            setScrollWeights([0, 0, 0])
-            return
-        }
-
-        const loop = () => {
-            let next: number[]
-
-            if (!hasScrolledRef.current) {
-                // Estado inicial: todo cerrado, sin importar la geometría real.
-                next = [0, 0, 0]
-            } else {
-                const viewportCenter = window.innerHeight / 2
-                const range = window.innerHeight * 0.55
-
-                next = panelRefs.current.map((el) => {
-                    if (!el) return 0
-                    const rect = el.getBoundingClientRect()
-                    const elCenter = rect.top + rect.height / 2
-                    const dist = Math.abs(elCenter - viewportCenter)
-                    return clamp(1 - dist / range, 0, 1)
-                })
-            }
-
-            const last = lastWeightsRef.current
-            const changed = next.some((v, i) => Math.abs(v - last[i]) > 0.002)
-            if (changed) {
-                lastWeightsRef.current = next
-                setScrollWeights(next)
-            }
-            rafLoopId.current = requestAnimationFrame(loop)
-        }
-
-        rafLoopId.current = requestAnimationFrame(loop)
-        return () => {
-            if (rafLoopId.current) cancelAnimationFrame(rafLoopId.current)
-        }
-    }, [isDesktop, reduceMotion])
-
-    // Solo se usa en desktop (flex-grow horizontal)
-    const growFor = (i: number): number => {
-        if (reduceMotion) return 1
-        if (activeIndex === null) return 1
-        return activeIndex === i ? 3.1 : 0.75
-    }
-
-    const isActiveFor = (i: number): boolean =>
-        isDesktop ? activeIndex === i : scrollWeights[i] > 0.55
-
-    return (
-        <section className="w-full bg-section py-20 lg:py-28">
-            <div className="container-full">
-                <div className="max-w-xl mb-10 lg:mb-14 text-center lg:text-left mx-auto lg:mx-0">
-                    <h2 className="mt-3 text-3xl lg:text-4xl font-medium text-neutral-950 tracking-tight text-balance">
-                        Landing pages para proyectos inmobiliarios
-                    </h2>
-                    <p className="mt-3 text-sm lg:text-base text-neutral-700 leading-relaxed">
-                        Convertimos el tráfico de tu pauta en inversionistas reales contactando por WhatsApp.
-                    </p>
-                    <div className="mt-12 lg:mt-16 flex justify-center lg:justify-start">
-                        <WhatsAppButton />
-                    </div>
-                </div>
-
-                <div className="hidden lg:flex gap-1 h-[560px] overflow-hidden">
-                    {PROJECTS.map((project, i) => (
-                        <ProjectPanel
-                            key={project.id}
-                            project={project}
-                            growValue={growFor(i)}
-                            isActive={isActiveFor(i)}
-                            onEnter={() => setActiveIndex(i)}
-                            onLeave={() => setActiveIndex(null)}
-                            reduceMotion={reduceMotion}
-                            isRow={false}
-                        />
-                    ))}
-                </div>
-                <div className={reduceMotion ? 'lg:hidden flex flex-col gap-1' : 'lg:hidden flex flex-col gap-1'}>
-                    {PROJECTS.map((project, i) => (
-                        <ProjectPanel
-                            key={project.id}
-                            project={project}
-                            growValue={1}
-                            isActive={reduceMotion ? true : isActiveFor(i)}
-                            onEnter={() => { }}
-                            onLeave={() => { }}
-                            reduceMotion={reduceMotion}
-                            isRow={true}
-                            weight={reduceMotion ? 1 : scrollWeights[i]}
-                            registerRef={(el) => { panelRefs.current[i] = el }}
-                        />
-                    ))}
-                </div>
-            </div>
-        </section>
-    )
+      </div>
+    </section>
+  );
 }

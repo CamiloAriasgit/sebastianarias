@@ -1,6 +1,6 @@
 export const serviceGradient = {
   id: "servicios",
-  colors: ["#6283b9", "#6283b9", "#6283b9"],
+  colors: ["#EDEFF3", "#6283b9", "#283d68"],
 };
 
 export default function ServiceSection() {
