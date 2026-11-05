@@ -38,15 +38,15 @@ export default function Features() {
         Lo que ve quien busca
       </h2>
 
-      {/* Carrusel de tarjetas con scrollbar oculto nativamente */}
-      <div className="mt-6 w-full overflow-x-auto py-4 px-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      {/* Contenedor del carrusel con snap-x obligatorio */}
+      <div className="mt-10 sm:mt-12 w-full overflow-x-auto snap-x snap-mandatory py-4 px-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         <div className="flex items-start gap-6 sm:gap-8 justify-start sm:justify-center min-w-max px-4">
           {carouselCards.map((card, index) => (
             <div
               key={index}
-              className="flex flex-col w-64 sm:w-72 md:w-80 flex-shrink-0 text-left group cursor-pointer"
+              className="flex flex-col w-64 sm:w-72 md:w-80 flex-shrink-0 text-left group cursor-pointer snap-center"
             >
-              {/* Imagen formato 4:5 sin sombras, sin bordes, rounded-3xl */}
+              {/* Imagen formato 4:5 */}
               <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden bg-neutral-200">
                 <Image
                   src={card.image}
@@ -59,12 +59,12 @@ export default function Features() {
                 />
               </div>
 
-              {/* Texto debajo de cada card, alineado a la izquierda */}
+              {/* Texto debajo de la card */}
               <div className="mt-4 space-y-1.5 px-1">
                 <h3 className="text-base sm:text-lg font-semibold tracking-tight text-neutral-900 leading-snug">
                   {card.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed">
+                <p className="text-md sm:text-sm text-neutral-600 font-normal leading-relaxed">
                   {card.description}
                 </p>
               </div>
