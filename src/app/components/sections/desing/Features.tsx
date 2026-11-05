@@ -60,8 +60,8 @@ export default function Features() {
               </div>
 
               {/* Texto debajo de la card */}
-              <div className="mt-4 space-y-1.5 px-1 text-base sm:text-lg font-semibold">
-                <h3 className="tracking-tight text-black leading-snug">
+              <div className="mt-4 space-y-1.5 px-1 text-base sm:text-lg font-semibold tracking-tight">
+                <h3 className="text-black leading-snug">
                   {card.title}
                 </h3>
                 <p className="text-neutral-600 leading-tight">
