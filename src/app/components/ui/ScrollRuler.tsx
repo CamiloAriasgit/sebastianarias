@@ -82,9 +82,10 @@ export default function ScrollRuler({ scrollContainerRef }: ScrollRulerProps) {
         const baseH = isMajor ? height * 0.5 : height * 0.32
         const tickHeight = baseH + waveScale * height * 0.3
 
+        // Cambiado a blanco para Light Mode
         ctx!.strokeStyle = isMajor
-          ? `rgba(15, 15, 15, ${0.55 * fadeAlpha})`
-          : `rgba(15, 15, 15, ${0.25 * fadeAlpha})`
+          ? `rgba(255, 255, 255, ${0.55 * fadeAlpha})`
+          : `rgba(255, 255, 255, ${0.25 * fadeAlpha})`
         ctx!.lineWidth = isMajor ? 1.4 : 1
 
         const topY = height * 0.18
@@ -94,8 +95,8 @@ export default function ScrollRuler({ scrollContainerRef }: ScrollRulerProps) {
         ctx!.stroke()
       }
 
-      // --- marcador central fijo ---
-      ctx!.strokeStyle = 'rgba(0,0,0,0.92)'
+      // --- marcador central fijo (cambiado a blanco) ---
+      ctx!.strokeStyle = 'rgba(255, 255, 255, 0.92)'
       ctx!.lineWidth = 2
       ctx!.beginPath()
       ctx!.moveTo(centerX, height * 0.18)

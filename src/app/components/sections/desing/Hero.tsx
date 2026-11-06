@@ -1,10 +1,9 @@
 import Image from "next/image";
-import { Globe } from 'lucide-react'
-
+import { Globe } from 'lucide-react';
 
 export const heroGradient = {
   id: "inicio",
-colors: ["#5879b0", "#3a5487", "#3a5487"],
+  colors: ["#5879b0", "#3a5487", "#3a5487"],
 };
 
 export default function HeroSection() {
@@ -14,7 +13,7 @@ export default function HeroSection() {
       className="flex flex-col min-h-[100dvh] w-full snap-start items-center justify-center px-4 sm:px-6 py-12 text-center overflow-hidden"
     >
       {/* Encabezado */}
-      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-white max-w-4xl leading-tight">
+      <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-medium tracking-tight text-white max-w-4xl leading-tight">
         Obtén tu propio<br />portal inmobiliario
       </h1>
       <p className="mt-4 sm:mt-6 text-base sm:text-xl md:text-xl text-neutral-300 max-w-2xl leading-relaxed">
@@ -23,7 +22,14 @@ export default function HeroSection() {
 
       {/* Contenedor tipo navegador */}
       <div className="mt-8 sm:mt-12 w-full max-w-4xl px-2">
-        <div className="relative w-full rounded-t-2xl sm:rounded-t-3xl overflow-hidden bg-neutral-900 pt-2 px-2 flex flex-col items-center">
+        <div 
+          className="relative w-full rounded-t-2xl sm:rounded-t-3xl overflow-hidden bg-neutral-900 pt-2 px-2 flex flex-col items-center"
+          style={{
+            // Esto hace que la parte inferior del bloque se desvanezca hacia transparencia total de forma nativa
+            maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)"
+          }}
+        >
           
           {/* Barra de navegación superior simulada */}
           <div className="mb-2 h-6 sm:h-7 bg-neutral-800 rounded-md flex items-center justify-center px-3 shadow-inner">
@@ -45,9 +51,6 @@ export default function HeroSection() {
               className="w-full h-auto object-contain block"
             />
           </div>
-
-          {/* Gradiente #EDEFF3 de abajo hacia arriba (1/4) cubriendo TODO el contenedor negro */}
-          <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[#3a5487] via-[#3a5487]/80 to-transparent pointer-events-none z-10" />
 
         </div>
       </div>

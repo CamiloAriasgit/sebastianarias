@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const aboutGradient = {
   id: "nosotro",
-  colors: ["#EDEFF3", "#EDEFF3", "#EDEFF3"],
+  colors: ["#5879b0", "#7790b1", "#97abb5",],
 };
 
 const carouselCards = [
@@ -34,7 +34,7 @@ export default function Features() {
       id={aboutGradient.id}
       className="flex flex-col min-h-[100dvh] w-full snap-start items-start md:items-center justify-center sm:px-6 py-12 text-center overflow-hidden"
     >
-      <h2 className="text-2xl px-4 sm:text-4xl text-black font-medium tracking-tight max-w-4xl">
+      <h2 className="text-2xl px-4 sm:text-4xl text-white font-medium tracking-tight max-w-4xl">
         Lo que ve quien busca
       </h2>
 
@@ -61,10 +61,10 @@ export default function Features() {
 
               {/* Texto debajo de la card */}
               <div className="mt-4 space-y-1.5 px-1 text-base sm:text-lg font-semibold tracking-tight">
-                <h3 className="text-black leading-snug">
+                <h3 className="text-white leading-snug">
                   {card.title}
                 </h3>
-                <p className="text-neutral-600 leading-tight">
+                <p className="text-neutral-300 leading-tight">
                   {card.description}
                 </p>
               </div>
