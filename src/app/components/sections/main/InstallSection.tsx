@@ -6,7 +6,7 @@ const APP = {
   name: 'Buscador Flotante',
   version: '1.0',
   file: '/downloads/buscador-flotante.apk',
-  size: '≈ 6 MB',
+  size: '≈ 9 MB',
 }
 
 const steps = [
@@ -44,7 +44,7 @@ export default function InstallSection() {
         <header className="space-y-6">
           <div className="flex items-start justify-between gap-4">
             <div className="space-y-1">
-              <h2 className="text-xl font-bold tracking-tight text-neutral-100 md:text-2xl">
+              <h2 className="text-xl font-medium tracking-tight text-neutral-100 md:text-2xl">
                 {APP.name}
               </h2>
               <div className="flex items-center gap-2 text-xs font-medium text-neutral-400">
@@ -55,7 +55,7 @@ export default function InstallSection() {
                 <span>{APP.size}</span>
               </div>
             </div>
-            <div className="rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400">
+            <div className="rounded-full bg-blue-900/40 shadow shadow-inner shadow-blue-700 px-3 py-1 text-xs font-semibold text-blue-700">
               APK
             </div>
           </div>
@@ -63,7 +63,7 @@ export default function InstallSection() {
           {/* Botón de descarga principal */}
           <button
             onClick={() => setIsOpen(true)}
-            className="group flex w-full items-center justify-center gap-2 rounded-full bg-neutral-300 px-6 py-4 text-sm font-semibold text-neutral-900 shadow shadow-inner shadow-white *:transition-all hover:bg-neutral-300 active:scale-[0.99]"
+            className="group flex w-full items-center justify-center gap-2 rounded-full bg-neutral-400 px-6 py-4 text-sm font-semibold text-neutral-900 shadow shadow-inner shadow-white *:transition-all hover:bg-neutral-300 active:scale-[0.99]"
           >
             <span>Descargar APK</span>
             <svg
@@ -86,12 +86,12 @@ export default function InstallSection() {
         </div>
 
         {/* Trust & Security Footnote */}
-        <footer className="rounded-2xl bg-neutral-800/40 p-4">
+        <footer className="rounded-2xl bg-neutral-800/20 p-4">
           <div className="flex items-start gap-3">
             <svg className="h-4 w-4 shrink-0 text-neutral-500 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
             </svg>
-            <p className="text-xs leading-relaxed text-neutral-400">
+            <p className="text-xs leading-relaxed text-neutral-600">
               La app no lee el contenido de tu pantalla. Solo muestra la burbuja y envía lo que tú escribas al buscador.
             </p>
           </div>
@@ -104,7 +104,7 @@ export default function InstallSection() {
           <div className="flex max-h-[85vh] w-full flex-col rounded-t-3xl bg-neutral-900 p-6 shadow-2xl md:max-w-lg md:rounded-3xl">
             {/* Header del modal sin background extra */}
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-base font-semibold text-neutral-100">Pasos de instalación</h3>
+              <h3 className="text-base font-medium text-neutral-100">Pasos de instalación</h3>
               <button 
                 onClick={() => setIsOpen(false)}
                 className="rounded-full p-1.5 text-neutral-400 hover:bg-neutral-800 hover:text-neutral-100 transition-colors"
@@ -119,7 +119,7 @@ export default function InstallSection() {
             <div className="my-2 flex-1 overflow-y-auto space-y-5 pr-1">
               {steps.map((s, i) => (
                 <div key={s.t} className="space-y-1">
-                  <h4 className="text-sm font-semibold text-neutral-100">
+                  <h4 className="text-sm text-neutral-200">
                     {i + 1}. {s.t}
                   </h4>
                   <p className="text-xs leading-relaxed text-neutral-400">
@@ -134,7 +134,7 @@ export default function InstallSection() {
               <a
                 href={APP.file}
                 download
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-neutral-300 px-6 py-4 text-sm font-semibold text-neutral-900 shadow shadow-inner shadow-white transition-all hover:bg-neutral-300 active:scale-[0.99]"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-neutral-400 px-6 py-4 text-sm font-semibold text-neutral-900 shadow shadow-inner shadow-white transition-all hover:bg-neutral-300 active:scale-[0.99]"
               >
                 <span>Descargar APK ahora</span>
               </a>
