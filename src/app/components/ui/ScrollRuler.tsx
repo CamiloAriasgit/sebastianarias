@@ -79,10 +79,9 @@ export default function ScrollRuler({ scrollContainerRef }: ScrollRulerProps) {
         const bump = Math.max(0, 1 - dist / BUMP_RADIUS)
         const waveScale = bump * bump
 
-        const baseH = isMajor ? height * 0.5 : height * 0.32
+        const baseH = isMajor ? height * 0.3 : height * 0.32
         const tickHeight = baseH + waveScale * height * 0.3
 
-        // Cambiado a blanco para Light Mode
         ctx!.strokeStyle = isMajor
           ? `rgba(255, 255, 255, ${0.55 * fadeAlpha})`
           : `rgba(255, 255, 255, ${0.25 * fadeAlpha})`
@@ -95,12 +94,12 @@ export default function ScrollRuler({ scrollContainerRef }: ScrollRulerProps) {
         ctx!.stroke()
       }
 
-      // --- marcador central fijo (cambiado a blanco) ---
-      ctx!.strokeStyle = 'rgba(255, 255, 255, 0.92)'
+      // --- marcador central fijo (más opaco que antes, ligeramente superior a las líneas mayores) ---
+      ctx!.strokeStyle = 'rgba(255, 255, 255, 0.75)'
       ctx!.lineWidth = 2
       ctx!.beginPath()
       ctx!.moveTo(centerX, height * 0.18)
-      ctx!.lineTo(centerX, height * 0.97)
+      ctx!.lineTo(centerX, height * 0.74)
       ctx!.stroke()
 
       rafRef.current = requestAnimationFrame(draw)
