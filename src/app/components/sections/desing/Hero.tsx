@@ -3,7 +3,7 @@ import { Globe } from 'lucide-react';
 
 export const heroGradient = {
   id: "inicio",
-  colors: ["#5879b0", "#3a5487", "#3a5487"],
+  colors: ["#5879b0", "#7790b1", "#97abb5",],
 };
 
 export default function HeroSection() {
