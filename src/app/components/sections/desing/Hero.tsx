@@ -20,7 +20,7 @@ export default function HeroSection() {
       <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-medium tracking-tight text-white max-w-4xl leading-tight">
         Obtén tu propio<br />portal inmobiliario
       </h1>
-      <p className="mt-4 sm:mt-6 text-base sm:text-xl md:text-xl text-white/70 font-light max-w-2xl leading-relaxed">
+      <p className="mt-4 sm:mt-6 text-base sm:text-xl md:text-xl text-white/70 font-light max-w-2xl leading-relaxed text-balance">
         Con tu logo, tu dominio y un panel donde queda cada lead.
       </p>
 
