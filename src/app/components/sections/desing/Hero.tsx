@@ -16,14 +16,14 @@ export default function HeroSection() {
       <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-medium tracking-tight text-white max-w-4xl leading-tight">
         Obtén tu propio<br />portal inmobiliario
       </h1>
-      <p className="mt-4 sm:mt-6 text-base sm:text-xl md:text-xl text-neutral-300 max-w-2xl leading-relaxed">
-        Con tu logo, tu dominio y un panel donde queda cada contacto.
+      <p className="mt-4 sm:mt-6 text-base sm:text-xl md:text-xl text-white/70 font-light max-w-2xl leading-relaxed">
+        Con tu logo, tu dominio y un panel donde queda cada lead.
       </p>
 
       {/* Contenedor tipo navegador */}
       <div className="mt-8 sm:mt-12 w-full max-w-4xl px-2">
         <div 
-          className="relative w-full rounded-t-2xl sm:rounded-t-3xl overflow-hidden bg-neutral-900 pt-2 px-2 flex flex-col items-center"
+          className="relative w-full rounded-t-lg sm:rounded-t-xl overflow-hidden bg-neutral-900 pt-2 px-2 flex flex-col items-center"
           style={{
             // Esto hace que la parte inferior del bloque se desvanezca hacia transparencia total de forma nativa
             maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
@@ -32,7 +32,7 @@ export default function HeroSection() {
         >
           
           {/* Barra de navegación superior simulada */}
-          <div className="mb-2 h-6 sm:h-7 bg-neutral-800 rounded-md flex items-center justify-center px-3 shadow-inner">
+          <div className="mb-2 h-6 sm:h-7 bg-neutral-800/80 rounded-md flex items-center justify-center px-3 shadow-inner">
             <span className="text-xs sm:text-sm text-neutral-400 tracking-tight select-none">
               <Globe className="inline-block w-3 h-3 mr-1 -mt-[1px] text-neutral-400" />
               tudominio.com/admin

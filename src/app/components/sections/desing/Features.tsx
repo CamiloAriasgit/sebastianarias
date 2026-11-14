@@ -64,7 +64,7 @@ export default function Features() {
                 <h3 className="text-white font-semibold leading-snug">
                   {card.title}
                 </h3>
-                <p className="text-neutral-300 leading-tight">
+                <p className="text-white/70 font-light leading-tight">
                   {card.description}
                 </p>
               </div>
