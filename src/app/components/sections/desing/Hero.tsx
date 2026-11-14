@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Globe } from 'lucide-react';
+import { Globe, Astroid, } from 'lucide-react';
 
 export const heroGradient = {
   id: "inicio",
@@ -13,10 +13,14 @@ export default function HeroSection() {
       className="flex flex-col min-h-[100dvh] w-full snap-start items-center justify-center px-4 sm:px-6 py-12 text-center overflow-hidden"
     >
       {/* Encabezado */}
+      <div className="bg-white/15 py-1 px-3 mb-4 rounded-full flex items-center justify-center gap-2 text-white/70">
+        <Astroid className="inline-block w-3.5 h-3.5" />
+        <span className="text-sm font-light">1 mes gratis</span>
+      </div>
       <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-medium tracking-tight text-white max-w-4xl leading-tight">
         Obtén tu propio<br />portal inmobiliario
       </h1>
-      <p className="mt-4 sm:mt-6 text-base sm:text-xl md:text-xl text-white/70 font-light max-w-2xl leading-relaxed">
+      <p className="mt-4 sm:mt-6 text-base sm:text-xl md:text-xl text-white/70 font-light max-w-2xl leading-relaxed text-balance">
         Con tu logo, tu dominio y un panel donde queda cada lead.
       </p>
 
