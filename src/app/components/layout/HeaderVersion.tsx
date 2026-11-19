@@ -12,7 +12,7 @@ const NAV_LINKS = [
     { name: 'Servicio', href: '#servicio' },
     { name: 'Proceso', href: '#proceso' },
     { name: 'Demo', href: '#demo' },
-    { name: 'Planes', href: '#planes' },
+    { name: 'Planes', href: '#pricing' },
     { name: 'Preguntas', href: '#faq' },
 ]
 

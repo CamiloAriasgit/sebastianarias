@@ -146,6 +146,18 @@
     transform: translateY(-1px);
   }
 
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE y Edge antiguos */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari y Opera */
+  }
+
   @media (max-width: 600px) {
     .btn-primary-hero {
       width: 100%;

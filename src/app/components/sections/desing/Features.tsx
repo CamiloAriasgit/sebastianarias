@@ -13,7 +13,7 @@ const carouselCards = [
   },
   {
     title: "Lista o Mapa",
-    description: "Lista o mapa. En el mapa, cada propiedad aparece con su precio.",
+    description: "Ambos modos para navegar. En el mapa, cada propiedad aparece con su precio.",
     image: "/images/mapa-view.png",
   },
   {

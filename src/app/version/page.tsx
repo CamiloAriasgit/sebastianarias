@@ -5,11 +5,11 @@ import Header from '../components/layout/HeaderVersion'
 import ScrollRuler from '../components/ui/ScrollRuler'
 import HeroSection, { heroGradient } from "../components/sections/desing/Hero";
 import AboutSection, { aboutGradient } from "../components/sections/desing/Features";
-import SectionProblem, { problemGradient } from "../components/sections/desing/SectionProblem";
+import Pricing, { pricingGradient } from "../components/sections/desing/Pricing";
 import ServiceSection, { serviceGradient } from "../components/sections/desing/ServiceSection";
 import GradientBackground from "../components/sections/desing/GradientBackground";
 
-const gradients = [heroGradient, aboutGradient, problemGradient, serviceGradient];
+const gradients = [heroGradient, aboutGradient, pricingGradient, serviceGradient];
 
 export default function VersionPage() {
   const [activeId, setActiveId] = useState(gradients[0].id);
@@ -43,7 +43,7 @@ export default function VersionPage() {
         <Header />
         <HeroSection />
         <AboutSection />
-        <SectionProblem />
+        <Pricing />
         <ServiceSection />
       </main>
     </>

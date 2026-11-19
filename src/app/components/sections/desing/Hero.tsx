@@ -3,7 +3,7 @@ import { Globe, Astroid, } from 'lucide-react';
 
 export const heroGradient = {
   id: "inicio",
-  colors: ["#5879b0", "#7790b1", "#97abb5",],
+  colors: ["#283d68", "#3a5487", "#5879b0"],
 };
 
 export default function HeroSection() {
@@ -36,7 +36,7 @@ export default function HeroSection() {
         >
           
           {/* Barra de navegación superior simulada */}
-          <div className="mb-2 h-6 sm:h-7 bg-neutral-800/80 rounded-md flex items-center justify-center px-3 shadow-inner">
+          <div className="mb-2 h-6 sm:h-7 bg-neutral-800 rounded-sm flex items-center justify-center px-3 shadow-inner">
             <span className="text-xs sm:text-sm text-neutral-400 tracking-tight select-none">
               <Globe className="inline-block w-3 h-3 mr-1 -mt-[1px] text-neutral-400" />
               tudominio.com/admin
