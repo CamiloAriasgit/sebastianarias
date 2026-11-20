@@ -48,9 +48,10 @@ export default function Features() {
         />
       </div>
 
-      <h2 className="relative z-10 text-2xl px-5 sm:text-4xl text-white font-medium tracking-tight max-w-4xl">
-        Lo que ve quien busca
-      </h2>
+      <div className="relative z-10 bg-white/15 py-1 px-3 mb-4 rounded-full flex items-center justify-center gap-2 text-white/70">
+        <span className="text-sm font-light">Características</span>
+      </div>
+
       <SectionTitle className='relative z-10 text-white'>
         Lo que ve quien busca
       </SectionTitle>

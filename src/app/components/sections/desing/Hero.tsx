@@ -15,7 +15,7 @@ export default function HeroSection() {
       {/* Encabezado */}
       <div className="bg-white/15 py-1 px-3 mb-4 rounded-full flex items-center justify-center gap-2 text-white/70">
         <Astroid className="inline-block w-3.5 h-3.5" />
-        <span className="text-sm font-light">1 mes gratis</span>
+        <span className="text-sm font-light">1 año gratis</span>
       </div>
       <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-6xl font-medium tracking-tight text-white max-w-4xl leading-tight">
         Obtén tu propio<br />portal inmobiliario
