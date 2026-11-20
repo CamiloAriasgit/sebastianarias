@@ -32,14 +32,29 @@ export default function Features() {
   return (
     <section
       id={aboutGradient.id}
-      className="flex flex-col min-h-[100dvh] w-full snap-start items-start md:items-center justify-center sm:px-6 py-12 text-center overflow-hidden"
+      className="relative flex flex-col min-h-[100dvh] w-full snap-start items-start md:items-center justify-center sm:px-6 py-12 text-center overflow-hidden"
     >
-      <h2 className="text-2xl px-5 sm:text-4xl text-white font-medium tracking-tight max-w-4xl">
+      {/* Capa de fondo difuminada del centro hacia afuera (termina en transparente) */}
+      {/* Capa de fondo: sólida al centro, transparente en los bordes */}
+      {/* Aura: sólido al centro, se desvanece a transparente en todo el borde */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          backgroundColor: "#5879b0",
+          WebkitMaskImage:
+            "radial-gradient(closest-side ellipse at 50% 50%, #000 0%, #000 35%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,0.35) 80%, rgba(0,0,0,0.12) 92%, transparent 100%)",
+          maskImage:
+            "radial-gradient(closest-side ellipse at 50% 50%, #000 0%, #000 35%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,0.35) 80%, rgba(0,0,0,0.12) 92%, transparent 100%)",
+        }}
+      />
+
+      <h2 className="relative z-10 text-2xl px-5 sm:text-4xl text-white font-medium tracking-tight max-w-4xl">
         Lo que ve quien busca
       </h2>
 
       {/* Contenedor del carrusel con snap-x obligatorio */}
-      <div className="mt-4 w-full overflow-x-auto snap-x snap-mandatory py-4 px-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      <div className="relative z-10 mt-4 w-full overflow-x-auto snap-x snap-mandatory py-4 px-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         <div className="flex items-start gap-6 sm:gap-8 justify-start sm:justify-center min-w-max px-4">
           {carouselCards.map((card, index) => (
             <div
