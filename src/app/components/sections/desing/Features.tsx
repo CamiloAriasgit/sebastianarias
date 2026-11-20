@@ -9,7 +9,7 @@ const carouselCards = [
   {
     title: "Búsqueda Avanzada",
     description: "Búsqueda por palabras y filtros por precio, área, ciudad, tipo de propiedad, y venta o renta.",
-    image: "/images/img1.webp",
+    image: "/images/search-var.png",
   },
   {
     title: "Lista o Mapa",
@@ -24,7 +24,7 @@ const carouselCards = [
   {
     title: "Contacto Directo",
     description: "Un botón de WhatsApp en cada propiedad. El formulario pide solo nombre y teléfono.",
-    image: "/images/img4.webp",
+    image: "/images/lead-form.png",
   },
 ];
 
@@ -54,7 +54,7 @@ export default function Features() {
                   fill
                   unoptimized
                   sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, 320px"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500"
                   priority={index === 0}
                 />
               </div>
