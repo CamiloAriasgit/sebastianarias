@@ -41,7 +41,7 @@ export default function Features() {
   <div
     className="absolute inset-8 sm:inset-10 rounded-[3rem]"
     style={{
-      backgroundColor: "#283d68",
+      backgroundColor: "#3a5487",
       filter: "blur(28px)",
     }}
   />
