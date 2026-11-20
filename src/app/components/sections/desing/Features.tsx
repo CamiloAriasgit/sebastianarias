@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SectionTitle } from '../../ui/SectionTitle';
 
 export const aboutGradient = {
   id: "nosotro",
@@ -32,24 +33,27 @@ export default function Features() {
   return (
     <section
       id={aboutGradient.id}
-      className="relative flex flex-col min-h-[100dvh] w-full snap-start items-start md:items-center justify-center sm:px-6 py-12 text-center overflow-hidden"
+      className="relative flex flex-col min-h-[100dvh] w-full snap-start items-center justify-center sm:px-6 py-12 text-center overflow-hidden"
     >
       <div
-  aria-hidden="true"
-  className="pointer-events-none absolute inset-0 z-0"
->
-  <div
-    className="absolute inset-8 sm:inset-10 rounded-[3rem]"
-    style={{
-      backgroundColor: "#3a5487",
-      filter: "blur(28px)",
-    }}
-  />
-</div>
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0"
+      >
+        <div
+          className="absolute inset-8 sm:inset-10 rounded-[3rem]"
+          style={{
+            backgroundColor: "#3a5487",
+            filter: "blur(28px)",
+          }}
+        />
+      </div>
 
       <h2 className="relative z-10 text-2xl px-5 sm:text-4xl text-white font-medium tracking-tight max-w-4xl">
         Lo que ve quien busca
       </h2>
+      <SectionTitle className='relative z-10 text-white'>
+        Lo que ve quien busca
+      </SectionTitle>
 
       {/* Contenedor del carrusel con snap-x obligatorio */}
       <div className="relative z-10 mt-4 w-full overflow-x-auto snap-x snap-mandatory py-4 px-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
@@ -74,10 +78,10 @@ export default function Features() {
 
               {/* Texto debajo de la card */}
               <div className="mt-4 space-y-1.5 px-1 text-base sm:text-lg tracking-tight">
-                <h3 className="text-white font-semibold leading-snug">
+                <h3 className="text-white leading-snug">
                   {card.title}
                 </h3>
-                <p className="text-white/70 font-light leading-tight">
+                <p className="text-white/70 font-light text-sm leading-relaxed mb-2">
                   {card.description}
                 </p>
               </div>
