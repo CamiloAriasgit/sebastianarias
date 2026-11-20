@@ -86,30 +86,31 @@ export default function Pricing() {
       className="flex flex-col h-[100dvh] w-full snap-start items-center justify-center px-6"
     >
       <div className="bg-white/15 py-1 px-3 mb-4 rounded-full flex items-center justify-center gap-2 text-white/70">
-        <span className="text-sm font-light">Planes</span>
+        <span className="text-sm font-light">Precios</span>
       </div>
       <div className="container-site">
 
-        <div ref={headRef} className="mb-10 grid gap-4 text-center text-white">
+        <div ref={headRef} className="mb-6 md:mb-10 grid gap-4 text-center text-white">
 
           <SectionTitle className='text-white'>
             Elige el nivel que<br /> necesita tu proyecto.
           </SectionTitle>
-          <p className="text-sm text-white/80 m-0 text-balance font-light">
+          <p className="hidden md:block text-sm text-white/80 m-0 text-balance font-light">
             Todos los planes incluyen hosting, despliegue y soporte mensual.
           </p>
         </div>
 
         {/* Cards independientes y redondeadas */}
-        <div className="no-scrollbar flex overflow-x-auto snap-x snap-mandatory gap-4 pb-2 -mx-6 px-6 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-[repeat(auto-fit,minmax(260px,1fr))] md:gap-6">          {PLANS.map((plan, i) => (
-          <div
-            key={plan.name}
-            ref={el => { cardRefs.current[i] = el }}
-            className={`w-[84vw] max-w-[340px] shrink-0 snap-center md:w-auto md:max-w-none md:shrink flex flex-col gap-6 p-6 md:p-8 rounded-4xl ${plan.highlighted
-              ? 'bg-gradient-to-bl from-white via-white/70 to-white/80'
-              : 'bg-gradient-to-bl from-transparent via-white/5 to-white/20 border border-white/20'
-              }`}
-          >
+        <div className="no-scrollbar flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory gap-4 -mx-6 px-6 md:overflow-visible md:mx-0 md:px-0 md:grid md:grid-cols-[repeat(auto-fit,minmax(260px,1fr))] md:gap-6">
+          {PLANS.map((plan, i) => (
+            <div
+              key={plan.name}
+              ref={el => { cardRefs.current[i] = el }}
+              className={`w-[84vw] max-w-[340px] shrink-0 snap-center md:w-auto md:max-w-none md:shrink flex flex-col gap-4 md:gap-6 p-5 md:p-8 rounded-4xl ${plan.highlighted
+                ? 'bg-gradient-to-bl from-white via-white/70 to-white/80'
+                : 'bg-gradient-to-bl from-transparent via-white/5 to-white/20 border border-white/20'
+                }`}
+            >
             {/* Header */}
             <div>
               <div className="flex items-baseline justify-between mb-2">
@@ -200,7 +201,7 @@ export default function Pricing() {
         ))}
         </div>
 
-        <p className="text-[0.8125rem] text-white/80 font-light mt-6 text-center">
+        <p className="text-[0.8125rem] text-white/80 font-light mt-4 md:mt-6 text-center">
           ¿Tu proyecto tiene requerimientos específicos?{' '}
           <a
             href={getWhatsAppLink(undefined, true)}
