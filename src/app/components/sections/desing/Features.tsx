@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const aboutGradient = {
   id: "nosotro",
-  colors: ["#97abb5", "#7790b1", "#5879b0"],
+  colors: ["#5879b0", "#5879b0", "#5879b0"],
 };
 
 const carouselCards = [
@@ -34,20 +34,18 @@ export default function Features() {
       id={aboutGradient.id}
       className="relative flex flex-col min-h-[100dvh] w-full snap-start items-start md:items-center justify-center sm:px-6 py-12 text-center overflow-hidden"
     >
-      {/* Capa de fondo difuminada del centro hacia afuera (termina en transparente) */}
-      {/* Capa de fondo: sólida al centro, transparente en los bordes */}
-      {/* Aura: sólido al centro, se desvanece a transparente en todo el borde */}
       <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          backgroundColor: "#5879b0",
-          WebkitMaskImage:
-            "radial-gradient(closest-side ellipse at 50% 50%, #000 0%, #000 35%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,0.35) 80%, rgba(0,0,0,0.12) 92%, transparent 100%)",
-          maskImage:
-            "radial-gradient(closest-side ellipse at 50% 50%, #000 0%, #000 35%, rgba(0,0,0,0.9) 50%, rgba(0,0,0,0.65) 65%, rgba(0,0,0,0.35) 80%, rgba(0,0,0,0.12) 92%, transparent 100%)",
-        }}
-      />
+  aria-hidden="true"
+  className="pointer-events-none absolute inset-0 z-0"
+>
+  <div
+    className="absolute inset-8 sm:inset-10 rounded-[3rem]"
+    style={{
+      backgroundColor: "#283d68",
+      filter: "blur(28px)",
+    }}
+  />
+</div>
 
       <h2 className="relative z-10 text-2xl px-5 sm:text-4xl text-white font-medium tracking-tight max-w-4xl">
         Lo que ve quien busca
