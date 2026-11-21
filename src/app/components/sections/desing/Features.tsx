@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { SectionTitle } from '../../ui/SectionTitle';
+import { useEffect, useRef, useState } from "react";
 
 export const aboutGradient = {
   id: "nosotro",
-  colors: ["#5879b0", "#5879b0", "#5879b0"],
+  colors: ["#3a5487", "#3a5487", "#3a5487"],
 };
 
 const carouselCards = [
@@ -30,23 +31,43 @@ const carouselCards = [
 ];
 
 export default function Features() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setActive(entry.isIntersecting),
+      { threshold: 0.7 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id={aboutGradient.id}
       className="relative flex flex-col min-h-[100dvh] w-full snap-start items-center justify-center sm:px-6 py-12 text-center overflow-hidden"
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0"
+        className={`pointer-events-none absolute inset-0 z-0 transition-opacity duration-1000 ease-out ${
+          active ? "opacity-100" : "opacity-0"
+        }`}
       >
         <div
-          className="absolute inset-8 sm:inset-10 rounded-[3rem]"
+          className="absolute inset-8 sm:inset-10 rounded-[7rem]"
           style={{
-            backgroundColor: "#3a5487",
+            backgroundColor: "#283d68",
             filter: "blur(28px)",
           }}
         />
       </div>
+
 
       <div className="relative z-10 bg-white/15 py-1 px-3 mb-4 rounded-full flex items-center justify-center gap-2 text-white/70">
         <span className="text-sm font-light">Características</span>
