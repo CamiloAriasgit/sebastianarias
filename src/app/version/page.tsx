@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Header from '../components/layout/HeaderVersion'
 import ScrollRuler from '../components/ui/ScrollRuler'
 import HeroSection, { heroGradient } from "../components/sections/desing/Hero";
-import AboutSection, { aboutGradient } from "../components/sections/desing/Features";
+import AboutSection, { aboutGradient } from "../components/sections/desing/Features1";
 import Pricing, { pricingGradient } from "../components/sections/desing/Pricing";
 import ServiceSection, { serviceGradient } from "../components/sections/desing/ServiceSection";
 import GradientBackground from "../components/sections/desing/GradientBackground";

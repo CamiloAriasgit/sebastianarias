@@ -1,0 +1,100 @@
+import Image from "next/image";
+import { SectionTitle } from '../../ui/SectionTitle';
+import { useEffect, useRef, useState } from "react";
+
+export const aboutGradient = {
+  id: "nosotro",
+  colors: ["#3c445f", "#786f80", "#ce7e57"],
+};
+
+const carouselCards = [
+  {
+    title: "Búsqueda Avanzada",
+    description: "Búsqueda por palabras y filtros por precio, área, ciudad, tipo de propiedad, y venta o renta.",
+    image: "/images/search-var.png",
+  },
+  {
+    title: "Lista o Mapa",
+    description: "Ambos modos para navegar. En el mapa, cada propiedad aparece con su precio.",
+    image: "/images/mapa-view.png",
+  },
+  {
+    title: "Ficha de Propiedad",
+    description: "Una ficha por propiedad con fotos, información, y un botón para compartir el enlace.",
+    image: "/images/img3.webp",
+  },
+  {
+    title: "Contacto Directo",
+    description: "Un botón de WhatsApp en cada propiedad. El formulario pide solo nombre y teléfono.",
+    image: "/images/lead-form.png",
+  },
+];
+
+export default function Features() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setActive(entry.isIntersecting),
+      { threshold: 0.7 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      id={aboutGradient.id}
+      className="relative flex flex-col min-h-[100dvh] w-full snap-start items-center justify-center sm:px-6 py-12 text-center overflow-hidden"
+    >
+      <div className="relative z-10 bg-white/15 py-1 px-3 mb-4 rounded-full flex items-center justify-center gap-2 text-white/70">
+        <span className="text-sm font-light">Características</span>
+      </div>
+
+      <SectionTitle className='relative z-10 text-white'>
+        Lo que ve quien busca
+      </SectionTitle>
+
+      {/* Contenedor del carrusel con snap-x obligatorio */}
+      <div className="relative z-10 mt-4 w-full overflow-x-auto snap-x snap-mandatory py-4 px-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex items-start gap-6 sm:gap-8 justify-start sm:justify-center min-w-max px-4">
+          {carouselCards.map((card, index) => (
+            <div
+              key={index}
+              className="flex flex-col w-64 sm:w-72 md:w-80 flex-shrink-0 text-left group cursor-pointer snap-center"
+            >
+              {/* Imagen formato 4:5 */}
+              <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden bg-neutral-200">
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  unoptimized
+                  sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, 320px"
+                  className="object-cover transition-transform duration-500"
+                  priority={index === 0}
+                />
+              </div>
+
+              {/* Texto debajo de la card */}
+              <div className="mt-4 space-y-1.5 px-1 text-base sm:text-lg tracking-tight">
+                <h3 className="text-white leading-snug">
+                  {card.title}
+                </h3>
+                <p className="text-white/70 font-light text-sm leading-relaxed mb-2">
+                  {card.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
